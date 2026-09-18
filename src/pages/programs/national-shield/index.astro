@@ -1,0 +1,422 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { activePrograms } from '../../../data/programs';
+
+const program = activePrograms.find((p) => p.slug === 'national-shield')!;
+const otherPrograms = activePrograms.filter((p) => p.slug !== 'national-shield');
+---
+
+<Layout
+  title={`${program.name} | National Athletics Academy Regina`}
+  description={program.description}
+>
+  <Header />
+
+  <!-- Hero Header -->
+  <section class="page-hero" style="background:linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 55%, #2d1b4e 100%);padding:5rem 0 4rem;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(221,170,64,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-30%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(93,63,211,0.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+
+    <div class="container-naa" style="position:relative;z-index:2;">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;">
+        <a href="/" style="color:rgba(255,255,255,0.7);text-decoration:none;">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/programs/" style="color:rgba(255,255,255,0.7);text-decoration:none;">Programs</a>
+        <span>&rsaquo;</span>
+        <span style="color:var(--color-naa-gold);font-weight:600;">{program.name}</span>
+      </nav>
+
+      <div style="max-width:860px;">
+        <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.35);border-radius:9999px;padding:0.4rem 1.1rem;margin-bottom:1.25rem;">
+          <span style="font-size:1.1rem;">{program.emoji}</span>
+          <span style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;text-transform:uppercase;">
+            Program 03 · {program.badge}
+          </span>
+        </div>
+
+        <h1 style="font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;color:white;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em;">
+          {program.name}
+        </h1>
+
+        <p style="font-size:1.25rem;color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:600;margin-bottom:0.75rem;">
+          {program.subtitle}
+        </p>
+
+        <p style="font-size:1.15rem;color:rgba(255,255,255,0.7);font-family:var(--font-outfit);font-weight:500;font-style:italic;margin-bottom:1rem;letter-spacing:0.02em;">
+          Strong Body. Confident Mind. Safe Choices.
+        </p>
+
+        <p style="font-size:1.02rem;color:rgba(255,255,255,0.82);line-height:1.75;margin-bottom:2rem;max-width:740px;">
+          {program.description}
+        </p>
+
+        <!-- Quick Specs Strip -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Age Streams</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">Ages 5–12, 13–17, 18+</div>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Coach Ratio</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">1:8 to 1:12 Max</div>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Cycle Length</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">12-Week Cycles</div>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Schedule</div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--color-naa-gold);margin-top:0.25rem;">Fri & Sat Evenings</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+          <a href="/registration/" class="btn btn-gold btn-lg">
+            Register for National Shield &rarr;
+          </a>
+          <a href="/contact/" class="btn btn-outline btn-lg">
+            Book a Trial Class
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Shield Promise -->
+  <section style="background:#1a1a2e;color:white;padding:3.5rem 0;border-bottom:1px solid rgba(221,170,64,0.2);">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;text-align:center;">
+        {[
+          { emoji: '💪', title: 'A Stronger Body', desc: 'Strength, endurance, coordination and agility' },
+          { emoji: '🧠', title: 'A Stronger Mind', desc: 'Focus, discipline and confidence' },
+          { emoji: '🛡️', title: 'Safer Choices', desc: 'Awareness, boundaries and personal safety' },
+          { emoji: '🚫', title: 'Bullying Confidence', desc: 'Respond without unnecessary confrontation' },
+          { emoji: '🤝', title: 'Better Habits', desc: 'Respect, teamwork and responsibility' },
+        ].map((item) => (
+          <div style="padding:1.5rem 1rem;">
+            <div style="font-size:2rem;margin-bottom:0.75rem;">{item.emoji}</div>
+            <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.95rem;margin-bottom:0.5rem;">{item.title}</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.5;">{item.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview: Philosophy & Pillars -->
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="overview-heading">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:start;">
+        <div class="reveal">
+          <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">Program Philosophy</span>
+          <h2 id="overview-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.4rem);margin-bottom:1.25rem;">
+            Not a Fight Club. A Fitness & Confidence Program.
+          </h2>
+          <p style="color:#374151;font-size:1.02rem;line-height:1.8;margin-bottom:1.25rem;">
+            {program.longDescription}
+          </p>
+          <p style="color:#4b5563;font-size:0.95rem;line-height:1.75;margin-bottom:2rem;">
+            The program runs on a structured 12-Week Foundation Cycle — Build (Weeks 1–4), Protect (Weeks 5–8), Perform (Weeks 9–12) — ending with a parent-attended Challenge Day where every child receives achievement recognition.
+          </p>
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:1.25rem 1.5rem;border-left:4px solid #16a34a;">
+            <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Program Philosophy</div>
+            <p style="font-size:0.95rem;color:#166534;font-style:italic;line-height:1.6;margin:0;">
+              "Avoid the fight. Protect yourself. Get to safety. Get help."
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: 5 Pillars Card -->
+        <div class="card reveal" style="padding:2.5rem 2rem;background:linear-gradient(145deg,#1a1a2e 0%,#2d2d4e 100%);border:none;color:white;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🛡️</div>
+          <h3 style="font-family:var(--font-outfit);font-size:1.15rem;color:var(--color-naa-gold);margin-bottom:1.5rem;">
+            The 5 Pillars of National Shield
+          </h3>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            {[
+              { emoji: '💪', name: 'POWER', desc: 'Fitness & athletic development' },
+              { emoji: '🛡️', name: 'PROTECT', desc: 'Personal safety & self-defence' },
+              { emoji: '🧠', name: 'CONFIDENCE', desc: 'Mindset & communication' },
+              { emoji: '🤝', name: 'RESPECT', desc: 'Discipline & teamwork' },
+              { emoji: '🥋', name: 'SKILL', desc: 'Martial arts fundamentals' },
+            ].map((p) => (
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <span style="font-size:1.25rem;width:1.75rem;flex-shrink:0;">{p.emoji}</span>
+                <div>
+                  <div style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;">{p.name}</div>
+                  <div style="font-size:0.82rem;color:rgba(255,255,255,0.75);">{p.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-family:var(--font-outfit);letter-spacing:0.04em;">EVERY session must cover at least 4 of the 5 pillars.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The SHIELD Safety System™ -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="shield-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">Program Signature</span>
+        <h2 id="shield-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
+          The SHIELD Safety System™
+        </h2>
+        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto 0.75rem;line-height:1.7;">
+          A structured personal safety framework taught every cycle. Physical escape technique is only introduced after the first five principles are demonstrably understood.
+        </p>
+        <p style="font-size:0.9rem;color:#6b7280;font-style:italic;">Self-defence starts before the fight.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:900px;margin:0 auto;">
+        {[
+          { letter: 'S', word: 'SEE', desc: 'Awareness of surroundings, exits, and who is around you' },
+          { letter: 'H', word: 'HAVE BOUNDARIES', desc: 'Knowing what behaviour is and isn\'t acceptable' },
+          { letter: 'I', word: 'INTENTIONALLY USE YOUR VOICE', desc: 'Confident, assertive, loud when needed' },
+          { letter: 'E', word: 'EXIT', desc: 'Move away from unsafe situations' },
+          { letter: 'L', word: 'LOCATE HELP', desc: 'Get to a trusted adult or safe location' },
+          { letter: 'D', word: 'DESCRIBE & REPORT', desc: 'Tell someone clearly what happened' },
+        ].map((item, i) => (
+          <div class="card reveal" style={`animation-delay:${i * 80}ms;border-top:4px solid var(--color-naa-gold);padding:1.75rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;`}>
+            <div style="width:2.5rem;height:2.5rem;border-radius:9999px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:900;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{item.letter}</div>
+            <div>
+              <div style="font-family:var(--font-outfit);font-weight:700;font-size:0.82rem;color:#1a1a2e;letter-spacing:0.04em;margin-bottom:0.35rem;">{item.word}</div>
+              <div style="font-size:0.85rem;color:#475569;line-height:1.5;">{item.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Age Streams & Curricula -->
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="tiers-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="badge" style="background:rgba(131,22,27,0.1);color:var(--color-naa-maroon);margin-bottom:1rem;">Age-Appropriate Streams</span>
+        <h2 id="tiers-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
+          3 Streams. 1 Program. All Ages.
+        </h2>
+        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto;line-height:1.7;">
+          Each stream is coached separately. A 9-year-old and a 16-year-old are never grouped together — different bone maturity, attention span, and coaching needs require dedicated streams.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
+        {program.tiers.map((tier, i) => (
+          <div class="card reveal" style={`animation-delay:${i * 120}ms;display:flex;flex-direction:column;border-top:4px solid ${i === 0 ? '#16a34a' : i === 1 ? '#1d4ed8' : i === 2 ? '#ea580c' : 'var(--color-naa-maroon)'};`}>
+            <div style="padding:2rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
+                <span class="badge" style={`background:${i === 0 ? 'rgba(22,163,74,0.1)' : i === 1 ? 'rgba(29,78,216,0.1)' : i === 2 ? 'rgba(234,88,12,0.1)' : 'rgba(131,22,27,0.1)'};color:${i === 0 ? '#15803d' : i === 1 ? '#1e40af' : i === 2 ? '#c2410c' : 'var(--color-naa-maroon)'};font-size:0.75rem;font-weight:700;`}>
+                  {tier.badge}
+                </span>
+                <span style="font-size:0.85rem;font-weight:700;color:var(--color-naa-navy);font-family:var(--font-outfit);">
+                  {tier.ages}
+                </span>
+              </div>
+
+              <h3 style="font-size:1.3rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
+                {tier.name}
+              </h3>
+
+              <p style="font-size:0.85rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1rem;">
+                {tier.format} &bull; {tier.ratio}
+              </p>
+
+              <p style="font-size:0.9rem;color:#334155;line-height:1.65;margin-bottom:1.5rem;">
+                {tier.focus}
+              </p>
+
+              <div style="border-top:1px solid #e2e8f0;padding-top:1.25rem;">
+                <div style="font-size:0.78rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">
+                  Session Highlights
+                </div>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+                  {tier.curriculum.map((c) => (
+                    <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.85rem;color:#475569;line-height:1.5;">
+                      <span style="color:var(--color-naa-maroon);font-weight:700;">&bull;</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;">
+              <a href="/registration/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
+                Register for {tier.name} &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAVE Anti-Bullying -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="brave-heading">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+        <div class="reveal">
+          <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">Curriculum Component</span>
+          <h2 id="brave-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.4rem);margin-bottom:1.25rem;">
+            The BRAVE Anti-Bullying Program
+          </h2>
+          <p style="color:#374151;font-size:1rem;line-height:1.8;margin-bottom:1.5rem;">
+            A formal curriculum component with dedicated class time every cycle — not a marketing line. BRAVE is delivered through scenario role-play, never lecture. <strong>Asking for help is strength, not weakness.</strong>
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;color:#374151;font-size:0.88rem;"><span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Scenario role-play</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;color:#374151;font-size:0.88rem;"><span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Every cycle, every stream</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;color:#374151;font-size:0.88rem;"><span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Clear disclosure pathway</div>
+          </div>
+          <a href="/contact/" class="btn btn-navy">Ask About BRAVE &rarr;</a>
+        </div>
+
+        <div class="reveal" style="display:flex;flex-direction:column;gap:1rem;">
+          {[
+            { letter: 'B', desc: 'Be aware — recognise bullying and unsafe behaviour' },
+            { letter: 'R', desc: 'Respond confidently — body language and strong voice' },
+            { letter: 'A', desc: 'Avoid escalation — don\'t turn a situation into a fight' },
+            { letter: 'V', desc: 'Voice it — tell a trusted adult' },
+            { letter: 'E', desc: 'Exit safely — move away and get somewhere safe' },
+          ].map((item) => (
+            <div style="display:flex;align-items:center;gap:1rem;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:1rem 1.25rem;">
+              <div style="width:2.25rem;height:2.25rem;border-radius:9999px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:900;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{item.letter}</div>
+              <p style="font-size:0.88rem;color:#334155;line-height:1.5;margin:0;">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coach Standards & Safety -->
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="safety-heading">
+    <div class="container-naa">
+      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#2d2d4e 100%);border-radius:24px;padding:3.5rem 3rem;color:white;position:relative;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;align-items:start;">
+          <div>
+            <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1rem;">Coach Standard — Non-Negotiable</span>
+            <h2 id="safety-heading" style="font-size:clamp(1.75rem,3vw,2.4rem);color:white;margin-bottom:1rem;">
+              Every Coach. Every Class. No Exceptions.
+            </h2>
+            <p style="color:rgba(255,255,255,0.85);font-size:1rem;line-height:1.75;margin-bottom:1.5rem;">
+              National Shield operates to the highest coaching standards in Saskatchewan youth sport. Every person coaching a youth class must meet all requirements before their first session.
+            </p>
+            <div style="background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.3);border-radius:12px;padding:1rem 1.25rem;">
+              <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.85rem;margin-bottom:0.5rem;">RULE OF TWO — MANDATORY</div>
+              <p style="font-size:0.85rem;color:rgba(255,255,255,0.8);margin:0;line-height:1.6;">No adult is ever alone with a child. The training environment is always open and observable. Parents may watch at any time.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            {[
+              '🔍 Criminal Record + Vulnerable Sector Check (every 3 years)',
+              '🎓 Respect in Sport — Activity Leader (every 5 years)',
+              '🛡️ NCCP Safe Sport Training',
+              '🏥 Standard First Aid + CPR-C (AED) (every 3 years)',
+              '🧠 Concussion Recognition Certification (every 2 years)',
+              '📋 Signed Code of Conduct & Ethics (annually)',
+            ].map((item) => (
+              <div style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.85rem;color:rgba(255,255,255,0.85);line-height:1.5;">
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included & FAQ -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="included-heading">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+        <div class="reveal">
+          <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">What's Included</span>
+          <h2 id="included-heading" style="font-size:1.75rem;color:var(--color-naa-navy);margin-bottom:1.5rem;">Everything in Your Cycle Fee</h2>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
+            {program.whatsIncluded.map((item) => (
+              <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:#334155;line-height:1.6;">
+                <span style="color:var(--color-naa-gold);font-weight:900;font-size:1rem;flex-shrink:0;">★</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div style="margin-top:2rem;background:rgba(221,170,64,0.1);border:1px solid rgba(221,170,64,0.3);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:#926508;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">Pricing</div>
+            <p style="font-size:0.9rem;color:#78350f;margin:0;">Contact us for current cycle pricing. Trial classes available. Financial assistance and family rates apply.</p>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Have Questions?</span>
+          <h2 style="font-size:1.75rem;color:var(--color-naa-navy);margin-bottom:1.5rem;">National Shield FAQs</h2>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            {program.faqs.map((faq) => (
+              <div class="card" style="padding:1.5rem 1.75rem;">
+                <h3 style="font-family:var(--font-outfit);font-size:1rem;color:var(--color-naa-navy);margin-bottom:0.65rem;">{faq.question}</h3>
+                <p style="color:#4b5563;font-size:0.88rem;line-height:1.7;margin:0;">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Programs -->
+  <section class="section-padding" style="background:#ffffff;border-top:1px solid #e2e8f0;" aria-label="Explore other programs">
+    <div class="container-naa">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:0.5rem;">Multi-Sport Academy</span>
+          <h2 style="font-size:1.5rem;color:var(--color-naa-navy);">Explore More NAA Programs</h2>
+        </div>
+        <a href="/programs/" style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-maroon);text-decoration:underline;font-size:0.9rem;">
+          View All Programs &rarr;
+        </a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+        {otherPrograms.map((op) => (
+          <a href={`/programs/${op.slug}/`} class="card" style="padding:1.25rem;text-decoration:none;display:flex;flex-direction:column;gap:0.5rem;border-left:4px solid var(--color-naa-navy);transition:all 0.2s;">
+            <div style="font-size:1.5rem;">{op.emoji}</div>
+            <div style="font-family:var(--font-outfit);font-weight:700;font-size:0.95rem;color:var(--color-naa-navy);line-height:1.2;">{op.name}</div>
+            <div style="font-size:0.75rem;color:#64748b;">{op.ages}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section style="background:linear-gradient(135deg,#1a1a2e 0%,#2d2d4e 100%);color:white;padding:4.5rem 0;text-align:center;">
+    <div class="container-naa">
+      <div class="reveal">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🛡️</div>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:white;margin-bottom:0.75rem;">
+          Ready to Join National Shield?
+        </h2>
+        <p style="color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:600;font-size:1.1rem;margin-bottom:0.75rem;">
+          Strong Body. Confident Mind. Safe Choices.
+        </p>
+        <p style="color:rgba(255,255,255,0.8);max-width:560px;margin:0 auto 2rem;line-height:1.7;">
+          12-week cycles. Friday & Saturday evenings. Ages 4 through adult. Trial classes available — no commitment required.
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="/registration/" class="btn btn-gold btn-lg">Register Now &rarr;</a>
+          <a href="/contact/" class="btn btn-outline btn-lg">Book a Trial Class</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

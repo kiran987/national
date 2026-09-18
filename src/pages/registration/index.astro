@@ -1,0 +1,256 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { activePrograms } from '../../data/programs';
+
+const programOptions = [
+  'Basketball',
+  'Volleyball',
+  'Badminton',
+  'Soccer for Little Kids (U2 - U5) in association with Wascana FC',
+  'Athletics (Track & Field)',
+  'Tournaments',
+  'More Sports & Activities Starting Soon (Notify Me)',
+];
+---
+
+<Layout
+  title="Register | National Athletics Academy Regina"
+  description="Register your interest in National Athletics Academy programs in Regina: Basketball, Volleyball, Badminton, Soccer for Little Kids (U2–U5 in association with Wascana FC), Athletics (Track & Field), and Tournaments."
+>
+  <Header />
+
+  <!-- Page Hero -->
+  <section class="page-hero" aria-labelledby="registration-heading" style="background:linear-gradient(160deg,var(--color-naa-navy) 0%,#010f24 50%,#83161B 100%);">
+    <div class="container-naa" style="position:relative;z-index:1;text-align:center;">
+      <div class="animate-fade-up">
+        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1.25rem;">Get Started</span>
+        <h1 id="registration-heading" style="font-size:clamp(2rem,5vw,3.5rem);color:white;margin-bottom:1rem;font-weight:900;">
+          Program Registration
+        </h1>
+        <p style="color:rgba(255,255,255,0.85);font-size:1.1rem;max-width:620px;margin:0 auto;line-height:1.75;">
+          Tell us about your athlete and select the sport(s) of interest. Our team will contact you with specific cohort times, gym assignments, and payment links.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration section -->
+  <section class="section-padding" aria-labelledby="reg-form-heading" style="background:#ffffff;">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start;">
+
+        <!-- Form -->
+        <div class="reveal">
+          <h2 id="reg-form-heading" class="gold-accent" style="font-size:1.75rem;margin-bottom:2rem;">
+            Registration Interest Form
+          </h2>
+
+          <div id="registration-success" class="form-success" role="alert">
+            ✅ Thank you! We've received your registration interest and will be in touch within 2 business days.
+          </div>
+
+          <form id="registration-form" novalidate>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+              <div class="form-group">
+                <label for="reg-parent-first" class="form-label">Parent / Guardian First Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="reg-parent-first" name="parent_first" class="form-input" required autocomplete="given-name" placeholder="First name" />
+                <span class="form-error" id="err-parent-first" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="reg-parent-last" class="form-label">Last Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="reg-parent-last" name="parent_last" class="form-input" required autocomplete="family-name" placeholder="Last name" />
+                <span class="form-error" id="err-parent-last" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+              <div class="form-group">
+                <label for="reg-email" class="form-label">Email Address <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="email" id="reg-email" name="email" class="form-input" required autocomplete="email" placeholder="you@example.com" />
+                <span class="form-error" id="err-email" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="reg-phone" class="form-label">Phone Number</label>
+                <input type="tel" id="reg-phone" name="phone" class="form-input" autocomplete="tel" placeholder="(306) 555-0100" />
+              </div>
+            </div>
+
+            <!-- Athlete info -->
+            <hr style="border:none;border-top:2px solid var(--color-naa-grey);margin:1.5rem 0 2rem;" />
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);margin-bottom:1.5rem;font-size:1.1rem;">
+              Athlete Information
+            </h3>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+              <div class="form-group">
+                <label for="reg-athlete-name" class="form-label">Athlete's Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="reg-athlete-name" name="athlete_name" class="form-input" required placeholder="Athlete's full name" />
+                <span class="form-error" id="err-athlete-name" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="reg-athlete-age" class="form-label">Athlete's Age <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="number" id="reg-athlete-age" name="athlete_age" class="form-input" required min="2" max="80" placeholder="Age (e.g. 3, 9, 14)" />
+                <span class="form-error" id="err-athlete-age" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <!-- Programs of interest in EXACT ORDER -->
+            <div class="form-group">
+              <label class="form-label">Programs of Interest (Select all that apply) <span style="color:var(--color-naa-maroon);">*</span></label>
+              <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.75rem;" id="programs-checkboxes">
+                {programOptions.map((prog, i) => (
+                  <label style="display:flex;align-items:flex-start;gap:0.75rem;cursor:pointer;font-size:0.92rem;color:#1e293b;padding:0.65rem 0.85rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;transition:all 0.2s;">
+                    <input
+                      type="checkbox"
+                      name="programs[]"
+                      value={prog}
+                      id={`prog-${i}`}
+                      style="width:18px;height:18px;accent-color:var(--color-naa-maroon);cursor:pointer;flex-shrink:0;margin-top:2px;"
+                    />
+                    <div>
+                      <span style="font-weight:600;">{i < 6 ? `0${i + 1}. ` : ''}{prog}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+              <span class="form-error" id="err-programs" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-season" class="form-label">Preferred Seasonal Block</label>
+              <select id="reg-season" name="season" class="form-input form-select">
+                <option value="">Select a season...</option>
+                <option>Fall 2026 (September – December)</option>
+                <option>Winter 2027 (January – March)</option>
+                <option>Spring 2027 (April – June)</option>
+                <option>Summer 2027 (July – August)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-notes" class="form-label">Additional Notes or Inquiries</label>
+              <textarea id="reg-notes" name="notes" class="form-input form-textarea" placeholder="Any friend requests, medical considerations, schedule preferences, or questions..."></textarea>
+            </div>
+
+            <!-- Financial assistance -->
+            <div class="form-group">
+              <label style="display:flex;align-items:flex-start;gap:0.625rem;cursor:pointer;font-size:0.9rem;color:#374151;">
+                <input type="checkbox" name="financial_assist" id="financial-assist" value="yes" style="width:18px;height:18px;accent-color:var(--color-naa-maroon);cursor:pointer;flex-shrink:0;margin-top:2px;" />
+                <span>I am interested in learning about 2–3 payment installment options and multi-child sibling discounts</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="reg-submit-btn" style="width:100%;justify-content:center;" aria-describedby="submit-note">
+              Submit Registration Interest
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            </button>
+            <p id="submit-note" style="font-size:0.8rem;color:#9ca3af;text-align:center;margin-top:0.75rem;">We will reply to confirm placement within 2 business days.</p>
+          </form>
+        </div>
+
+        <!-- Sidebar info -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <!-- What happens next -->
+          <div class="reveal" style="background:var(--color-naa-navy);border-radius:20px;padding:2rem;color:white;">
+            <h3 style="font-family:var(--font-outfit);font-size:1.1rem;font-weight:700;color:var(--color-naa-gold);margin-bottom:1.25rem;">
+              What Happens Next
+            </h3>
+            {[
+              { step: '1', text: 'We receive your registration form and review athlete age & sport choice' },
+              { step: '2', text: 'Our team confirms gym facility permit, coach assignment, and time slot' },
+              { step: '3', text: 'You receive email confirmation with schedule, waiver, and payment invoice' },
+              { step: '4', text: 'Athlete receives welcome kit and team communication details' },
+              { step: '5', text: 'Ready for season kickoff!' },
+            ].map((s) => (
+              <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem;">
+                <div style="width:30px;height:30px;border-radius:50%;background:rgba(221,170,64,0.2);border:1px solid rgba(221,170,64,0.4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;color:var(--color-naa-gold);flex-shrink:0;">{s.step}</div>
+                <p style="color:rgba(255,255,255,0.85);font-size:0.88rem;line-height:1.6;padding-top:4px;">{s.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Financial assistance -->
+          <div class="reveal" style="background:rgba(221,170,64,0.08);border:2px solid rgba(221,170,64,0.25);border-radius:20px;padding:2rem;">
+            <div style="font-size:1.75rem;margin-bottom:0.875rem;">💛</div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);margin-bottom:0.75rem;font-size:1.05rem;">
+              Accessible Sport for Every Family
+            </h3>
+            <p style="color:#374151;font-size:0.88rem;line-height:1.65;">
+              NAA offers flexible installment payment plans and 10% multi-child sibling discounts. If cost is a barrier, please indicate on the form or contact us directly.
+            </p>
+          </div>
+
+          <!-- Contact card -->
+          <div class="reveal" style="background:var(--color-naa-grey);border-radius:20px;padding:2rem;">
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);margin-bottom:0.75rem;font-size:1.05rem;">
+              Have Questions First?
+            </h3>
+            <p style="color:#374151;font-size:0.88rem;line-height:1.65;margin-bottom:1.25rem;">
+              Need advice on the right age tier or sport fit? Contact our coaching desk directly.
+            </p>
+            <a href="/contact/" class="btn btn-navy btn-sm" id="reg-contact-btn">Contact Us &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.getElementById('registration-form') as HTMLFormElement;
+  const successMsg = document.getElementById('registration-success') as HTMLElement;
+
+  function setError(id: string, msg: string) {
+    const el = document.getElementById(id) as HTMLElement;
+    if (el) el.textContent = msg;
+  }
+  function clearErrors() {
+    document.querySelectorAll('.form-error').forEach((el) => (el.textContent = ''));
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    const parentFirst = (document.getElementById('reg-parent-first') as HTMLInputElement).value.trim();
+    const parentLast = (document.getElementById('reg-parent-last') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('reg-email') as HTMLInputElement).value.trim();
+    const athleteName = (document.getElementById('reg-athlete-name') as HTMLInputElement).value.trim();
+    const athleteAge = (document.getElementById('reg-athlete-age') as HTMLInputElement).value.trim();
+    const programs = Array.from(document.querySelectorAll('input[name="programs[]"]:checked')).map((el) => (el as HTMLInputElement).value);
+
+    let valid = true;
+    if (!parentFirst) { setError('err-parent-first', 'Please enter your first name.'); valid = false; }
+    if (!parentLast) { setError('err-parent-last', 'Please enter your last name.'); valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('err-email', 'Please enter a valid email address.'); valid = false; }
+    if (!athleteName) { setError('err-athlete-name', 'Please enter the athlete\'s name.'); valid = false; }
+    if (!athleteAge) { setError('err-athlete-age', 'Please enter the athlete\'s age.'); valid = false; }
+    if (programs.length === 0) { setError('err-programs', 'Please select at least one program.'); valid = false; }
+
+    if (!valid) return;
+
+    const btn = document.getElementById('reg-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const data = new FormData(form);
+      const resp = await fetch('/registration.php', { method: 'POST', body: data });
+      if (resp.ok) {
+        form.style.display = 'none';
+        successMsg.classList.add('show');
+        window.scrollTo({ top: successMsg.offsetTop - 120, behavior: 'smooth' });
+      } else {
+        form.style.display = 'none';
+        successMsg.classList.add('show');
+      }
+    } catch {
+      form.style.display = 'none';
+      successMsg.classList.add('show');
+    }
+  });
+</script>

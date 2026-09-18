@@ -1,0 +1,225 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { activePrograms, comingSoonPrograms } from '../../../data/programs';
+
+const program = comingSoonPrograms.find((p) => p.slug === 'camps')!;
+const otherPrograms = activePrograms;
+---
+
+<Layout
+  title="Camps & Clinics | National Athletics Academy Regina"
+  description="NAA Camps & Clinics — full-week summer day camps, school-break programs, PD day camps, in-school delivery, birthday parties and corporate sports days in Regina. Multi-sport, certified coaches, all ages."
+>
+  <Header />
+
+  <!-- Hero Header -->
+  <section class="page-hero" style="background:linear-gradient(160deg, #052e16 0%, #14532d 55%, #166534 100%);padding:5rem 0 4rem;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40%;right:-10%;width:550px;height:550px;background:radial-gradient(circle,rgba(221,170,64,0.14) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-30%;left:-5%;width:450px;height:450px;background:radial-gradient(circle,rgba(16,185,129,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+
+    <div class="container-naa" style="position:relative;z-index:2;">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;">
+        <a href="/" style="color:rgba(255,255,255,0.7);text-decoration:none;">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/programs/" style="color:rgba(255,255,255,0.7);text-decoration:none;">Programs</a>
+        <span>&rsaquo;</span>
+        <span style="color:var(--color-naa-gold);font-weight:600;">Camps & Clinics</span>
+      </nav>
+
+      <div style="max-width:860px;">
+        <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.35);border-radius:9999px;padding:0.4rem 1.1rem;margin-bottom:1.25rem;">
+          <span style="font-size:1.1rem;">🏕️</span>
+          <span style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;text-transform:uppercase;">
+            Program 04 · {program.badge}
+          </span>
+        </div>
+
+        <h1 style="font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;color:white;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em;">
+          Camps & Clinics
+        </h1>
+
+        <p style="font-size:1.25rem;color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:600;margin-bottom:1rem;">
+          {program.subtitle}
+        </p>
+
+        <p style="font-size:1.05rem;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:2rem;max-width:720px;">
+          {program.description}
+        </p>
+
+        <!-- Quick Specs Strip -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Age Groups</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">Ages 4–17 & Adults</div>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Coach Ratio</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">1:6 to 1:12 Max</div>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Formats</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">Half-Day to Full-Week</div>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">When</div>
+            <div style="font-size:0.95rem;font-weight:700;color:var(--color-naa-gold);margin-top:0.25rem;">Year-Round</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+          <a href="/registration/" class="btn btn-gold btn-lg">
+            View Camp Registration &rarr;
+          </a>
+          <a href="/contact/" class="btn btn-outline btn-lg">
+            Enquire About a Camp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Camp Types Grid -->
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="camps-overview-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <span class="badge" style="background:rgba(20,83,45,0.1);color:#14532d;margin-bottom:1rem;">Camp & Clinic Types</span>
+        <h2 id="camps-overview-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
+          Sport Learning Beyond the Season
+        </h2>
+        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto;line-height:1.7;">
+          Every camp format is led by certified coaches with First Aid, CPR, and Respect in Sport. All equipment provided — just bring athletic clothes and water.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
+        {program.tiers.map((tier, i) => (
+          <div class="card reveal" style={`animation-delay:${i * 120}ms;display:flex;flex-direction:column;border-top:4px solid ${i === 0 ? '#16a34a' : i === 1 ? 'var(--color-naa-navy)' : i === 2 ? 'var(--color-naa-maroon)' : 'var(--color-naa-gold)'};`}>
+            <div style="padding:2rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
+                <span class="badge" style={`background:${i === 0 ? 'rgba(22,163,74,0.1)' : i === 1 ? 'rgba(2,31,71,0.08)' : i === 2 ? 'rgba(131,22,27,0.08)' : 'rgba(221,170,64,0.15)'};color:${i === 0 ? '#15803d' : i === 1 ? 'var(--color-naa-navy)' : i === 2 ? 'var(--color-naa-maroon)' : '#926508'};font-size:0.75rem;font-weight:700;`}>
+                  {tier.badge}
+                </span>
+                <span style="font-size:0.85rem;font-weight:700;color:#64748b;font-family:var(--font-outfit);">
+                  {tier.ages}
+                </span>
+              </div>
+
+              <h3 style="font-size:1.3rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">{tier.name}</h3>
+
+              <p style="font-size:0.85rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1rem;">
+                {tier.format} &bull; {tier.ratio}
+              </p>
+
+              <p style="font-size:0.9rem;color:#334155;line-height:1.65;margin-bottom:1.5rem;">{tier.focus}</p>
+
+              <div style="border-top:1px solid #e2e8f0;padding-top:1.25rem;">
+                <div style="font-size:0.78rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">
+                  What to Expect
+                </div>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+                  {tier.curriculum.map((c) => (
+                    <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.85rem;color:#475569;line-height:1.5;">
+                      <span style="color:#16a34a;font-weight:700;">&bull;</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;">
+              <a href="/registration/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
+                Register for {tier.name} &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included & FAQs -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="camps-included-heading">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+        <div class="reveal">
+          <span class="badge" style="background:rgba(20,83,45,0.1);color:#14532d;margin-bottom:1rem;">Every Camp Includes</span>
+          <h2 id="camps-included-heading" style="font-size:1.75rem;color:var(--color-naa-navy);margin-bottom:1.5rem;">What's Always Included</h2>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+            {program.whatsIncluded.map((item) => (
+              <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:#334155;line-height:1.6;">
+                <span style="color:var(--color-naa-gold);font-weight:900;font-size:1rem;flex-shrink:0;">★</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div style="background:rgba(20,83,45,0.06);border:1px solid rgba(20,83,45,0.2);border-radius:12px;padding:1.25rem;border-left:4px solid #16a34a;">
+            <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">Financial Assistance</div>
+            <p style="font-size:0.85rem;color:#166534;margin:0;line-height:1.6;">No child is turned away for cost alone. KidSport Saskatchewan and Canadian Tire Jumpstart funding available for eligible families.</p>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Frequently Asked</span>
+          <h2 style="font-size:1.75rem;color:var(--color-naa-navy);margin-bottom:1.5rem;">Camp FAQs</h2>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            {program.faqs.map((faq) => (
+              <div class="card" style="padding:1.5rem 1.75rem;">
+                <h3 style="font-family:var(--font-outfit);font-size:1rem;color:var(--color-naa-navy);margin-bottom:0.65rem;">{faq.question}</h3>
+                <p style="color:#4b5563;font-size:0.88rem;line-height:1.7;margin:0;">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Programs -->
+  <section class="section-padding" style="background:#ffffff;border-top:1px solid #e2e8f0;" aria-label="Explore other programs">
+    <div class="container-naa">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:0.5rem;">Multi-Sport Academy</span>
+          <h2 style="font-size:1.5rem;color:var(--color-naa-navy);">Explore More NAA Programs</h2>
+        </div>
+        <a href="/programs/" style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-maroon);text-decoration:underline;font-size:0.9rem;">
+          View All Programs &rarr;
+        </a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+        {otherPrograms.map((op) => (
+          <a href={`/programs/${op.slug}/`} class="card" style="padding:1.25rem;text-decoration:none;display:flex;flex-direction:column;gap:0.5rem;border-left:4px solid var(--color-naa-navy);transition:all 0.2s;">
+            <div style="font-size:1.5rem;">{op.emoji}</div>
+            <div style="font-family:var(--font-outfit);font-weight:700;font-size:0.95rem;color:var(--color-naa-navy);line-height:1.2;">{op.name}</div>
+            <div style="font-size:0.75rem;color:#64748b;">{op.ages}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section style="background:linear-gradient(135deg,#14532d 0%,#166534 100%);color:white;padding:4.5rem 0;text-align:center;">
+    <div class="container-naa">
+      <div class="reveal">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🏕️</div>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:white;margin-bottom:1rem;">
+          Ready to Register for a Camp?
+        </h2>
+        <p style="color:rgba(255,255,255,0.85);max-width:560px;margin:0 auto 2rem;line-height:1.7;">
+          Summer Day Camps, School-Break Camps, PD Day Programs, and more — all led by certified NAA coaches. Get notified when registration opens.
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="/registration/" class="btn btn-gold btn-lg">View Camp Registration &rarr;</a>
+          <a href="/contact/" class="btn btn-outline btn-lg">Enquire About a Camp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
