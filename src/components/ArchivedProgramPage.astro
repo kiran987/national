@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import type { ArchivedProgram } from '../data/archive';
+
+interface Props {
+  entry: ArchivedProgram;
+}
+
+const { entry } = Astro.props;
+const p = entry.program;
+const price = p.blockPrice > 0 ? `$${p.blockPrice} CAD` : 'See program details';
+const hero = p.image || p.gallery?.[0];
+---
+
+<Layout
+  title={`${p.name} · ${entry.season} (Archived)`}
+  description={`Archived record of ${p.name}, ${entry.season} (${entry.dates}). This program has ended; see the current NAA programs.`}
+  noindex={true}
+>
+  <Header />
+
+  <div class="arc">
+    <section class="arc-hero" aria-labelledby="arc-title">
+      {hero && <img class="arc-hero-img" src={hero} alt="" width="1600" height="1067" />}
+      <div class="arc-hero-shade" aria-hidden="true"></div>
+      <div class="container-naa arc-hero-inner">
+        <nav aria-label="Breadcrumb" class="arc-crumbs">
+          <a href="/">Home</a><span>&rsaquo;</span><a href="/programs/">Programs</a><span>&rsaquo;</span><a href="/programs/archive/">Archive</a><span>&rsaquo;</span><span class="cur">{entry.sport} · {entry.season}</span>
+        </nav>
+        <span class="arc-chip"><span class="dot"></span>Archived · {entry.season}</span>
+        <h1 id="arc-title">{p.name}</h1>
+        <p class="arc-sub">{p.subtitle}</p>
+      </div>
+    </section>
+
+    <div class="container-naa arc-notice" role="note">
+      <div>
+        <strong>This program has been archived.</strong>
+        Registration is closed and this page is kept for reference only. Details below are as they were during {entry.season}.
+      </div>
+      <a href={entry.currentUrl} class="arc-btn">{entry.currentLabel} &rarr;</a>
+    </div>
+
+    <section class="arc-section" aria-label="Program at a glance">
+      <div class="container-naa">
+        <dl class="arc-facts">
+          <div><dt>Season</dt><dd>{entry.season}</dd><span>{entry.dates}</span></div>
+          <div><dt>Ages</dt><dd>{p.ages.split('(')[0].trim()}</dd><span>{p.ratio}</span></div>
+          <div><dt>Schedule</dt><dd>{p.sessionsPerWeek}</dd></div>
+          <div><dt>Tuition</dt><dd>from {price}</dd><span>at the time</span></div>
+        </dl>
+        <p class="arc-venue"><strong>Venue:</strong> {p.venue}</p>
+      </div>
+    </section>
+
+    <section class="arc-section arc-tint" aria-labelledby="arc-overview">
+      <div class="container-naa arc-two">
+        <div>
+          <span class="arc-kicker">Overview</span>
+          <h2 id="arc-overview">What the program covered</h2>
+          <p class="arc-lead">{p.longDescription || p.description}</p>
+        </div>
+        {p.highlights && p.highlights.length > 0 && (
+          <div class="arc-card">
+            <h3>Program highlights</h3>
+            <ul>
+              {p.highlights.map((h) => (<li>{h}</li>))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </section>
+
+    {p.tiers && p.tiers.length > 0 && (
+      <section class="arc-section" aria-labelledby="arc-tiers">
+        <div class="container-naa">
+          <span class="arc-kicker">Tiers</span>
+          <h2 id="arc-tiers">Age tiers &amp; curriculum</h2>
+          <div class="arc-tiers">
+            {p.tiers.map((t) => (
+              <article class="arc-tier">
+                <span class="arc-tier-badge">{t.badge ?? t.ages}</span>
+                <h3>{t.name}</h3>
+                <p class="arc-tier-meta">{t.format} &middot; {t.ratio}</p>
+                <p>{t.focus}</p>
+                <ul>
+                  {t.curriculum.map((c) => (<li>{c}</li>))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {p.whatsIncluded && p.whatsIncluded.length > 0 && (
+      <section class="arc-section arc-tint" aria-labelledby="arc-included">
+        <div class="container-naa arc-narrow">
+          <span class="arc-kicker">Included</span>
+          <h2 id="arc-included">What was included</h2>
+          <ul class="arc-checks">
+            {p.whatsIncluded.map((i) => (<li>{i}</li>))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    {p.faqs && p.faqs.length > 0 && (
+      <section class="arc-section" aria-labelledby="arc-faq">
+        <div class="container-naa arc-narrow">
+          <span class="arc-kicker">Questions</span>
+          <h2 id="arc-faq">FAQs from this season</h2>
+          <div class="arc-faq">
+            {p.faqs.map((f) => (
+              <details>
+                <summary>{f.question}</summary>
+                <p>{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="arc-cta">
+      <div class="container-naa">
+        <h2>Looking for what is running now?</h2>
+        <p>Browse the current NAA programs or see how this sport is offered today.</p>
+        <div class="arc-cta-row">
+          <a href={entry.currentUrl} class="arc-btn">{entry.currentLabel} &rarr;</a>
+          <a href="/programs/archive/" class="arc-btn ghost">All archived programs</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .arc { --deep: #0b1a33; --accent: #DDAA40; --ink: #0f172a; --muted: #475569; --line: #e2e8f0; background: #fff; color: var(--ink); }
+  .arc :global(h1), .arc :global(h2), .arc :global(h3) { font-family: var(--font-outfit); }
+
+  .arc-hero { position: relative; min-height: 420px; display: flex; align-items: flex-end; padding: 9.5rem 0 3.5rem; color: #fff; overflow: hidden; background: var(--deep); }
+  .arc-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.85) brightness(0.8); }
+  .arc-hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,26,51,0.9) 0%, rgba(11,26,51,0.7) 50%, rgba(11,26,51,0.95) 100%); }
+  .arc-hero-inner { position: relative; z-index: 2; max-width: 880px; margin-right: auto; }
+  .arc-crumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+  .arc-crumbs a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .arc-crumbs .cur { color: var(--accent); font-weight: 600; }
+  .arc-chip { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.4rem 1rem; border-radius: 999px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.35); font-family: var(--font-outfit); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .arc-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: #94a3b8; }
+  .arc-hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin: 1.1rem 0 0.6rem; color: #fff; }
+  .arc-sub { font-size: 1.15rem; color: rgba(255,255,255,0.85); margin: 0; }
+
+  .arc-notice { margin-top: -1.75rem; position: relative; z-index: 5; display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 1.1rem 1.4rem; border-radius: 16px; background: #fff8e6; border: 1px solid #f0d58a; box-shadow: 0 14px 34px rgba(2,31,71,0.14); font-size: 0.95rem; color: #5b4310; }
+  .arc-notice strong { color: #3f2d06; }
+  .arc-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.2rem; border-radius: 10px; background: var(--deep); color: #fff; font-family: var(--font-outfit); font-weight: 700; font-size: 0.9rem; text-decoration: none; }
+  .arc-btn.ghost { background: transparent; border: 2px solid rgba(255,255,255,0.5); }
+
+  .arc-section { padding: 4rem 0; }
+  .arc-tint { background: #f8fafc; }
+  .arc-kicker { display: inline-block; font-family: var(--font-outfit); font-weight: 800; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--deep); background: #f6e7bd; padding: 0.35rem 0.85rem; border-radius: 999px; margin-bottom: 0.9rem; }
+  .arc h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; color: var(--deep); margin: 0 0 1rem; }
+  .arc-narrow { max-width: 820px; }
+
+  .arc-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--line); border-radius: 18px; overflow: hidden; margin: 0 0 1rem; border: 1px solid var(--line); }
+  .arc-facts > div { background: #fff; padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.15rem; }
+  .arc-facts dt { font-family: var(--font-outfit); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; }
+  .arc-facts dd { margin: 0; font-family: var(--font-outfit); font-weight: 800; font-size: 1.25rem; color: var(--deep); line-height: 1.25; }
+  .arc-facts span { font-size: 0.82rem; color: var(--muted); }
+  .arc-venue { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+  .arc-two { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: start; }
+  .arc-lead { font-size: 1.05rem; line-height: 1.8; color: #334155; margin: 0; }
+  .arc-card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 18px; padding: 1.6rem; }
+  .arc-card h3 { font-size: 1.05rem; margin: 0 0 0.8rem; color: var(--deep); }
+  .arc-card ul, .arc-tier ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+
+  .arc-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .arc-tier { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--deep); border-radius: 18px; padding: 1.7rem; box-shadow: 0 10px 28px rgba(2,31,71,0.06); }
+  .arc-tier-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--deep); color: #fff; font-family: var(--font-outfit); font-weight: 700; font-size: 0.75rem; margin-bottom: 0.9rem; }
+  .arc-tier h3 { font-size: 1.3rem; color: var(--deep); margin: 0 0 0.3rem; }
+  .arc-tier-meta { font-weight: 600; color: #64748b; font-size: 0.85rem; margin: 0 0 0.8rem; }
+  .arc-tier > p { color: #334155; font-size: 0.93rem; line-height: 1.65; margin: 0 0 1rem; }
+
+  .arc-checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+  .arc-checks li { position: relative; padding-left: 1.7rem; color: #334155; line-height: 1.6; }
+  .arc-checks li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
+
+  .arc-faq { display: flex; flex-direction: column; gap: 0.8rem; }
+  .arc-faq details { border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+  .arc-faq summary { cursor: pointer; padding: 1.05rem 1.3rem; font-family: var(--font-outfit); font-weight: 700; color: var(--deep); }
+  .arc-faq p { margin: 0; padding: 0 1.3rem 1.2rem; color: var(--muted); line-height: 1.7; }
+
+  .arc-cta { background: var(--deep); color: #fff; text-align: center; padding: 4rem 0; }
+  .arc-cta h2 { color: #fff; }
+  .arc-cta p { color: rgba(255,255,255,0.8); margin: 0 auto 1.5rem; max-width: 520px; }
+  .arc-cta-row { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  .arc-cta .arc-btn { background: var(--accent); color: #0b1220; }
+  .arc-cta .arc-btn.ghost { background: transparent; color: #fff; }
+
+  @media (max-width: 860px) { .arc-two { grid-template-columns: 1fr; gap: 2rem; } .arc-section { padding: 3rem 0; } }
+</style>

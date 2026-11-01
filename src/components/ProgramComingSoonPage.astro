@@ -158,6 +158,29 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
       </section>
     )}
 
+    <!-- GEAR INCLUDED -->
+    {page.included && (
+      <section class="nsp-section nsp-tint" aria-labelledby="nsp-included">
+        <div class="container-naa">
+          <div class="nsp-head reveal">
+            <span class="nsp-kicker">What You Get</span>
+            <h2 id="nsp-included">{page.includedTitle}</h2>
+            <p>Equipment is part of the program, so riders arrive ready to learn.</p>
+          </div>
+          <div class="nsp-included">
+            {page.included.map((pkg) => (
+              <article class="nsp-pkg reveal">
+                <h3>{pkg.name}</h3>
+                <ul>
+                  {pkg.items.map((i) => (<li>{i}</li>))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- PLAN / CURRICULUM -->
     <section class="nsp-section nsp-dark" aria-labelledby="nsp-plan">
       <div class="container-naa">
@@ -743,6 +766,57 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
     color: rgba(255, 255, 255, 0.78);
     line-height: 1.65;
     font-size: 0.97rem;
+  }
+
+  /* INCLUDED */
+  .nsp-included {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .nsp-pkg {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--accent);
+    border-radius: 20px;
+    padding: 1.75rem;
+    box-shadow: 0 14px 34px rgba(2, 31, 71, 0.07);
+  }
+  .nsp-pkg h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--deep);
+    margin: 0 0 1rem;
+  }
+  .nsp-pkg ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .nsp-pkg li {
+    position: relative;
+    padding-left: 1.8rem;
+    color: #334155;
+    font-weight: 600;
+  }
+  .nsp-pkg li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--deep);
+    background: color-mix(in srgb, var(--accent) 35%, white);
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.75rem;
+    font-weight: 900;
   }
 
   /* FLOW */

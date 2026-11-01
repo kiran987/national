@@ -1,0 +1,12 @@
+---
+import ArchivedProgramPage from '../../../components/ArchivedProgramPage.astro';
+import { archivedPrograms } from '../../../data/archive';
+
+export function getStaticPaths() {
+  return archivedPrograms.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<ArchivedProgramPage entry={entry} />

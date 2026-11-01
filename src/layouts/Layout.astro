@@ -8,6 +8,7 @@ interface Props {
   ogImage?: string;
   canonical?: string;
   schemaGraph?: any[];
+  noindex?: boolean;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   ogImage = '/images/naa-logo.png',
   canonical,
   schemaGraph = [],
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = 'https://naacanada.org';
@@ -131,7 +133,7 @@ const baseSchemaGraph = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
     <link rel="canonical" href={pageUrl} />
 
     <!-- Open Graph -->

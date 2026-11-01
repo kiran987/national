@@ -1,0 +1,77 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { archivedPrograms } from '../../../data/archive';
+---
+
+<Layout
+  title="Past Programs Archive"
+  description="Archive of past National Athletics Academy programs, kept for reference."
+  noindex={true}
+>
+  <Header />
+
+  <main class="arcx">
+    <section class="arcx-hero">
+      <div class="container-naa">
+        <nav aria-label="Breadcrumb" class="arcx-crumbs">
+          <a href="/">Home</a><span>&rsaquo;</span><a href="/programs/">Programs</a><span>&rsaquo;</span><span class="cur">Archive</span>
+        </nav>
+        <span class="arcx-chip">Program Archive</span>
+        <h1>Past Programs</h1>
+        <p>A record of programs we have run. These pages are kept for reference only and are not open for registration.</p>
+      </div>
+    </section>
+
+    <section class="arcx-body">
+      <div class="container-naa">
+        {archivedPrograms.length === 0 ? (
+          <p class="arcx-empty">No archived programs yet.</p>
+        ) : (
+          <div class="arcx-grid">
+            {archivedPrograms.map((e) => (
+              <a href={`/programs/archive/${e.slug}/`} class="arcx-card">
+                {e.program.image && <img src={e.program.image} alt="" loading="lazy" width="800" height="500" />}
+                <div class="arcx-card-body">
+                  <span class="arcx-tag">Archived · {e.season}</span>
+                  <h2>{e.program.name}</h2>
+                  <p class="arcx-meta">{e.dates}</p>
+                  <p class="arcx-meta">{e.program.venue.split(',')[0]}</p>
+                  <span class="arcx-link">View archived page &rarr;</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+        <p class="arcx-note">Looking for something running now? <a href="/programs/">See current programs</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .arcx { background: #fff; color: #0f172a; }
+  .arcx-hero { background: linear-gradient(160deg, #0b1a33 0%, #14284d 100%); color: #fff; padding: 9.75rem 0 4rem; }
+  .arcx-crumbs { display: flex; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+  .arcx-crumbs a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .arcx-crumbs .cur { color: #DDAA40; font-weight: 600; }
+  .arcx-chip { display: inline-block; padding: 0.4rem 1rem; border-radius: 999px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); font-family: var(--font-outfit); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .arcx-hero h1 { font-family: var(--font-outfit); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; margin: 1rem 0 0.6rem; color: #fff; }
+  .arcx-hero p { max-width: 620px; color: rgba(255,255,255,0.82); font-size: 1.08rem; line-height: 1.7; margin: 0; }
+  .arcx-body { padding: 3.5rem 0 5rem; background: #f8fafc; }
+  .arcx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .arcx-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 10px 28px rgba(2,31,71,0.06); transition: transform 0.2s, box-shadow 0.2s; }
+  .arcx-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(2,31,71,0.12); }
+  .arcx-card img { width: 100%; height: 190px; object-fit: cover; filter: grayscale(0.8); }
+  .arcx-card-body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .arcx-tag { align-self: flex-start; padding: 0.25rem 0.7rem; border-radius: 999px; background: #eef2f7; color: #475569; font-family: var(--font-outfit); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .arcx-card h2 { font-family: var(--font-outfit); font-size: 1.3rem; font-weight: 800; color: #0b1a33; margin: 0; }
+  .arcx-meta { margin: 0; color: #64748b; font-size: 0.9rem; }
+  .arcx-link { margin-top: 0.8rem; font-family: var(--font-outfit); font-weight: 700; color: #0b1a33; }
+  .arcx-note { margin: 2.5rem 0 0; color: #475569; }
+  .arcx-note a { color: #0b1a33; font-weight: 700; text-decoration: underline; }
+  .arcx-empty { color: #64748b; }
+</style>
