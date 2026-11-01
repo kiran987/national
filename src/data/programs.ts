@@ -391,7 +391,7 @@ const activeProgramsRaw: DetailedProgram[] = [
         name: 'Smash Juniors',
         badge: 'Ages 6–10 · 45-min batches · $150 CAD',
         ages: 'Ages 6–10',
-        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $175 CAD',
+        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $150 CAD',
         focus:
           'Open, mixed-level class for beginners through advanced players. Physical literacy, hand-eye coordination, neutral grip habits, underhand serving accuracy, court boundary games, gentle net drops, swat attacks, and Jamboree mini-meet competition.',
         ratio: '1:8 to 1:10 Coach Ratio',
