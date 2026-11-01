@@ -61,7 +61,7 @@ const PROGRAMS_DATA: ProgramItem[] = [
     category: 'active',
     slug: 'volleyball',
     ageBracket: ['U12', 'U16'],
-    ageDisplay: 'Ages 8–16 (Foundations & Elite)',
+    ageDisplay: 'Ages 8–16 (Juniors & Elite)',
     location: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
     schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
     coachRatio: '1:10 to 1:14 Coach Ratio',

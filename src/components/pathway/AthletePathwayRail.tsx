@@ -51,7 +51,7 @@ const STAGES: StageInfo[] = [
       'Triple-threat separation & jump stop balance',
       'Resilience after missed shots or errors'
     ],
-    activePrograms: ['Smash Juniors Badminton', 'Spike Foundations Volleyball', 'Junior Hoops Basketball', 'National Shield Juniors']
+    activePrograms: ['Smash Juniors Badminton', 'Spike Juniors Volleyball', 'Junior Hoops Basketball', 'National Shield Juniors']
   },
   {
     number: 4,

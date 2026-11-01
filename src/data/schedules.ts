@@ -66,10 +66,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     notes: 'Registration starts Nov 1, 2026. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Footwork ladders, clears & smash tactics. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
-    id: 'volleyball-2027-foundation-slot1',
+    id: 'volleyball-2027-juniors-slot1',
     sport: 'Volleyball',
     season: 'Winter 2027',
-    tier: 'Spike Foundation (Slot 1)',
+    tier: 'Spike Juniors (Slot 1)',
     ageGroup: 'Ages 8–12',
     facility: 'Green Gym, CKHS (University of Regina)',
     address: '3737 Wascana Parkway, Regina, SK S4S 0A2',
@@ -149,10 +149,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     notes: 'Registration starts Nov 1, 2026. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Footwork ladders, clears & smash tactics. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
-    id: 'volleyball-2027-foundation-slot2',
+    id: 'volleyball-2027-juniors-slot2',
     sport: 'Volleyball',
     season: 'Winter 2027',
-    tier: 'Spike Foundation (Slot 2)',
+    tier: 'Spike Juniors (Slot 2)',
     ageGroup: 'Ages 8–12',
     facility: 'Green Gym, CKHS (University of Regina)',
     address: '3737 Wascana Parkway, Regina, SK S4S 0A2',

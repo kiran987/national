@@ -13,7 +13,7 @@ color: '#83161B'
 accentColor: '#DDAA40'
 bgColor: 'rgba(131,22,27,0.08)'
 description: 'Comprehensive indoor volleyball instruction covering forearm platform passing, overhead setting precision, overhand serve consistency, spike approach footwork, and team defensive rotation with age-adjusted net heights.'
-ages: 'Ages 8–16 (Spike Foundations: 8–12, Spike Elite: 13–16)'
+ages: 'Ages 8–16 (Spike Juniors: 8–12, Spike Elite: 13–16)'
 ratio: '1:10 to 1:14 Coach-to-Athlete Ratio'
 venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2'
 seasonDuration: 'Jan 26 – Mar 11, 2027 (10 Sessions) · Tuesdays & Thursdays'
@@ -40,7 +40,7 @@ skillsFocus:
   - Base Defense, Tip Coverage, Digging & Court Communication
   - Rotational Rules, Free-Ball Transition & Rally Management
 tiers:
-  - name: Spike Foundations
+  - name: Spike Juniors
     badge: 'Ages 8–12 · 55 min · $205 CAD'
     ages: Ages 8–12
     format: '55 min · $205 CAD'
@@ -63,7 +63,7 @@ tiers:
       - Perimeter and rotational defensive schemes with vocal calling
       - Full matchplay, referee etiquette, and game tactical management
 whatsIncluded:
-  - 'Spike Foundations (Ages 8–12): $205 CAD · 55 min sessions'
+  - 'Spike Juniors (Ages 8–12): $205 CAD · 55 min sessions'
   - 'Spike Elite (Ages 13–16): $225 CAD · 55 min sessions'
   - Official NAA National Spike Training Shirt
   - Screened, Safe Sport–trained coach instruction, scrimmages & regulation adjusted net facilities
@@ -73,7 +73,7 @@ faqs:
   - question: Are knee pads required for volleyball?
     answer: Volleyball knee pads are strongly recommended for safety and comfort during floor defense and dive progressions. Clean, non-marking indoor court shoes and comfortable athletic wear are mandatory.
   - question: My child has never played volleyball before. Can they join?
-    answer: 'Yes! Our Spike Foundations tier (Ages 8–12) welcomes complete beginners. We use low-impact training balls so athletes learn proper hand and arm positioning without discomfort.'
+    answer: 'Yes! Our Spike Juniors tier (Ages 8–12) welcomes complete beginners. We use low-impact training balls so athletes learn proper hand and arm positioning without discomfort.'
   - question: What ball weight is used for younger athletes?
     answer: We use Mikasa lightweight/soft-touch youth training volleyballs for younger players to encourage proper technique and prevent arm soreness, transitioning to regulation balls for older cohorts.
   - question: Where are National Spike sessions held?

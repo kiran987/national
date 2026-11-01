@@ -232,7 +232,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       'Comprehensive indoor volleyball instruction covering forearm platform passing, overhead setting precision, overhand serve consistency, spike approach footwork, and team defensive rotation with age-adjusted net heights at the University of Regina Green Gym.',
     longDescription:
       'Volleyball demands explosive agility, exceptional hand-eye coordination, and split-second teamwork. The NAA Volleyball Academy provides Regina youth with a technical foundation that standard school physical education cannot match. Led by screened, Safe Sport–trained coaches (including NCCP Volleyball Canada trained leadership), players master ball control mechanics in structured drills and small-sided modified games at the University of Regina Green Gym.',
-    ages: 'Ages 8–16 (Spike Foundations: 8–12, Spike Elite: 13–16)',
+    ages: 'Ages 8–16 (Spike Juniors: 8–12, Spike Elite: 13–16)',
     venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2',
     seasonDuration: 'Winter 2027: Jan 26 – Mar 11, 2027 (10 Sessions · Tuesdays & Thursdays)',
     sessionsPerWeek: '2× / week · Batch 1: 6:00–6:45 PM or Batch 2: 6:45–7:30 PM (40–45 min on-court coaching)',
@@ -245,7 +245,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       '10 sessions · Tuesdays & Thursdays · Jan 26 – Mar 11, 2027 (no sessions Feb 9–18)',
       'Two batches: Batch 1 · 6:00–6:45 PM or Batch 2 · 6:45–7:30 PM (45-min slots, 40–45 min of on-court coaching)',
       'Venue: Green Gym, Centre for Kinesiology and Health Studies, University of Regina',
-      'Spike Foundations (Ages 8–12): $230 CAD · Spike Elite (Ages 13–16): $260 CAD',
+      'Spike Juniors (Ages 8–12): $230 CAD · Spike Elite (Ages 13–16): $260 CAD',
       'Mandatory Training Kit Fee: $30 CAD per athlete, in addition to program tuition',
       'Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)',
       'Age-adjusted net heights and lightweight Mikasa trainer balls for optimal learning',
@@ -264,7 +264,7 @@ const activeProgramsRaw: DetailedProgram[] = [
     ],
     tiers: [
       {
-        name: 'Spike Foundations',
+        name: 'Spike Juniors',
         badge: 'Ages 8–12 · 45-min batches · $230 CAD',
         ages: 'Ages 8–12',
         format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $230 CAD',
@@ -295,7 +295,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       },
     ],
     whatsIncluded: [
-      'Spike Foundations (Ages 8–12): $230 CAD · 10 sessions',
+      'Spike Juniors (Ages 8–12): $230 CAD · 10 sessions',
       'Spike Elite (Ages 13–16): $260 CAD · 10 sessions',
       '10 Training Sessions (45-min batches) at the University of Regina Green Gym',
       'Tuesdays & Thursdays, Jan 26 – Mar 11, 2027 (Batch 1: 6:00–6:45 PM · Batch 2: 6:45–7:30 PM)',
@@ -309,7 +309,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       {
         question: 'What does Winter 2027 cost, and can I pay in installments?',
         answer:
-          'Spike Foundations is $230 CAD and Spike Elite is $260 CAD for 10 sessions. Every athlete also pays a mandatory $30 CAD Training Kit fee. Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments).',
+          'Spike Juniors is $230 CAD and Spike Elite is $260 CAD for 10 sessions. Every athlete also pays a mandatory $30 CAD Training Kit fee. Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments).',
       },
       {
         question: 'When and where does Winter 2027 volleyball run?',
@@ -324,7 +324,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       {
         question: 'My child has never played volleyball before. Can they join?',
         answer:
-          'Yes! Our Spike Foundations tier (Ages 8–12) welcomes complete beginners. We use low-impact training balls so athletes learn proper technique without discomfort.',
+          'Yes! Our Spike Juniors tier (Ages 8–12) welcomes complete beginners. We use low-impact training balls so athletes learn proper technique without discomfort.',
       },
       {
         question: 'How does the Family & Multi-Child Discount work?',
