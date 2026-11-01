@@ -147,7 +147,7 @@ const PROGRAMS_DATA: ProgramItem[] = [
     price: 'Pricing announced soon',
     accentColor: '#38bdf8',
     image: '/images/programs/snowboard-hero.webp',
-    description: 'From first turns to total mountain control. Small age-matched batches with video feedback every session.',
+    description: 'From first turns to total mountain control. Small age-matched batches with coach feedback every session.',
     logistics: [
       'Registration has not opened yet',
       'Strict age batches: Groms, Teens, Adults',

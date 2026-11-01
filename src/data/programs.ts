@@ -460,7 +460,7 @@ const activeProgramsRaw: DetailedProgram[] = [
           'Singles tactics: tempo control, patterns of play, and opponent scouting',
           'Doubles systems: attack/defend rotations, lead communication, and mixed pairs',
           'Pressure play: points from deficit, tie-break situations, and match-point routines',
-          'Match day: round-robin matchplay with video-free coach analysis and debriefs',
+          'Match day: round-robin matchplay with coach analysis and debriefs',
           'Smash Pro Invitational: tournament format, refereed games, and individual evaluations',
         ],
       },

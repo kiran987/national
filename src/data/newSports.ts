@@ -190,7 +190,7 @@ export const newSportPages: Record<string, NewSportPage> = {
     benefits: [
       { icon: 'users', title: 'Strict Age Batches', text: 'Riders train with their own age group so coaching, pace and terrain always fit.' },
       { icon: 'shield', title: 'Safety First', text: 'Gear and binding checks, safe falling mechanics and lift safety are taught from the first lesson.' },
-      { icon: 'video', title: 'Video Feedback', text: 'Every session ends with video review of body position and a personal goal for next time.' },
+      { icon: 'target', title: 'Personal Goals Every Week', text: 'Every session ends with coach feedback on body position and a clear goal for the next session.' },
       { icon: 'mountain', title: 'Real Mountain Skills', text: 'From the magic carpet to blue terrain, riders learn the control needed for the whole mountain.' },
     ],
     groupsTitle: 'Strict Age Batches',
@@ -211,7 +211,7 @@ export const newSportPages: Record<string, NewSportPage> = {
     flow: [
       { label: '0:00 – 0:20', title: 'Pre-Hill Check', text: 'Gear, boot and binding fit inspection, safety check, on-snow warm-up and the daily objective briefing.' },
       { label: '0:20 – 2:00', title: 'Slope Instruction & Progression', text: '100 minutes of active on-snow coaching, drill demonstrations, edge refinement and guided hill runs.' },
-      { label: '2:00 – 2:30', title: 'Debrief & Video Review', text: 'Video feedback on body position, cool-down, equipment check-in and personal training goals for the next session.' },
+      { label: '2:00 – 2:30', title: 'Debrief & Goal Setting', text: 'Coach feedback on body position, cool-down, equipment check-in and personal training goals for the next session.' },
     ],
     gallery: [
       { src: '/images/programs/snowboard-2.webp', alt: 'Snowboarder on a groomed slope', caption: 'First turns on the hill' },
@@ -221,7 +221,7 @@ export const newSportPages: Record<string, NewSportPage> = {
     faqs: [
       { question: 'Where and when will lessons run?', answer: 'Training takes place at a local hill or winter park. Exact dates will be scheduled around resort and gear-rental availability and announced before registration opens.' },
       { question: 'What are the age groups?', answer: 'Groms (ages 6–11) and Teens (ages 12–16) ride in batches of 5 to 8, and Adults (ages 17+) in batches of 6 to 10.' },
-      { question: 'How long is each session?', answer: 'Each weekly session is 2.5 hours: a 20-minute pre-hill check, 100 minutes of on-snow coaching and a 30-minute debrief with video review.' },
+      { question: 'How long is each session?', answer: 'Each weekly session is 2.5 hours: a 20-minute pre-hill check, 100 minutes of on-snow coaching and a 30-minute debrief with coach feedback and goal setting.' },
       { question: 'Do riders need experience?', answer: 'No. Weeks 1–2 cover stance, gliding and safe falling, so true beginners are welcome.' },
       { question: 'How do I register?', answer: 'Registration has not opened yet. Use the notify button and we will email you as soon as dates, pricing and gear details are confirmed.' },
     ],
@@ -337,7 +337,7 @@ export const newSportPrograms: DetailedProgram[] = [
     highlights: [
       'Strict age batches: Groms, Teens and Adults',
       '2.5-hour sessions with 100 minutes of on-snow coaching',
-      'Video review and personal goals every week',
+      'Coach feedback and personal goals every week',
     ],
     skillsFocus: ['Edge control', 'Lift safety', 'Linked turns', 'All-mountain carving'],
     whatsIncluded: [],
