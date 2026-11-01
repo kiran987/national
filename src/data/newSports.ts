@@ -201,11 +201,6 @@ export const newSportPages: Record<string, NewSportPage> = {
       { name: 'Teens', ages: 'Ages 12–16', size: '5 to 8 riders per batch', text: 'Faster progression and confident terrain choices.' },
       { name: 'Adults', ages: 'Ages 17+', size: '6 to 10 riders per batch', text: 'Technique-first coaching for beginners and returning riders.' },
     ],
-    includedTitle: 'Gear Included',
-    included: [
-      { name: 'Snowboard Package', items: ['Snowboard', 'Boots', 'Helmet'] },
-      { name: 'Ski Package', items: ['Skis', 'Boots', 'Poles', 'Helmet'] },
-    ],
     planTitle: '8-Week Progression Plan',
     planSubtitle: 'Four two-week blocks, from board basics to carving the whole mountain.',
     plan: [
@@ -229,7 +224,6 @@ export const newSportPages: Record<string, NewSportPage> = {
       { question: 'Where and when will lessons run?', answer: 'Training takes place at a local hill or winter park. Exact dates will be scheduled around resort and gear-rental availability and announced before registration opens.' },
       { question: 'What are the age groups?', answer: 'Groms (ages 6–11) and Teens (ages 12–16) ride in batches of 5 to 8, and Adults (ages 17+) in batches of 6 to 10.' },
       { question: 'How long is each session?', answer: 'Each weekly session is 2.5 hours: a 20-minute pre-hill check, 100 minutes of on-snow coaching and a 30-minute debrief with coach feedback and goal setting.' },
-      { question: 'Is equipment included?', answer: 'Yes. Gear is included: a snowboard, boots and helmet, or the ski package of skis, boots, poles and helmet. Riders just need warm winter clothing, gloves and goggles.' },
       { question: 'Do riders need experience?', answer: 'No. Weeks 1–2 cover stance, gliding and safe falling, so true beginners are welcome.' },
       { question: 'How do I register?', answer: 'Registration has not opened yet. Use the notify button and we will email you as soon as dates, pricing and gear details are confirmed.' },
     ],
@@ -349,7 +343,6 @@ export const newSportPrograms: DetailedProgram[] = [
     ],
     skillsFocus: ['Edge control', 'Lift safety', 'Linked turns', 'All-mountain carving'],
     whatsIncluded: [
-      'Snowboard, boots & helmet included (or skis, boots, poles & helmet)',
       '8 weekly sessions of 2.5 hours with 100 minutes of on-snow coaching',
       'Small, strictly age-matched batches',
     ],
