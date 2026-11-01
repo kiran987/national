@@ -190,6 +190,73 @@ const sportsEventSchema = {
   </section>
 
 
+  <!-- Age Tiers & Curricula -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="tiers-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Skill Streams</span>
+        <h2 id="tiers-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
+          Volleyball Developmental Streams
+        </h2>
+        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto;line-height:1.7;">
+          Structured streams designed to transition players from fundamental rally enjoyment to competitive high school and club gameplay.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;">
+        {program.tiers.map((tier, i) => (
+          <div class="card reveal" style={`animation-delay:${i * 120}ms;display:flex;flex-direction:column;border-top:4px solid ${i === 0 ? 'var(--color-naa-maroon)' : 'var(--color-naa-navy)'};`}>
+            <div style="padding:2rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
+                <span class="badge" style={`background:${i === 0 ? 'rgba(131,22,27,0.08)' : 'rgba(2,31,71,0.08)'};color:${i === 0 ? 'var(--color-naa-maroon)' : 'var(--color-naa-navy)'};font-size:0.75rem;font-weight:700;`}>
+                  {tier.badge}
+                </span>
+                <span style="font-size:0.85rem;font-weight:700;color:var(--color-naa-navy);font-family:var(--font-outfit);">
+                  {tier.ages}
+                </span>
+              </div>
+
+              <h3 style="font-size:1.3rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
+                {tier.name}
+              </h3>
+
+              <p style="font-size:0.85rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1rem;">
+                {tier.format} &bull; {tier.ratio}
+              </p>
+
+              <p style="font-size:0.9rem;color:#334155;line-height:1.65;margin-bottom:1.5rem;">
+                {tier.focus}
+              </p>
+
+              <div style="border-top:1px solid #e2e8f0;padding-top:1.25rem;">
+                <div style="font-size:0.78rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">
+                  Weekly Curriculum Modules
+                </div>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+                  {tier.curriculum.map((c) => (
+                    <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.85rem;color:#475569;line-height:1.5;">
+                      <span style="color:var(--color-naa-maroon);font-weight:700;">&bull;</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;gap:0.5rem;">
+              <a href="/registration/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
+                Notify Me When Registration Opens &rarr;
+              </a>
+              <div style="font-size:0.75rem;color:#64748b;text-align:center;">
+                Winter 2027 (U of R Green Gym) registration opens Nov 1, 2026
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Detailed Overview Section -->
   <section class="section-padding" style="background:#ffffff;" aria-labelledby="overview-heading">
     <div class="container-naa">
@@ -294,73 +361,6 @@ const sportsEventSchema = {
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
           <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">3-Contact Team Rallies</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Age Tiers & Curricula -->
-  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="tiers-heading">
-    <div class="container-naa">
-      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
-        <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Skill Streams</span>
-        <h2 id="tiers-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
-          Volleyball Developmental Streams
-        </h2>
-        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto;line-height:1.7;">
-          Structured streams designed to transition players from fundamental rally enjoyment to competitive high school and club gameplay.
-        </p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;">
-        {program.tiers.map((tier, i) => (
-          <div class="card reveal" style={`animation-delay:${i * 120}ms;display:flex;flex-direction:column;border-top:4px solid ${i === 0 ? 'var(--color-naa-maroon)' : 'var(--color-naa-navy)'};`}>
-            <div style="padding:2rem;">
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
-                <span class="badge" style={`background:${i === 0 ? 'rgba(131,22,27,0.08)' : 'rgba(2,31,71,0.08)'};color:${i === 0 ? 'var(--color-naa-maroon)' : 'var(--color-naa-navy)'};font-size:0.75rem;font-weight:700;`}>
-                  {tier.badge}
-                </span>
-                <span style="font-size:0.85rem;font-weight:700;color:var(--color-naa-navy);font-family:var(--font-outfit);">
-                  {tier.ages}
-                </span>
-              </div>
-
-              <h3 style="font-size:1.3rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
-                {tier.name}
-              </h3>
-
-              <p style="font-size:0.85rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1rem;">
-                {tier.format} &bull; {tier.ratio}
-              </p>
-
-              <p style="font-size:0.9rem;color:#334155;line-height:1.65;margin-bottom:1.5rem;">
-                {tier.focus}
-              </p>
-
-              <div style="border-top:1px solid #e2e8f0;padding-top:1.25rem;">
-                <div style="font-size:0.78rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">
-                  Weekly Curriculum Modules
-                </div>
-                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
-                  {tier.curriculum.map((c) => (
-                    <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.85rem;color:#475569;line-height:1.5;">
-                      <span style="color:var(--color-naa-maroon);font-weight:700;">&bull;</span>
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;gap:0.5rem;">
-              <a href="/registration/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
-                Notify Me When Registration Opens &rarr;
-              </a>
-              <div style="font-size:0.75rem;color:#64748b;text-align:center;">
-                Winter 2027 (U of R Green Gym) registration opens Nov 1, 2026
-              </div>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   </section>
