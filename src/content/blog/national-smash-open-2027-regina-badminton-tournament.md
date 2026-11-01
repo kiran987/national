@@ -3,7 +3,7 @@ title: "Announcing National Smash Open 2027 — Regina's Ultimate 8-Court Badmin
 slug: "national-smash-open-2027-regina-badminton-tournament"
 date: "2026-10-16"
 author: "National Athletics Academy"
-excerpt: "One venue. Eight courts. Twenty championship brackets across Youth (U11–U19) and Adult Open divisions at the University of Regina KHS Gymnasium on Saturday, February 27, 2027. Registration opens November 1, 2026."
+excerpt: "One venue. Eight courts. Twenty championship brackets across Youth (U11–U19) and Adult Open divisions at the University of Regina KHS Gymnasium on Saturday, February 27, 2027. Registration opens November 15, 2026."
 category: "Announcements"
 tags: ["badminton", "tournament", "national smash open 2027", "regina", "university of regina", "youth sports"]
 featured: true
@@ -13,7 +13,7 @@ featured: true
 
 Built for both rising junior prodigies (`U11` through `U19`) and competitive adult players (`MS`, `WS`, `MD`, `WD`, `XD`), **[National Smash Open 2027](/programs/tournaments/badminton/national-smash-open-2027/)** is a streamlined, high-energy one-day showdown across **8 dedicated indoor courts** and **20 championship brackets**.
 
-Online registration officially opens on **November 1, 2026**, and strict player caps apply to every division on a first-come, first-served basis.
+Online registration officially opens on **November 15, 2026**, and strict player caps apply to every division on a first-come, first-served basis.
 
 ---
 
@@ -25,7 +25,7 @@ Online registration officially opens on **November 1, 2026**, and strict player 
 - **Venue:** KHS Gymnasium, University of Regina — 3925 Goldenrod Loop (or 3737 Wascana Pkwy), Regina, SK S4S 0A2
 - **Scale:** 8 Dedicated Indoor Courts · 20 Championship Brackets · Youth & Adult Divisions
 - **Sanction Status:** Independent Open Championship *(No Provincial or National membership required)*
-- **Registration Opens:** **November 1, 2026**
+- **Registration Opens:** **November 15, 2026**
 
 ---
 
@@ -90,7 +90,7 @@ We keep entry fees accessible for families and adult players while delivering a 
 
 ## Key Dates & Game-Day Timeline
 
-- **November 1, 2026:** Official Online Registration & Tournament Prospectus (PDF) Go Live
+- **November 15, 2026:** Official Online Registration & Tournament Prospectus (PDF) Go Live
 - **February 15, 2027:** Registration Closes *(or earlier as individual bracket caps fill)*
 - **February 20, 2027:** Official Draws & Match Timetable Published Online
 - **February 27, 2027 — GAME DAY at KHS Gymnasium (U of R):**
@@ -105,13 +105,13 @@ We keep entry fees accessible for families and adult players while delivering a 
 
 National Smash Open 2027 kicks off a permanent, yearly tradition in Regina. Each year, National Athletics Academy hosts **two flagship open badminton tournaments** at the University of Regina's KHS Gymnasium:
 
-1. **Winter Championship (1-Day Showdown):** **Saturday, February 27, 2027** (`8:00 AM – 6:00 PM`) — Registration opens **November 1, 2026**.
+1. **Winter Championship (1-Day Showdown):** **Saturday, February 27, 2027** (`8:00 AM – 6:00 PM`) — Registration opens **November 15, 2026**.
 2. **Summer Grand Championship (2-Day Prestigious Open):** **Saturday, June 19, 2027** (`8:00 AM – 7:30 PM`) & **Sunday, June 20, 2027** (`8:00 AM – 6:00 PM`) — Registration opens **March 1, 2027**.
 
 ---
 
 ## How to Secure Your Spot
 
-Brackets are strictly capped to guarantee match quality and on-time court calls. Head over to the official **[National Smash Open 2027 tournament page](/programs/tournaments/badminton/national-smash-open-2027/)** to join the priority notification list ahead of the **November 1, 2026** registration launch, or explore our full **[Annual Badminton Tournament Circuit](/programs/tournaments/badminton/)**.
+Brackets are strictly capped to guarantee match quality and on-time court calls. Head over to the official **[National Smash Open 2027 tournament page](/programs/tournaments/badminton/national-smash-open-2027/)** to join the priority notification list ahead of the **November 15, 2026** registration launch, or explore our full **[Annual Badminton Tournament Circuit](/programs/tournaments/badminton/)**.
 
 Have questions about division eligibility, school/club entries, or event sponsorship? Email our tournament desk anytime at **[info@naacanada.org](mailto:info@naacanada.org)**.

@@ -49,7 +49,7 @@ const adultDivisions = [
 
 const timeline = [
   {
-    date: 'November 1, 2026',
+    date: 'November 15, 2026',
     tag: 'Registration Opens',
     label: 'Official Online Registration Opens',
     desc: 'First-come, first-served entry across all 20 brackets.',
@@ -142,7 +142,7 @@ const eventSchema = {
     lowPrice: '20',
     highPrice: '35',
     priceCurrency: 'CAD',
-    validFrom: '2026-11-01',
+    validFrom: '2026-11-15',
     url: 'https://naacanada.org/programs/tournaments/badminton/national-smash-open-2027/',
   },
 };
@@ -150,7 +150,7 @@ const eventSchema = {
 
 <Layout
   title="National Smash Open 2027 | Badminton Tournament | National Athletics Academy"
-  description="National Smash Open 2027 — the ultimate one-day badminton showdown on 8 courts at KHS Gymnasium, University of Regina on Saturday, February 27, 2027. Youth & Adult divisions. Registration opens November 1, 2026."
+  description="National Smash Open 2027 — the ultimate one-day badminton showdown on 8 courts at KHS Gymnasium, University of Regina on Saturday, February 27, 2027. Youth & Adult divisions. Registration opens November 15, 2026."
   schemaGraph={[eventSchema]}
 >
   <Header />
@@ -212,14 +212,14 @@ const eventSchema = {
                   <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>Registration Opens: November 1, 2026</span>
+                  <span>Registration Opens: November 15, 2026</span>
                 </div>
                 <p class="text-xs sm:text-sm text-white/85 mt-1">
                   Strict entry caps apply to all categories. First-come, first-served.
                 </p>
               </div>
               <span class="self-start sm:self-center shrink-0 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-400 text-slate-950">
-                Active Nov 1
+                Active Nov 15
               </span>
             </div>
           </div>
@@ -232,7 +232,7 @@ const eventSchema = {
               data-program="National Smash Open 2027"
               class="btn btn-gold btn-lg w-full sm:w-auto justify-center text-center cursor-pointer shadow-lg shadow-amber-500/20"
             >
-              <span>Secure Your Spot — Notify Me Nov 1</span>
+              <span>Secure Your Spot — Notify Me Nov 15</span>
               <span aria-hidden="true">&rarr;</span>
             </button>
             <a
@@ -279,7 +279,7 @@ const eventSchema = {
             <div class="p-5 sm:p-6 bg-[#060E18]/95 border-t border-white/10">
               <div class="flex items-center justify-between text-xs text-slate-300 mb-3">
                 <span id="smash-countdown-label" class="font-semibold uppercase tracking-wider text-amber-300">
-                  Countdown to Registration (Nov 1, 2026)
+                  Countdown to Registration (Nov 15, 2026)
                 </span>
                 <span class="text-white/60 font-mono">CST</span>
               </div>
@@ -841,7 +841,7 @@ const eventSchema = {
               aria-disabled="true"
               class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3.5 text-center text-xs sm:text-sm font-outfit font-bold text-amber-300 cursor-not-allowed"
             >
-              📄 Download Official Tournament Prospectus (PDF) — Available After Nov 1, 2026
+              📄 Download Official Tournament Prospectus (PDF) — Available After Nov 15, 2026
             </div>
             <button
               type="button"
@@ -849,7 +849,7 @@ const eventSchema = {
               data-program="National Smash Open 2027 Prospectus & Registration"
               class="btn btn-gold btn-sm w-full justify-center cursor-pointer"
             >
-              Send Me the Prospectus on Nov 1 &rarr;
+              Send Me the Prospectus on Nov 15 &rarr;
             </button>
           </div>
         </div>
@@ -869,7 +869,7 @@ const eventSchema = {
         Ready to Step Onto the Championship Court?
       </h2>
       <p class="text-white/85 text-sm sm:text-base max-w-xl mx-auto mb-7 leading-relaxed">
-        Registration opens <strong class="text-amber-300">November 1, 2026</strong>. Join the priority notification list now so you don't miss your bracket cap.
+        Registration opens <strong class="text-amber-300">November 15, 2026</strong>. Join the priority notification list now so you don't miss your bracket cap.
       </p>
       <div class="flex flex-col sm:flex-row gap-3.5 justify-center">
         <button
@@ -898,7 +898,7 @@ const eventSchema = {
           Tournament Policies &amp; Disclaimers
         </h2>
         <p class="text-xs sm:text-sm text-slate-600 mt-1">
-          Please review all four tournament policies prior to registering on November 1, 2026.
+          Please review all four tournament policies prior to registering on November 15, 2026.
         </p>
       </div>
 
@@ -942,7 +942,7 @@ const eventSchema = {
 
 <script>
   function updateSmashCountdown() {
-    const regOpen = new Date('2026-11-01T08:00:00-06:00').getTime();
+    const regOpen = new Date('2026-11-15T08:00:00-06:00').getTime();
     const gameDay = new Date('2027-02-27T08:00:00-06:00').getTime();
     const now = Date.now();
 
