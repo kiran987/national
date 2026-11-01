@@ -65,7 +65,8 @@ const currentPath = Astro.url.pathname;
             <span class="text-white/50 text-[10px] font-normal normal-case">Active &amp; Starting Soon</span>
           </div>
           {activePrograms.map((prog) => {
-            const isStartingSoon = prog.id === 'basketball' || prog.id === 'national-shield';
+            const isComingSoon = prog.status === 'coming-soon';
+            const isStartingSoon = isComingSoon || prog.id === 'basketball' || prog.id === 'national-shield';
             return (
               <a href={`/programs/${prog.slug}/`} class="dropdown-link flex items-center justify-between" role="menuitem">
                 <div class="flex items-center gap-2.5">
@@ -82,6 +83,15 @@ const currentPath = Astro.url.pathname;
                     {prog.id === 'national-shield' && (
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     )}
+                    {prog.id === 'chess' && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M9 21h6M10 21l1-7M14 21l-1-7M8.5 14h7"/></svg>
+                    )}
+                    {prog.id === 'table-tennis' && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M15 15l6 6"/><circle cx="19" cy="5" r="1.5"/></svg>
+                    )}
+                    {prog.id === 'snowboarding' && (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-11 4 6 3-4 5 9z"/></svg>
+                    )}
                   </span>
                   <div>
                     <div class="text-[0.85rem] leading-tight font-semibold">{prog.name}</div>
@@ -93,7 +103,7 @@ const currentPath = Astro.url.pathname;
                     ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
                     : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                 }`}>
-                  {isStartingSoon ? 'Starting Soon' : 'In Session'}
+                  {isComingSoon ? 'Coming Soon' : isStartingSoon ? 'Starting Soon' : 'In Session'}
                 </span>
               </a>
             );
@@ -288,7 +298,8 @@ const currentPath = Astro.url.pathname;
       </div>
       <div class="flex flex-col gap-1.5 pl-1">
         {activePrograms.map((prog) => {
-          const isStartingSoon = prog.id === 'basketball' || prog.id === 'national-shield';
+          const isComingSoon = prog.status === 'coming-soon';
+            const isStartingSoon = isComingSoon || prog.id === 'basketball' || prog.id === 'national-shield';
           return (
             <a
               href={`/programs/${prog.slug}/`}
@@ -308,6 +319,15 @@ const currentPath = Astro.url.pathname;
                   {prog.id === 'national-shield' && (
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                   )}
+                  {prog.id === 'chess' && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M9 21h6M10 21l1-7M14 21l-1-7M8.5 14h7"/></svg>
+                  )}
+                  {prog.id === 'table-tennis' && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M15 15l6 6"/><circle cx="19" cy="5" r="1.5"/></svg>
+                  )}
+                  {prog.id === 'snowboarding' && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-11 4 6 3-4 5 9z"/></svg>
+                  )}
                 </span>
                 <span>{prog.name}</span>
               </div>
@@ -316,7 +336,7 @@ const currentPath = Astro.url.pathname;
                   ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
                   : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
               }`}>
-                {isStartingSoon ? 'Starting Soon' : 'In Session'}
+                {isComingSoon ? 'Coming Soon' : isStartingSoon ? 'Starting Soon' : 'In Session'}
               </span>
             </a>
           );

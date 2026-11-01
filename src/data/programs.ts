@@ -12,6 +12,8 @@
 // src/content/programs/ for any change that appears on a detail page.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { newSportPrograms } from './newSports';
+
 export interface ProgramFeature {
   title: string;
   description: string;
@@ -64,7 +66,7 @@ export interface DetailedProgram {
     description: string;
     logo?: string;
   };
-  status?: 'active' | 'starting-soon';
+  status?: 'active' | 'starting-soon' | 'coming-soon';
   highlights: string[];
   skillsFocus: string[];
   tiers: ProgramTierDetail[];
@@ -92,7 +94,7 @@ const activeProgramsRaw: DetailedProgram[] = [
   {
     id: 'basketball',
     slug: 'basketball',
-    order: 3,
+    order: 7,
     status: 'starting-soon',
     name: 'National Hoops - Basketball',
     navTitle: 'Basketball',
@@ -517,7 +519,7 @@ const activeProgramsRaw: DetailedProgram[] = [
   {
     id: 'national-shield',
     slug: 'national-shield',
-    order: 4,
+    order: 6,
     status: 'starting-soon',
     name: 'National Shield - Martial Arts',
     navTitle: 'National Shield - Martial Arts',
@@ -640,8 +642,8 @@ const activeProgramsRaw: DetailedProgram[] = [
   },
 ];
 
-// Display order: Badminton, Volleyball, Basketball, National Shield
-export const activePrograms: DetailedProgram[] = [...activeProgramsRaw].sort((a, b) => a.order - b.order);
+// Display order: Badminton, Volleyball, Chess, Table Tennis, Snowboarding, National Shield, Basketball
+export const activePrograms: DetailedProgram[] = [...activeProgramsRaw, ...newSportPrograms].sort((a, b) => a.order - b.order);
 
 // ─── Coming Soon Programs (Full Detail Pages Available) ──────────────────────
 // These programs have complete detail pages but are not yet running.
@@ -650,7 +652,7 @@ export const comingSoonPrograms: DetailedProgram[] = [
   {
     id: 'camps',
     slug: 'camps',
-    order: 4,
+    order: 8,
     name: 'Camps & Clinics',
     navTitle: 'Camps & Clinics',
     shortName: 'Camps',
@@ -780,7 +782,7 @@ export const comingSoonPrograms: DetailedProgram[] = [
   {
     id: 'tournaments',
     slug: 'tournaments',
-    order: 5,
+    order: 9,
     name: 'Tournaments',
     navTitle: 'Tournaments',
     shortName: 'Tournaments',

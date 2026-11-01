@@ -81,6 +81,81 @@ const PROGRAMS_DATA: ProgramItem[] = [
 
   // 3. Martial Arts / National Shield
   {
+    id: 'chess',
+    name: 'National Art of Chess',
+    sport: 'Chess',
+    shortName: 'Chess',
+    category: 'starting-soon',
+    slug: 'chess',
+    ageBracket: ['U8', 'U12', 'U16'],
+    ageDisplay: 'Ages 6–17 (Beginner to Intermediate)',
+    location: 'Venue to be announced',
+    schedule: '8 weeks · 1 session per week · 75 min',
+    coachRatio: 'Max 10 students per cohort',
+    statusBadge: 'Coming Soon',
+    statusType: 'soon',
+    price: 'Pricing announced soon',
+    accentColor: '#DDAA40',
+    image: '/images/programs/chess-hero.webp',
+    description: 'Strategic foresight, unshakable focus, masterful play. A small-cohort chess academy with an 8-week curriculum and a rapid chess showcase.',
+    logistics: [
+      'Registration has not opened yet',
+      'Strictly capped at 10 students per cohort',
+      'Ends with the NAA Rapid Chess Showcase'
+    ],
+    isFeatured: true
+  },
+  {
+    id: 'table-tennis',
+    name: 'National Spin Table Tennis',
+    sport: 'Table Tennis',
+    shortName: 'Table Tennis',
+    category: 'starting-soon',
+    slug: 'table-tennis',
+    ageBracket: ['U8', 'U12', 'U16', 'Adult'],
+    ageDisplay: 'Youth 7–15 · Open / Adult 16+',
+    location: 'Venue to be announced',
+    schedule: 'Launching Jan 2027 · 10 weeks · 90 min',
+    coachRatio: '1:6 Coach Ratio · max 6 per table',
+    statusBadge: 'Coming Soon',
+    statusType: 'soon',
+    price: 'Pricing announced soon',
+    accentColor: '#ef4444',
+    image: '/images/programs/tabletennis-hero.webp',
+    description: 'Precision, reaction and high-velocity rallies. Spin, footwork, serve and third-ball attack, finishing with the National Spin Winter Cup.',
+    logistics: [
+      'Registration has not opened yet',
+      'Youth and Open / Adult divisions',
+      'Ends with the National Spin Winter Cup'
+    ],
+    isFeatured: true
+  },
+  {
+    id: 'snowboarding',
+    name: 'National Shred Snowboarding',
+    sport: 'Snowboarding',
+    shortName: 'Snowboarding',
+    category: 'starting-soon',
+    slug: 'snowboarding',
+    ageBracket: ['U8', 'U12', 'U16', 'Adult'],
+    ageDisplay: 'Groms 6–11 · Teens 12–16 · Adults 17+',
+    location: 'Local hill / winter park (details soon)',
+    schedule: '8 weeks · 1 session per week · 2.5 hours',
+    coachRatio: '5–8 riders (youth) · 6–10 (adult) per batch',
+    statusBadge: 'Coming Soon',
+    statusType: 'soon',
+    price: 'Pricing announced soon',
+    accentColor: '#38bdf8',
+    image: '/images/programs/snowboard-hero.webp',
+    description: 'From first turns to total mountain control. Small age-matched batches with video feedback every session.',
+    logistics: [
+      'Registration has not opened yet',
+      'Strict age batches: Groms, Teens, Adults',
+      '100 minutes of on-snow coaching per session'
+    ],
+    isFeatured: true
+  },
+  {
     id: 'national-shield',
     name: 'National Shield — Fitness & Self-Defence',
     sport: 'Martial Arts',
@@ -121,7 +196,7 @@ export const ProgramMatrix: React.FC = () => {
     { label: 'Adult / Seniors', value: 'Adult' }
   ];
 
-  const sportFilters = ['All', 'Badminton', 'Volleyball', 'Martial Arts'];
+  const sportFilters = ['All', 'Badminton', 'Volleyball', 'Chess', 'Table Tennis', 'Snowboarding', 'Martial Arts'];
 
   const filteredPrograms = useMemo(() => {
     return PROGRAMS_DATA.filter((prog) => {
