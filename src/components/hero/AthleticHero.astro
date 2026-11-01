@@ -5,6 +5,7 @@
 const sports = [
   {
     key: 'badminton',
+    tag: 'HARDWOOD GYM',
     sport: 'Badminton',
     title: 'National Smash Badminton',
     image: '/images/programs/badminton-action-1.webp',
@@ -19,6 +20,7 @@ const sports = [
   },
   {
     key: 'volleyball',
+    tag: 'HARDWOOD GYM',
     sport: 'Volleyball',
     title: 'National Spike Volleyball',
     image: '/images/programs/volleyball-action-1.webp',
@@ -32,32 +34,34 @@ const sports = [
     iconSvg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 12a10 10 0 0 0 8.66-5"></path><path d="M12 12a10 10 0 0 0-8.66-5"></path><path d="M12 12a10 10 0 0 0 0 10"></path><path d="M6.5 3.5a10 10 0 0 0 11 0"></path><path d="M2.5 14a10 10 0 0 0 5.5 8"></path><path d="M21.5 14a10 10 0 0 1-5.5 8"></path></svg>`
   },
   {
-    key: 'basketball',
-    sport: 'Basketball',
-    title: 'National Hoops Basketball',
-    image: '/images/programs/basketball-action-1.webp',
-    status: 'Starting Soon',
-    badge: 'Starting Soon · Junior & Youth Hoops',
-    schedule: 'Season schedule announced ahead of launch · Pre-registration open',
-    venue: 'Balfour Collegiate & Knox-Met Hardwood Gyms',
-    highlights: 'Official jersey included · 3v3 small-sided decision making',
-    price: '$205 – $225 CAD',
-    link: '/programs/basketball/',
-    iconSvg: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2.1 10.5a14 14 0 0 1 19.8 0"></path><path d="M2.1 13.5a14 14 0 0 0 19.8 0"></path><line x1="12" y1="2" x2="12" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>`
+    key: 'chess',
+    tag: 'MIND SPORTS',
+    sport: 'Chess',
+    title: 'National Art of Chess',
+    image: '/images/programs/chess-hero.webp',
+    status: 'Coming Soon',
+    badge: 'Coming Soon · Ages 6–17',
+    schedule: '8 weeks · 1 session per week · 75 min · dates announced soon',
+    venue: 'Venue to be announced',
+    highlights: 'Strictly capped at 10 students per cohort · NAA Rapid Chess Showcase',
+    price: 'Pricing announced soon',
+    link: '/programs/chess/',
+    iconSvg: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M9 21h6M10 21l1-7M14 21l-1-7M8.5 14h7"/></svg>`
   },
   {
-    key: 'national-shield',
-    sport: 'Martial Arts',
-    title: 'National Shield Fitness & Self-Defence',
-    image: '/images/programs/martialarts-action-1.webp',
-    status: 'Starting Soon',
-    badge: 'Starting Soon · Ages 5–17 & Adults',
-    schedule: 'Season schedule announced ahead of launch · Pre-registration open',
-    venue: 'Regina Facility TBA',
-    highlights: 'Coach-held pad drills · SHIELD Safety & Anti-Bullying System',
-    price: '$75 – $100 CAD',
-    link: '/programs/national-shield/',
-    iconSvg: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 6v12"></path><path d="M8 10h8"></path></svg>`
+    key: 'snowboarding',
+    tag: 'ON SNOW',
+    sport: 'Snowboarding',
+    title: 'National Shred Snowboarding',
+    image: '/images/programs/snowboard-hero.webp',
+    status: 'Coming Soon',
+    badge: 'Coming Soon · Groms, Teens & Adults',
+    schedule: '8 weeks · 1 session per week · 2.5 hours · dates announced soon',
+    venue: 'Local hill / winter park (details soon)',
+    highlights: 'Strict age batches · 100 min of on-snow coaching · video review',
+    price: 'Pricing announced soon',
+    link: '/programs/snowboarding/',
+    iconSvg: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l6-11 4 6 3-4 5 9z"/></svg>`
   }
 ];
 
@@ -239,7 +243,7 @@ const initial = sports[0];
           <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80">
             <div class="flex items-center justify-between text-xs font-bold text-amber-400 mb-1">
               <span id="hero-sport-title">{initial.title.toUpperCase()}</span>
-              <span class="text-slate-300 font-mono text-[11px]">HARDWOOD GYM</span>
+              <span id="hero-venue-tag" class="text-slate-300 font-mono text-[11px]">{initial.tag}</span>
             </div>
             <div id="hero-venue-text" class="text-sm font-extrabold text-white leading-snug">
               {initial.venue}
@@ -330,6 +334,7 @@ const initial = sports[0];
     const priceText = document.getElementById('hero-price-text');
     const sportTitle = document.getElementById('hero-sport-title');
     const venueText = document.getElementById('hero-venue-text');
+    const venueTag = document.getElementById('hero-venue-tag');
     const highlightsText = document.getElementById('hero-highlights-text');
     const scheduleText = document.getElementById('hero-schedule-text');
     const detailsLink = document.getElementById('hero-details-link');
@@ -343,12 +348,13 @@ const initial = sports[0];
         // Update photo and card elements
         if (photo) {
           photo.src = s.image;
-          photo.alt = s.title + ' athletes training on court in Regina';
+          photo.alt = s.title + ' in Regina';
         }
         if (badgeText) badgeText.textContent = s.badge;
         if (priceText) priceText.textContent = s.price;
         if (sportTitle) sportTitle.textContent = s.title.toUpperCase();
         if (venueText) venueText.textContent = s.venue;
+        if (venueTag) venueTag.textContent = s.tag;
         if (highlightsText) highlightsText.textContent = s.highlights;
         if (scheduleText) scheduleText.textContent = s.schedule;
         if (detailsLink) detailsLink.href = s.link;
