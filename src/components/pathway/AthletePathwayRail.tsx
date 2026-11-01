@@ -93,7 +93,7 @@ const STAGES: StageInfo[] = [
       'Self-defence de-escalation and situational awareness',
       'Active physical wellness at every age'
     ],
-    activePrograms: ['National Shield Pro', 'Adult Badminton Drop-In', 'Parent-Coach Volunteering']
+    activePrograms: ['National Shield Pro', 'Adult Badminton Programs', 'Parent-Coach Volunteering']
   }
 ];
 
