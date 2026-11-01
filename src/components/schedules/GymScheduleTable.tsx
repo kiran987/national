@@ -10,7 +10,6 @@ export const GymScheduleTable: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const seasons = [
-    { label: 'Fall 2026 Season (Knox-Met Church · In Session)', value: 'Fall 2026' },
     { label: 'Winter 2027 (U of R Green Gym · Starts Jan 2027)', value: 'Winter 2027' }
   ];
   const sports = ['All', 'Badminton', 'Volleyball'];
@@ -46,7 +45,7 @@ export const GymScheduleTable: React.FC = () => {
               Gym Locations &amp; Session Times
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
-              Active Fall 2026 programs currently in session at Knox-Met Fellowship Hall Gym, plus upcoming Winter 2027 allocations at University of Regina Green Gym.
+              Winter 2027 programs at the University of Regina Green Gym. Registration opens November 1, 2026.
             </p>
           </div>
 

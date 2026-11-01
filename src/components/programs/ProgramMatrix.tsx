@@ -62,22 +62,20 @@ const PROGRAMS_DATA: ProgramItem[] = [
     slug: 'volleyball',
     ageBracket: ['U12', 'U16'],
     ageDisplay: 'Ages 8–16 (Foundations & Elite)',
-    location: 'Knox-Met Fellowship Hall Gym (2340 Victoria Ave)',
-    schedule: 'Oct 22 – Dec 10, 2026: Thu & Fri (Phase 1) · Tue & Thu (Phase 2) · 7:00–8:00 PM',
+    location: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
+    schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
     coachRatio: '1:10 to 1:14 Coach Ratio',
-    statusBadge: 'Registration Open',
-    statusType: 'open',
-    price: '$205 – $225 / block',
+    statusBadge: 'Registration Opens Nov 1',
+    statusType: 'soon',
+    price: '$230 – $260 / block',
     accentColor: '#83161B',
     image: '/images/programs/volleyball-action-1.webp',
-    description: 'Technical indoor volleyball: Forearm platform angles, overhead finger setting, overhand float serving, and 3-step spike approach footwork at Knox-Met Church Gym.',
+    description: 'Technical indoor volleyball: Forearm platform angles, overhead finger setting, overhand float serving, and 3-step spike approach footwork at the University of Regina Green Gym.',
     logistics: [
-      'Fall 2026: In session at Knox-Met Church Gym (2340 Victoria Ave) · Total 16 Classes',
-      '⏱️ Training Time: 7:00 PM – 8:00 PM (All 16 Sessions · 60 mins)',
-      '🗓️ Phase 1 (Oct 22 – Nov 13): Thursdays & Fridays (8 sessions)',
-      '🗓️ Phase 2 (Nov 17 – Dec 10): Tuesdays & Thursdays (8 sessions)'
+      'Winter 2027: registration starts soon',
+      'Jan 26 – Mar 11, 2027: 10 sessions · Tuesdays & Thursdays',
+      'Two 45-min batches: 6:00–6:45 PM or 6:45–7:30 PM'
     ],
-    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253',
     isFeatured: true
   },
 

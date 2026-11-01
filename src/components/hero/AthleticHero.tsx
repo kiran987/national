@@ -24,11 +24,11 @@ export const AthleticHero: React.FC = () => {
       slug: 'volleyball',
       image: '/images/programs/volleyball-action-1.webp',
       subImage: '/images/programs/volleyball-portrait-1.webp',
-      badge: 'Registration Open · Active Academy',
-      schedule: 'Oct 22 – Dec 10, 2026: 16 Classes (7:00–8:00 PM) · Thu & Fri then Tue & Thu',
-      venue: 'Knox-Met Fellowship Hall Gym (2340 Victoria Ave)',
-      highlights: 'Mikasa trainer balls & adjusted net heights · Total 16 classes',
-      price: '$205 – $225 CAD',
+      badge: 'Winter 2027 · Registration Opens Nov 1',
+      schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
+      venue: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
+      highlights: '10 sessions · Two 45-min batches (6:00–6:45 or 6:45–7:30 PM) · tuition in 3 installments',
+      price: '$230 – $260 CAD',
       link: '/programs/volleyball/'
     },
     basketball: {

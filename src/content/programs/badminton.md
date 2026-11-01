@@ -13,7 +13,7 @@ color: '#021F47'
 accentColor: '#DDAA40'
 bgColor: 'rgba(2,31,71,0.08)'
 description: "Specialized badminton coaching covering forehand and backhand grip mechanics, 6-corner court footwork, clear, drop, smash, and net-kill shot execution, with tactical singles and doubles matchplay."
-ages: "Ages 6–16 (Smash Juniors: 6–10, Smash Elite: 11–16, Smash Pro: 11–16)"
+ages: "Ages 6–16 (Smash Juniors: 6–10, Smash Elite: 11–16, Smash Pro: 10–16)"
 ratio: "1:8 to 1:15 Coach-to-Athlete Ratio"
 venue: "Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2"
 seasonDuration: "Jan 26 – Mar 11, 2027 (10 Sessions) · Tuesdays & Thursdays"

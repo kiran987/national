@@ -25,41 +25,6 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
   // ══════════════════════════════════════════════════════════════
 
 
-  // ── Volleyball: Fall 2026 (Oct 22 – Dec 10 · 16 Classes) ──
-  {
-    id: 'volleyball-fall-foundations',
-    sport: 'Volleyball',
-    season: 'Fall 2026',
-    tier: 'Spike Foundations',
-    ageGroup: 'Ages 8–12',
-    facility: 'Knox-Met Fellowship Hall Gym',
-    address: '2340 Victoria Ave, Regina (Downtown)',
-    day: 'Thu & Fri (Oct 22–Nov 13) · Tue & Thu (Nov 17–Dec 10)',
-    timeSlot: '7:00 PM – 8:00 PM (60 mins)',
-    dates: 'Oct 22 – Dec 10, 2026 (Total 16 Classes · Phase 1 & 2)',
-    coachRatio: '1:10 Ratio',
-    status: 'In Session',
-    price: '$205 CAD',
-    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253',
-    notes: 'Currently In Session at Church. 16 Classes (7:00–8:00 PM). Low-impact Mikasa trainer balls, adjusted net heights.'
-  },
-  {
-    id: 'volleyball-fall-elite',
-    sport: 'Volleyball',
-    season: 'Fall 2026',
-    tier: 'Spike Elite',
-    ageGroup: 'Ages 13–16',
-    facility: 'Knox-Met Fellowship Hall Gym',
-    address: '2340 Victoria Ave, Regina (Downtown)',
-    day: 'Thu & Fri (Oct 22–Nov 13) · Tue & Thu (Nov 17–Dec 10)',
-    timeSlot: '7:00 PM – 8:00 PM (60 mins)',
-    dates: 'Oct 22 – Dec 10, 2026 (Total 16 Classes · Phase 1 & 2)',
-    coachRatio: '1:12 Ratio',
-    status: 'In Session',
-    price: '$225 CAD',
-    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253',
-    notes: 'Currently In Session at Church. 16 Classes (7:00–8:00 PM). Float serves, spike approach footwork, 6v6 match play.'
-  },
 
   // ══════════════════════════════════════════════════════════════
   // 2. WINTER 2027 (Registration Opens Nov 1, 2026 · NO LINKS NOW)
@@ -113,8 +78,8 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:10 Ratio',
     status: 'Starting Soon',
-    price: '$205 CAD',
-    notes: 'Registration starts Nov 1, 2026. Low-impact Mikasa trainer balls & adjusted net heights.'
+    price: '$230 CAD',
+    notes: 'Registration starts Nov 1, 2026. Low-impact Mikasa trainer balls & adjusted net heights. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
     id: 'volleyball-2027-elite-slot1',
@@ -129,8 +94,8 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:12 Ratio',
     status: 'Starting Soon',
-    price: '$225 CAD',
-    notes: 'Registration starts Nov 1, 2026. Float serves, spike approach footwork & 6v6 play.'
+    price: '$260 CAD',
+    notes: 'Registration starts Nov 1, 2026. Float serves, spike approach footwork & 6v6 play. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
 
   // ── Winter 2027 · Smash Pro (6:00 PM – 7:30 PM · Tue & Thu) ──
@@ -139,7 +104,7 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     sport: 'Badminton',
     season: 'Winter 2027',
     tier: 'Smash Pro (Intensive)',
-    ageGroup: 'Ages 11–16',
+    ageGroup: 'Ages 10–16',
     facility: 'Green Gym, CKHS (University of Regina)',
     address: '3737 Wascana Parkway, Regina, SK S4S 0A2',
     day: 'Tuesday & Thursday',
@@ -196,8 +161,8 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:10 Ratio',
     status: 'Starting Soon',
-    price: '$205 CAD',
-    notes: 'Registration starts Nov 1, 2026. Low-impact Mikasa trainer balls & adjusted net heights.'
+    price: '$230 CAD',
+    notes: 'Registration starts Nov 1, 2026. Low-impact Mikasa trainer balls & adjusted net heights. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
     id: 'volleyball-2027-elite-slot2',
@@ -212,8 +177,8 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:12 Ratio',
     status: 'Starting Soon',
-    price: '$225 CAD',
-    notes: 'Registration starts Nov 1, 2026. Float serves, spike approach footwork & 6v6 play.'
+    price: '$260 CAD',
+    notes: 'Registration starts Nov 1, 2026. Float serves, spike approach footwork & 6v6 play. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   }
 ];
 

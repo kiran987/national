@@ -213,7 +213,7 @@ const activeProgramsRaw: DetailedProgram[] = [
     name: 'National Spike - Volleyball',
     navTitle: 'Volleyball',
     shortName: 'National Spike',
-    badge: 'Registration Open · Active Academy',
+    badge: 'Winter 2027 · Registration Opens Nov 1',
     subtitle: 'Passing Precision, Setting & Attack Mechanics',
     tagline: 'Developing dynamic movement, court agility, and crisp volleyball fundamentals.',
     emoji: '',
@@ -229,25 +229,25 @@ const activeProgramsRaw: DetailedProgram[] = [
       '/images/programs/volleyball-portrait-3.webp',
     ],
     description:
-      'Comprehensive indoor volleyball instruction covering forearm platform passing, overhead setting precision, overhand serve consistency, spike approach footwork, and team defensive rotation with age-adjusted net heights at Knox-Met Fellowship Hall Gym.',
+      'Comprehensive indoor volleyball instruction covering forearm platform passing, overhead setting precision, overhand serve consistency, spike approach footwork, and team defensive rotation with age-adjusted net heights at the University of Regina Green Gym.',
     longDescription:
-      'Volleyball demands explosive agility, exceptional hand-eye coordination, and split-second teamwork. The NAA Volleyball Academy provides Regina youth with a technical foundation that standard school physical education cannot match. Led by screened, Safe Sport–trained coaches (including NCCP Volleyball Canada trained leadership), players master ball control mechanics in structured drills and small-sided modified games at Knox-Met Fellowship Hall Gym (Downtown Regina).',
+      'Volleyball demands explosive agility, exceptional hand-eye coordination, and split-second teamwork. The NAA Volleyball Academy provides Regina youth with a technical foundation that standard school physical education cannot match. Led by screened, Safe Sport–trained coaches (including NCCP Volleyball Canada trained leadership), players master ball control mechanics in structured drills and small-sided modified games at the University of Regina Green Gym.',
     ages: 'Ages 8–16 (Spike Foundations: 8–12, Spike Elite: 13–16)',
-    venue: 'Knox-Met Fellowship Hall Gym, 2340 Victoria Ave, Regina, SK',
-    seasonDuration: 'Fall 2026: Oct 22 – Dec 10, 2026 (8 Weeks · 16 Classes)',
-    sessionsPerWeek: 'Thu & Fri (Phase 1) · Tue & Thu (Phase 2) · 7:00–8:00 PM (60 mins)',
-    blockWeeks: 8,
-    blockPrice: 205,
+    venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2',
+    seasonDuration: 'Winter 2027: Jan 26 – Mar 11, 2027 (10 Sessions · Tuesdays & Thursdays)',
+    sessionsPerWeek: '2× / week · Batch 1: 6:00–6:45 PM or Batch 2: 6:45–7:30 PM (40–45 min on-court coaching)',
+    blockWeeks: 7,
+    blockPrice: 230,
     hourlyRate: 0,
     paymentPlan: true,
-    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253',
     highlights: [
-      'Fall 2026: Currently in session at Knox-Met Fellowship Hall Gym (2340 Victoria Ave)',
-      'Venue: Knox-Met Fellowship Hall Gym (Downtown Regina)',
-      'Total 16 Sessions: 7:00 PM – 8:00 PM (60 mins)',
-      'Phase 1 (Oct 22 – Nov 13): Thursdays & Fridays (8 sessions)',
-      'Phase 2 (Nov 17 – Dec 10): Tuesdays & Thursdays (8 sessions)',
-      'Spike Foundations (Ages 8–12): $205 CAD · Spike Elite (Ages 13–16): $225 CAD',
+      'Winter 2027 registration opens November 1, 2026',
+      '10 sessions · Tuesdays & Thursdays · Jan 26 – Mar 11, 2027 (no sessions Feb 9–18)',
+      'Two batches: Batch 1 · 6:00–6:45 PM or Batch 2 · 6:45–7:30 PM (45-min slots, 40–45 min of on-court coaching)',
+      'Venue: Green Gym, Centre for Kinesiology and Health Studies, University of Regina',
+      'Spike Foundations (Ages 8–12): $230 CAD · Spike Elite (Ages 13–16): $260 CAD',
+      'Mandatory Training Kit Fee: $30 CAD per athlete, in addition to program tuition',
+      'Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)',
       'Age-adjusted net heights and lightweight Mikasa trainer balls for optimal learning',
       'Screened, Safe Sport–trained coaches emphasizing injury-safe landing mechanics',
       'Dedicated focus on the 3-contact rally principle (Pass, Set, Attack)',
@@ -265,9 +265,9 @@ const activeProgramsRaw: DetailedProgram[] = [
     tiers: [
       {
         name: 'Spike Foundations',
-        badge: 'Ages 8–12 · 60 min · $205 CAD',
+        badge: 'Ages 8–12 · 45-min batches · $230 CAD',
         ages: 'Ages 8–12',
-        format: '60 min · Thu/Fri then Tue/Thu (7:00–8:00 PM) · $205 CAD',
+        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $230 CAD',
         focus:
           'Movement to the ball, solid forearm platform passing, overhead setting touch, underhand & intro overhand serving, and modified Tripleball gameplay.',
         ratio: '1:10 to 1:12 Coach Ratio',
@@ -280,9 +280,9 @@ const activeProgramsRaw: DetailedProgram[] = [
       },
       {
         name: 'Spike Elite',
-        badge: 'Ages 13–16 · 60 min · $225 CAD',
+        badge: 'Ages 13–16 · 45-min batches · $260 CAD',
         ages: 'Ages 13–16',
-        format: '60 min · Thu/Fri then Tue/Thu (7:00–8:00 PM) · $225 CAD',
+        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $260 CAD',
         focus:
           'Overhand float serving, spike approach timing, block positioning, defensive digging, offensive transition, and full 6v6 competitive play.',
         ratio: '1:12 to 1:14 Coach Ratio',
@@ -295,15 +295,27 @@ const activeProgramsRaw: DetailedProgram[] = [
       },
     ],
     whatsIncluded: [
-      'Spike Foundations (Ages 8–12): $205 CAD · 16 Sessions (60 mins)',
-      'Spike Elite (Ages 13–16): $225 CAD · 16 Sessions (60 mins)',
-      '16 Training Sessions (Oct 22 – Dec 10, 2026) · 7:00 PM – 8:00 PM',
-      'Official NAA National Spike Training Shirt',
+      'Spike Foundations (Ages 8–12): $230 CAD · 10 sessions',
+      'Spike Elite (Ages 13–16): $260 CAD · 10 sessions',
+      '10 Training Sessions (45-min batches) at the University of Regina Green Gym',
+      'Tuesdays & Thursdays, Jan 26 – Mar 11, 2027 (Batch 1: 6:00–6:45 PM · Batch 2: 6:45–7:30 PM)',
+      'Mandatory Training Kit Fee: $30 CAD per athlete (in addition to tuition)',
+      'Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)',
       'Screened, Safe Sport–trained coach instruction, scrimmages & regulation adjusted net facilities',
       'End-of-block NAA Volleyball Progress Report',
       'Dedicated team communications & schedule updates via the TeamLinkt app',
     ],
     faqs: [
+      {
+        question: 'What does Winter 2027 cost, and can I pay in installments?',
+        answer:
+          'Spike Foundations is $230 CAD and Spike Elite is $260 CAD for 10 sessions. Every athlete also pays a mandatory $30 CAD Training Kit fee. Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments).',
+      },
+      {
+        question: 'When and where does Winter 2027 volleyball run?',
+        answer:
+          'Tuesdays and Thursdays from Jan 26 to Mar 11 (no sessions Feb 9–18) at the University of Regina Green Gym. Choose Batch 1 (6:00–6:45 PM) or Batch 2 (6:45–7:30 PM). Registration opens November 1, 2026.',
+      },
       {
         question: 'Are knee pads required for volleyball?',
         answer:
@@ -353,7 +365,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       'Specialized badminton coaching covering forehand and backhand grip mechanics, 6-corner court footwork, clear, drop, smash, and net-kill shot execution, with tactical singles and doubles matchplay at the University of Regina Green Gym.',
     longDescription:
       'Badminton is the world\'s fastest racket sport, demanding exceptional cardiovascular endurance, hand-eye reactivity, and explosive multi-directional footwork. The NAA Badminton Academy provides structured technical instruction for Regina youth at the University of Regina Green Gym, transforming recreational backyard play into crisp, competitive court mastery under screened, Safe Sport–trained coaches across our progressive 10-session Winter 2027 curriculum.',
-    ages: 'Ages 6–16 (Smash Juniors: 6–10, Smash Elite: 11–16, Smash Pro: 11–16)',
+    ages: 'Ages 6–16 (Smash Juniors: 6–10, Smash Elite: 11–16, Smash Pro: 10–16)',
     ratio: '1:8 to 1:15 Coach-to-Athlete Ratio',
     venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2',
     seasonDuration: 'Winter 2027: Jan 26 – Mar 11, 2027 (10 Sessions · Tuesdays & Thursdays)',
@@ -432,7 +444,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       {
         name: 'Smash Pro',
         badge: 'Intensive · 90-min sessions · $295 CAD',
-        ages: 'Ages 11–16',
+        ages: 'Ages 10–16',
         format: '10 sessions · Tue & Thu · 6:00–7:30 PM · $295 CAD',
         focus:
           'Intensive tactical training and matchplay in 90-minute sessions. Pattern building for singles and doubles, pressure situations, and structured match days for players ready to compete.',
