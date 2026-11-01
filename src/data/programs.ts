@@ -922,6 +922,15 @@ export const upcomingSports: UpcomingSport[] = [
     detailBadge: 'Full Program Details Available',
   },
   {
+    name: 'Basketball Academy',
+    emoji: '',
+    tag: 'Skills, Spacing & Game IQ',
+    description:
+      'Structured basketball development focusing on dribbling mechanics, shooting form, footwork, and small-sided 3v3 and 4v4 game play under certified coaches.',
+    targetAges: 'Ages 6–15',
+    status: 'Starting Soon',
+  },
+  {
     name: 'Athletics (Track & Field)',
     emoji: '',
     tag: 'Sprint, Jump & Field Foundations',
@@ -946,24 +955,6 @@ export const upcomingSports: UpcomingSport[] = [
     description:
       'Dinking mechanics, third-shot drops, court positioning, and fun multi-generational doubles leagues on indoor hardwood.',
     targetAges: 'Ages 10+ & Adult / Senior',
-    status: 'Starting Soon',
-  },
-  {
-    name: 'Table Tennis & Racket Sports',
-    emoji: '',
-    tag: 'High-Speed Reflexes & Spin Control',
-    description:
-      'Hand-eye coordination, paddle spin mechanics, footwork agility, and structured singles/doubles ladder leagues.',
-    targetAges: 'Ages 7–16 & Adult',
-    status: 'Starting Soon',
-  },
-  {
-    name: 'Mind Sports & Chess Academy',
-    emoji: '',
-    tag: 'Cognitive Strategy & CFC Pathway',
-    description:
-      'Structured tactical calculation, opening repertoires, endgame mastery, and monthly CFC-rated tournaments for youth and adults.',
-    targetAges: 'Ages 5–17 & Adult',
     status: 'Starting Soon',
   },
   {
