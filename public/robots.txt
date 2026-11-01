@@ -1,8 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /contact.php
-Disallow: /registration.php
-Disallow: /coach-register.php
-Disallow: /private/
 
-Sitemap: https://nationalathletics.ca/sitemap.xml
+# Sitemap Location
+Sitemap: https://naacanada.org/sitemap-index.xml

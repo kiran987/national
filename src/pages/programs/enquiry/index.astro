@@ -1,0 +1,258 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import RecaptchaNotice from '../../../components/RecaptchaNotice.astro';
+import { activePrograms, comingSoonPrograms } from '../../../data/programs';
+
+const programOptions = [
+  { value: 'Basketball Academy', label: 'Basketball Academy', active: true },
+  { value: 'Volleyball Academy', label: 'Volleyball Academy', active: true },
+  { value: 'Badminton Academy', label: 'Badminton Academy', active: true },
+  { value: 'National Shield - Martial Arts', label: 'National Shield - Martial Arts', active: true },
+  { value: 'Camps & Clinics', label: 'Camps & Clinics', active: false },
+  { value: 'Tournaments', label: 'Tournaments & Jamborees', active: false },
+  { value: 'Athletics (Track & Field)', label: 'Athletics (Track & Field)', active: false },
+  { value: 'Other / General', label: 'Other / General Inquiries', active: true },
+];
+---
+
+<Layout
+  title="Program Enquiry | National Athletics Academy"
+  description="Ask a question about any NAA program: Basketball, Volleyball, Badminton, National Shield - Martial Arts, upcoming programs, camps, and more — we'll reply within 2 business days."
+>
+  <Header />
+
+  <!-- Hero -->
+  <section class="page-hero" aria-labelledby="enquiry-heading" style="background:linear-gradient(160deg,var(--color-naa-navy) 0%,#010f24 55%,#83161B 100%);">
+    <div class="container-naa" style="position:relative;z-index:1;text-align:center;">
+      <div class="animate-fade-up">
+        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1.25rem;">
+          Program Questions
+        </span>
+        <h1 id="enquiry-heading" style="font-size:clamp(2.2rem,5vw,3.5rem);color:white;margin-bottom:1rem;font-weight:900;">
+          Ask About Our Programs
+        </h1>
+        <p style="color:rgba(255,255,255,0.85);font-size:1.1rem;max-width:620px;margin:0 auto;line-height:1.75;">
+          Have a question about schedules, pricing, age tiers, curriculum, or anything else? Fill out the form and we'll reply within 2 business days.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links to Active Programs -->
+  <section style="background:#f8fafc;padding:2.5rem 0;border-bottom:1px solid #e2e8f0;">
+    <div class="container-naa">
+      <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+        <span style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">Active Programs:</span>
+        {activePrograms.map((prog) => (
+          <a href={`/programs/${prog.slug}/`} class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);font-size:0.8rem;text-decoration:none;transition:all 0.2s;"
+            onmouseover="this.style.background='var(--color-naa-navy)';this.style.color='white';"
+            onmouseout="this.style.background='rgba(2,31,71,0.08)';this.style.color='var(--color-naa-navy)';">
+            {prog.emoji} {prog.navTitle} →
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="section-padding" aria-labelledby="enquiry-form-heading">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:3fr 2fr;gap:5rem;align-items:start;">
+
+        <!-- Form -->
+        <div class="reveal">
+          <h2 id="enquiry-form-heading" class="gold-accent" style="font-size:1.75rem;margin-bottom:0.5rem;">Program Enquiry Form</h2>
+          <p style="color:#6b7280;font-size:0.9rem;margin-bottom:2rem;">We'll respond to your enquiry within 2 business days.</p>
+
+          <div id="enquiry-success" class="form-success" role="alert">
+            Enquiry received! We'll reply within 2 business days.
+          </div>
+
+          <form id="enquiry-form" method="POST" action="/program-enquiry.php" novalidate style="display:flex;flex-direction:column;gap:1.25rem;">
+            <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-token" value="" />
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="enq-first" class="form-label">First Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="enq-first" name="first_name" class="form-input" required autocomplete="given-name" placeholder="First name" />
+                <span class="form-error" id="err-enq-first" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="enq-last" class="form-label">Last Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="enq-last" name="last_name" class="form-input" required autocomplete="family-name" placeholder="Last name" />
+                <span class="form-error" id="err-enq-last" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="enq-email" class="form-label">Email <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="email" id="enq-email" name="email" class="form-input" required autocomplete="email" placeholder="you@example.com" />
+                <span class="form-error" id="err-enq-email" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="enq-phone" class="form-label">Phone</label>
+                <input type="tel" id="enq-phone" name="phone" class="form-input" autocomplete="tel" placeholder="(306) 555-0100" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="enq-program" class="form-label">Program of Interest <span style="color:var(--color-naa-maroon);">*</span></label>
+              <select id="enq-program" name="program" class="form-input form-select" required>
+                <option value="">Select a program…</option>
+                <optgroup label="— Active Programs —">
+                  {programOptions.filter(p => p.active && p.value !== 'Other / General').map(p => (
+                    <option value={p.value}>{p.label}</option>
+                  ))}
+                </optgroup>
+                <optgroup label="— Starting Soon —">
+                  {programOptions.filter(p => !p.active).map(p => (
+                    <option value={p.value}>{p.label}</option>
+                  ))}
+                </optgroup>
+                <option value="Other / General">Other / General Question</option>
+              </select>
+              <span class="form-error" id="err-enq-program" aria-live="polite"></span>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="enq-athlete-name" class="form-label">Athlete's Name</label>
+                <input type="text" id="enq-athlete-name" name="athlete_name" class="form-input" placeholder="Child's first name" />
+              </div>
+              <div class="form-group">
+                <label for="enq-athlete-age" class="form-label">Athlete's Age</label>
+                <select id="enq-athlete-age" name="athlete_age" class="form-input form-select">
+                  <option value="">Select…</option>
+                  {[...Array(17)].map((_, i) => <option value={`${i + 2}`}>{i + 2} years old</option>)}
+                  <option value="18+">18+ (Adult)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="enq-message" class="form-label">Your Question <span style="color:var(--color-naa-maroon);">*</span></label>
+              <textarea id="enq-message" name="message" class="form-input form-textarea" rows="5" required placeholder="What would you like to know? (schedules, pricing, age groups, curriculum, equipment…)"></textarea>
+              <span class="form-error" id="err-enq-message" aria-live="polite"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="enq-submit-btn" style="width:100%;">
+              Send Enquiry →
+            </button>
+            <RecaptchaNotice action="program_enquiry" />
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div class="card reveal" style="padding:2rem;background:var(--color-naa-navy);color:white;">
+            <div style="width:44px;height:44px;border-radius:10px;background:rgba(221,170,64,0.18);display:flex;align-items:center;justify-content:center;color:var(--color-naa-gold);margin-bottom:1rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:1rem;margin-bottom:0.75rem;">Direct Contact</h3>
+            <p style="color:rgba(255,255,255,0.75);font-size:0.875rem;line-height:1.65;margin-bottom:0.75rem;">
+              Reach our team directly:
+            </p>
+            <div style="display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem;">
+              <a href="tel:3063309559" style="color:white;font-weight:700;font-size:0.95rem;text-decoration:none;">📞 (306) 330-9559</a>
+              <!--email_off--><a href="mailto:info@naacanada.org" style="color:var(--color-naa-gold);font-weight:600;font-size:0.9rem;">✉️ info@naacanada.org</a><!--/email_off-->
+            </div>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.78rem;">217 Broad St N, Regina, SK S4R 2X7 &bull; Response within 2 business days</p>
+          </div>
+
+          <div class="card reveal" style="padding:1.75rem;background:rgba(221,170,64,0.07);border:2px solid rgba(221,170,64,0.3);">
+            <div style="font-size:1.5rem;margin-bottom:0.75rem;">📋</div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:0.95rem;margin-bottom:0.5rem;">Browse Program Pages</h3>
+            <p style="color:#374151;font-size:0.82rem;line-height:1.6;margin-bottom:1rem;">Each program has a full dedicated page with curriculum, tiers, pricing, and FAQs.</p>
+            <div style="display:flex;flex-direction:column;gap:0.4rem;">
+              {activePrograms.map(prog => (
+                <a href={`/programs/${prog.slug}/`} style="font-size:0.82rem;color:var(--color-naa-navy);font-weight:600;display:flex;align-items:center;gap:0.4rem;">
+                  <span>{prog.emoji}</span><span>{prog.navTitle} →</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="card reveal" style="padding:1.75rem;background:var(--color-naa-grey);">
+            <div style="font-size:1.5rem;margin-bottom:0.75rem;">🔔</div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:0.95rem;margin-bottom:0.5rem;">Interested in an Upcoming Program?</h3>
+            <p style="color:#374151;font-size:0.82rem;line-height:1.6;margin-bottom:1rem;">Sign up to be notified the moment registration opens for First Kicks Soccer, Athletics, and more.</p>
+            <a href="/notify/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">Notify Me →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { executeRecaptcha } from '../../../utils/recaptcha';
+
+  const form = document.getElementById('enquiry-form') as HTMLFormElement;
+  const success = document.getElementById('enquiry-success') as HTMLElement;
+
+  function setErr(id: string, msg: string) {
+    const el = document.getElementById(id) as HTMLElement;
+    if (el) el.textContent = msg;
+  }
+  function clearErrs() {
+    document.querySelectorAll('.form-error').forEach((el) => (el.textContent = ''));
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrs();
+
+    const first   = (document.getElementById('enq-first') as HTMLInputElement).value.trim();
+    const last    = (document.getElementById('enq-last') as HTMLInputElement).value.trim();
+    const email   = (document.getElementById('enq-email') as HTMLInputElement).value.trim();
+    const program = (document.getElementById('enq-program') as HTMLSelectElement).value;
+    const message = (document.getElementById('enq-message') as HTMLTextAreaElement).value.trim();
+
+    let valid = true;
+    if (!first)   { setErr('err-enq-first',   'First name is required.'); valid = false; }
+    if (!last)    { setErr('err-enq-last',    'Last name is required.');  valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setErr('err-enq-email', 'Valid email required.'); valid = false; }
+    if (!program) { setErr('err-enq-program', 'Please select a program.'); valid = false; }
+    if (!message || message.length < 5) { setErr('err-enq-message', 'Please enter your question.'); valid = false; }
+    if (!valid) return;
+
+    const btn = document.getElementById('enq-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const recaptchaToken = await executeRecaptcha('program_enquiry');
+      const tokenInput = form.querySelector<HTMLInputElement>('.g-recaptcha-token, input[name="g-recaptcha-response"]');
+      if (tokenInput && recaptchaToken) {
+        tokenInput.value = recaptchaToken;
+      }
+      const data = new FormData(form);
+      if (recaptchaToken) {
+        data.set('g-recaptcha-response', recaptchaToken);
+      }
+      const resp = await fetch('/program-enquiry.php', { method: 'POST', body: data });
+      const result = await resp.json().catch(() => ({}));
+      if (resp.ok && result.success !== false) {
+        form.style.display = 'none';
+        success.classList.add('show');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        btn.textContent = 'Send Enquiry →';
+        btn.disabled = false;
+        alert(result.error || result.message || 'Something went wrong. Please email info@naacanada.org directly.');
+      }
+    } catch {
+      form.submit();
+    }
+  });
+</script>
+
+<style>
+  @media (max-width: 860px) {
+    section.section-padding > .container-naa > div { grid-template-columns: 1fr !important; gap: 3rem !important; }
+  }
+</style>

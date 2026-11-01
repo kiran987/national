@@ -1,31 +1,137 @@
 ---
+import '../styles/global.css';
+import NotifyModal from '../components/NotifyModal.astro';
+
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
   canonical?: string;
+  schemaGraph?: any[];
 }
 
 const {
   title,
-  description = "National Athletics Academy Inc. — Regina's premier multi-sport training and competition organization. Basketball, Volleyball, Badminton, Soccer for Little Kids (U2–U5 with Wascana FC), Athletics (Track & Field), and Tournaments for all ages.",
+  description = "National Athletics Academy Inc. (NAA Canada) — Regina's premier non-profit multi-sport academy. Structured youth training across Basketball, Volleyball, Badminton, Martial Arts, Track & Field, and Little Kids Soccer.",
   ogImage = '/images/naa-logo.png',
   canonical,
+  schemaGraph = [],
 } = Astro.props;
 
-const siteUrl = 'https://nationalathletics.ca';
+const siteUrl = 'https://naacanada.org';
 const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
-const fullTitle = title.includes('National Athletics Academy') ? title : `${title} | National Athletics Academy`;
+const fullTitle = title.includes('National Athletics Academy') ? title : `${title} | National Athletics Academy | NAA Canada`;
+
+const baseSchemaGraph = [
+  {
+    "@type": ["SportsOrganization", "NGO", "SportsClub", "NonprofitOrganization", "SportsActivityLocation"],
+    "@id": "https://naacanada.org/#organization",
+    "name": "National Athletics Academy",
+    "legalName": "National Athletics Academy Inc.",
+    "alternateName": "NAA Canada",
+    "nonprofitStatus": "https://schema.org/NonprofitType",
+    "url": "https://naacanada.org",
+    "logo": "https://naacanada.org/images/naa-logo.png",
+    "image": "https://naacanada.org/images/naa-logo.png",
+    "description": "Regina's non-profit youth athletics organization providing accessible, multi-sport foundational athletic development, competitive youth leagues, and certified coaching in Saskatchewan.",
+    "foundingDate": "2026",
+    "telephone": "+1-306-330-9559",
+    "email": "info@naacanada.org",
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.facebook.com/naacanada",
+      "https://www.instagram.com/naa.canada"
+    ],
+    "taxID": "102242108",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "217 BROAD ST N",
+      "addressLocality": "Regina",
+      "addressRegion": "SK",
+      "postalCode": "S4R 2X7",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.4674,
+      "longitude": -104.6041
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Regina"
+      },
+      {
+        "@type": "State",
+        "name": "Saskatchewan"
+      }
+    ],
+    "sport": [
+      "Badminton",
+      "Volleyball",
+      "Basketball",
+      "Martial Arts"
+    ],
+    "knowsAbout": [
+      "Youth Multi-Sport Development",
+      "First Kicks Soccer",
+      "Track and Field Athletics",
+      "Family Pickleball",
+      "Long-Term Athlete Development (LTAD)",
+      "Saskatchewan Safe Sport"
+    ],
+    "sponsor": [
+      {
+        "@type": "Organization",
+        "name": "NAA Community & Business Sponsors",
+        "url": "https://naacanada.org/sponsors/"
+      }
+    ]
+  },
+  {
+    "@type": "WebSite",
+    "@id": "https://naacanada.org/#website",
+    "url": "https://naacanada.org",
+    "name": "National Athletics Academy | NAA Canada",
+    "description": "Multi-sport youth athletic training and skill development academy in Regina, Saskatchewan.",
+    "publisher": {
+      "@id": "https://naacanada.org/#organization"
+    },
+    "inLanguage": "en-CA"
+  },
+  ...schemaGraph
+];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-0QSTSFCR60"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0QSTSFCR60');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PGDV69RB');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google reCAPTCHA v3 -->
+    <script is:inline src="https://www.google.com/recaptcha/api.js?render=6Lcny8YtAAAAANOstsrqDZP14p55u8k17LpeS4aX"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href={pageUrl} />
 
     <!-- Open Graph -->
@@ -34,7 +140,7 @@ const fullTitle = title.includes('National Athletics Academy') ? title : `${titl
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
-    <meta property="og:site_name" content="National Athletics Academy" />
+    <meta property="og:site_name" content="National Athletics Academy | NAA Canada" />
     <meta property="og:locale" content="en_CA" />
 
     <!-- Twitter Card -->
@@ -43,54 +149,35 @@ const fullTitle = title.includes('National Athletics Academy') ? title : `${titl
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/images/naa-logo.svg" />
-    <link rel="alternate icon" type="image/webp" href="/images/naa-logo-sm.webp" />
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/naa-logo-sm.webp" />
+    <meta name="theme-color" content="#021F47" />
 
     <!-- Preconnect for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..900;1,9..40,300..900&family=Oswald:wght@500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Schema.org: Organization -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": ["SportsOrganization", "EducationalOrganization"],
-        "name": "National Athletics Academy Inc.",
-        "alternateName": "NAA",
-        "url": "https://nationalathletics.ca",
-        "logo": "https://nationalathletics.ca/images/naa-logo.png",
-        "description": "Regina-based multi-sport training and competition organization delivering programs in Basketball, Volleyball, Badminton, Soccer for Little Kids (U2–U5 in association with Wascana FC), Athletics (Track & Field), and Tournaments.",
-        "foundingDate": "2026",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Regina",
-          "addressRegion": "Saskatchewan",
-          "addressCountry": "CA"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "Regina"
-        },
-        "sport": [
-          "Basketball",
-          "Volleyball",
-          "Badminton",
-          "Soccer for Little Kids (U2-U5 with Wascana FC)",
-          "Athletics (Track & Field)",
-          "Tournaments"
-        ]
-      }
-    </script>
+    <!-- Preload Critical Hero Asset -->
+    <link rel="preload" as="image" href="/images/programs/badminton-action-1.webp" fetchpriority="high" />
 
-    <!-- Global styles -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <!-- Schema.org: Organization & WebSite (Multi-Sport Non-Profit) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": baseSchemaGraph
+    })} />
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGDV69RB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <slot />
 
     <!-- Scroll reveal script -->
@@ -112,5 +199,6 @@ const fullTitle = title.includes('National Athletics Academy') ? title : `${titl
         reveals.forEach((el) => observer.observe(el));
       });
     </script>
+    <NotifyModal />
   </body>
 </html>

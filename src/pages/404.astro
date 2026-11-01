@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Page Not Found (404) | National Athletics Academy"
+  description="The page you are looking for does not exist or has been moved. Explore our multi-sport programs in Regina or return to the homepage."
+>
+  <Header />
+
+  <main style="min-height:70vh;display:flex;align-items:center;justify-content:center;padding:9.75rem 1.5rem 5rem;text-align:center;background:linear-gradient(160deg,#021F47 0%,#010f24 60%,#1a1a2e 100%);color:white;">
+    <div style="max-width:600px;margin:0 auto;" class="reveal">
+      <div style="font-size:4.5rem;margin-bottom:1rem;line-height:1;">🏅</div>
+      <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1.25rem;">Error 404</span>
+      <h1 style="font-family:var(--font-outfit);font-size:clamp(2rem,5vw,3rem);font-weight:900;color:white;margin-bottom:1rem;">Page Not Found</h1>
+      <p style="color:rgba(255,255,255,0.85);font-size:1.05rem;line-height:1.7;margin-bottom:2.25rem;">
+        The page you are looking for might have been moved, renamed, or is temporarily unavailable. Let's get you back on track:
+      </p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:3rem;">
+        <a href="/" class="btn btn-gold btn-lg">Return to Home →</a>
+        <a href="/programs/" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white;">View Programs</a>
+        <a href="/contact/" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white;">Contact Us</a>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.5rem;text-align:left;">
+        <h2 style="font-family:var(--font-outfit);font-size:0.95rem;font-weight:700;color:var(--color-naa-gold);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.06em;">Quick Links</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.75rem;font-size:0.88rem;">
+          <a href="/programs/badminton/" style="color:white;text-decoration:none;">Badminton Academy</a>
+          <a href="/programs/volleyball/" style="color:white;text-decoration:none;">Volleyball Academy</a>
+          <a href="/programs/basketball/" style="color:white;text-decoration:none;">Basketball Academy</a>
+          <a href="/programs/national-shield/" style="color:white;text-decoration:none;">National Shield</a>
+          <a href="/safety/" style="color:white;text-decoration:none;">Safety Standards</a>
+          <a href="/registration/" style="color:white;text-decoration:none;">Athlete Registration</a>
+          <a href="/coaching/" style="color:white;text-decoration:none;">Coaching Opportunities</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -2,429 +2,289 @@
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
-import { activePrograms } from '../../../data/programs';
+import RecaptchaNotice from '../../../components/RecaptchaNotice.astro';
 
-const program = activePrograms.find((p) => p.slug === 'national-shield')!;
-const otherPrograms = activePrograms.filter((p) => p.slug !== 'national-shield');
+const sessions = [
+  { n: 1, title: 'Kick Power!', style: 'Karate Kicks', emoji: '\u{1F94B}', desc: 'Build balance, flexibility, coordination, and confidence with dynamic karate kicks.' },
+  { n: 2, title: 'Punch Like a Champ!', style: 'Boxing Basics', emoji: '\u{1F94A}', desc: 'Discover fundamental punches, footwork, speed, and coordination through energetic boxing drills.' },
+  { n: 3, title: 'Warrior Moves!', style: 'Kalaripayattu', emoji: '\u{1F409}', desc: 'Explore ancient animal postures and movements that build agility, balance, and core strength.' },
+  { n: 4, title: 'Stick & Flow!', style: 'Filipino Arnis & Redonda', emoji: '\u{1F962}', desc: 'Develop reaction time, rhythm, and double-hand coordination using safe, padded training tools.' },
+  { n: 5, title: 'Strike & Shield!', style: 'Karate Blocks & Counters', emoji: '\u{1F6E1}\uFE0F', desc: 'Master defensive shields and controlled strikes while honing focus and discipline.' },
+  { n: 6, title: 'Agility Warriors!', style: 'Kalaripayattu Flow', emoji: '\u{1F405}', desc: 'Challenge reflexes with fluid animal forms and dynamic floor movement patterns.' },
+  { n: 7, title: 'Brave, Bold & Bully-Proof!', style: 'Safety & Boundary Setting', emoji: '\u{1F4AA}', desc: 'Equip kids with assertive body language, verbal boundaries, de-escalation, and situational awareness.' },
+  { n: 8, title: 'Shadow Boxing Showdown!', style: 'Footwork & Flow', emoji: '\u{1F3C6}', desc: 'Tie it all together with rhythm, speed combos, and a final celebration of progress!' },
+];
 
-const tierAccents = ['#16a34a', '#1d4ed8', '#ea580c'];
+const pillars = [
+  { emoji: '\u{1F94B}', word: 'Kick', text: 'Balance, flexibility & power' },
+  { emoji: '\u{1F94A}', word: 'Punch', text: 'Speed, footwork & coordination' },
+  { emoji: '\u{1F409}', word: 'Move', text: 'Agility, rhythm & core strength' },
+  { emoji: '\u{1F6E1}\uFE0F', word: 'Protect', text: 'Boundaries & safety skills for life' },
+];
 
-function parseFocus(focus: string) {
-  const sentences = focus.split(/(?<=\.)\s+/).filter(Boolean);
-  const breakdownSentence = (sentences[0] ?? '').replace(/\.$/, '');
-  const notes = sentences.slice(1).join(' ');
-  const items = breakdownSentence.split(/,\s+(?=\d+%)/).map((chunk) => {
-    const match = chunk.trim().match(/^(\d+)%\s+(.*)$/);
-    return match ? { percent: Number(match[1]), label: match[2] } : { percent: null, label: chunk.trim() };
-  });
-  return { items, notes };
-}
+const faqs = [
+  { question: 'Is this a fight club or contact program?', answer: 'No. National Shield is a fitness-first, safety-focused kids\' program. Drills use pads, shields and safe padded training tools, and we teach children to avoid conflict, respond confidently, and get help.' },
+  { question: 'Do my child and I need martial arts experience?', answer: 'Not at all. Every session is built for beginners and introduces a new style from scratch, so kids can join in with confidence.' },
+  { question: 'When will the schedule and timings be confirmed?', answer: 'We are currently finalizing the upcoming session schedule and timing details. Registered families will receive full confirmation of dates and class hours via email as soon as the final schedule is locked in.' },
+  { question: 'What should my child bring?', answer: 'Comfortable athletic clothing, clean indoor footwear and a water bottle. Training pads and equipment are provided.' },
+  { question: 'Are the coaches screened?', answer: 'Yes. Every coach holds a Criminal Record + Vulnerable Sector Check, Safe Sport training, and First Aid/CPR. NAA follows the Rule of Two: two screened adults are always present in an open, observable setting.' },
+  { question: 'Where will classes be held?', answer: 'Sessions will be held at a premier indoor gymnasium facility in Regina, SK (venue and location TBA). Final facility confirmation and class timings will be announced prior to launch. The full 8-class program is $120 CAD.' },
+  { question: 'How do I register?', answer: 'The full 8-class program is $120 CAD. Complete the registration form at the top of this page. Our team will confirm placement, venue details, and payment options by email within 2 business days.' },
+];
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+  })),
+};
+
+const location = {
+  "@type": "SportsActivityLocation",
+  "@id": "https://naacanada.org/programs/national-shield/#location",
+  "name": "Regina Indoor Facility (TBA)",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Regina",
+    "addressRegion": "SK",
+    "addressCountry": "CA",
+  },
+};
+
 ---
 
 <Layout
-  title={`${program.name} | National Athletics Academy Regina`}
-  description={program.description}
+  title="Kids Martial Arts Program in Regina, SK | National Shield 8-Session Series"
+  description="8 sessions. 8 epic challenges. Kids explore karate, boxing, Kalaripayattu and Filipino Arnis while building confidence and safety skills. Starting soon — schedule and timings finalizing. Register now."
+  schemaGraph={[faqSchema, location]}
 >
   <Header />
 
-  <!-- Hero Header -->
-  <section class="page-hero" style="background:linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 55%, #2d1b4e 100%);padding:5rem 0 4rem;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-40%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(221,170,64,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
-    <div style="position:absolute;bottom:-30%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(93,63,211,0.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
-
+  <!-- Hero + Registration -->
+  <section id="register" style="background:linear-gradient(160deg,#0d0d1a 0%,#1a1a2e 55%,#2d1b4e 100%);padding:9rem 0 5rem;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(221,170,64,0.14) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
     <div class="container-naa" style="position:relative;z-index:2;">
-      <!-- Breadcrumb -->
-      <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;">
+      <nav aria-label="Breadcrumb" style="display:flex;gap:0.5rem;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;">
         <a href="/" style="color:rgba(255,255,255,0.7);text-decoration:none;">Home</a>
         <span>&rsaquo;</span>
         <a href="/programs/" style="color:rgba(255,255,255,0.7);text-decoration:none;">Programs</a>
         <span>&rsaquo;</span>
-        <span style="color:var(--color-naa-gold);font-weight:600;">{program.name}</span>
+        <span style="color:var(--color-naa-gold);font-weight:600;">National Shield - Martial Arts</span>
       </nav>
 
-      <div style="max-width:860px;">
-        <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.35);border-radius:9999px;padding:0.4rem 1.1rem;margin-bottom:1.25rem;">
-          <span style="font-size:1.1rem;">{program.emoji}</span>
-          <span style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;text-transform:uppercase;">
-            Program 03 · {program.badge}
+      <div class="ns-hero-grid">
+        <!-- Left: pitch -->
+        <div>
+          <span style="display:inline-block;background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.4);border-radius:9999px;padding:0.4rem 1.1rem;font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.25rem;">
+            Starting Soon &bull; Schedule Finalizing
           </span>
-        </div>
-
-        <h1 style="font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;color:white;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em;">
-          {program.name}
-        </h1>
-
-        <p style="font-size:1.25rem;color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:600;margin-bottom:0.75rem;">
-          {program.subtitle}
-        </p>
-
-        <p style="font-size:1.15rem;color:rgba(255,255,255,0.7);font-family:var(--font-outfit);font-weight:500;font-style:italic;margin-bottom:1rem;letter-spacing:0.02em;">
-          Strong Body. Confident Mind. Safe Choices.
-        </p>
-
-        <p style="font-size:1.02rem;color:rgba(255,255,255,0.82);line-height:1.75;margin-bottom:2rem;max-width:740px;">
-          {program.description}
-        </p>
-
-        <!-- Quick Specs Strip -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
-          <div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Age Streams</div>
-            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">Ages 5–12, 13–17, 18+</div>
-          </div>
-          <div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Coach Ratio</div>
-            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">1:8 to 1:12 Max</div>
-          </div>
-          <div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Cycle Length</div>
-            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">12-Week Cycles</div>
-          </div>
-          <div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Schedule</div>
-            <div style="font-size:0.95rem;font-weight:700;color:var(--color-naa-gold);margin-top:0.25rem;">Fri & Sat Evenings</div>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
-          <a href="/registration/" class="btn btn-gold btn-lg">
-            Register for National Shield &rarr;
-          </a>
-          <a href="/contact/" class="btn btn-outline btn-lg">
-            Book a Trial Class
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- The Shield Promise -->
-  <section style="background:#1a1a2e;color:white;padding:3.5rem 0;border-bottom:1px solid rgba(221,170,64,0.2);">
-    <div class="container-naa">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;text-align:center;">
-        {[
-          { emoji: '💪', title: 'A Stronger Body', desc: 'Strength, endurance, coordination and agility' },
-          { emoji: '🧠', title: 'A Stronger Mind', desc: 'Focus, discipline and confidence' },
-          { emoji: '🛡️', title: 'Safer Choices', desc: 'Awareness, boundaries and personal safety' },
-          { emoji: '🚫', title: 'Bullying Confidence', desc: 'Respond without unnecessary confrontation' },
-          { emoji: '🤝', title: 'Better Habits', desc: 'Respect, teamwork and responsibility' },
-        ].map((item) => (
-          <div style="padding:1.5rem 1rem;">
-            <div style="font-size:2rem;margin-bottom:0.75rem;">{item.emoji}</div>
-            <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.95rem;margin-bottom:0.5rem;">{item.title}</div>
-            <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.5;">{item.desc}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Overview: Philosophy & Pillars -->
-  <section class="section-padding" style="background:#ffffff;" aria-labelledby="overview-heading">
-    <div class="container-naa">
-      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:start;">
-        <div class="reveal">
-          <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">Program Philosophy</span>
-          <h2 id="overview-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.4rem);margin-bottom:1.25rem;">
-            Not a Fight Club. A Fitness & Confidence Program.
-          </h2>
-          <p style="color:#374151;font-size:1.02rem;line-height:1.8;margin-bottom:1.25rem;">
-            {program.longDescription}
+          <h1 style="font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;color:white;line-height:1.08;margin-bottom:1rem;letter-spacing:-0.01em;">
+            8 Sessions.<br />8 Epic Challenges.<br /><span style="color:var(--color-naa-gold);">One Confident Kid!</span>
+          </h1>
+          <p style="font-family:var(--font-outfit);font-size:1.3rem;font-weight:700;color:white;margin-bottom:1rem;">
+            &#x1F94B; Kick &bull; &#x1F94A; Punch &bull; &#x1F409; Move &bull; &#x1F6E1;&#xFE0F; Protect
           </p>
-          <p style="color:#4b5563;font-size:0.95rem;line-height:1.75;margin-bottom:2rem;">
-            The program runs on a structured 12-Week Foundation Cycle — Build (Weeks 1–4), Protect (Weeks 5–8), Perform (Weeks 9–12) — ending with a parent-attended Challenge Day where every child receives achievement recognition.
+          <p style="font-size:1.05rem;color:rgba(255,255,255,0.85);line-height:1.75;max-width:560px;margin-bottom:1.5rem;">
+            Discover different martial arts styles, build real confidence, and learn safety skills for life!
           </p>
-          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:1.25rem 1.5rem;border-left:4px solid #16a34a;">
-            <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Program Philosophy</div>
-            <p style="font-size:0.95rem;color:#166534;font-style:italic;line-height:1.6;margin:0;">
-              "Avoid the fight. Protect yourself. Get to safety. Get help."
-            </p>
-          </div>
-        </div>
 
-        <!-- Right: 5 Pillars Card -->
-        <div class="card reveal" style="padding:2.5rem 2rem;background:linear-gradient(145deg,#1a1a2e 0%,#2d2d4e 100%);border:none;color:white;">
-          <div style="font-size:2rem;margin-bottom:0.75rem;">🛡️</div>
-          <h3 style="font-family:var(--font-outfit);font-size:1.15rem;color:var(--color-naa-gold);margin-bottom:1.5rem;">
-            The 5 Pillars of National Shield
-          </h3>
-          <div style="display:flex;flex-direction:column;gap:1rem;">
-            {[
-              { emoji: '💪', name: 'POWER', desc: 'Fitness & athletic development' },
-              { emoji: '🛡️', name: 'PROTECT', desc: 'Personal safety & self-defence' },
-              { emoji: '🧠', name: 'CONFIDENCE', desc: 'Mindset & communication' },
-              { emoji: '🤝', name: 'RESPECT', desc: 'Discipline & teamwork' },
-              { emoji: '🥋', name: 'SKILL', desc: 'Martial arts fundamentals' },
-            ].map((p) => (
-              <div style="display:flex;align-items:center;gap:0.75rem;">
-                <span style="font-size:1.25rem;width:1.75rem;flex-shrink:0;">{p.emoji}</span>
-                <div>
-                  <div style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;">{p.name}</div>
-                  <div style="font-size:0.82rem;color:rgba(255,255,255,0.75);">{p.desc}</div>
-                </div>
-              </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:1rem 1.25rem;max-width:560px;margin-bottom:1.5rem;">
+            {[['Venue','TBA (Regina Facility)'],['Location','Regina, SK (TBA)'],['Schedule','Starting Soon (Finalizing)'],['Time','Announced Soon'],['Price','$120 for 8 classes']].map(([k,v]) => (
+              <div><div style="font-size:0.72rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">{k}</div><div style="font-size:0.98rem;font-weight:800;color:var(--color-naa-gold);margin-top:0.2rem;">{v}</div></div>
             ))}
           </div>
-          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);">
-            <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);font-family:var(--font-outfit);letter-spacing:0.04em;">EVERY session must cover at least 4 of the 5 pillars.</div>
+
+          <div style="background:rgba(221,170,64,0.12);border:1px solid rgba(221,170,64,0.45);border-radius:14px;padding:1rem 1.25rem;max-width:560px;margin-bottom:1.5rem;">
+            <div style="font-family:var(--font-outfit);font-weight:800;font-size:0.85rem;color:var(--color-naa-gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.35rem;">&#x2139;&#xFE0F; Venue &amp; Schedule Notice</div>
+            <p style="margin:0;font-size:0.92rem;color:rgba(255,255,255,0.9);line-height:1.6;">
+              We are starting soon! Training facility, exact session days, and timings are currently being finalized and will be confirmed with registered families prior to start.
+            </p>
           </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+            <a href="#sessions" class="btn btn-outline btn-lg">See the 8 Sessions</a>
+          </div>
+        </div>
+
+        <!-- Right: registration form -->
+        <div id="registration-card" style="background:white;border-radius:20px;padding:2rem;box-shadow:0 20px 50px rgba(0,0,0,0.35);">
+          <span class="badge" style="background:rgba(221,170,64,0.2);color:#926508;margin-bottom:0.75rem;">Reserve Your Spot</span>
+          <h2 style="font-size:1.5rem;color:var(--color-naa-navy);margin-bottom:0.35rem;">Register Your Child</h2>
+          <p style="font-size:0.88rem;color:#64748b;margin-bottom:1.5rem;line-height:1.55;">
+            Regina Facility TBA &bull; Schedule &amp; Timings Finalizing &bull; $120 for all 8 classes. We'll confirm venue, schedule and details by email.
+          </p>
+
+          <div id="registration-success" class="form-success" role="alert">
+            &#x1F389; Thank you! Your registration was received. Watch your inbox - we'll confirm your child's spot within 2 business days.
+          </div>
+
+          <form id="registration-form" method="POST" action="/registration.php" novalidate>
+            <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-token" value="" />
+            <input type="hidden" name="programs[]" value="National Shield - Martial Arts" />
+            <input type="hidden" name="season" value="Fall 2026 (September - December)" />
+            <input type="hidden" name="source_page" value="National Shield 8-Session Kids Program (Starting Soon)" />
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="reg-parent-first" class="form-label">Parent First Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="reg-parent-first" name="parent_first" class="form-input" required autocomplete="given-name" placeholder="First name" />
+                <span class="form-error" id="err-parent-first" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="reg-parent-last" class="form-label">Last Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="reg-parent-last" name="parent_last" class="form-input" required autocomplete="family-name" placeholder="Last name" />
+                <span class="form-error" id="err-parent-last" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="reg-email" class="form-label">Email <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="email" id="reg-email" name="email" class="form-input" required autocomplete="email" placeholder="you@example.com" />
+                <span class="form-error" id="err-email" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="reg-phone" class="form-label">Phone</label>
+                <input type="tel" id="reg-phone" name="phone" class="form-input" autocomplete="tel" placeholder="(306) 555-0100" />
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="reg-athlete-name" class="form-label">Child's Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="reg-athlete-name" name="athlete_name" class="form-input" required placeholder="Child's full name" />
+                <span class="form-error" id="err-athlete-name" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="reg-athlete-age" class="form-label">Child's Age <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="number" id="reg-athlete-age" name="athlete_age" class="form-input" required min="2" max="80" placeholder="Age" />
+                <span class="form-error" id="err-athlete-age" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-notes" class="form-label">Notes (medical, friends, questions)</label>
+              <textarea id="reg-notes" name="notes" class="form-input form-textarea" rows="2" placeholder="Anything our coaches should know?"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label style="display:flex;align-items:flex-start;gap:0.6rem;cursor:pointer;font-size:0.85rem;color:#374151;line-height:1.45;">
+                <input type="checkbox" name="schedule_ack" id="schedule-ack" value="yes" style="width:18px;height:18px;accent-color:var(--color-naa-maroon);flex-shrink:0;margin-top:2px;" />
+                <span>I understand session schedule and exact timings are currently being finalized and will be confirmed prior to start. <span style="color:var(--color-naa-maroon);">*</span></span>
+              </label>
+              <span class="form-error" id="err-ack" aria-live="polite"></span>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg" id="reg-submit-btn" style="width:100%;justify-content:center;">
+              Register &mdash; $120 for 8 Classes &rarr;
+            </button>
+            <RecaptchaNotice action="registration" />
+          </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- The SHIELD Safety System™ -->
-  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="shield-heading">
+  <!-- Four pillars -->
+  <section style="background:#1a1a2e;padding:3rem 0;border-bottom:1px solid rgba(221,170,64,0.2);">
     <div class="container-naa">
-      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
-        <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">Program Signature</span>
-        <h2 id="shield-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
-          The SHIELD Safety System™
-        </h2>
-        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto 0.75rem;line-height:1.7;">
-          A structured personal safety framework taught every cycle. Physical escape technique is only introduced after the first five principles are demonstrably understood.
-        </p>
-        <p style="font-size:0.9rem;color:#6b7280;font-style:italic;">Self-defence starts before the fight.</p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:900px;margin:0 auto;">
-        {[
-          { letter: 'S', word: 'SEE', desc: 'Awareness of surroundings, exits, and who is around you' },
-          { letter: 'H', word: 'HAVE BOUNDARIES', desc: 'Knowing what behaviour is and isn\'t acceptable' },
-          { letter: 'I', word: 'INTENTIONALLY USE YOUR VOICE', desc: 'Confident, assertive, loud when needed' },
-          { letter: 'E', word: 'EXIT', desc: 'Move away from unsafe situations' },
-          { letter: 'L', word: 'LOCATE HELP', desc: 'Get to a trusted adult or safe location' },
-          { letter: 'D', word: 'DESCRIBE & REPORT', desc: 'Tell someone clearly what happened' },
-        ].map((item, i) => (
-          <div class="card reveal" style={`animation-delay:${i * 80}ms;border-top:4px solid var(--color-naa-gold);padding:1.75rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;`}>
-            <div style="width:2.5rem;height:2.5rem;border-radius:9999px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:900;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{item.letter}</div>
-            <div>
-              <div style="font-family:var(--font-outfit);font-weight:700;font-size:0.82rem;color:#1a1a2e;letter-spacing:0.04em;margin-bottom:0.35rem;">{item.word}</div>
-              <div style="font-size:0.85rem;color:#475569;line-height:1.5;">{item.desc}</div>
-            </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;text-align:center;">
+        {pillars.map((p) => (
+          <div style="padding:1.5rem 1rem;border-radius:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:2.2rem;margin-bottom:0.5rem;">{p.emoji}</div>
+            <div style="font-family:var(--font-outfit);font-weight:900;font-size:1.15rem;color:var(--color-naa-gold);text-transform:uppercase;letter-spacing:0.05em;">{p.word}</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.75);margin-top:0.25rem;line-height:1.5;">{p.text}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Age Streams & Curricula -->
-  <section class="section-padding" style="background:#ffffff;" aria-labelledby="tiers-heading">
+  <!-- Sessions -->
+  <section id="sessions" class="section-padding" style="background:#f8fafc;" aria-labelledby="sessions-heading">
     <div class="container-naa">
-      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
-        <span class="badge" style="background:rgba(131,22,27,0.1);color:var(--color-naa-maroon);margin-bottom:1rem;">Age-Appropriate Streams</span>
-        <h2 id="tiers-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
-          3 Streams. 1 Program. All Ages.
-        </h2>
-        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto;line-height:1.7;">
-          Each stream is coached separately. A 9-year-old and a 16-year-old are never grouped together — different bone maturity, attention span, and coaching needs require dedicated streams.
+      <div style="text-align:center;margin-bottom:3rem;">
+        <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">8-Session Series · Starting Soon</span>
+        <h2 id="sessions-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">Your Child's 8-Session Journey</h2>
+        <p style="color:#4b5563;max-width:620px;margin:0 auto;line-height:1.7;">
+          Every session is a new challenge and a new martial arts style. Schedule and session timings are currently finalizing.
         </p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;">
-        {program.tiers.map((tier, i) => {
-          const accent = tierAccents[i] ?? 'var(--color-naa-maroon)';
-          const { items: focusItems, notes } = parseFocus(tier.focus);
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;">
+        {sessions.map((s) => {
           return (
-            <div class="card reveal" style={`animation-delay:${i * 120}ms;display:flex;flex-direction:column;border-top:4px solid ${accent};`}>
-              <div style="padding:2rem;">
-                <span class="badge" style={`background:${accent}1a;color:${accent};font-size:0.75rem;font-weight:700;margin-bottom:1rem;display:inline-block;`}>
-                  {tier.badge}
+            <article class="card" style="border-top:4px solid var(--color-naa-gold);padding:1.5rem;display:flex;flex-direction:column;gap:0.6rem;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:var(--font-outfit);font-weight:800;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-naa-navy);background:rgba(2,31,71,0.08);padding:0.3rem 0.7rem;border-radius:9999px;">
+                  Session 0{s.n}
                 </span>
-
-                <h3 style="font-size:1.3rem;color:var(--color-naa-navy);margin-bottom:0.4rem;">
-                  {tier.name}
-                </h3>
-
-                <p style="font-size:0.82rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1.5rem;">
-                  {tier.format} &bull; {tier.ratio}
-                </p>
-
-                <div style="display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.5rem;">
-                  {focusItems.map((item) => (
-                    <div>
-                      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.75rem;margin-bottom:0.3rem;">
-                        <span style="font-size:0.82rem;color:#334155;line-height:1.4;">{item.label}</span>
-                        {item.percent !== null && (
-                          <span style={`font-size:0.78rem;font-weight:800;color:${accent};font-family:var(--font-outfit);flex-shrink:0;`}>{item.percent}%</span>
-                        )}
-                      </div>
-                      {item.percent !== null && (
-                        <div style="height:4px;background:#eef1f5;border-radius:9999px;overflow:hidden;">
-                          <div style={`height:100%;width:${item.percent}%;background:${accent};border-radius:9999px;`}></div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                {notes && (
-                  <div style="background:#f8fafc;border-left:3px solid #e2e8f0;border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin-bottom:1.5rem;">
-                    <p style="font-size:0.78rem;color:#64748b;line-height:1.55;margin:0;">
-                      {notes}
-                    </p>
-                  </div>
-                )}
-
-                <div style="border-top:1px solid #e2e8f0;padding-top:1.25rem;">
-                  <div style="font-size:0.75rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.85rem;">
-                    Session Highlights
-                  </div>
-                  <ul style="list-style:none;display:flex;flex-direction:column;gap:0.7rem;">
-                    {tier.curriculum.map((c) => (
-                      <li style="display:flex;align-items:flex-start;gap:0.55rem;font-size:0.83rem;color:#475569;line-height:1.5;">
-                        <span style={`color:${accent};font-weight:700;flex-shrink:0;`}>&bull;</span>
-                        <span>{c}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <span style="font-size:1.6rem;" aria-hidden="true">{s.emoji}</span>
               </div>
-
-              <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;">
-                <a href="/registration/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
-                  Register for {tier.name} &rarr;
-                </a>
-              </div>
-            </div>
+              <div style="font-size:0.75rem;font-family:var(--font-outfit);font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Stage {s.n}</div>
+              <h3 style="font-size:1.2rem;color:var(--color-naa-navy);line-height:1.25;margin:0;">{s.title}</h3>
+              <div style="font-size:0.85rem;font-weight:700;color:#926508;">({s.style})</div>
+              <p style="font-size:0.88rem;color:#475569;line-height:1.65;margin:0;">{s.desc}</p>
+            </article>
           );
         })}
       </div>
-    </div>
-  </section>
 
-  <!-- BRAVE Anti-Bullying -->
-  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="brave-heading">
-    <div class="container-naa">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-        <div class="reveal">
-          <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">Curriculum Component</span>
-          <h2 id="brave-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.4rem);margin-bottom:1.25rem;">
-            The BRAVE Anti-Bullying Program
-          </h2>
-          <p style="color:#374151;font-size:1rem;line-height:1.8;margin-bottom:1.5rem;">
-            A formal curriculum component with dedicated class time every cycle — not a marketing line. BRAVE is delivered through scenario role-play, never lecture. <strong>Asking for help is strength, not weakness.</strong>
-          </p>
-          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;">
-            <div style="display:flex;align-items:center;gap:0.5rem;color:#374151;font-size:0.88rem;"><span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Scenario role-play</div>
-            <div style="display:flex;align-items:center;gap:0.5rem;color:#374151;font-size:0.88rem;"><span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Every cycle, every stream</div>
-            <div style="display:flex;align-items:center;gap:0.5rem;color:#374151;font-size:0.88rem;"><span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Clear disclosure pathway</div>
-          </div>
-          <a href="/contact/" class="btn btn-navy">Ask About BRAVE &rarr;</a>
-        </div>
-
-        <div class="reveal" style="display:flex;flex-direction:column;gap:1rem;">
-          {[
-            { letter: 'B', desc: 'Be aware — recognise bullying and unsafe behaviour' },
-            { letter: 'R', desc: 'Respond confidently — body language and strong voice' },
-            { letter: 'A', desc: 'Avoid escalation — don\'t turn a situation into a fight' },
-            { letter: 'V', desc: 'Voice it — tell a trusted adult' },
-            { letter: 'E', desc: 'Exit safely — move away and get somewhere safe' },
-          ].map((item) => (
-            <div style="display:flex;align-items:center;gap:1rem;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:1rem 1.25rem;">
-              <div style="width:2.25rem;height:2.25rem;border-radius:9999px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:900;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{item.letter}</div>
-              <p style="font-size:0.88rem;color:#334155;line-height:1.5;margin:0;">{item.desc}</p>
-            </div>
-          ))}
-        </div>
+      <div style="text-align:center;margin-top:3rem;">
+        <a href="#register" class="btn btn-gold btn-lg">Register Now &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- Coach Standards & Safety -->
+  <!-- Photos -->
+  <section style="background:#0B192C;padding:4rem 0;" aria-label="National Shield photo gallery">
+    <div class="container-naa">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+        {[
+          { src: '/images/programs/martialarts-action-2.webp', alt: 'National Shield youth class in ready stance with instructor', cap: 'Focus & Respect' },
+          { src: '/images/programs/martialarts-portrait-1.webp', alt: 'Young athlete executing a chambered kick', cap: 'Balance & Confidence' },
+          { src: '/images/programs/martialarts-action-1.webp', alt: 'National Shield student and coach executing high side kicks', cap: 'Kick Power' },
+        ].map((img) => (
+          <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+            <img src={img.src} alt={img.alt} style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%);"></div>
+            <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-weight:700;font-size:0.9rem;">{img.cap}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety -->
   <section class="section-padding" style="background:#ffffff;" aria-labelledby="safety-heading">
-    <div class="container-naa">
-      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#2d2d4e 100%);border-radius:24px;padding:3.5rem 3rem;color:white;position:relative;overflow:hidden;">
-        <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;align-items:start;">
-          <div>
-            <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1rem;">Coach Standard — Non-Negotiable</span>
-            <h2 id="safety-heading" style="font-size:clamp(1.75rem,3vw,2.4rem);color:white;margin-bottom:1rem;">
-              Every Coach. Every Class. No Exceptions.
-            </h2>
-            <p style="color:rgba(255,255,255,0.85);font-size:1rem;line-height:1.75;margin-bottom:1.5rem;">
-              National Shield operates to the highest coaching standards in Saskatchewan youth sport. Every person coaching a youth class must meet all requirements before their first session.
-            </p>
-            <div style="background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.3);border-radius:12px;padding:1rem 1.25rem;">
-              <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.85rem;margin-bottom:0.5rem;">RULE OF TWO — MANDATORY</div>
-              <p style="font-size:0.85rem;color:rgba(255,255,255,0.8);margin:0;line-height:1.6;">No adult is ever alone with a child. The training environment is always open and observable. Parents may watch at any time.</p>
-            </div>
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:0.75rem;">
-            {[
-              '🔍 Criminal Record + Vulnerable Sector Check (every 3 years)',
-              '🎓 Respect in Sport — Activity Leader (every 5 years)',
-              '🛡️ NCCP Safe Sport Training',
-              '🏥 Standard First Aid + CPR-C (AED) (every 3 years)',
-              '🧠 Concussion Recognition Certification (every 2 years)',
-              '📋 Signed Code of Conduct & Ethics (annually)',
-            ].map((item) => (
-              <div style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.85rem;color:rgba(255,255,255,0.85);line-height:1.5;">
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div class="container-naa" style="max-width:900px;">
+      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#2d2d4e 100%);border-radius:20px;padding:2.5rem;color:white;">
+        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1rem;">Safe &amp; Supportive</span>
+        <h2 id="safety-heading" style="font-size:clamp(1.5rem,3vw,2.1rem);color:white;margin-bottom:1rem;">Strong Body. Confident Mind. Safe Choices.</h2>
+        <p style="color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:1.25rem;">
+          We don't teach kids to look for fights - we teach them to avoid them, respond confidently, stay safe and get help. Every coach is screened, trained in Safe Sport and First Aid/CPR, and NAA follows the Rule of Two: two screened adults, always, in an open and observable setting.
+        </p>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.6rem;">
+          {['Criminal Record + Vulnerable Sector Check', 'Safe Sport trained coaches', 'First Aid + CPR certified', 'Padded, kid-safe training equipment'].map((t) => (
+            <li style="display:flex;gap:0.6rem;font-size:0.88rem;color:rgba(255,255,255,0.88);"><span style="color:var(--color-naa-gold);font-weight:700;">&#10003;</span>{t}</li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- What's Included & FAQ -->
-  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="included-heading">
-    <div class="container-naa">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
-        <div class="reveal">
-          <span class="badge" style="background:rgba(26,26,46,0.08);color:#1a1a2e;margin-bottom:1rem;">What's Included</span>
-          <h2 id="included-heading" style="font-size:1.75rem;color:var(--color-naa-navy);margin-bottom:1.5rem;">Everything in Your Cycle Fee</h2>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
-            {program.whatsIncluded.map((item) => (
-              <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:#334155;line-height:1.6;">
-                <span style="color:var(--color-naa-gold);font-weight:900;font-size:1rem;flex-shrink:0;">★</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div style="margin-top:2rem;background:rgba(221,170,64,0.1);border:1px solid rgba(221,170,64,0.3);border-radius:12px;padding:1.25rem;">
-            <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:#926508;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">Pricing</div>
-            <p style="font-size:0.9rem;color:#78350f;margin:0;">Contact us for current cycle pricing. Trial classes available. Financial assistance and family rates apply.</p>
+  <!-- FAQ -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="faq-heading">
+    <div class="container-naa" style="max-width:820px;">
+      <h2 id="faq-heading" class="gold-accent-center" style="text-align:center;font-size:1.9rem;margin-bottom:2rem;color:var(--color-naa-navy);">Parent FAQs</h2>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        {faqs.map((f) => (
+          <div class="card" style="padding:1.4rem 1.6rem;">
+            <h3 style="font-family:var(--font-outfit);font-size:1rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">{f.question}</h3>
+            <p style="color:#4b5563;font-size:0.9rem;line-height:1.7;margin:0;">{f.answer}</p>
           </div>
-        </div>
-
-        <div class="reveal">
-          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Have Questions?</span>
-          <h2 style="font-size:1.75rem;color:var(--color-naa-navy);margin-bottom:1.5rem;">National Shield FAQs</h2>
-          <div style="display:flex;flex-direction:column;gap:1rem;">
-            {program.faqs.map((faq) => (
-              <div class="card" style="padding:1.5rem 1.75rem;">
-                <h3 style="font-family:var(--font-outfit);font-size:1rem;color:var(--color-naa-navy);margin-bottom:0.65rem;">{faq.question}</h3>
-                <p style="color:#4b5563;font-size:0.88rem;line-height:1.7;margin:0;">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Other Programs -->
-  <section class="section-padding" style="background:#ffffff;border-top:1px solid #e2e8f0;" aria-label="Explore other programs">
-    <div class="container-naa">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
-        <div>
-          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:0.5rem;">Multi-Sport Academy</span>
-          <h2 style="font-size:1.5rem;color:var(--color-naa-navy);">Explore More NAA Programs</h2>
-        </div>
-        <a href="/programs/" style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-maroon);text-decoration:underline;font-size:0.9rem;">
-          View All Programs &rarr;
-        </a>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
-        {otherPrograms.map((op) => (
-          <a href={`/programs/${op.slug}/`} class="card" style="padding:1.25rem;text-decoration:none;display:flex;flex-direction:column;gap:0.5rem;border-left:4px solid var(--color-naa-navy);transition:all 0.2s;">
-            <div style="font-size:1.5rem;">{op.emoji}</div>
-            <div style="font-family:var(--font-outfit);font-weight:700;font-size:0.95rem;color:var(--color-naa-navy);line-height:1.2;">{op.name}</div>
-            <div style="font-size:0.75rem;color:#64748b;">{op.ages}</div>
-          </a>
         ))}
       </div>
     </div>
@@ -433,24 +293,99 @@ function parseFocus(focus: string) {
   <!-- Bottom CTA -->
   <section style="background:linear-gradient(135deg,#1a1a2e 0%,#2d2d4e 100%);color:white;padding:4.5rem 0;text-align:center;">
     <div class="container-naa">
-      <div class="reveal">
-        <div style="font-size:2.5rem;margin-bottom:1rem;">🛡️</div>
-        <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:white;margin-bottom:0.75rem;">
-          Ready to Join National Shield?
-        </h2>
-        <p style="color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:600;font-size:1.1rem;margin-bottom:0.75rem;">
-          Strong Body. Confident Mind. Safe Choices.
-        </p>
-        <p style="color:rgba(255,255,255,0.8);max-width:560px;margin:0 auto 2rem;line-height:1.7;">
-          12-week cycles. Friday & Saturday evenings. Ages 4 through adult. Trial classes available — no commitment required.
-        </p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="/registration/" class="btn btn-gold btn-lg">Register Now &rarr;</a>
-          <a href="/contact/" class="btn btn-outline btn-lg">Book a Trial Class</a>
-        </div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:white;margin-bottom:0.75rem;">Ready for One Confident Kid?</h2>
+      <p style="color:var(--color-naa-gold);font-family:var(--font-outfit);font-weight:600;font-size:1.1rem;margin-bottom:0.75rem;">Starting Soon &bull; Regina Facility TBA &bull; Schedule Finalizing &bull; $120</p>
+      <p style="color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto 2rem;line-height:1.7;">Questions first? Reach out to our coaching desk any time.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#register" class="btn btn-gold btn-lg">Register Now &rarr;</a>
+        <a href="/contact/" class="btn btn-outline btn-lg">Contact Us</a>
       </div>
     </div>
   </section>
 
+  <!-- Sticky mobile register bar -->
+  <a href="#register" id="ns-sticky-cta" class="btn btn-gold" aria-label="Register for National Shield">Register Now &rarr;</a>
+
   <Footer />
 </Layout>
+
+<script>
+  import { executeRecaptcha } from '../../../utils/recaptcha';
+
+  const form = document.getElementById('registration-form') as HTMLFormElement | null;
+  const successMsg = document.getElementById('registration-success') as HTMLElement | null;
+
+  function setError(id: string, msg: string) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = msg;
+  }
+  function clearErrors() {
+    document.querySelectorAll('#registration-form .form-error').forEach((el) => (el.textContent = ''));
+  }
+  const val = (id: string) => (document.getElementById(id) as HTMLInputElement).value.trim();
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    let valid = true;
+    if (!val('reg-parent-first')) { setError('err-parent-first', 'Required.'); valid = false; }
+    if (!val('reg-parent-last')) { setError('err-parent-last', 'Required.'); valid = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('reg-email'))) { setError('err-email', 'Enter a valid email.'); valid = false; }
+    if (!val('reg-athlete-name')) { setError('err-athlete-name', 'Required.'); valid = false; }
+    if (!val('reg-athlete-age')) { setError('err-athlete-age', 'Required.'); valid = false; }
+    if (!(document.getElementById('schedule-ack') as HTMLInputElement).checked) { setError('err-ack', 'Please confirm acknowledgment.'); valid = false; }
+    if (!valid) return;
+
+    const btn = document.getElementById('reg-submit-btn') as HTMLButtonElement;
+    const original = btn.innerHTML;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const token = await executeRecaptcha('registration');
+      const data = new FormData(form);
+      if (token) data.set('g-recaptcha-response', token);
+      const resp = await fetch('/registration.php', { method: 'POST', body: data });
+      const result = await resp.json().catch(() => ({}));
+      if (resp.ok && result.success !== false) {
+        form.style.display = 'none';
+        successMsg?.classList.add('show');
+        document.getElementById('registration-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        btn.innerHTML = original;
+        btn.disabled = false;
+        alert(result.error || result.message || 'Something went wrong. Please email info@naacanada.org directly.');
+      }
+    } catch {
+      form.submit();
+    }
+  });
+</script>
+
+<style>
+  .ns-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  #ns-sticky-cta {
+    display: none;
+  }
+  @media (max-width: 900px) {
+    .ns-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    #ns-sticky-cta {
+      display: inline-flex;
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+</style>

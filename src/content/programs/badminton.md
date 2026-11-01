@@ -1,9 +1,9 @@
 ---
 id: badminton
 order: 3
-name: Badminton Academy
+name: National Smash - Badminton
 navTitle: Badminton
-shortName: Badminton
+shortName: National Smash
 badge: Racket Mechanics & Court Agility
 subtitle: Grip Precision, Footwork Ladders & Fast-Twitch Agility
 tagline: High-speed reflexes, deceptive racket angles, and master court footwork.
@@ -12,77 +12,93 @@ icon: 🏸
 color: '#021F47'
 accentColor: '#DDAA40'
 bgColor: 'rgba(2,31,71,0.08)'
-description: Specialized badminton coaching covering forehand and backhand grip mechanics, 6-corner court footwork, clear, drop, smash, and net-kill shot execution, with tactical singles and doubles matchplay.
-ages: Ages 7–16 (Discover, Develop, Advance)
-ratio: 1:8 to 1:12 Coach-to-Athlete Ratio
-venue: Community Fieldhouses & School Gymnasiums
-seasonDuration: 16–20 Sessions (October – December Fall Block)
-sessionsPerWeek: 16–20 Total Sessions (Detailed schedule coming soon)
-blockWeeks: 12
-blockPrice: 175
-hourlyRate: 17.5
+description: "Specialized badminton coaching covering forehand and backhand grip mechanics, 6-corner court footwork, clear, drop, smash, and net-kill shot execution, with tactical singles and doubles matchplay."
+ages: "Ages 6–16 (Smash Juniors: 6–10, Smash Elite: 11–16, Smash Pro: 11–16)"
+ratio: "1:8 to 1:15 Coach-to-Athlete Ratio"
+venue: "Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2"
+seasonDuration: "Jan 26 – Mar 11, 2027 (10 Sessions) · Tuesdays & Thursdays"
+sessionsPerWeek: "2× / week · 45 min / session · Slot 1: 6:00–6:45 PM or Slot 2: 6:45–7:30 PM"
+blockWeeks: 7
+blockPrice: 125
+hourlyRate: 0
 paymentPlan: true
 highlights:
-  - Structured 16–20 session Fall block (Oct – Dec) with progressive weekly curricula
-  - Strict 1:8 to 1:12 athlete-to-coach ratio ensuring individualized racket technique
-  - Systematic progression across all 6 corners of the badminton court
-  - High-grade Yonex feather and durable nylon shuttles provided
-  - Singles strategic court coverage and doubles rotation dynamics
-  - End-of-block NAA Athlete Progress Report card and speed benchmarks
+  - "Registration opens November 1, 2026 on TeamLinkt"
+  - "Jan 26 – Mar 11, 2027 · Selected Tuesdays & Thursdays"
+  - "Slot 1: 6:00–6:45 PM or Slot 2: 6:45–7:30 PM (45 mins)"
+  - "Venue: Green Gym, Centre for Kinesiology and Health Studies (University of Regina)"
+  - "Smash Juniors (Ages 6–10): $150 CAD · Smash Elite (Ages 11–16): $175 CAD · Smash Pro (Intensive): $295 CAD"
+  - "Mandatory Training Kit Fee: $30 CAD per athlete (in addition to tuition)"
+  - "Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)"
+  - "Smash Pro: 6:00–7:30 PM, 90-min intensive tactical training & matchplay"
+  - "10% Sibling Discount for 2nd registered child, applied through the TeamLinkt system at checkout"
+  - "55-minute sessions strictly paced (max 90-second instructions — athletes learn by hitting)"
+  - "Strict 1:8 to 1:15 athlete-to-coach ratios ensuring individualized racket technique"
+  - "High-grade Yonex practice nylon shuttles (Mavis 300/350) provided; athletes bring their own racket"
+  - "End-of-block NAA Athlete Progress Report card and individual skill evaluations"
 skillsFocus:
-  - V-Grip, Backhand Thumb-Grip & Panhandle Transition Mechanics
-  - Split-Step, Chassé Steps & Scissor-Kick Court Footwork
-  - Forehand Overhead Clear, Fast Drop & Steep Smash Angles
-  - Underhand Lift, Drive Volleys & Net Tumble / Spin Placements
-  - High Singles Serve & Low Flick Doubles Serve Mastery
-  - Singles Cross-Court Deception & Doubles Front-Back / Side-Side Rotations
+  - "Shake-Hands V-Grip, Backhand Thumb-Press & Instant Grip Switching"
+  - "Split-Step Timing, Agility Footwork Ladders & 6-Corner Court Cadence"
+  - "Underhand High Serves, Low Backhand Flick Serves & 3rd-Shot Patterns"
+  - "High Overhead Clears, Scissor-Kick Transitions & Rear-Court Depth"
+  - "Gentle Drops, Slow/Fast Slices, Tight Tumbling Net Spins & Brush Net Kills"
+  - "Flat-Trajectory Mid-Court Drives, Jump Smash Power & Reflexive Defense Blocks"
+  - "Doubles Rotational Systems (Attack Front/Back vs. Defend Side-by-Side) & Tournament Matchplay"
 tiers:
-  - name: Discover Badminton
-    badge: Hand-Eye Start
-    ages: Ages 7–9
-    format: 16–20 Sessions (Oct – Dec) · 60 min · Schedule coming soon
-    focus: Basic grip mechanics, hand-eye coordination drills, racket swing arcs, shuttle tracking, and fun target games.
-    ratio: '1:8 Coach Ratio'
+  - name: "Smash Juniors"
+    badge: "Ages 6–10 · 45-min batches · $150 CAD"
+    ages: "Ages 6–10"
+    format: "10 sessions · 45 min · $150 CAD"
+    focus: "Physical literacy, hand-eye coordination, neutral grip habits, underhand serving accuracy, court boundary games, gentle net drops, swat attacks, and Jamboree mini-meet competition."
+    ratio: "1:8 to 1:10 Coach Ratio"
     curriculum:
-      - Proper handshake V-grip and wrist looseness
-      - Shuttle juggling, bouncing, and target striking
-      - High clear swing form and underhand serving
-      - Fun mini-court target games and agility relays
-  - name: Develop Badminton
-    badge: Court Mastery
-    ages: Ages 10–13
-    format: 16–20 Sessions (Oct – Dec) · 60–75 min · Schedule coming soon
-    focus: 6-corner footwork cadence, forehand clears, fast drops, backhand lifts, net spins, and structured singles gameplay.
-    ratio: '1:10 Coach Ratio'
+      - "Shake-hands V-grip, pancake grip elimination, birdie balance relay"
+      - "Rocket Launch high underhand serves, Battleship hoop target scoring"
+      - "Agility ladder footwork, bunny hops, Hungry Hippos birdie collection"
+      - "Scissor-throw mechanics, 12 o'clock contact, Sky Ball high rallies"
+      - "Gentle tape drops, soft hands drills, Drop the Bomb basket targets"
+      - "Short-distance wall volleys, mid-court slap drills, Dodge-Rally game"
+      - "Monster Swat downward attacks, Shield Protectors coach lob defense"
+      - "Jamboree Mini-Meet, rotating partner matches, achievement certificates"
+  - name: "Smash Elite"
+    badge: "Ages 11–16 · 45-min batches · $175 CAD"
+    ages: "Ages 11–16"
+    format: "10 sessions · 45 min · $175 CAD"
+    focus: "Tactical footwork, split-step timing, forehand/backhand grip switching, low backhand flick serves, baseline attacking clears, spinning net tumbles, flat drives, jump smashes, doubles rotations, and sudden-death tournament matchplay."
+    ratio: "1:12 to 1:15 Coach Ratio"
     curriculum:
-      - Split-step timing and recovery to base position
-      - Deep overhead clears and deceptive slice drop shots
-      - Low doubles serve consistency and net kill reactions
-      - Singles rally strategy, energy conservation, and court positioning
-  - name: Advance Badminton
-    badge: Competitive Matchplay
-    ages: Ages 14–16
-    format: 16–20 Sessions (Oct – Dec) · 75–90 min · Schedule coming soon
-    focus: Jump smashes, steep smash angles, drive exchanges, doubles rotation schemes, match tactics, and tournament prep.
-    ratio: '1:12 Coach Ratio'
-    curriculum:
-      - Explosive jump-smash footwork and steep angle finishing
-      - High-speed flat drive exchanges and counter-attacking
-      - Doubles tactical attack formation and defensive shifting
-      - Full competitive singles & doubles ladder tournament play
+      - "Forehand vs. backhand bevel grips, split-step timing, rapid-fire feed reactions"
+      - "Low backhand flick serves, deceptive service variations, 3-shot rally battles"
+      - "6-corner timed shadow ghosting, heel-to-toe lunges, push-off recoveries"
+      - "Attacking clears vs. defensive high clears, scissor kicks, deep line targets"
+      - "Slow/fast disguised slice drops, hair-pin net tumbles, Cat-and-Mouse net battles"
+      - "2v2 flat drive battles down the tramlines, thumb-press punch drives, Speed Trap rallies"
+      - "Jump smash mechanics & steep angles, defense blocks, Attack vs. Defense Gauntlet"
+      - "Doubles rotation (front/back vs. side-by-side), Sudden-Death Grudge Cup (to 11 pts)"
 whatsIncluded:
-  - Official NAA Badminton Academy Shirt
-  - High-grade nylon and feather shuttles provided for all sessions
-  - 16–20 sessions of structured coaching (Oct – Dec) with 1:8 to 1:12 coach ratio
-  - End-of-block NAA Badminton Progress Report
-  - Dedicated team communications and notifications
+  - "Smash Juniors (Ages 6–10): $150 CAD · 10 sessions"
+  - "Smash Elite (Ages 11–16): $175 CAD · 10 sessions"
+  - "16 screened, Safe Sport–trained coach-led 55-minute training sessions (2× / week)"
+  - "Smash Pro (Intensive tactical training & matchplay): $295 CAD · 10 sessions · 6:00–7:30 PM"
+  - "Mandatory Training Kit Fee: $30 CAD per athlete (in addition to tuition)"
+  - "Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)"
+  - "10% Sibling Discount for 2nd registered child, applied through the TeamLinkt system at checkout"
+  - "High-grade Yonex practice nylon shuttles provided for all drills"
+  - "End-of-block NAA Badminton Progress Report card & skill evaluation"
+  - "Dedicated team communications & schedule updates via the TeamLinkt app"
 faqs:
-  - question: Do athletes need to bring their own badminton racket?
-    answer: Athletes are encouraged to bring their own standard badminton racket, but NAA provides high-quality loaner rackets at every session for participants who do not have one.
-  - question: What shoes should athletes wear?
-    answer: Clean, non-marking indoor court shoes with good lateral support and grip are essential. Running shoes with heavy black soles or outdoor gravel are not permitted on the hardwood courts.
-  - question: Is badminton suitable for beginners?
-    answer: Yes! Badminton is one of the most accessible sports for developing foundational hand-eye reactivity and footwork, and our Discover & Develop tiers cater directly to beginners.
+  - question: "Do athletes need to bring their own badminton racket?"
+    answer: "Yes. Athletes must bring their own standard badminton racket. NAA does not provide rackets, but Yonex practice shuttles are provided for all drills."
+  - question: "What footwear and equipment are required?"
+    answer: "Clean, non-marking indoor court shoes with good lateral support are mandatory to protect gymnasium hardwood and player ankles. Comfortable athletic shorts/t-shirt and a water bottle are required. Shuttles and training gear are fully provided by NAA."
+  - question: "Is badminton suitable for beginners?"
+    answer: "Yes! Badminton is one of the most accessible sports for developing foundational hand-eye reactivity and footwork. Smash Juniors (Ages 6–10) and Smash Elite (Ages 11–16) are open, mixed-level classes where beginners and advanced players train together. Smash Pro is the intensive batch for high-level tactical training and matchplay."
+  - question: "How long are the sessions and what is the pacing?"
+    answer: "Sessions are strictly 45 minutes. Coaches follow a strict 90-second maximum instruction/demonstration pacing rule so kids spend their time active and hitting shuttles, not listening to long lectures."
+  - question: "When are final schedules and training groups confirmed?"
+    answer: "Final schedules and training group assignments will be confirmed in the TeamLinkt app once registrations and facility allocations are complete."
+  - question: "How are schedules and team updates delivered?"
+    answer: "Families are required to use the TeamLinkt app for all live schedules, venue locations, roster updates, and program communications."
 ---
 
-Badminton is the world's fastest racket sport, demanding exceptional cardiovascular endurance, hand-eye reactivity, and explosive multi-directional footwork. The NAA Badminton Academy provides structured technical instruction for Regina youth, transforming recreational backyard play into crisp, competitive court mastery under certified coaches.
+Badminton is the world's fastest racket sport, demanding exceptional cardiovascular endurance, hand-eye reactivity, and explosive multi-directional footwork. The NAA Badminton Academy provides structured technical instruction for youth, transforming recreational backyard play into crisp, competitive court mastery under screened, Safe Sport–trained coaches across our progressive 8-week curriculum.

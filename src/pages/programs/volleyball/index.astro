@@ -6,16 +6,70 @@ import { activePrograms } from '../../../data/programs';
 
 const program = activePrograms.find((p) => p.slug === 'volleyball')!;
 const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": program.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+
+const sportsActivityLocationSchema = {
+  "@type": "SportsActivityLocation",
+  "@id": "https://naacanada.org/programs/volleyball/#location",
+  "name": "NAA Volleyball Court - Green Gym, Centre for Kinesiology and Health Studies",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3737 Wascana Parkway",
+    "addressLocality": "Regina",
+    "addressRegion": "SK",
+    "postalCode": "S4S 0A2",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.4185,
+    "longitude": -104.5889
+  }
+};
+
+const sportsEventSchema = {
+  "@type": "SportsEvent",
+  "name": "NAA Youth Volleyball Academy — Winter 2027 Season",
+  "description": program.description,
+  "startDate": "2027-01-26T18:00:00-06:00",
+  "endDate": "2027-03-11T19:30:00-06:00",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": sportsActivityLocationSchema,
+  "organizer": {
+    "@id": "https://naacanada.org/#organization"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "205",
+    "highPrice": "225",
+    "priceCurrency": "CAD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://naacanada.org/programs/volleyball/"
+  }
+};
 ---
 
 <Layout
-  title={`${program.name} | National Athletics Academy Regina`}
-  description={program.description}
+  title="Youth Volleyball Training & Leagues in Regina, SK | NAA"
+  description="Youth volleyball training programs in Regina, SK. Skill development, passing, setting, and team play for kids and teens in Saskatchewan."
+  schemaGraph={[faqSchema, sportsActivityLocationSchema, sportsEventSchema]}
 >
   <Header />
 
   <!-- Hero Header -->
-  <section class="page-hero" style="background:linear-gradient(160deg, #010f24 0%, #021F47 50%, #83161B 100%);padding:5rem 0 4rem;position:relative;overflow:hidden;">
+  <section class="page-hero" style="background:linear-gradient(160deg, #010f24 0%, #021F47 50%, #83161B 100%);padding:9.75rem 0 7.5rem;position:relative;overflow:hidden;">
     <div style="position:absolute;top:-40%;right:-10%;width:550px;height:550px;background:radial-gradient(circle,rgba(221,170,64,0.14) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
     <div style="position:absolute;bottom:-30%;left:-5%;width:450px;height:450px;background:radial-gradient(circle,rgba(131,22,27,0.2) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
 
@@ -31,9 +85,8 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
 
       <div style="max-width:840px;">
         <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.35);border-radius:9999px;padding:0.4rem 1.1rem;margin-bottom:1.25rem;">
-          <span style="font-size:1.1rem;">{program.emoji}</span>
           <span style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;text-transform:uppercase;">
-            Program 02 · {program.badge}
+            Program 02 &bull; {program.badge}
           </span>
         </div>
 
@@ -50,7 +103,7 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
         </p>
 
         <!-- Quick Specs Strip -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;overflow:hidden;">
           <div>
             <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Age Groups</div>
             <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">{program.ages.split('(')[0]}</div>
@@ -61,17 +114,108 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
           </div>
           <div>
             <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Block Length</div>
-            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">10 Weeks (75 min)</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">10 Classes &middot; 2&times;/wk &middot; 45 min</div>
           </div>
           <div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Tuition</div>
-            <div style="font-size:0.95rem;font-weight:700;color:var(--color-naa-gold);margin-top:0.25rem;">${program.blockPrice} / block</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Tuition Fees</div>
+            <div style="font-size:0.92rem;font-weight:700;color:var(--color-naa-gold);margin-top:0.25rem;white-space:nowrap;">$205 &ndash; $225 CAD</div>
+          </div>
+        </div>
+
+        <!-- 1. Fall 2026 Church Program Banner (Currently In Session) -->
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(221,170,64,0.35);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:1.25rem;">
+          <div style="display:flex;flex-wrap:gap:1rem;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <span style="display:inline-block;padding:0.25rem 0.65rem;border-radius:6px;background:rgba(16,185,129,0.25);color:#34d399;font-weight:800;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;border:1px solid rgba(16,185,129,0.5);">Currently In Session</span>
+              <div>
+                <div style="font-family:var(--font-outfit);font-weight:800;font-size:0.9rem;color:white;text-transform:uppercase;letter-spacing:0.07em;">Fall 2026 Program &bull; Knox-Met Fellowship Hall Gym</div>
+                <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);margin-top:0.2rem;">Location: 2340 Victoria Ave, Downtown Regina &bull; Oct 22 &ndash; Dec 10, 2026 &bull; Total 16 Classes</div>
+              </div>
+            </div>
+            <a href="https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253" target="_blank" rel="noopener noreferrer" style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:white;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:0.45rem 1rem;text-decoration:none;">TeamLinkt Portal &rarr;</a>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+            <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.85rem 1rem;">
+              <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.9rem;margin-bottom:0.25rem;">Spike Foundations &bull; Ages 8–12 (16 Classes)</div>
+              <div style="font-size:0.85rem;color:white;">7:00 PM &ndash; 8:00 PM (60 mins) &middot; Oct 22 &ndash; Dec 10, 2026</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">$205 CAD &middot; Low-impact Mikasa trainer balls &amp; adjusted nets</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.85rem 1rem;">
+              <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.9rem;margin-bottom:0.25rem;">Spike Elite &bull; Ages 13–16 (16 Classes)</div>
+              <div style="font-size:0.85rem;color:white;">7:00 PM &ndash; 8:00 PM (60 mins) &middot; Oct 22 &ndash; Dec 10, 2026</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">$225 CAD &middot; Float serving, spike approach, 6v6 match play</div>
+            </div>
+          </div>
+
+          <!-- Detailed 16-Session Calendar Breakdown -->
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(221,170,64,0.25);border-radius:12px;padding:1.15rem 1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:0.85rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.6rem;">
+              <div style="font-family:var(--font-outfit);font-weight:800;color:var(--color-naa-gold);font-size:0.95rem;text-transform:uppercase;letter-spacing:0.05em;">
+                🗓️ Detailed Schedule &amp; Session Dates (All 16 Sessions · 7:00 PM – 8:00 PM)
+              </div>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.7);font-weight:600;">60 mins / class</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
+              <!-- Phase 1 -->
+              <div>
+                <div style="font-family:var(--font-outfit);font-weight:700;color:white;font-size:0.85rem;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem;">
+                  <span style="color:var(--color-naa-gold);">●</span> Phase 1: October &ndash; November 13 (Thursdays &amp; Fridays)
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;font-size:0.8rem;color:rgba(255,255,255,0.85);">
+                  <div>Thursday, October 22</div>
+                  <div>Friday, October 23</div>
+                  <div>Thursday, October 29</div>
+                  <div>Friday, October 30</div>
+                  <div>Thursday, November 5</div>
+                  <div>Friday, November 6</div>
+                  <div>Thursday, November 12</div>
+                  <div>Friday, November 13</div>
+                </div>
+              </div>
+
+              <!-- Phase 2 -->
+              <div>
+                <div style="font-family:var(--font-outfit);font-weight:700;color:white;font-size:0.85rem;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem;">
+                  <span style="color:var(--color-naa-gold);">●</span> Phase 2: November 17 Onward (Tuesdays &amp; Thursdays)
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;font-size:0.8rem;color:rgba(255,255,255,0.85);">
+                  <div>Tuesday, November 17</div>
+                  <div>Thursday, November 19</div>
+                  <div>Tuesday, November 24</div>
+                  <div>Thursday, November 26</div>
+                  <div>Tuesday, December 1</div>
+                  <div>Thursday, December 3</div>
+                  <div>Tuesday, December 8</div>
+                  <div>Thursday, December 10</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fall Schedule Confirmation & TeamLinkt Guidelines -->
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem;font-size:0.85rem;color:rgba(255,255,255,0.85);line-height:1.5;">
+            <div>
+              <strong style="color:var(--color-naa-gold);display:block;margin-bottom:0.25rem;">Live Schedules in TeamLinkt</strong>
+              Court allocations and check-in tables at Knox-Met Fellowship Hall Gym are updated in real time through the TeamLinkt app.
+            </div>
+            <div>
+              <strong style="color:var(--color-naa-gold);display:block;margin-bottom:0.25rem;">Training Balls &amp; Nets</strong>
+              Mikasa lightweight trainer balls and age-adjusted net heights are set up for every practice. Non-marking court shoes required.
+            </div>
+            <div>
+              <strong style="color:var(--color-naa-gold);display:block;margin-bottom:0.25rem;">Safe Sport Standards</strong>
+              All coaches undergo police background screening (CRC-VSS), Respect in Sport, and CAC Rule of Two enforcement.
+            </div>
           </div>
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
-          <a href="/registration/" class="btn btn-gold btn-lg">
-            Register for Volleyball &rarr;
+          <a href="https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">
+            Register for Fall Volleyball (Knox-Met Church) &rarr;
           </a>
           <a href="/contact/" class="btn btn-outline btn-lg">
             Contact Coaching Desk
@@ -81,10 +225,11 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
     </div>
   </section>
 
+
   <!-- Detailed Overview Section -->
   <section class="section-padding" style="background:#ffffff;" aria-labelledby="overview-heading">
     <div class="container-naa">
-      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:start;">
+      <div class="naa-overview-split">
         <div class="reveal">
           <span class="badge" style="background:rgba(131,22,27,0.1);color:var(--color-naa-maroon);margin-bottom:1rem;">Technical Precision</span>
           <h2 id="overview-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.4rem);margin-bottom:1.25rem;">
@@ -94,7 +239,7 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
             {program.longDescription}
           </p>
           <p style="color:#4b5563;font-size:0.95rem;line-height:1.75;margin-bottom:2rem;">
-            Our Volleyball Canada certified coaches use progressive net heights and soft-touch trainer volleyballs, ensuring players develop correct shoulder shrugs, forearm platform angles, and wrist snap mechanics without arm stinging or bad habits.
+            Our screened, Safe Sport–trained coaches (including Volleyball Canada trained leadership) use progressive net heights and soft-touch trainer volleyballs, ensuring players develop correct shoulder shrugs, forearm platform angles, and wrist snap mechanics without arm stinging or bad habits.
           </p>
 
           <h3 style="font-family:var(--font-outfit);font-size:1.15rem;color:var(--color-naa-navy);margin-bottom:1rem;">
@@ -110,28 +255,80 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
           </div>
         </div>
 
-        <!-- Right: Highlights Card -->
-        <div class="card reveal" style="padding:2.5rem 2rem;background:linear-gradient(145deg, #f8fafc 0%, #ffffff 100%);border:1px solid #e2e8f0;border-top:5px solid var(--color-naa-maroon);">
-          <div style="font-size:2rem;margin-bottom:0.75rem;">🏐</div>
-          <h3 style="font-family:var(--font-outfit);font-size:1.25rem;color:var(--color-naa-navy);margin-bottom:1.25rem;">
-            Program Standards &amp; Inclusions
-          </h3>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
-            {program.highlights.map((item) => (
-              <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:#334155;line-height:1.6;">
-                <span style="color:var(--color-naa-gold);font-weight:900;font-size:1rem;flex-shrink:0;">★</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div style="background:rgba(131,22,27,0.05);border-radius:12px;padding:1.25rem;border-left:4px solid var(--color-naa-maroon);">
-            <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-maroon);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">
-              Venues Across Regina
+        <!-- Right: Highlights Card with Action Photo -->
+        <div class="card reveal" style="padding:0;overflow:hidden;background:linear-gradient(145deg, #f8fafc 0%, #ffffff 100%);border:1px solid #e2e8f0;border-top:5px solid var(--color-naa-maroon);">
+          <div style="position:relative;height:220px;overflow:hidden;background:#0B192C;">
+            <img
+              src="/images/programs/volleyball-action-1.webp"
+              alt="National Spike Volleyball athletes practicing pass and attack mechanics on court"
+              style="width:100%;height:100%;object-fit:cover;"
+              loading="lazy"
+            />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(11,25,44,0.85) 0%, transparent 60%);"></div>
+            <div style="position:absolute;bottom:1rem;left:1.25rem;right:1.25rem;display:flex;justify-content:space-between;align-items:flex-end;">
+              <div>
+                <span class="badge" style="background:rgba(131,22,27,0.9);color:white;font-weight:800;font-size:0.7rem;text-transform:uppercase;">On Court</span>
+                <div style="color:white;font-weight:800;font-size:0.95rem;margin-top:0.25rem;font-family:var(--font-outfit);">Knox-Met Fellowship Hall Gym (Downtown Regina)</div>
+              </div>
             </div>
-            <p style="font-size:0.85rem;color:#475569;line-height:1.5;">
-              {program.venue}
-            </p>
           </div>
+
+          <div style="padding:2rem;">
+            <h3 style="font-family:var(--font-outfit);font-size:1.2rem;color:var(--color-naa-navy);margin-bottom:1.25rem;">
+              Program Standards &amp; Inclusions
+            </h3>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;">
+              {program.highlights.map((item) => (
+                <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:#334155;line-height:1.6;">
+                  <span style="color:var(--color-naa-gold);font-weight:900;font-size:1rem;flex-shrink:0;">★</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div style="background:rgba(131,22,27,0.05);border-radius:12px;padding:1.25rem;border-left:4px solid var(--color-naa-maroon);">
+              <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-maroon);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">
+                Venue
+              </div>
+              <p style="font-size:0.85rem;color:#475569;line-height:1.5;margin:0;">
+                {program.venue}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Action Showcase Gallery -->
+  <section class="section-padding" style="background:#0B192C;color:white;padding:4.5rem 0;" aria-label="Volleyball photo gallery">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <span class="badge" style="background:rgba(245,158,11,0.15);color:var(--color-naa-gold);border:1px solid rgba(245,158,11,0.3);margin-bottom:0.75rem;">Authentic Court Action</span>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:white;margin-bottom:0.75rem;">
+          Volleyball in Action &mdash; Technical Court Reps
+        </h2>
+        <p style="color:rgba(255,255,255,0.8);max-width:620px;margin:0 auto;font-size:0.95rem;line-height:1.7;">
+          Focused skill development at Knox-Met Fellowship Hall Gym (Downtown Regina). Overhand serve consistency, platform passing angles, and spike approach footwork.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+        <div class="reveal" style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.3);aspect-ratio:4/3;">
+          <img src="/images/programs/volleyball-action-1.webp" alt="Volleyball athletes setting and hitting drills" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
+          <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">Overhand Setting &amp; Net Attacks</div>
+        </div>
+
+        <div class="reveal" style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.3);aspect-ratio:4/3;">
+          <img src="/images/programs/volleyball-portrait-1.webp" alt="Regina youth volleyball player in forearm passing ready stance" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
+          <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">Platform Angle &amp; Serve Receive</div>
+        </div>
+
+        <div class="reveal" style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.3);aspect-ratio:4/3;">
+          <img src="/images/programs/volleyball-portrait-2.webp" alt="Youth volleyball athlete in jumping approach" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
+          <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">3-Contact Team Rallies</div>
         </div>
       </div>
     </div>
@@ -190,10 +387,13 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
               </div>
             </div>
 
-            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;">
-              <a href="/registration/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
-                Register for {tier.name} &rarr;
+            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;gap:0.5rem;">
+              <a href={program.teamLinktUrl || '/registration/'} target={program.teamLinktUrl ? '_blank' : undefined} rel={program.teamLinktUrl ? 'noopener noreferrer' : undefined} class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
+                Register for Fall Volleyball (Knox-Met Church) &rarr;
               </a>
+              <div style="font-size:0.75rem;color:#64748b;text-align:center;">
+                Winter 2027 (U of R Green Gym) registration opens Nov 1, 2026
+              </div>
             </div>
           </div>
         ))}
@@ -204,8 +404,8 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
   <!-- Tuition & What's Included Card -->
   <section class="section-padding" style="background:#ffffff;" aria-labelledby="tuition-heading">
     <div class="container-naa">
-      <div style="background:linear-gradient(135deg,var(--color-naa-navy) 0%,#0a3a7a 100%);border-radius:24px;padding:3.5rem 3rem;color:white;position:relative;overflow:hidden;">
-        <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;align-items:center;">
+      <div class="naa-feature-banner" style="background:linear-gradient(135deg,var(--color-naa-navy) 0%,#0a3a7a 100%);color:white;">
+        <div class="naa-report-split">
           <div>
             <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1rem;">
               NAA Quality Standard
@@ -221,7 +421,7 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
                 <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Respect in Sport certified staff
               </div>
               <div style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.9);font-size:0.88rem;">
-                <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> 10% sibling & 2nd sport discounts
+                <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> 10% sibling discount
               </div>
               <div style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.9);font-size:0.88rem;">
                 <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Dedicated parent communication feed
@@ -311,10 +511,10 @@ const otherPrograms = activePrograms.filter((p) => p.slug !== 'volleyball');
           Step Onto the Volleyball Court in Regina
         </h2>
         <p style="color:rgba(255,255,255,0.85);max-width:560px;margin:0 auto 2rem;line-height:1.7;">
-          Enroll now to secure your spot in upcoming 10-week seasonal volleyball blocks. All skill levels welcome.
+          Registration is currently open for Fall 2026 volleyball sessions at Knox-Met Church. Winter 2027 (U of R Green Gym) registration opens November 1, 2026.
         </p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="/registration/" class="btn btn-gold btn-lg">Register for Volleyball Now</a>
+          <a href="https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">Register for Fall Volleyball (Knox-Met Church) &rarr;</a>
           <a href="/contact/" class="btn btn-outline btn-lg">Contact Coaching Desk</a>
         </div>
       </div>

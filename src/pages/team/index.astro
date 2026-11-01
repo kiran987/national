@@ -1,0 +1,234 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { coaches, directors, leadership } from '../../data/coaches';
+---
+
+<Layout
+  title="Our Executive Leadership & Coaching Staff in Regina, SK | NAA"
+  description="Meet the board of directors, leadership, and coaching staff at National Athletics Academy Inc. in Regina, Saskatchewan."
+>
+  <Header />
+
+  <!-- Page Hero -->
+  <section class="page-hero" aria-labelledby="team-heading">
+    <div class="container-naa" style="position:relative;z-index:1;text-align:center;">
+      <div class="animate-fade-up">
+        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1.25rem;">Our Organization</span>
+        <h1 id="team-heading" style="font-size:clamp(2rem,5vw,3.5rem);color:white;margin-bottom:1rem;">Our Team</h1>
+        <p style="color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:620px;margin:0 auto;">
+          The board of directors, operations leadership, and certified coaching staff guiding National Athletics Academy Inc. in Regina, Saskatchewan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coach Standards Banner -->
+  <section style="background:var(--color-naa-grey);padding:3rem 0;" aria-label="Coach standards">
+    <div class="container-naa">
+      <div class="naa-grid-4 reveal">
+        {[
+          { icon: 'cert', title: 'Safe Sport Trained', text: 'Sport-specific coaching credentials or Safe Sport training for every coach' },
+          { icon: 'shield', title: 'Respect in Sport', text: 'Required Respect in Sport certification for all NAA coaches and activity leaders' },
+          { icon: 'search', title: 'Screened', text: 'Criminal record check with vulnerable sector screening via Regina Police Service' },
+          { icon: 'heart', title: 'First Aid & CPR', text: 'Valid First Aid / CPR-C required for all coaches before their first session' },
+        ].map((standard) => (
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:12px;background:rgba(2,31,71,0.08);color:var(--color-naa-navy);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+              {standard.icon === 'cert' && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>}
+              {standard.icon === 'shield' && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>}
+              {standard.icon === 'search' && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>}
+              {standard.icon === 'heart' && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>}
+            </div>
+            <h3 style="font-family:var(--font-outfit);font-size:1rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">{standard.title}</h3>
+            <p style="font-size:0.85rem;color:#6b7280;line-height:1.6;">{standard.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Academy Leadership Directory Section -->
+  <section class="section-padding" style="background:#ffffff;border-bottom:1px solid #e5e7eb;" aria-labelledby="leadership-heading">
+    <div class="container-naa" style="max-width:860px;">
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:0.75rem;">Who We Are</span>
+        <h2 id="leadership-heading" class="gold-accent-center" style="font-size:clamp(1.75rem,3vw,2.25rem);">Academy Leadership &amp; Coaches</h2>
+        <p style="color:#4b5563;font-size:0.95rem;max-width:600px;margin:0.5rem auto 0;line-height:1.65;">
+          A simple, community-first directory of our governance directors, operations leads, and certified instructors in Regina.
+        </p>
+      </div>
+
+      <!-- 1. Board of Directors (Governance & Community Oversight) -->
+      <div class="reveal" style="margin-bottom:2.5rem;background:#fbfcfd;border:1px solid #e2e8f0;border-left:4px solid var(--color-naa-gold);border-radius:14px;padding:1.75rem 2rem;">
+        <div style="margin-bottom:1.25rem;">
+          <h3 style="font-family:var(--font-outfit);font-weight:700;font-size:1.25rem;color:var(--color-naa-navy);margin-bottom:0.2rem;">
+            Board of Directors
+          </h3>
+          <p style="color:#64748b;font-size:0.85rem;font-style:italic;margin:0;">
+            (Governance &amp; Community Oversight)
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1rem;">
+          {directors.map((dir) => (
+            <div style="background:white;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:1.05rem;">
+                  {dir.name}
+                </div>
+                <div style="font-size:0.8rem;color:#64748b;font-weight:600;margin-top:0.1rem;">
+                  {dir.role}
+                </div>
+              </div>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--color-naa-navy);background:rgba(2,31,71,0.06);padding:0.25rem 0.55rem;border-radius:6px;text-transform:uppercase;letter-spacing:0.04em;">
+                Board
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 2. Operations & Coaching Leadership (On-Court Delivery & Logistics) -->
+      <div class="reveal" style="background:#ffffff;border:1px solid #e2e8f0;border-left:4px solid var(--color-naa-navy);border-radius:14px;padding:1.75rem 2rem;box-shadow:0 4px 16px rgba(2,31,71,0.04);">
+        <div style="margin-bottom:1.25rem;">
+          <h3 style="font-family:var(--font-outfit);font-weight:700;font-size:1.25rem;color:var(--color-naa-navy);margin-bottom:0.2rem;">
+            Operations &amp; Technical Leadership
+          </h3>
+          <p style="color:#64748b;font-size:0.85rem;font-style:italic;margin:0;">
+            (On-Court Delivery &amp; Day-to-Day Logistics)
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1rem;">
+          {leadership.map((leader) => (
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:1.05rem;">
+                  {leader.name}
+                </div>
+                <div style="font-size:0.8rem;color:var(--color-naa-maroon);font-weight:600;margin-top:0.1rem;">
+                  {leader.role}
+                </div>
+              </div>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--color-naa-navy);background:rgba(2,31,71,0.06);padding:0.25rem 0.55rem;border-radius:6px;text-transform:uppercase;letter-spacing:0.04em;">
+                Staff
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Coaching Staff Section -->
+  <section class="section-padding" aria-labelledby="coaches-grid-heading">
+    <div class="container-naa">
+      <div class="reveal" style="margin-bottom:3rem;text-align:center;">
+        <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:0.75rem;">Coaching Staff</span>
+        <h2 id="coaches-grid-heading" class="gold-accent-center" style="font-size:clamp(1.75rem,3vw,2.5rem);">Head Coaches</h2>
+        <p style="color:#374151;font-size:1rem;line-height:1.7;max-width:640px;margin:0.5rem auto 0;">
+          Meet our confirmed coaching staff and upcoming appointments. All NAA coaches are NCCP-registered, CRC-VSS screened, Respect in Sport trained, and complete Standard First Aid & CPR-C before their first session.
+        </p>
+      </div>
+
+      <div style="max-width:760px;margin:0 auto 3rem;display:flex;flex-direction:column;gap:1.5rem;">
+        {coaches.map((coach) => (
+          <article class="card reveal" id={coach.id}>
+            {coach.portrait && (
+              <img src={coach.portrait} alt={`${coach.name}, ${coach.role}`} width="900" height="1200" loading="lazy" style="display:block;width:100%;aspect-ratio:4/5;max-height:600px;object-fit:cover;object-position:center 10%;" />
+            )}
+            <div style="background:linear-gradient(135deg,var(--color-naa-navy) 0%,#0a3a7a 100%);padding:2.5rem 2rem;text-align:center;">
+              {coach.portrait ? null : coach.photo ? (
+                <img src={coach.photo} alt={`${coach.name}, ${coach.role}`} width="140" height="140" loading="lazy" style="width:140px;height:140px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid rgba(221,170,64,0.7);box-shadow:0 8px 24px rgba(0,0,0,0.35);margin:0 auto 1rem;display:block;" />
+              ) : (
+                <div style="width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.12);border:3px solid rgba(221,170,64,0.5);display:flex;align-items:center;justify-content:center;font-size:2.25rem;margin:0 auto 1rem;">
+                  {coach.emoji}
+                </div>
+              )}
+              <h2 style="font-family:var(--font-outfit);font-weight:700;color:white;font-size:1.25rem;margin-bottom:0.25rem;">{coach.name}</h2>
+              <p style="color:var(--color-naa-gold);font-size:0.92rem;font-weight:600;font-family:var(--font-outfit);letter-spacing:0.03em;">{coach.role}</p>
+            </div>
+            <div style="padding:2rem;">
+              <div style="font-size:0.92rem;color:#374151;line-height:1.75;margin-bottom:1.5rem;white-space:pre-line;">{coach.bio}</div>
+
+              <div style="margin-bottom:1.25rem;">
+                <p style="font-size:0.75rem;font-weight:700;font-family:var(--font-outfit);color:var(--color-naa-navy);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.5rem;">Sports &amp; Focus</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                  {coach.sports.map((sport) => (
+                    <span class="sport-tag">{sport}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p style="font-size:0.75rem;font-weight:700;font-family:var(--font-outfit);color:var(--color-naa-navy);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.5rem;">Certifications &amp; Safeguards</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                  {coach.certifications.map((cert) => (
+                    <span class="badge" style="background:rgba(131,22,27,0.08);color:var(--color-naa-maroon);font-size:0.75rem;">{cert}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+
+
+      </div>
+
+      <!-- Active Coach Onboarding & Open Positions Callout -->
+      <div class="card reveal" style="max-width:760px;margin:0 auto;padding:2rem;background:#f8fafc;border:2px dashed #cbd5e1;border-radius:16px;text-align:center;">
+        <div style="width:44px;height:44px;margin:0 auto 0.75rem;border-radius:10px;background:rgba(11,25,44,0.08);display:flex;align-items:center;justify-content:center;color:var(--color-naa-navy);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+        </div>
+        <h3 style="font-family:var(--font-outfit);font-weight:700;font-size:1.15rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
+          Additional Coaching Positions &amp; Seasonal Onboarding
+        </h3>
+        <p style="color:#4b5563;font-size:0.9rem;line-height:1.7;max-width:600px;margin:0 auto 1.5rem;">
+          We are currently interviewing and onboarding qualified, certified coaches across our upcoming programs including Badminton, Athletics (Track &amp; Field), and Tournaments. All candidates undergo mandatory criminal record checks, vulnerable sector screening, and Respect in Sport certification.
+        </p>
+        <a href="/coaching/#apply" class="btn btn-primary btn-sm">
+          Apply to Join Our Coaching Staff &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join the Team -->
+  <section style="background:var(--color-naa-navy);padding:5rem 0;" aria-labelledby="join-team-heading">
+    <div class="container-naa">
+      <div class="naa-grid-2" style="align-items:center;gap:4rem;">
+        <div class="reveal">
+          <span class="badge" style="background:rgba(221,170,64,0.15);color:var(--color-naa-gold);margin-bottom:1rem;">We're Hiring</span>
+          <h2 id="join-team-heading" style="font-size:clamp(1.75rem,3vw,2.5rem);color:white;margin-bottom:1rem;">Join the NAA Coaching Team</h2>
+          <p style="color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:2rem;">
+            National Athletics Academy Inc. is building a founding group of certified coaches across all pillars. We're looking for passionate, qualified coaches who believe in multi-sport development, long-term athlete pathways, and community-first values.
+          </p>
+          <a href="/coaching/#apply" class="btn btn-gold" id="coach-apply-btn">Apply to Coach →</a>
+        </div>
+        <div class="reveal" style="animation-delay:0.2s;">
+          <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);margin-bottom:1.25rem;font-size:1rem;letter-spacing:0.05em;text-transform:uppercase;">Minimum Requirements</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.875rem;">
+            {[
+              'NCCP sport certification (or willingness to complete one)',
+              'Valid First Aid / CPR certificate',
+              'Criminal record check including vulnerable sector screening (CRC-VSS)',
+              'Respect in Sport (Activity Leader) certified',
+              'CAC Rule of Two compliance',
+              'Experience working with youth athletes',
+            ].map((req) => (
+              <li style="display:flex;gap:0.75rem;align-items:flex-start;color:rgba(255,255,255,0.8);font-size:0.9rem;line-height:1.6;">
+                <span style="color:var(--color-naa-gold);font-size:1.1rem;flex-shrink:0;">✓</span>
+                {req}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

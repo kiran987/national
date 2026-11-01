@@ -1,58 +1,59 @@
 ---
 const socialLinks = [
-  { href: 'https://facebook.com', label: 'Facebook', icon: '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>' },
-  { href: 'https://instagram.com', label: 'Instagram', icon: '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>' },
-  { href: 'https://twitter.com', label: 'X (Twitter)', icon: '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>' },
-  { href: 'https://youtube.com', label: 'YouTube', icon: '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>' },
+  { href: 'https://www.facebook.com/naacanada', label: 'Facebook', icon: '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>' },
+  { href: 'https://www.instagram.com/naa.canada', label: 'Instagram', icon: '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>' },
 ];
 
 const programLinks = [
-  { href: '/programs/basketball/', label: '🏀 Basketball Academy' },
-  { href: '/programs/volleyball/', label: '🏐 Volleyball Academy' },
-  { href: '/programs/badminton/', label: '🏸 Badminton Academy' },
-  { href: '/programs/soccer-little-kids/', label: '⚽ Soccer Little Kids (U2–U5 with Wascana FC)' },
-  { href: '/programs/athletics/', label: '🏃 Athletics (Track & Field)' },
-  { href: '/programs/tournaments/', label: '🏆 Tournaments & Fixtures' },
-  { href: '/programs/#starting-soon', label: '🚀 More Sports Starting Soon' },
+  { href: '/dropin/', label: 'Badminton Drop-In ($5 / Session)' },
+  { href: '/programs/badminton/', label: 'Badminton Academy (In Session)' },
+  { href: '/programs/volleyball/', label: 'Volleyball Academy (In Session)' },
+  { href: '/programs/basketball/', label: 'Basketball Academy (Starting Soon)' },
+  { href: '/programs/national-shield/', label: 'National Shield Martial Arts (Starting Soon)' },
+  { href: '/programs/tournaments/badminton/national-smash-open-2027/', label: 'National Smash Open 2027 (Feb 27)' },
+  { href: '/programs/tournaments/badminton/', label: 'Badminton Tournaments (Winter & Summer)' },
+  { href: '/#gym-schedules', label: 'Gym Locations & Practice Times' },
+  { href: '/programs/', label: 'All Programs & Curricula Overview' },
 ];
 
 const academyLinks = [
-  { href: '/safety/', label: 'Safety & Safeguards' },
-  { href: '/about/', label: 'About NAA & Governance' },
-  // { href: '/coaches/', label: 'Our Certified Coaches' },
   { href: '/registration/', label: 'Register Your Athlete' },
-  { href: '/contact/', label: 'Contact Support Desk' },
+  { href: '/safety/', label: 'Saskatchewan Safe Sport & Screening' },
+  { href: '/team/', label: 'Our Leadership & Certified Coaches' },
+  { href: '/about/', label: 'About NAA & LTAD Pathway' },
+  { href: '/sponsors/', label: 'Community & Business Partners' },
+  { href: '/blog/', label: 'Parent Guides & Program News' },
+  { href: '/coaching/', label: 'Coaching Opportunities (NCCP)' },
+  { href: '/contact/', label: 'Contact Registrar & Inquiries' },
 ];
 ---
 
-<footer style="background:var(--color-naa-navy);color:white;padding-top:5rem;">
+<footer class="bg-[#021F47] text-white pt-20">
   <!-- Main footer content -->
   <div class="container-naa">
-    <div style="display:grid;grid-template-columns:1.8fr 1.2fr 1fr;gap:3.5rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.1);">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 pb-16 border-b border-white/10">
       
       <!-- Brand column -->
-      <div>
-        <a href="/" style="display:inline-flex;align-items:center;gap:1rem;margin-bottom:1.5rem;text-decoration:none;">
-          <img src="/images/naa-logo-sm.webp" alt="National Athletics Academy Logo" width="60" height="60" style="border-radius:50%;" />
+      <div class="lg:col-span-5">
+        <a href="/" class="inline-flex items-center gap-4 mb-6 no-underline" aria-label="National Athletics Academy Home">
+          <img src="/images/naa-logo-sm.webp" alt="National Athletics Academy Logo" width="60" height="60" class="rounded-full ring-2 ring-[#DDAA40]/40 shrink-0" />
           <div>
-            <div style="font-family:var(--font-outfit);font-weight:800;font-size:1.1rem;color:white;">National Athletics Academy</div>
-            <div style="font-family:var(--font-outfit);font-weight:600;font-size:0.75rem;color:var(--color-naa-gold);letter-spacing:0.1em;text-transform:uppercase;">Inc. &mdash; Regina, Canada</div>
+            <div class="font-display font-extrabold text-[1.1rem] text-white">National Athletics Academy</div>
+            <div class="font-display font-semibold text-xs text-[#DDAA40] tracking-widest uppercase">Inc. &mdash; Regina, Canada</div>
           </div>
         </a>
-        <p style="color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.7;max-width:380px;margin-bottom:2rem;">
-          Regina's premier multi-sport training and competition organization. Structured development across Basketball, Volleyball, Badminton, Soccer (U2–U5 with Wascana FC), Athletics (Track &amp; Field), and Tournaments.
+        <p class="text-white/65 text-[0.9rem] leading-[1.7] max-w-[380px] mb-8">
+          Regina's non-profit multi-sport youth organization. Structured athletic development, RPS CRC-VSS screened coaches, and low athlete ratios across our in-session Badminton &amp; Volleyball academies, plus starting soon Basketball and National Shield Martial Arts.
         </p>
         <!-- Social links -->
-        <div style="display:flex;gap:0.75rem;">
+        <div class="flex gap-3">
           {socialLinks.map((s) => (
             <a
               href={s.href}
               aria-label={s.label}
               target="_blank"
               rel="noopener noreferrer"
-              style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);transition:all 0.2s;"
-              onmouseover="this.style.background='var(--color-naa-gold)';this.style.color='var(--color-naa-navy)';"
-              onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.7)';"
+              class="flex items-center justify-center w-10 h-10 rounded-xl bg-white/[0.08] text-white/70 hover:bg-[#DDAA40] hover:text-[#021F47] transition-all duration-200"
             >
               <span set:html={s.icon} />
             </a>
@@ -61,28 +62,28 @@ const academyLinks = [
       </div>
 
       <!-- Programs Column -->
-      <div>
-        <h3 style="font-family:var(--font-outfit);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-naa-gold);margin-bottom:1.5rem;">
-          Programs (In Exact Order)
+      <div class="lg:col-span-4">
+        <h3 class="font-display font-bold text-[0.85rem] tracking-wider uppercase text-[#DDAA40] mb-6">
+          Sport Programs
         </h3>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+        <ul class="list-none flex flex-col gap-3 p-0 m-0">
           {programLinks.map((link) => (
             <li>
-              <a href={link.href} class="footer-link" style="font-size:0.88rem;">{link.label}</a>
+              <a href={link.href} class="footer-link text-[0.88rem]">{link.label}</a>
             </li>
           ))}
         </ul>
       </div>
 
       <!-- Academy Links -->
-      <div>
-        <h3 style="font-family:var(--font-outfit);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-naa-gold);margin-bottom:1.5rem;">
-          Academy Info
+      <div class="lg:col-span-3">
+        <h3 class="font-display font-bold text-[0.85rem] tracking-wider uppercase text-[#DDAA40] mb-6">
+          Get Involved
         </h3>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+        <ul class="list-none flex flex-col gap-3 p-0 m-0">
           {academyLinks.map((link) => (
             <li>
-              <a href={link.href} class="footer-link" style="font-size:0.88rem;">{link.label}</a>
+              <a href={link.href} class="footer-link text-[0.88rem]">{link.label}</a>
             </li>
           ))}
         </ul>
@@ -90,42 +91,51 @@ const academyLinks = [
     </div>
 
     <!-- Contact bar -->
-    <div style="padding:2rem 0;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);">
-      <div style="display:flex;align-items:center;gap:0.75rem;">
-        <div style="width:36px;height:36px;border-radius:8px;background:rgba(221,170,64,0.15);display:flex;align-items:center;justify-content:center;">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--color-naa-gold)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    <div class="py-8 flex flex-wrap gap-8 items-center border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-[#DDAA40]/15 flex items-center justify-center text-[#DDAA40] shrink-0">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
         </div>
-        <a href="mailto:info@nationalathletics.ca" class="footer-link" style="color:rgba(255,255,255,0.8);">info@nationalathletics.ca</a>
+        <a href="tel:3063309559" class="footer-link text-white/90 font-bold">(306) 330-9559</a>
       </div>
-      <div style="display:flex;align-items:center;gap:0.75rem;">
-        <div style="width:36px;height:36px;border-radius:8px;background:rgba(221,170,64,0.15);display:flex;align-items:center;justify-content:center;">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--color-naa-gold)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-[#DDAA40]/15 flex items-center justify-center text-[#DDAA40] shrink-0">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
-        <span style="color:rgba(255,255,255,0.8);font-size:0.9rem;">Regina, Saskatchewan, Canada</span>
+        <!--email_off--><a href="mailto:info@naacanada.org" class="footer-link text-white/90">info@naacanada.org</a><!--/email_off-->
       </div>
-      <div style="margin-left:auto;">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-[#DDAA40]/15 flex items-center justify-center text-[#DDAA40] shrink-0">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <div class="text-[0.7rem] text-[#DDAA40] font-bold tracking-wider uppercase font-display leading-none">Registered Address</div>
+          <span class="text-white/85 text-[0.88rem]">217 Broad St N, Regina, SK, S4R 2X7</span>
+        </div>
+      </div>
+      <div class="ml-auto">
         <a href="/registration/" class="btn btn-primary btn-sm">Register Now &rarr;</a>
       </div>
     </div>
 
-    <!-- Bottom bar -->
-    <div style="padding:1.5rem 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;">
-      <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;">
-        &copy; {new Date().getFullYear()} National Athletics Academy Inc. All rights reserved. Regina, Saskatchewan.
+    <!-- Bottom legal bar -->
+    <div class="py-6">
+      <p class="text-white/90 text-[0.86rem] leading-[1.7] font-display mb-1.5">
+        A registered Saskatchewan non-profit youth sports organization.
       </p>
-      <div style="display:flex;gap:1.5rem;">
-        <a href="/contact/" class="footer-link" style="font-size:0.8rem;">Privacy Policy</a>
-        <a href="/contact/" class="footer-link" style="font-size:0.8rem;">Terms of Use</a>
+      <p class="text-xs text-white/55 mb-3">
+        National Shield - Martial Arts is a program division operated by National Athletics Academy Inc.
+      </p>
+      <div class="flex flex-wrap justify-between items-center gap-4 pt-3 border-t border-white/[0.06]">
+        <p class="text-white/40 text-[0.78rem]">
+          &copy; {new Date().getFullYear()} National Athletics Academy Inc. All rights reserved.
+        </p>
+        <div class="flex gap-6 flex-wrap">
+          <a href="/privacy/" class="footer-link text-[0.78rem]">Privacy Policy</a>
+          <a href="/terms/" class="footer-link text-[0.78rem]">Terms of Use</a>
+          <a href="/sponsors/" class="footer-link text-[0.78rem]">Sponsorship</a>
+        </div>
       </div>
     </div>
   </div>
 </footer>
-
-<style>
-  @media (max-width: 768px) {
-    footer > div > div:first-child {
-      grid-template-columns: 1fr !important;
-      gap: 2.5rem !important;
-    }
-  }
-</style>

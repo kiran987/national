@@ -55,16 +55,6 @@ tiers:
       - Morning round-robin seeding pools with guaranteed set minimums
       - Afternoon Gold and Silver playoff brackets with medal rounds
       - Fast-paced tournament schedule with zero wasted downtime
-  - name: Little Kids Soccer Jamboree
-    badge: Soccer with Wascana FC
-    ages: U3, U4 & U5 Divisions
-    format: Half-Day Family Festival · 3 Mini-Matches
-    focus: In association with Wascana FC. High-energy, joyful soccer festival with mini pitches, fun obstacle courses, medals for every child, and family photos.
-    ratio: '1:6 Coach Ratio + Jamboree Staff'
-    curriculum:
-      - Short 15-minute small-sided games to maximize fun and energy
-      - Obstacle skill stations between match rotations
-      - Commemorative medal and finisher certificate for every little kicker
   - name: Regina Youth Athletics & Speed Showcase
     badge: Track & Field
     ages: Ages 7–16

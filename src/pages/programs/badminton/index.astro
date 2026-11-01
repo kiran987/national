@@ -1,25 +1,297 @@
 ---
-import { getEntry, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { activePrograms } from '../../../data/programs';
 
-const entry = await getEntry('programs', 'badminton');
-if (!entry) throw new Error('Missing content/programs/badminton.md');
-const program = entry.data;
-const { Content } = await render(entry);
-const otherPrograms = activePrograms;
+const program = activePrograms.find((p) => p.slug === 'badminton')!;
+const otherPrograms = activePrograms.filter((p) => p.slug !== 'badminton');
+
+const curriculumMatrix = [
+  {
+    week: 1,
+    theme: 'Grip & Racket Readiness',
+    kids: {
+      points: [
+        'Shake-hands grip ("V-shape")',
+        'Pancake grip correction',
+        'Birdie balance challenges & ready stance',
+      ],
+      drill: '“Shake hands with the racket”, shuttle juggling contest (forehand/backhand alternations), and red-light-green-light ready position.',
+      game: 'Racket Balance Relay (running down the court while balancing a birdie on the strings).',
+    },
+    teens: {
+      points: [
+        'Forehand vs. Backhand bevel grips',
+        'Split-step timing & posture',
+        'Dynamic reaction drills off feed',
+      ],
+      drill: 'Instant grip switching (forehand clear grip → backhand thumb-press grip). Wall rebound test for grip looseness.',
+      game: 'Feeder rapid-fire split-step reaction drill (coach feeds unpredictably to left/right body).',
+    },
+  },
+  {
+    week: 2,
+    theme: 'Underhand Serving & Low Net Play',
+    kids: {
+      points: [
+        'High underhand tee serve',
+        'Target hoop scoring in service boxes',
+        'Net taps and underhand scoop lifts',
+      ],
+      drill: '“Rocket Launch” high underhand serves targeting colored cones at the back baseline.',
+      game: 'Battleship (placing hoops in the receiver\'s court; hitting inside a hoop sinks a ship).',
+    },
+    teens: {
+      points: [
+        'Low backhand flick vs. short drive serve',
+        'Deceptive service variations',
+        'Push return mechanics to vulnerable zones',
+      ],
+      drill: 'Low backhand serve consistency (shuttle skimming ≤ 2 inches over tape). 3rd-shot drive and net kill patterns.',
+      game: '3-Shot Rally Battle: If the receiver cannot attack the serve, the server earns a bonus point.',
+    },
+  },
+  {
+    week: 3,
+    theme: 'Footwork & Court Navigation',
+    kids: {
+      points: [
+        'Lateral shuffle & 2-foot hop jumps',
+        '“Floor is Lava” court boundary games',
+        'Quick recover to the center “T”',
+      ],
+      drill: 'Agility ladder footwork, bunny hops over foam lines, lunging to grab a birdie off the net tape and sprint back to base.',
+      game: 'Hungry Hippos (running to the net, scooping up one birdie with the racket, and depositing it back into their home hoop).',
+    },
+    teens: {
+      points: [
+        '6-Corner footwork cadence (split → push → recover)',
+        'Forward lunges & push-off recovery',
+        'Chassé footwork to rear court',
+      ],
+      drill: '6-corner timed shadow drills. Focusing on the plant-and-push heel-to-toe lunge on the front forehand/backhand.',
+      game: 'Shadow Ghosting Challenge: Coach points to corners at random; players sprint/shadow-hit with laser timing gates.',
+    },
+  },
+  {
+    week: 4,
+    theme: 'High Overhead Clears',
+    kids: {
+      points: [
+        'Scissor-throw throwing motion',
+        'Reaching for the high “12 o\'clock” contact point',
+        'Sky-ball rally games',
+      ],
+      drill: 'Throwing tennis balls or foam javelins over the net to learn hip rotation and high release. Hitting high lobs over the net.',
+      game: 'Sky Ball (rallies where the shuttle must fly higher than the basketball backboards).',
+    },
+    teens: {
+      points: [
+        'Forehand attacking clear vs. defensive high clear',
+        'Scissor-kick transition in rear court',
+        'Deep-court court coverage & body uncoiling',
+      ],
+      drill: 'Baseline-to-baseline clear exchanges. Scissor-kick transition off the rear right foot.',
+      game: 'Line-Target Game: Hitting clears landing exclusively between the doubles long service line and baseline.',
+    },
+  },
+  {
+    week: 5,
+    theme: 'Drop Shots & Net Control',
+    kids: {
+      points: [
+        'Gentle push drops over the tape',
+        'Soft hands drill with foam shuttles',
+        'Catch & hit relay games at the net',
+      ],
+      drill: 'Gentle net taps; catching a shuttle on the racket face without it bouncing.',
+      game: '“Drop the Bomb” (softly tapping over the net into laundry baskets set directly along the T).',
+    },
+    teens: {
+      points: [
+        'Slow slice drops vs. fast disguised cut drops',
+        'Tight tumbling net spin shots',
+        'Net kill reaction & brush technique',
+      ],
+      drill: 'Slicing drops from the deep court; spinning net tumbles off the lunge; hair-pin net shots.',
+      game: 'Narrow Court Cat-and-Mouse (playing exclusively inside the short service line and net zone).',
+    },
+  },
+  {
+    week: 6,
+    theme: 'Drive Shots & Mid-Court Speed',
+    kids: {
+      points: [
+        'Rapid-fire mid-court taps against wall/partner',
+        'Side-to-side reaction games',
+        '“Speed alley” team rallies',
+      ],
+      drill: 'Short-distance wall volleys; forehand and backhand flat slap drills with coaches.',
+      game: 'Fast-Paced Dodge-Rally: Pairs keep a shuttle alive at mid-court without letting it rise above shoulder height.',
+    },
+    teens: {
+      points: [
+        'Flat flat-trajectory driving battles',
+        'Transitioning from defense to attack',
+        'Counter-attacking mid-court lifts',
+      ],
+      drill: 'Side-by-side drive battles (2 vs 2 flat fast-paced exchanges down the tramlines). Thumb-press backhand punch drives.',
+      game: '“Speed Trap”: First team to reach a 20-shot continuous flat rally without an overhead clear earns match points.',
+    },
+  },
+  {
+    week: 7,
+    theme: 'Smash Defense & Attack',
+    kids: {
+      points: [
+        '“Defend the Castle” block drills',
+        'Fun jumping overhead swat games',
+        'Safe distance and racket-up positioning',
+      ],
+      drill: 'The “Monster Swat” (jumping to hit high floating feeds downward safely). Defending soft coach lobs using high shield blocks.',
+      game: 'Shield Protectors: One child tries to swat downward into a target zone; two defenders try to pop it back up.',
+    },
+    teens: {
+      points: [
+        'Jump smash mechanics & steep downward angle',
+        'Full-body pronation and snap',
+        'Defensive blocks: short lift vs. cross-court drop',
+      ],
+      drill: 'Jump smash mechanics (approach, explosive vertical hop, wrist snap, steep trajectory). Smash defense (short block into net vs. drive counter).',
+      game: 'Attack vs. Defense Gauntlet: Attacking pair smashes continuously; defending pair gets 2 points for every clean cross-court net return.',
+    },
+  },
+  {
+    week: 8,
+    theme: 'Rally Patterns & Doubles Systems',
+    kids: {
+      points: [
+        'Cooperative rally counting',
+        'Court boundary awareness',
+        'Serve-and-return confidence',
+      ],
+      drill: 'Partner rally patterns: keep the birdie alive for 10 hits, then serve and return from the correct service box.',
+      game: '“Keep It Up”: Pairs work together to beat their own rally record on a shared scoreboard.',
+    },
+    teens: {
+      points: [
+        'Doubles rotation (front/back vs. side-by-side)',
+        'Communication calls and court cover',
+        'Switching between attack and defense formations',
+      ],
+      drill: 'Doubles movement system with called rotations; coach feeds force pairs to switch formation on every change of lift.',
+      game: 'Rotation Relay: Pairs earn points for clean formation switches without leaving a gap.',
+    },
+  },
+  {
+    week: 9,
+    theme: 'Review, Tactics & Match Prep',
+    kids: {
+      points: [
+        'Skills circuit: grip, serve, drop, swat',
+        'Personal-best challenges',
+        'Sportsmanship and etiquette',
+      ],
+      drill: 'Rotating skills circuit where every athlete tries to beat their own best score at each station.',
+      game: 'Personal Best Bingo: Complete a card of skill challenges to earn stickers ahead of the Jamboree.',
+    },
+    teens: {
+      points: [
+        'Serve and 3rd-shot patterns under pressure',
+        'Shot selection and rally construction',
+        'Ladder matchplay and reflection',
+      ],
+      drill: 'Pressure serves with a scripted 3rd-shot target, followed by short ladder matches with coach debriefs.',
+      game: 'Challenge Ladder: Win to move up a court; losers reset with a new partner.',
+    },
+  },
+  {
+    week: 10,
+    theme: 'Match Play & Mini-Tournament',
+    kids: {
+      points: [
+        '“King of the Court” rally challenges',
+        'Basic scoring & sportsmanship ribbons',
+        'Fun coach-vs-kids showcase',
+      ],
+      drill: 'Reviewing in/out boundary lines, proper handshake etiquette, and simple counting (1, 2, 3).',
+      game: 'Jamboree Mini-Meet: 5-minute timed rounds with rotating partners. Every player leaves with an achievement certificate.',
+    },
+    teens: {
+      points: [
+        'Doubles rotation (front/back vs. side-by-side)',
+        'Round-robin sudden-death tournament (to 11 pts)',
+        'Individual skill evaluation & feedback cards',
+      ],
+      drill: 'Doubles movement system (Attacking = Front & Back; Defending = Side-by-Side). Match strategy debriefs.',
+      game: 'Sudden-Death Grudge Cup: 11-point games with real refereeing, scoring, and performance evaluation sheets.',
+    },
+  },
+];
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": program.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+
+const sportsActivityLocationSchema = {
+  "@type": "SportsActivityLocation",
+  "@id": "https://naacanada.org/programs/badminton/#location",
+  "name": "NAA Badminton Gymnasium - Green Gym, Centre for Kinesiology and Health Studies",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3737 Wascana Parkway",
+    "addressLocality": "Regina",
+    "addressRegion": "SK",
+    "postalCode": "S4S 0A2",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.4185,
+    "longitude": -104.5889
+  }
+};
+
+const sportsEventSchema = {
+  "@type": "SportsEvent",
+  "name": "National Smash Badminton Academy — Winter 2027 Season",
+  "description": program.description,
+  "startDate": "2027-01-26T18:00:00-06:00",
+  "endDate": "2027-03-11T19:30:00-06:00",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": sportsActivityLocationSchema,
+  "organizer": {
+    "@id": "https://naacanada.org/#organization"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "150",
+    "highPrice": "295",
+    "priceCurrency": "CAD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://naacanada.org/programs/badminton/"
+  }
+};
 ---
 
 <Layout
-  title={`${program.name} | National Athletics Academy Regina`}
-  description={program.description}
+  title="Kids Badminton Lessons & Training in Regina, SK | National Smash"
+  description="Regina's premier youth badminton academy for kids and teens. Professional coaching, footwork drills, and court play in Regina, SK."
+  schemaGraph={[faqSchema, sportsActivityLocationSchema, sportsEventSchema]}
 >
   <Header />
 
   <!-- Hero Header -->
-  <section class="page-hero" style="background:linear-gradient(160deg, #010f24 0%, #021F47 60%, #0a3a7a 100%);padding:5rem 0 4rem;position:relative;overflow:hidden;">
+  <section class="page-hero" style="background:linear-gradient(160deg, #010f24 0%, #021F47 60%, #0a3a7a 100%);padding:9.75rem 0 7.5rem;position:relative;overflow:hidden;">
     <div style="position:absolute;top:-40%;right:-10%;width:550px;height:550px;background:radial-gradient(circle,rgba(221,170,64,0.14) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
     <div style="position:absolute;bottom:-30%;left:-5%;width:450px;height:450px;background:radial-gradient(circle,rgba(2,31,71,0.3) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
 
@@ -35,9 +307,8 @@ const otherPrograms = activePrograms;
 
       <div style="max-width:840px;">
         <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(221,170,64,0.15);border:1px solid rgba(221,170,64,0.35);border-radius:9999px;padding:0.4rem 1.1rem;margin-bottom:1.25rem;">
-          <span style="font-size:1.1rem;">{program.emoji}</span>
           <span style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;color:var(--color-naa-gold);letter-spacing:0.06em;text-transform:uppercase;">
-            Program 03 · {program.badge}
+            Program 0{program.order} &bull; {program.badge}
           </span>
         </div>
 
@@ -54,33 +325,167 @@ const otherPrograms = activePrograms;
         </p>
 
         <!-- Quick Specs Strip -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;overflow:hidden;">
           <div>
             <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Age Groups</div>
             <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">{program.ages.split('(')[0]}</div>
           </div>
           <div>
             <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Coach Ratio</div>
-            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">1:8 to 1:12 Coach Ratio</div>
+            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">1:8 to 1:15 Max</div>
           </div>
           <div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Block Length</div>
-            <div style="font-size:0.95rem;font-weight:700;color:white;margin-top:0.25rem;">16–20 Sessions (Oct–Dec)</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Schedule &amp; Duration</div>
+            <div style="font-size:0.88rem;font-weight:700;color:white;margin-top:0.25rem;">10 sessions &middot; 45-min batches</div>
           </div>
           <div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Tuition</div>
-            <div style="font-size:0.95rem;font-weight:700;color:var(--color-naa-gold);margin-top:0.25rem;">${program.blockPrice} / block</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);text-transform:uppercase;letter-spacing:0.05em;">Tuition Fees</div>
+            <div style="font-size:0.92rem;font-weight:700;color:var(--color-naa-gold);margin-top:0.25rem;white-space:nowrap;">$150 &ndash; $295 CAD</div>
+          </div>
+        </div>
+
+        <!-- Winter 2027 Program Banner -->
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(221,170,64,0.35);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <span style="display:inline-block;padding:0.25rem 0.65rem;border-radius:6px;background:rgba(221,170,64,0.2);color:var(--color-naa-gold);font-weight:800;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;border:1px solid rgba(221,170,64,0.5);">Registration Opens Nov 1</span>
+              <div>
+                <div style="font-family:var(--font-outfit);font-weight:800;font-size:0.9rem;color:white;text-transform:uppercase;letter-spacing:0.07em;">Winter 2027 Program &bull; University of Regina Green Gym</div>
+                <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);margin-top:0.2rem;">Centre for Kinesiology and Health Studies, 3737 Wascana Parkway &bull; Jan 26 &ndash; Mar 11, 2027</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.75rem;">
+            <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.85rem 1rem;">
+              <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.9rem;margin-bottom:0.25rem;">Batch 1 &middot; 6:00 &ndash; 6:45 PM</div>
+              <div style="font-size:0.8rem;font-weight:700;color:white;margin-bottom:0.25rem;">Smash Juniors &amp; Smash Elite</div>
+              <div style="font-size:0.85rem;color:white;">Tuesdays &amp; Thursdays &middot; 45-min slot</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">40&ndash;45 min of on-court coaching</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.85rem 1rem;">
+              <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.9rem;margin-bottom:0.25rem;">Batch 2 &middot; 6:45 &ndash; 7:30 PM</div>
+              <div style="font-size:0.8rem;font-weight:700;color:white;margin-bottom:0.25rem;">Smash Juniors &amp; Smash Elite</div>
+              <div style="font-size:0.85rem;color:white;">Tuesdays &amp; Thursdays &middot; 45-min slot</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">40&ndash;45 min of on-court coaching</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(221,170,64,0.12);border:1px solid rgba(221,170,64,0.45);border-radius:10px;padding:0.85rem 1rem;">
+            <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.9rem;margin-bottom:0.25rem;">Smash Pro &middot; 6:00 &ndash; 7:30 PM &middot; $295 CAD</div>
+            <div style="font-size:0.85rem;color:white;">Tuesdays &amp; Thursdays &middot; 90-min sessions</div>
+            <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">Intensive tactical training &amp; matchplay</div>
+          </div>
+
+          <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.85rem 1rem;">
+            <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.9rem;margin-bottom:0.35rem;">Fees at a Glance</div>
+            <div style="font-size:0.85rem;color:white;line-height:1.6;">Smash Juniors $150 &middot; Smash Elite $175 &middot; Smash Pro $295</div>
+            <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">Mandatory Training Kit fee: $30 CAD per athlete, paid in full (no installments). Tuition can be split into 3 installments.</div>
+          </div>
+
+          <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.85rem 1rem;">
+            <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.9rem;margin-bottom:0.35rem;">10 Sessions &middot; Twice Weekly</div>
+            <div style="font-size:0.85rem;color:white;line-height:1.6;">Jan 26, 28 &middot; Feb 2, 4 &middot; Feb 23, 25 &middot; Mar 2, 4 &middot; Mar 9, 11</div>
+            <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.25rem;">No sessions Feb 9&ndash;18. Smash Juniors (Ages 6&ndash;10) &amp; Smash Elite (Ages 11&ndash;16): open, mixed-level classes for beginners through advanced players.</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem;font-size:0.85rem;color:rgba(255,255,255,0.85);line-height:1.5;">
+            <div>
+              <strong style="color:var(--color-naa-gold);display:block;margin-bottom:0.25rem;">Live Schedules in TeamLinkt</strong>
+              Batch assignments and court check-in at the Green Gym are updated in real time through the TeamLinkt app.
+            </div>
+            <div>
+              <strong style="color:var(--color-naa-gold);display:block;margin-bottom:0.25rem;">Equipment</strong>
+              Yonex practice shuttles are provided for every session. Athletes bring their own racket (rackets are not provided). Non-marking indoor running shoes required.
+            </div>
+            <div>
+              <strong style="color:var(--color-naa-gold);display:block;margin-bottom:0.25rem;">Safe Sport Standards</strong>
+              All coaches undergo police background screening (CRC-VSS), Respect in Sport, and CAC Rule of Two enforcement.
+            </div>
           </div>
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
           <a href="/registration/" class="btn btn-gold btn-lg">
-            Register for Badminton &rarr;
+            Notify Me: Winter Registration Starts Soon &rarr;
           </a>
-          <a href="/contact/" class="btn btn-outline btn-lg">
-            Contact Coaching Desk
+          <a href="/programs/enquiry/" class="btn btn-outline btn-lg">
+            Program Enquiry
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Age Tiers & Curricula -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="tiers-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="badge" style="background:rgba(131,22,27,0.1);color:var(--color-naa-maroon);margin-bottom:1rem;">Structured Tiers</span>
+        <h2 id="tiers-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
+          Badminton Age Tiers &amp; Progression
+        </h2>
+        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto;line-height:1.7;">
+          Tailored 10-session developmental blocks for Tuesday and Thursday evening sessions — from hand-eye coordination &amp; physical literacy to high-speed match tactics.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;">
+        {program.tiers.map((tier, i) => (
+          <div class="card reveal" style={`animation-delay:${i * 120}ms;display:flex;flex-direction:column;border-top:4px solid ${i === 0 ? 'var(--color-naa-navy)' : 'var(--color-naa-maroon)'};`}>
+            <div style="padding:2rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
+                <span class="badge" style={`background:${i === 0 ? 'rgba(2,31,71,0.08)' : 'rgba(131,22,27,0.08)'};color:${i === 0 ? 'var(--color-naa-navy)' : 'var(--color-naa-maroon)'};font-size:0.75rem;font-weight:700;`}>
+                  {tier.badge}
+                </span>
+                <span style="font-size:0.85rem;font-weight:700;color:var(--color-naa-navy);font-family:var(--font-outfit);">
+                  {tier.ages}
+                </span>
+              </div>
+
+              <h3 style="font-size:1.35rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
+                {tier.name}
+              </h3>
+
+              <p style="font-size:0.85rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1rem;">
+                {tier.format} &bull; {tier.ratio}
+              </p>
+
+              <p style="font-size:0.92rem;color:#334155;line-height:1.65;margin-bottom:1.5rem;">
+                {tier.focus}
+              </p>
+
+              <div style="border-top:1px solid #e2e8f0;padding-top:1.25rem;">
+                <div style="font-size:0.78rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">
+                  10-Session Curriculum Highlights
+                </div>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+                  {tier.curriculum.map((c) => (
+                    <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.85rem;color:#475569;line-height:1.5;">
+                      <span style="color:var(--color-naa-maroon);font-weight:700;">&bull;</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;gap:0.6rem;">
+              <a
+                href="/registration/"
+                class="btn btn-navy btn-sm"
+                style="width:100%;justify-content:center;"
+              >
+                Notify Me When Registration Opens &rarr;
+              </a>
+              <div style="font-size:0.75rem;color:#64748b;text-align:center;line-height:1.4;">
+                Winter 2027 (U of R Green Gym) registration opens Nov 1, 2026
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -88,17 +493,17 @@ const otherPrograms = activePrograms;
   <!-- Detailed Overview Section -->
   <section class="section-padding" style="background:#ffffff;" aria-labelledby="overview-heading">
     <div class="container-naa">
-      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:start;">
+      <div class="naa-overview-split">
         <div class="reveal">
           <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Speed &amp; Deception</span>
           <h2 id="overview-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.4rem);margin-bottom:1.25rem;">
             6-Corner Court Footwork &amp; Explosive Reaction
           </h2>
-          <div style="color:#374151;font-size:1.02rem;line-height:1.8;margin-bottom:1.5rem;">
-            <Content />
-          </div>
+          <p style="color:#374151;font-size:1.02rem;line-height:1.8;margin-bottom:1.5rem;">
+            {program.longDescription}
+          </p>
           <p style="color:#4b5563;font-size:0.95rem;line-height:1.75;margin-bottom:2rem;">
-            With a strict 1:8 to 1:12 coach ratio on every court, our instructors provide immediate biomechanical adjustments to racket face angles, wrist pronation, and scissor-kick recovery steps.
+            With a strict 1:8 to 1:12 coach ratio on every court, our instructors provide immediate biomechanical adjustments to racket face angles, wrist pronation, and scissor-kick recovery steps. Sessions run in 45-minute batches (Smash Pro runs 90 minutes), ensuring maximum court repetitions with zero wasted time.
           </p>
 
           <h3 style="font-family:var(--font-outfit);font-size:1.15rem;color:var(--color-naa-navy);margin-bottom:1rem;">
@@ -114,90 +519,210 @@ const otherPrograms = activePrograms;
           </div>
         </div>
 
-        <!-- Right: Highlights Card -->
-        <div class="card reveal" style="padding:2.5rem 2rem;background:linear-gradient(145deg, #f8fafc 0%, #ffffff 100%);border:1px solid #e2e8f0;border-top:5px solid var(--color-naa-navy);">
-          <div style="font-size:2rem;margin-bottom:0.75rem;">🏸</div>
-          <h3 style="font-family:var(--font-outfit);font-size:1.25rem;color:var(--color-naa-navy);margin-bottom:1.25rem;">
-            Program Standards &amp; Inclusions
-          </h3>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
-            {program.highlights.map((item) => (
-              <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:#334155;line-height:1.6;">
-                <span style="color:var(--color-naa-gold);font-weight:900;font-size:1rem;flex-shrink:0;">★</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div style="background:rgba(2,31,71,0.05);border-radius:12px;padding:1.25rem;border-left:4px solid var(--color-naa-navy);">
-            <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">
-              Venues
+        <!-- Right: Highlights Card with Action Image -->
+        <div class="card reveal" style="padding:0;overflow:hidden;background:linear-gradient(145deg, #f8fafc 0%, #ffffff 100%);border:1px solid #e2e8f0;border-top:5px solid var(--color-naa-navy);">
+          <div style="position:relative;height:220px;overflow:hidden;background:#0B192C;">
+            <img
+              src="/images/programs/badminton-action-1.webp"
+              alt="National Smash Badminton athletes practicing footwork and racket mechanics"
+              style="width:100%;height:100%;object-fit:cover;"
+              loading="lazy"
+            />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(11,25,44,0.85) 0%, transparent 60%);"></div>
+            <div style="position:absolute;bottom:1rem;left:1.25rem;right:1.25rem;display:flex;justify-content:space-between;align-items:flex-end;">
+              <div>
+                <span class="badge" style="background:rgba(245,158,11,0.9);color:#0f172a;font-weight:800;font-size:0.7rem;text-transform:uppercase;">On Court</span>
+                <div style="color:white;font-weight:800;font-size:0.95rem;margin-top:0.25rem;font-family:var(--font-outfit);">University of Regina Green Gym</div>
+              </div>
             </div>
-            <p style="font-size:0.85rem;color:#475569;line-height:1.5;">
-              {program.venue}
-            </p>
+          </div>
+
+          <div style="padding:2rem;">
+            <h3 style="font-family:var(--font-outfit);font-size:1.2rem;color:var(--color-naa-navy);margin-bottom:1.25rem;">
+              Program Standards &amp; Inclusions
+            </h3>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;">
+              {program.highlights.map((item) => (
+                <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:#334155;line-height:1.6;">
+                  <span style="color:var(--color-naa-gold);font-weight:900;font-size:1rem;flex-shrink:0;">★</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div style="background:rgba(2,31,71,0.05);border-radius:12px;padding:1.25rem;border-left:4px solid var(--color-naa-navy);">
+              <div style="font-size:0.8rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">
+                Venue
+              </div>
+              <p style="font-size:0.85rem;color:#475569;line-height:1.5;margin:0;">
+                {program.venue}
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Age Tiers & Curricula -->
-  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="tiers-heading">
+  <!-- Photo Action Showcase Gallery -->
+  <section class="section-padding" style="background:#0B192C;color:white;padding:4.5rem 0;" aria-label="Badminton photo gallery">
     <div class="container-naa">
-      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
-        <span class="badge" style="background:rgba(131,22,27,0.1);color:var(--color-naa-maroon);margin-bottom:1rem;">Structured Tiers</span>
-        <h2 id="tiers-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
-          Badminton Age Tiers &amp; Progression
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <span class="badge" style="background:rgba(245,158,11,0.15);color:var(--color-naa-gold);border:1px solid rgba(245,158,11,0.3);margin-bottom:0.75rem;">Authentic Athlete Training</span>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:white;margin-bottom:0.75rem;">
+          Academy in Action &mdash; Regina Hardwood Courts
         </h2>
-        <p style="color:#4b5563;font-size:1.02rem;max-width:640px;margin:0 auto;line-height:1.7;">
-          From basic shuttle hand-eye coordination to high-speed smash and doubles tactics.
+        <p style="color:rgba(255,255,255,0.8);max-width:620px;margin:0 auto;font-size:0.95rem;line-height:1.7;">
+          Take a look inside our structured sessions at the University of Regina Green Gym. Low coach-to-athlete ratios, high repetitions, and positive court culture.
         </p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;">
-        {program.tiers.map((tier, i) => (
-          <div class="card reveal" style={`animation-delay:${i * 120}ms;display:flex;flex-direction:column;border-top:4px solid ${i === 0 ? 'var(--color-naa-navy)' : i === 1 ? 'var(--color-naa-maroon)' : 'var(--color-naa-gold)'};`}>
-            <div style="padding:2rem;">
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
-                <span class="badge" style={`background:${i === 0 ? 'rgba(2,31,71,0.08)' : i === 1 ? 'rgba(131,22,27,0.08)' : 'rgba(221,170,64,0.15)'};color:${i === 0 ? 'var(--color-naa-navy)' : i === 1 ? 'var(--color-naa-maroon)' : '#926508'};font-size:0.75rem;font-weight:700;`}>
-                  {tier.badge}
-                </span>
-                <span style="font-size:0.85rem;font-weight:700;color:var(--color-naa-navy);font-family:var(--font-outfit);">
-                  {tier.ages}
-                </span>
-              </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
+        <div class="reveal" style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.3);aspect-ratio:4/3;">
+          <img src="/images/programs/badminton-coaching-1.webp" alt="NAA coach kneeling with a group of young badminton players seated in a circle on the court" width="900" height="1200" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;" loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
+          <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">Coach-Led Skill Circles</div>
+        </div>
 
-              <h3 style="font-size:1.3rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
-                {tier.name}
+        <div class="reveal" style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.3);aspect-ratio:4/3;">
+          <img src="/images/programs/badminton-warmup-1.webp" alt="Youth players and coaches raising rackets overhead during a badminton warm-up" width="900" height="1200" style="width:100%;height:100%;object-fit:cover;object-position:center 62%;" loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
+          <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">Warm-Up &amp; Racket Readiness</div>
+        </div>
+
+        <div class="reveal" style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.3);aspect-ratio:4/3;">
+          <img src="/images/programs/badminton-action-1.webp" alt="Badminton youth athlete preparing for forehand smash on court" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
+          <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">Tactical 6-Corner Footwork</div>
+        </div>
+
+        <div class="reveal" style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.3);aspect-ratio:4/3;">
+          <img src="/images/programs/badminton-action-2.webp" alt="Badminton player practicing overhead clear mechanics" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);"></div>
+          <div style="position:absolute;bottom:1rem;left:1.25rem;color:white;font-size:0.85rem;font-weight:700;">Overhead Clear &amp; Jump Smash</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10-Session Progressive Curriculum Matrix: Kids vs. Teens -->
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="curriculum-matrix-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="badge" style="background:rgba(221,170,64,0.18);color:#926508;margin-bottom:1rem;font-weight:700;">
+          Curriculum Themes
+        </span>
+        <h2 id="curriculum-matrix-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
+          Curriculum Matrix: Kids vs. Youth &amp; Teens
+        </h2>
+        <p style="color:#4b5563;font-size:1.02rem;max-width:720px;margin:0 auto;line-height:1.7;">
+          Themes covered across the 10-session block, with drills adjusted to each group. Compare how physical literacy for young players mirrors tactical depth for teens.
+        </p>
+      </div>
+
+      <!-- Matrix Table -->
+      <div class="card reveal" style="overflow-x:auto;padding:0;border:1px solid #e2e8f0;border-radius:16px;">
+        <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.9rem;">
+          <thead>
+            <tr style="background:#021F47;color:white;">
+              <th style="padding:1.2rem 1.25rem;font-family:var(--font-outfit);font-weight:700;width:220px;">Technical Theme</th>
+              <th style="padding:1.2rem 1.25rem;font-family:var(--font-outfit);font-weight:700;background:rgba(255,255,255,0.06);">
+                Badminton &ndash; Kids (Ages 6&ndash;11)<br/>
+                <span style="font-size:0.75rem;font-weight:400;color:var(--color-naa-gold);font-style:italic;">Physical Literacy &amp; Fun</span>
+              </th>
+              <th style="padding:1.2rem 1.25rem;font-family:var(--font-outfit);font-weight:700;">
+                Badminton &ndash; Youth &amp; Teens (Ages 12&ndash;17)<br/>
+                <span style="font-size:0.75rem;font-weight:400;color:var(--color-naa-gold);font-style:italic;">Tactics, Footwork &amp; Execution</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {curriculumMatrix.map((row, idx) => (
+              <tr style={`background:${idx % 2 === 0 ? '#ffffff' : '#f8fafc'};border-top:1px solid #e2e8f0;`}>
+                <td style="padding:1.25rem 1.25rem;font-weight:700;color:var(--color-naa-navy);vertical-align:top;">
+                  <div style="font-family:var(--font-outfit);font-size:1rem;">{row.theme}</div>
+                </td>
+                <td style="padding:1.25rem 1.25rem;vertical-align:top;background:rgba(2,31,71,0.015);">
+                  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.4rem;">
+                    {row.kids.points.map((pt) => (
+                      <li style="display:flex;align-items:flex-start;gap:0.5rem;color:#334155;font-size:0.87rem;line-height:1.45;">
+                        <span style="color:var(--color-naa-gold);font-weight:bold;">&bull;</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+                <td style="padding:1.25rem 1.25rem;vertical-align:top;">
+                  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.4rem;">
+                    {row.teens.points.map((pt) => (
+                      <li style="display:flex;align-items:flex-start;gap:0.5rem;color:#334155;font-size:0.87rem;line-height:1.45;">
+                        <span style="color:var(--color-naa-maroon);font-weight:bold;">&bull;</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Themes in Detail (Drills & Games) -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="detailed-weeks-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">
+          Drills &amp; Games
+        </span>
+        <h2 id="detailed-weeks-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1rem;">
+          Training Themes in Detail
+        </h2>
+        <p style="color:#4b5563;font-size:1.02rem;max-width:700px;margin:0 auto;line-height:1.7;">
+          Training includes specific drills and active learning games tailored to each age tier.
+        </p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        {curriculumMatrix.map((item) => (
+          <div class="card reveal" style="padding:1.75rem 2rem;border-left:5px solid var(--color-naa-navy);">
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <h3 style="font-family:var(--font-outfit);font-size:1.25rem;color:var(--color-naa-navy);margin:0;">
+                {item.theme}
               </h3>
-
-              <p style="font-size:0.85rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1rem;">
-                {tier.format} &bull; {tier.ratio}
-              </p>
-
-              <p style="font-size:0.9rem;color:#334155;line-height:1.65;margin-bottom:1.5rem;">
-                {tier.focus}
-              </p>
-
-              <div style="border-top:1px solid #e2e8f0;padding-top:1.25rem;">
-                <div style="font-size:0.78rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">
-                  Weekly Curriculum Modules
-                </div>
-                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
-                  {tier.curriculum.map((c) => (
-                    <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.85rem;color:#475569;line-height:1.5;">
-                      <span style="color:var(--color-naa-maroon);font-weight:700;">&bull;</span>
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
 
-            <div style="margin-top:auto;padding:1.25rem 2rem;background:#f8fafc;border-top:1px solid #e2e8f0;">
-              <a href="/registration/" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;">
-                Register for {tier.name} &rarr;
-              </a>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:1rem;">
+              <!-- Kids Col -->
+              <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:1.25rem;">
+                <div style="display:flex;align-items:center;gap:0.5rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:0.95rem;margin-bottom:0.75rem;">
+                  <span>🧒 Kids (Ages 6&ndash;11)</span>
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <strong style="font-size:0.82rem;color:#64748b;text-transform:uppercase;letter-spacing:0.04em;">Drills:</strong>
+                  <p style="font-size:0.88rem;color:#334155;line-height:1.55;margin-top:0.2rem;">{item.kids.drill}</p>
+                </div>
+                <div>
+                  <strong style="font-size:0.82rem;color:var(--color-naa-maroon);text-transform:uppercase;letter-spacing:0.04em;">Game:</strong>
+                  <p style="font-size:0.88rem;color:#1e293b;line-height:1.55;margin-top:0.2rem;font-weight:500;">{item.kids.game}</p>
+                </div>
+              </div>
+
+              <!-- Teens Col -->
+              <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:1.25rem;">
+                <div style="display:flex;align-items:center;gap:0.5rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:0.95rem;margin-bottom:0.75rem;">
+                  <span>🧑 Youth &amp; Teens (Ages 12&ndash;17)</span>
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <strong style="font-size:0.82rem;color:#64748b;text-transform:uppercase;letter-spacing:0.04em;">Drills:</strong>
+                  <p style="font-size:0.88rem;color:#334155;line-height:1.55;margin-top:0.2rem;">{item.teens.drill}</p>
+                </div>
+                <div>
+                  <strong style="font-size:0.82rem;color:var(--color-naa-maroon);text-transform:uppercase;letter-spacing:0.04em;">Game:</strong>
+                  <p style="font-size:0.88rem;color:#1e293b;line-height:1.55;margin-top:0.2rem;font-weight:500;">{item.teens.game}</p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -205,11 +730,62 @@ const otherPrograms = activePrograms;
     </div>
   </section>
 
-  <!-- Tuition & What's Included Card -->
-  <section class="section-padding" style="background:#ffffff;" aria-labelledby="tuition-heading">
+  <!-- Program Delivery Standards & Coach Checklist -->
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="delivery-standards-heading">
     <div class="container-naa">
-      <div style="background:linear-gradient(135deg,var(--color-naa-navy) 0%,#0a3a7a 100%);border-radius:24px;padding:3.5rem 3rem;color:white;position:relative;overflow:hidden;">
-        <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;align-items:center;">
+      <div class="card reveal" style="background:linear-gradient(135deg,#021F47 0%,#0a3a7a 100%);color:white;padding:3rem 2.5rem;border-radius:24px;border:1px solid rgba(221,170,64,0.3);">
+        <div style="max-width:800px;margin:0 auto;text-align:center;">
+          <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1rem;">
+            Coaching Excellence Standards
+          </span>
+          <h2 id="delivery-standards-heading" style="font-size:clamp(1.8rem,3.5vw,2.5rem);color:white;margin-bottom:1.25rem;font-weight:900;">
+            Program Delivery Checklist &amp; Rules
+          </h2>
+          <p style="color:rgba(255,255,255,0.85);font-size:1.05rem;line-height:1.75;margin-bottom:2.5rem;">
+            NAA badminton sessions are carefully calibrated so athletes spend their time moving, hitting, and learning rather than waiting in line.
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:1.75rem;">
+            <div style="font-size:2rem;margin-bottom:0.75rem;">⏱️</div>
+            <h3 style="font-family:var(--font-outfit);font-size:1.15rem;color:var(--color-naa-gold);margin-bottom:0.5rem;">
+              45-Min Court Sessions
+            </h3>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.6;">
+              Two batches on Tuesdays &amp; Thursdays (6:00–6:45 PM or 6:45–7:30 PM), Jan 26 – Mar 11 at the University of Regina Green Gym.
+            </p>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:1.75rem;">
+            <div style="font-size:2rem;margin-bottom:0.75rem;">📢</div>
+            <h3 style="font-family:var(--font-outfit);font-size:1.15rem;color:var(--color-naa-gold);margin-bottom:0.5rem;">
+              90-Second Pacing Rule
+            </h3>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.6;">
+              Maximum 90 seconds per coach instruction or demonstration. Kids learn through high-touch repetitions and active play, not passive listening.
+            </p>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:1.75rem;">
+            <div style="font-size:2rem;margin-bottom:0.75rem;">🏸</div>
+            <h3 style="font-family:var(--font-outfit);font-size:1.15rem;color:var(--color-naa-gold);margin-bottom:0.5rem;">
+              Equipment per Court
+            </h3>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.6;">
+              30–40 nylon practice shuttles per court (Yonex Mavis 300 or 350), 4–6 mini hurdles/cones for footwork grids, and 2–3 hula hoops or plastic buckets for target accuracy drills.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tuition & What's Included Card -->
+  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="tuition-heading">
+    <div class="container-naa">
+      <div class="naa-feature-banner" style="background:linear-gradient(135deg,var(--color-naa-navy) 0%,#0a3a7a 100%);color:white;">
+        <div class="naa-report-split">
           <div>
             <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1rem;">
               NAA Quality Standard
@@ -225,10 +801,10 @@ const otherPrograms = activePrograms;
                 <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> 1:8 to 1:12 maximum coach ratio
               </div>
               <div style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.9);font-size:0.88rem;">
-                <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Shuttles provided for all drills
+                <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Yonex shuttles provided for all drills
               </div>
               <div style="display:flex;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.9);font-size:0.88rem;">
-                <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Loaner rackets available on request
+                <span style="color:var(--color-naa-gold);font-weight:700;">✓</span> Bring your own racket (not provided)
               </div>
             </div>
           </div>
@@ -252,7 +828,7 @@ const otherPrograms = activePrograms;
   </section>
 
   <!-- FAQ Section -->
-  <section class="section-padding" style="background:#f8fafc;" aria-labelledby="faq-heading">
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="faq-heading">
     <div class="container-naa">
       <div class="reveal" style="text-align:center;margin-bottom:3rem;">
         <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Have Questions?</span>
@@ -277,7 +853,7 @@ const otherPrograms = activePrograms;
   </section>
 
   <!-- Other Programs Navigation Strip -->
-  <section class="section-padding" style="background:#ffffff;border-top:1px solid #e2e8f0;" aria-label="Explore other programs">
+  <section class="section-padding" style="background:#f8fafc;border-top:1px solid #e2e8f0;" aria-label="Explore other programs">
     <div class="container-naa">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
         <div>
@@ -285,7 +861,7 @@ const otherPrograms = activePrograms;
           <h2 style="font-size:1.5rem;color:var(--color-naa-navy);">Explore More NAA Sports</h2>
         </div>
         <a href="/programs/" style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-maroon);text-decoration:underline;font-size:0.9rem;">
-          View All 6 Programs &rarr;
+          View All Programs &rarr;
         </a>
       </div>
 
@@ -314,12 +890,12 @@ const otherPrograms = activePrograms;
         <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:white;margin-bottom:1rem;">
           Step Onto the Badminton Court
         </h2>
-        <p style="color:rgba(255,255,255,0.85);max-width:560px;margin:0 auto 2rem;line-height:1.7;">
-          Enroll now in our upcoming Oct–Dec badminton block in Regina (16–20 total sessions). High-touch 1:8 to 1:12 coach ratio for rapid skill acquisition.
+        <p style="color:rgba(255,255,255,0.85);max-width:620px;margin:0 auto 2rem;line-height:1.7;">
+          Winter 2027 badminton runs 10 sessions at the University of Regina Green Gym (Jan 26 – Mar 11). Registration opens November 1, 2026.
         </p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="/registration/" class="btn btn-gold btn-lg">Register for Badminton Now</a>
-          <a href="/contact/" class="btn btn-outline btn-lg">Contact Coaching Desk</a>
+          <a href="/registration/" class="btn btn-gold btn-lg">Notify Me: Registration Starts Soon &rarr;</a>
+          <a href="/programs/enquiry/" class="btn btn-outline btn-lg">Program Enquiry</a>
         </div>
       </div>
     </div>

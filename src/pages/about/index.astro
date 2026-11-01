@@ -5,8 +5,8 @@ import Footer from '../../components/Footer.astro';
 ---
 
 <Layout
-  title="About | National Athletics Academy"
-  description="Learn about National Athletics Academy Inc. — our mission, vision, values, brand, and the story behind Regina's premier multi-sport training organization."
+  title="About National Athletics Academy | Non-Profit Youth Sports in Regina, SK"
+  description="Learn about National Athletics Academy Inc. — our mission, non-profit governance, board of directors, leadership, and the story behind Regina's premier multi-sport training organization."
 >
   <Header />
 
@@ -14,10 +14,10 @@ import Footer from '../../components/Footer.astro';
   <section class="page-hero" aria-labelledby="about-heading">
     <div class="container-naa" style="position:relative;z-index:1;text-align:center;">
       <div class="animate-fade-up">
-        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1.25rem;">Our Story</span>
+        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1.25rem;">Our Story & Governance</span>
         <h1 id="about-heading" style="font-size:clamp(2rem,5vw,3.5rem);color:white;margin-bottom:1rem;">About NAA</h1>
-        <p style="color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:600px;margin:0 auto;">
-          National Athletics Academy Inc. — a Regina-based multi-sport training and competition organization built to develop athletes across every sport, every age, and every level.
+        <p style="color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:620px;margin:0 auto;">
+          National Athletics Academy Inc. — an incorporated non-profit multi-sport organization based in Regina, Saskatchewan, dedicated to accessible, structured youth athletic development.
         </p>
       </div>
     </div>
@@ -26,36 +26,54 @@ import Footer from '../../components/Footer.astro';
   <!-- Mission + Vision -->
   <section class="section-padding" aria-labelledby="mission-heading">
     <div class="container-naa">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <div class="naa-grid-2" style="align-items:center;gap:4rem;">
         <div class="reveal">
-          <span class="badge" style="background:rgba(2,31,71,0.1);color:var(--color-naa-navy);margin-bottom:1rem;">Who We Are</span>
-          <h2 id="mission-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:1.5rem;">One Academy. Every Sport.</h2>
+          <span class="badge" style="background:rgba(2,31,71,0.1);color:var(--color-naa-navy);margin-bottom:1rem;">Who We Are &amp; Our Purpose</span>
+          <h2 id="mission-heading" class="gold-accent" style="font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:1.5rem;">Why National Athletics Academy Exists</h2>
           <p style="color:#374151;line-height:1.8;margin-bottom:1.5rem;">
-            National Athletics Academy Inc. is a non-profit corporation headquartered in Regina, Saskatchewan. We deliver structured developmental training in Basketball, Volleyball, Badminton, Soccer for Little Kids (U2–U5 with Wascana FC), Athletics (Track &amp; Field), and Tournaments — all under one brand, one coaching philosophy, and one unified registration system.
+            National Athletics Academy Inc. is a registered non-profit corporation in Saskatchewan (Entity No. 102242108), headquartered at 217 Broad St N, Regina, SK S4R 2X7. The organization was established to address a persistent gap in youth athletics: parents in Regina were forced to choose between unstructured, informal drop-in activities or expensive, single-sport travel clubs that push premature specialization.
           </p>
           <p style="color:#374151;line-height:1.8;margin-bottom:2rem;">
-            Most youth sport in Saskatchewan is delivered by single-sport clubs operating in isolation. A family with two children in three activities deals with three organizations, three portals, and three fee schedules. NAA consolidates that experience — so every family in Regina has one trusted home for every sport their children love, with more sports and activities starting soon.
+            NAA exists to give Regina families a structured, multi-sport alternative. Under certified coaching staff and unified non-profit governance, we provide foundational skill development, age-appropriate physical literacy, and personal safety instruction across Basketball, Volleyball, Badminton, and National Shield - Martial Arts — all through one transparent, affordable organization.
           </p>
+
+          <!-- Non-Profit Identity Banner -->
+          <div style="margin-bottom:1.75rem;padding:1.25rem 1.5rem;background:rgba(2,31,71,0.05);border-left:4px solid var(--color-naa-gold);border-radius:10px;">
+            <p style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:0.95rem;line-height:1.6;margin-bottom:0.35rem;">
+              A registered Saskatchewan non-profit youth sports organization
+            </p>
+            <p style="font-size:0.82rem;color:#4b5563;line-height:1.5;margin:0;">
+              Registered Address: 217 Broad St N, Regina, SK S4R 2X7 &bull; Contact: <a href="mailto:info@naacanada.org" style="color:var(--color-naa-maroon);font-weight:700;">info@naacanada.org</a> | Official Domain: <strong style="color:var(--color-naa-navy);">naacanada.org</strong>
+            </p>
+          </div>
+
           <div style="display:flex;flex-direction:column;gap:1rem;">
             <div style="display:flex;gap:0.875rem;align-items:flex-start;">
               <div style="width:44px;height:44px;border-radius:12px;background:rgba(2,31,71,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">🏢</div>
               <div>
-                <strong style="font-family:var(--font-outfit);font-size:0.9rem;color:var(--color-naa-navy);">Legal Entity</strong>
-                <p style="font-size:0.88rem;color:#6b7280;margin-top:0.25rem;">Non-Profit Corporation under The Non-profit Corporations Act, 1995 (Saskatchewan)</p>
+                <strong style="font-family:var(--font-outfit);font-size:0.9rem;color:var(--color-naa-navy);">Legal Entity &amp; Jurisdiction</strong>
+                <p style="font-size:0.88rem;color:#6b7280;margin-top:0.25rem;">National Athletics Academy Inc. &bull; Registered under <em>The Non-profit Corporations Act, 2022</em> (Saskatchewan) &bull; ISC Entity #: 102242108</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+              <div style="width:44px;height:44px;border-radius:12px;background:rgba(2,31,71,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌐</div>
+              <div>
+                <strong style="font-family:var(--font-outfit);font-size:0.9rem;color:var(--color-naa-navy);">Official Website Domain</strong>
+                <p style="font-size:0.88rem;color:#6b7280;margin-top:0.25rem;">https://naacanada.org (Official primary domain owned &amp; operated by NAA Inc.)</p>
               </div>
             </div>
             <div style="display:flex;gap:0.875rem;align-items:flex-start;">
               <div style="width:44px;height:44px;border-radius:12px;background:rgba(2,31,71,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">📍</div>
               <div>
-                <strong style="font-family:var(--font-outfit);font-size:0.9rem;color:var(--color-naa-navy);">Headquarters</strong>
-                <p style="font-size:0.88rem;color:#6b7280;margin-top:0.25rem;">Regina, Saskatchewan, Canada</p>
+                <strong style="font-family:var(--font-outfit);font-size:0.9rem;color:var(--color-naa-navy);">Registered Head Office</strong>
+                <p style="font-size:0.88rem;color:#6b7280;margin-top:0.25rem;">217 BROAD ST N, REGINA, Saskatchewan, Canada, S4R 2X7</p>
               </div>
             </div>
             <div style="display:flex;gap:0.875rem;align-items:flex-start;">
-              <div style="width:44px;height:44px;border-radius:12px;background:rgba(2,31,71,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">🗓️</div>
+              <div style="width:44px;height:44px;border-radius:12px;background:rgba(2,31,71,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">📞</div>
               <div>
-                <strong style="font-family:var(--font-outfit);font-size:0.9rem;color:var(--color-naa-navy);">Founded</strong>
-                <p style="font-size:0.88rem;color:#6b7280;margin-top:0.25rem;">2026</p>
+                <strong style="font-family:var(--font-outfit);font-size:0.9rem;color:var(--color-naa-navy);">Official Contact</strong>
+                <p style="font-size:0.88rem;color:#6b7280;margin-top:0.25rem;"><a href="tel:3063309559" style="color:var(--color-naa-navy);font-weight:700;">(306) 330-9559</a> &bull; <!--email_off--><a href="mailto:info@naacanada.org" style="color:var(--color-naa-maroon);">info@naacanada.org</a><!--/email_off--></p>
               </div>
             </div>
           </div>
@@ -71,8 +89,8 @@ import Footer from '../../components/Footer.astro';
             style="border-radius:50%;box-shadow:0 20px 60px rgba(2,31,71,0.15);margin:0 auto;"
           />
           <div style="margin-top:2rem;background:var(--color-naa-grey);border-radius:16px;padding:1.5rem;text-align:left;">
-            <p style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-naa-navy);margin-bottom:0.75rem;">The NAA Emblem</p>
-            <p style="font-size:0.85rem;color:#374151;line-height:1.65;">The circular emblem features a maple leaf, multi-sport athlete silhouettes, and stars framed by the National Athletics Academy mark. It represents high-quality coaching, multi-sport accessibility, and Canadian athletic development.</p>
+            <p style="font-family:var(--font-outfit);font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-naa-navy);margin-bottom:0.75rem;">The NAA Crest</p>
+            <p style="font-size:0.85rem;color:#374151;line-height:1.65;">The circular emblem features a maple leaf, multi-sport athlete silhouettes, and stars framed by the National Athletics Academy mark. It represents high-quality coaching, multi-sport accessibility, and Saskatchewan community athletic development.</p>
           </div>
         </div>
       </div>
@@ -86,49 +104,78 @@ import Footer from '../../components/Footer.astro';
         <h2 id="mvv-heading" style="font-size:clamp(1.75rem,3vw,2.5rem);color:white;margin-bottom:1rem;">Mission, Vision &amp; Values</h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;">
+      <div class="naa-grid-2" style="margin-bottom:3rem;">
         <!-- Mission -->
-        <div class="reveal" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:2.5rem;">
-          <div style="font-size:2rem;margin-bottom:1rem;">🎯</div>
+        <div class="reveal" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:2.5rem;display:flex;flex-direction:column;height:100%;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(221,170,64,0.15);color:var(--color-naa-gold);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
           <h3 style="font-family:var(--font-outfit);font-weight:800;color:var(--color-naa-gold);font-size:1.1rem;margin-bottom:1rem;">Mission</h3>
-          <p style="color:rgba(255,255,255,0.85);line-height:1.85;font-size:0.95rem;">
-            To make high-quality, structured, multi-sport training accessible to every family in Regina — building physical literacy, competitive ability and character in athletes of all ages, across all sports, from one trusted academy.
+          <p style="color:rgba(255,255,255,0.85);line-height:1.85;font-size:0.95rem;flex:1;">
+            To make high-quality, structured, multi-sport training accessible to every family in Regina — building physical literacy, competitive ability and character in athletes of all ages, across all sports, from one trusted non-profit academy.
           </p>
         </div>
 
         <!-- Vision -->
-        <div class="reveal" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:2.5rem;animation-delay:0.1s;">
-          <div style="font-size:2rem;margin-bottom:1rem;">🔭</div>
+        <div class="reveal" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:2.5rem;animation-delay:0.1s;display:flex;flex-direction:column;height:100%;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(221,170,64,0.15);color:var(--color-naa-gold);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
           <h3 style="font-family:var(--font-outfit);font-weight:800;color:var(--color-naa-gold);font-size:1.1rem;margin-bottom:1rem;">Vision</h3>
-          <p style="color:rgba(255,255,255,0.85);line-height:1.85;font-size:0.95rem;">
+          <p style="color:rgba(255,255,255,0.85);line-height:1.85;font-size:0.95rem;flex:1;">
             To be Saskatchewan's leading multi-sport academy: the first place a family looks when a child wants to try a sport, when a youth athlete wants to get better, and when an adult wants to get stronger.
           </p>
         </div>
       </div>
 
-      <!-- Values -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+      <!-- Values (3 Columns) -->
+      <div class="naa-grid-3">
         {[
-          { icon: '🏅', value: 'Excellence', desc: 'Certified coaches, structured curricula, measurable athlete progress. No filler sessions.' },
-          { icon: '🤝', value: 'Access', desc: 'Newcomer outreach, equipment lending, and financial assistance support. No child turned away for cost alone.' },
-          { icon: '🛡️', value: 'Safety', desc: 'Screened coaches, Respect in Sport Certified, age-appropriate loading, concussion protocols.' },
-          { icon: '🎽', value: 'Multi-Sport', desc: 'Athletes are encouraged to play several sports. Early specialization is actively discouraged.' },
-          { icon: '🌍', value: 'Community', desc: 'Sport as a place where a diverse city meets, competes and belongs together.' },
-          { icon: '💎', value: 'Integrity', desc: 'Transparent fees, honest communication with families, accountable financial management.' },
+          { icon: 'excellence', value: 'Excellence', desc: 'Certified coaches, structured curricula, measurable athlete progress. No filler sessions.' },
+          { icon: 'access', value: 'Access', desc: 'Newcomer outreach, equipment lending, and financial assistance support. No child turned away for cost alone.' },
+          { icon: 'safety', value: 'Safety', desc: 'Screened coaches, Respect in Sport Certified, age-appropriate loading, concussion protocols.' },
+          { icon: 'multisport', value: 'Multi-Sport', desc: 'Athletes are encouraged to play several sports. Early specialization is actively discouraged.' },
+          { icon: 'community', value: 'Community', desc: 'Sport as a place where a diverse city meets, competes and belongs together.' },
+          { icon: 'integrity', value: 'Integrity', desc: 'Transparent fees, honest communication with families, accountable non-profit management.' },
         ].map((v, i) => (
-          <div class="reveal" style={`animation-delay:${i*80}ms;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2rem;`}>
-            <div style="font-size:2rem;margin-bottom:0.75rem;">{v.icon}</div>
+          <div class="reveal" style={`animation-delay:${i*80}ms;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2rem;display:flex;flex-direction:column;height:100%;`}>
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(221,170,64,0.12);color:var(--color-naa-gold);display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
             <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);margin-bottom:0.5rem;font-size:0.95rem;">{v.value}</h3>
-            <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;line-height:1.65;">{v.desc}</p>
+            <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;line-height:1.65;flex:1;">{v.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- Governance & Team Callout Banner (Full Team Details on /team/) -->
+  <section class="section-padding" style="background:#ffffff;border-bottom:1px solid #e2e8f0;" aria-labelledby="governance-heading">
+    <div class="container-naa" style="max-width:860px;">
+      <div class="reveal" style="background:#f8fafc;border:1px solid #cbd5e1;border-left:4px solid var(--color-naa-navy);border-radius:16px;padding:2.25rem;display:flex;flex-direction:column;md:flex-direction:row;align-items:flex-start;justify-content:space-between;gap:1.5rem;">
+        <div>
+          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:0.75rem;">Governance &amp; Staff</span>
+          <h2 id="governance-heading" style="font-family:var(--font-outfit);font-weight:700;font-size:1.45rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
+            Board of Directors &amp; Coaching Staff
+          </h2>
+          <p style="color:#4b5563;font-size:0.92rem;line-height:1.7;margin-bottom:0.75rem;">
+            National Athletics Academy Inc. maintains a clear separation between volunteer non-profit community governance (Board of Directors) and certified day-to-day court operations.
+          </p>
+          <p style="color:#64748b;font-size:0.85rem;line-height:1.6;margin:0;">
+            Have questions regarding court schedules or daily sessions? Reach operations at <a href="tel:3063309559" style="font-weight:700;color:var(--color-naa-navy);text-decoration:underline;">(306) 330-9559</a> or <a href="mailto:info@naacanada.org" style="font-weight:700;color:var(--color-naa-navy);text-decoration:underline;">info@naacanada.org</a>.
+          </p>
+        </div>
+        <div style="align-self:flex-start;shrink-0;padding-top:0.25rem;">
+          <a href="/team/" class="btn btn-primary" style="white-space:nowrap;">
+            Meet Our Entire Team &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
-  <!-- Service area -->
+  <!-- Service area (4 Columns) -->
   <section style="background:var(--color-naa-grey);padding:5rem 0;" aria-labelledby="area-heading">
     <div class="container-naa">
       <div class="reveal" style="text-align:center;margin-bottom:3rem;">
@@ -136,7 +183,7 @@ import Footer from '../../components/Footer.astro';
         <p style="color:#374151;max-width:500px;margin:0 auto;line-height:1.75;">Where NAA delivers programs and events across Saskatchewan.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;" class="reveal">
+      <div class="naa-grid-4 reveal">
         {[
           { tier: 'Core', area: 'City of Regina', role: 'All programs, all pillars, primary participant base', icon: '📍', color: 'var(--color-naa-navy)' },
           { tier: 'Secondary', area: 'Regina CMA', role: 'White City, Emerald Park, Pilot Butte, Balgonie, Lumsden, Pense', icon: '🗺️', color: 'var(--color-naa-maroon)' },

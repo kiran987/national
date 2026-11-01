@@ -94,7 +94,7 @@ faqs:
   - question: Can my child attend just one day of a multi-day camp?
     answer: Single-day drop-in options are available on select camps. Full-week and multi-day registrations get the best experience and pricing.
   - question: Is there financial assistance available for camps?
-    answer: Yes — NAA offers subsidized spots and flexible payment options. No child is turned away for cost alone. KidSport Saskatchewan and Canadian Tire Jumpstart are also available for eligible families.
+    answer: Yes — NAA offers subsidized spots and flexible payment options. No child is turned away for cost alone. Sibling discounts (10%) and flexible 2–3 installment payment options are available for all families.
 ---
 
 NAA Camps & Clinics extend sport learning beyond the regular season. Whether it's a full week of multi-sport summer camp, a 3-day February break intensive, a single PD day, or an in-school delivery for your class, NAA provides structured, certified-coach-led programming for all ages. Every camp ends with a mini tournament or showcase.

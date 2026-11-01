@@ -30,3 +30,13 @@ tech_text.txt
 
 # jetbrains setting folder
 .idea/
+
+# old build archives and raw reference photos (kept locally only)
+*.zip
+reference/**/*.jpg
+reference/**/*.jpeg
+reference/**/*.png
+reference/*.jpg
+reference/*.jpeg
+reference/*.png
+.claude/

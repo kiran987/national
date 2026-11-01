@@ -1,0 +1,357 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import RecaptchaNotice from '../../components/RecaptchaNotice.astro';
+
+const sports = [
+  { emoji: '🏀', name: 'Basketball Academy',           role: 'Coach',          status: 'Active — Recruiting Coaches' },
+  { emoji: '🏐', name: 'Volleyball Academy',           role: 'Coach',          status: 'Active — Recruiting Coaches' },
+  { emoji: '🏸', name: 'Badminton Academy',             role: 'Coach',          status: 'Active — Recruiting Coaches' },
+  { emoji: '🛡️', name: 'National Shield - Martial Arts', role: 'Trainer / Coach', status: 'Active — Recruiting Trainers / Coaches' },
+  { emoji: '🏃', name: 'Athletics (Track & Field)',     role: 'Coach',          status: 'Starting Soon' },
+  { emoji: '🏕️', name: 'Camps & Clinics',                role: 'Instructor',     status: 'Starting Soon' },
+];
+
+const requirements = [
+  { icon: '🔍', title: 'Criminal Record Check + VSS', desc: 'All coaches must hold a valid CRC with Vulnerable Sector Screening before working with participants.' },
+  { icon: '🏅', title: 'Respect in Sport (Activity Leader)', desc: 'Required for all NAA coaches and activity leaders, covering safe sport, abuse prevention, and inclusion.' },
+  { icon: '🩺', title: 'Standard First Aid + CPR-C', desc: 'Current certification in Standard First Aid and CPR-C with AED is required.' },
+  { icon: '🧠', title: 'Concussion Recognition', desc: 'Parachute Canada Concussion Recognition Tool or equivalent must be on file.' },
+  { icon: '🎓', title: 'NCCP Coaching Certification', desc: 'NCCP sport certification (or willingness to complete one). NAA supports motivated coaches in obtaining sport-specific certifications where needed.' },
+];
+
+const perks = [
+  { icon: '💰', title: 'Paid & Volunteer Positions', desc: 'Both volunteer and paid coaching roles are available depending on program and experience.' },
+  { icon: '📋', title: 'Structured Curriculum Provided', desc: 'Full weekly lesson plans, drill libraries, and curriculum guides supplied — no need to start from scratch.' },
+  { icon: '🎓', title: 'Certification Support', desc: 'NAA supports coaches in obtaining sport certifications and Respect in Sport where not already held.' },
+  { icon: '📈', title: 'Real Coaching Experience', desc: 'Work with structured age cohorts, certified peers, and a growing community organization.' },
+  { icon: '🤝', title: 'Community Impact', desc: 'Shape youth sport development in Regina and build lasting relationships with families across the city.' },
+  { icon: '⏰', title: 'Flexible Scheduling', desc: 'Evening and weekend sessions across fall, winter, and spring blocks — designed around working adults.' },
+];
+---
+
+<Layout
+  title="Youth Sports Coaching Opportunities in Regina, SK | NAA"
+  description="Join NAA's coaching team in Regina, SK. Volunteer and paid coaching positions available for Basketball, Volleyball, Badminton, Martial Arts, and more. Apply to coach today."
+>
+  <Header />
+
+  <!-- Hero -->
+  <section class="page-hero" aria-labelledby="coaching-heading" style="background:linear-gradient(160deg,#021F47 0%,#010f24 55%,#1a1a2e 100%);">
+    <div class="container-naa" style="position:relative;z-index:1;text-align:center;">
+      <div class="animate-fade-up">
+        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:1.25rem;">
+          🏅 Join Our Team · Non-Profit Youth Athletics
+        </span>
+        <h1 id="coaching-heading" style="font-size:clamp(2.2rem,5vw,3.5rem);color:white;margin-bottom:1rem;font-weight:900;">
+          Become a NAA Coach
+        </h1>
+        <p style="color:rgba(255,255,255,0.85);font-size:1.15rem;max-width:640px;margin:0 auto 2rem;line-height:1.75;">
+          Help build Regina's premier youth athletics organization. Volunteer and paid coaching positions available across all NAA programs — bring your passion, we'll provide the curriculum.
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#apply" class="btn btn-primary btn-lg">Apply to Coach →</a>
+          <a href="#requirements" class="btn btn-outline btn-lg">View Requirements</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Coach with NAA -->
+  <section class="section-padding" style="background:#ffffff;" aria-labelledby="why-coach-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="badge" style="background:rgba(221,170,64,0.15);color:#926508;margin-bottom:0.75rem;">Why NAA?</span>
+        <h2 id="why-coach-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:1rem;">
+          Why Coach with National Athletics Academy?
+        </h2>
+        <p style="color:#4b5563;font-size:1.05rem;max-width:620px;margin:0 auto;line-height:1.7;">
+          NAA is building a coaching culture centred on safety, development, and community. Here's what you get when you join our team.
+        </p>
+      </div>
+
+      <div class="naa-grid-3">
+        {perks.map((perk, i) => (
+          <div class="card reveal" style={`animation-delay:${i*80}ms;padding:1.75rem;border-top:3px solid ${i % 2 === 0 ? 'var(--color-naa-navy)' : 'var(--color-naa-maroon)'};display:flex;flex-direction:column;height:100%;`}>
+            <div style="font-size:2rem;margin-bottom:0.875rem;">{perk.icon}</div>
+            <h3 style="font-size:1.05rem;color:var(--color-naa-navy);margin-bottom:0.5rem;font-family:var(--font-outfit);font-weight:700;">{perk.title}</h3>
+            <p style="font-size:0.88rem;color:#475569;line-height:1.65;flex:1;">{perk.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Openings -->
+  <section class="section-padding" style="background:var(--color-naa-grey);" aria-labelledby="openings-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <span class="badge" style="background:rgba(131,22,27,0.1);color:var(--color-naa-maroon);margin-bottom:0.75rem;">Open Positions</span>
+        <h2 id="openings-heading" class="gold-accent-center" style="font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:1rem;">
+          Coaching Positions by Sport
+        </h2>
+        <p style="color:#4b5563;font-size:1.05rem;max-width:580px;margin:0 auto;line-height:1.7;">
+          We recruit coaches for all active and upcoming programs. Apply now and we'll match your sport, availability, and experience level.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+        {sports.map((sport, i) => (
+          <div class="reveal" style={`animation-delay:${i*60}ms;background:white;border-radius:16px;padding:1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 2px 12px rgba(2,31,71,0.06);border-left:4px solid ${sport.status.startsWith('Active') ? 'var(--color-naa-navy)' : 'var(--color-naa-gold)'};`}>
+            <span style="font-size:2rem;flex-shrink:0;">{sport.emoji}</span>
+            <div>
+              <div style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:0.95rem;margin-bottom:0.25rem;">{sport.name}</div>
+              <span style={`font-size:0.72rem;font-family:var(--font-outfit);font-weight:700;padding:0.2rem 0.6rem;border-radius:9999px;${sport.status.startsWith('Active') ? 'background:rgba(2,31,71,0.08);color:var(--color-naa-navy);' : 'background:rgba(221,170,64,0.18);color:#926508;'}`}>
+                {sport.status}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section id="requirements" class="section-padding" style="background:#021F47;color:white;scroll-margin-top:80px;" aria-labelledby="requirements-heading">
+    <div class="container-naa">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="badge" style="background:rgba(221,170,64,0.2);color:var(--color-naa-gold);margin-bottom:0.75rem;">Safe Sport First</span>
+        <h2 id="requirements-heading" style="font-size:clamp(1.8rem,3.5vw,2.5rem);color:white;font-weight:900;margin-bottom:1rem;">
+          Coaching Requirements
+        </h2>
+        <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;max-width:600px;margin:0 auto;line-height:1.75;">
+          Every NAA coach must meet our Safe Sport standards before their first session. We support coaches in obtaining certifications where needed.
+        </p>
+      </div>
+
+      <div class="naa-grid-3">
+        {requirements.map((req, i) => (
+          <div class="reveal" style={`animation-delay:${i*70}ms;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:1.75rem;display:flex;flex-direction:column;height:100%;`}>
+            <div style="font-size:1.75rem;margin-bottom:0.875rem;">{req.icon}</div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:0.95rem;margin-bottom:0.5rem;">{req.title}</h3>
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.75);line-height:1.65;flex:1;">{req.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section id="apply" class="section-padding" style="background:#f8fafc;scroll-margin-top:80px;" aria-labelledby="apply-heading">
+    <div class="container-naa">
+      <div class="naa-split-even" style="align-items:start;">
+
+        <!-- Form -->
+        <div class="reveal">
+          <span class="badge" style="background:rgba(2,31,71,0.08);color:var(--color-naa-navy);margin-bottom:1rem;">Volunteer & Paid Roles</span>
+          <h2 id="apply-heading" class="gold-accent" style="font-size:clamp(1.6rem,3vw,2.25rem);margin-bottom:0.75rem;">
+            Apply to Coach at NAA
+          </h2>
+          <p style="color:#4b5563;font-size:0.95rem;line-height:1.7;margin-bottom:2rem;">
+            Fill out the form below and our coaching coordinator will be in touch within 3 business days.
+          </p>
+
+          <div id="coach-success" class="form-success" role="alert">
+            ✅ Application received! We'll be in touch within 3 business days.
+          </div>
+
+          <form id="coach-form" method="POST" action="/coach-apply.php" novalidate style="display:flex;flex-direction:column;gap:1.25rem;">
+            <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-token" value="" />
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="coach-first" class="form-label">First Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="coach-first" name="first_name" class="form-input" required autocomplete="given-name" placeholder="First name" />
+                <span class="form-error" id="err-coach-first" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="coach-last" class="form-label">Last Name <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="text" id="coach-last" name="last_name" class="form-input" required autocomplete="family-name" placeholder="Last name" />
+                <span class="form-error" id="err-coach-last" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="coach-email" class="form-label">Email <span style="color:var(--color-naa-maroon);">*</span></label>
+                <input type="email" id="coach-email" name="email" class="form-input" required autocomplete="email" placeholder="you@example.com" />
+                <span class="form-error" id="err-coach-email" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="coach-phone" class="form-label">Phone</label>
+                <input type="tel" id="coach-phone" name="phone" class="form-input" autocomplete="tel" placeholder="(306) 555-0100" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Sport(s) You'd Like to Coach <span style="color:var(--color-naa-maroon);">*</span></label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.5rem;">
+                {sports.map((sport) => (
+                  <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.875rem;color:#374151;cursor:pointer;">
+                    <input type="checkbox" name="sports[]" value={sport.name} style="accent-color:var(--color-naa-navy);width:16px;height:16px;" />
+                  <span>{sport.emoji} {sport.name} <span style="font-size:0.75em;color:#6b7280;font-weight:400;">({sport.role})</span></span>
+                  </label>
+                ))}
+              </div>
+              <span class="form-error" id="err-coach-sports" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="coach-type" class="form-label">Position Type <span style="color:var(--color-naa-maroon);">*</span></label>
+              <select id="coach-type" name="coach_type" class="form-input form-select" required>
+                <option value="">Select…</option>
+                <option>Volunteer Coach</option>
+                <option>Volunteer Trainer / Coach (Martial Arts)</option>
+                <option>Paid Coach (Part-Time)</option>
+                <option>Paid Trainer / Coach — Part-Time (Martial Arts)</option>
+                <option>Open to Either</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="coach-certs" class="form-label">Certifications Held</label>
+              <input type="text" id="coach-certs" name="certifications" class="form-input" placeholder="e.g. Basketball Canada NCCP, First Aid, Respect in Sport…" />
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="coach-exp" class="form-label">Years of Experience</label>
+                <select id="coach-exp" name="experience" class="form-input form-select">
+                  <option value="">Select…</option>
+                  <option>New to coaching</option>
+                  <option>1–2 years</option>
+                  <option>3–5 years</option>
+                  <option>6–10 years</option>
+                  <option>10+ years</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="coach-avail" class="form-label">Availability</label>
+                <select id="coach-avail" name="availability" class="form-input form-select">
+                  <option value="">Select…</option>
+                  <option>Weekday evenings</option>
+                  <option>Saturday mornings</option>
+                  <option>Saturday afternoons</option>
+                  <option>Sunday</option>
+                  <option>Flexible / Multiple</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="coach-message" class="form-label">Tell Us About Yourself</label>
+              <textarea id="coach-message" name="message" class="form-input form-textarea" rows="4" placeholder="Brief background — sport experience, why you want to coach with NAA, any relevant skills…"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="coach-submit-btn" style="width:100%;">
+              Submit Application →
+            </button>
+            <RecaptchaNotice action="coach_apply" />
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div class="card reveal" style="padding:2rem;background:var(--color-naa-navy);color:white;">
+            <div style="font-size:2rem;margin-bottom:1rem;">📬</div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);font-size:1.05rem;margin-bottom:0.75rem;">Questions About Coaching?</h3>
+            <p style="color:rgba(255,255,255,0.8);font-size:0.875rem;line-height:1.65;margin-bottom:1.25rem;">
+              Contact our coaching coordinator directly if you have questions before applying.
+            </p>
+            <!--email_off--><a href="mailto:info@naacanada.org" class="btn btn-gold btn-sm" style="width:100%;justify-content:center;margin-bottom:0.5rem;">
+              info@naacanada.org
+            </a><!--/email_off-->
+            <a href="tel:3063309559" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;border-color:rgba(255,255,255,0.35);color:white;">
+              📞 (306) 330-9559
+            </a>
+          </div>
+
+          <div class="card reveal" style="padding:2rem;background:rgba(221,170,64,0.07);border:2px solid rgba(221,170,64,0.3);">
+            <div style="font-size:1.75rem;margin-bottom:0.875rem;">🎓</div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-navy);font-size:1rem;margin-bottom:0.5rem;">Don't Have All Certifications?</h3>
+            <p style="color:#374151;font-size:0.875rem;line-height:1.65;">
+              That's okay — apply anyway. NAA will assist motivated coaches in obtaining Respect in Sport, First Aid, and sport-specific certifications where possible.
+            </p>
+          </div>
+
+          <div class="card reveal" style="padding:2rem;background:#f0fdf4;border:2px solid rgba(34,197,94,0.25);">
+            <div style="font-size:1.75rem;margin-bottom:0.875rem;">🛡️</div>
+            <h3 style="font-family:var(--font-outfit);font-weight:700;color:#166534;font-size:1rem;margin-bottom:0.5rem;">Safe Sport Commitment</h3>
+            <p style="color:#374151;font-size:0.875rem;line-height:1.65;">
+              All NAA coaches must complete a Criminal Record Check with Vulnerable Sector Screening and Respect in Sport training prior to active coaching.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { executeRecaptcha } from '../../utils/recaptcha';
+
+  const form = document.getElementById('coach-form') as HTMLFormElement;
+  const success = document.getElementById('coach-success') as HTMLElement;
+
+  function setErr(id: string, msg: string) {
+    const el = document.getElementById(id) as HTMLElement;
+    if (el) el.textContent = msg;
+  }
+  function clearErrs() {
+    document.querySelectorAll('.form-error').forEach((el) => (el.textContent = ''));
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrs();
+
+    const first  = (document.getElementById('coach-first') as HTMLInputElement).value.trim();
+    const last   = (document.getElementById('coach-last') as HTMLInputElement).value.trim();
+    const email  = (document.getElementById('coach-email') as HTMLInputElement).value.trim();
+    const sports = document.querySelectorAll('input[name="sports[]"]:checked');
+
+    let valid = true;
+    if (!first) { setErr('err-coach-first', 'First name is required.'); valid = false; }
+    if (!last)  { setErr('err-coach-last',  'Last name is required.');  valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setErr('err-coach-email', 'Valid email required.'); valid = false; }
+    if (sports.length === 0) { setErr('err-coach-sports', 'Please select at least one sport.'); valid = false; }
+    if (!valid) return;
+
+    const btn = document.getElementById('coach-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+
+    try {
+      const recaptchaToken = await executeRecaptcha('coach_apply');
+      const tokenInput = form.querySelector<HTMLInputElement>('.g-recaptcha-token, input[name="g-recaptcha-response"]');
+      if (tokenInput && recaptchaToken) {
+        tokenInput.value = recaptchaToken;
+      }
+      const data = new FormData(form);
+      if (recaptchaToken) {
+        data.set('g-recaptcha-response', recaptchaToken);
+      }
+      const resp = await fetch('/coach-apply.php', { method: 'POST', body: data });
+      const result = await resp.json().catch(() => ({}));
+      if (resp.ok && result.success !== false) {
+        form.style.display = 'none';
+        success.classList.add('show');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        btn.textContent = 'Submit Application →';
+        btn.disabled = false;
+        alert(result.error || result.message || 'Something went wrong. Please email info@naacanada.org directly.');
+      }
+    } catch {
+      form.submit();
+    }
+  });
+</script>
+
+<style>
+  @media (max-width: 860px) {
+    #apply > .container-naa > div { grid-template-columns: 1fr !important; gap: 3rem !important; }
+  }
+</style>

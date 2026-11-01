@@ -2,16 +2,27 @@
 Options -Indexes -MultiViews
 Options +FollowSymLinks
 
-# HTTPS redirect (enable in production with correct domain)
-# RewriteEngine On
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Trailing slash normalization
+# ── URL Canonicalization & Redirects ──
 RewriteEngine On
+
+# 1. Redirect old nationalathletics.ca domain to new naacanada.org domain
+RewriteCond %{HTTP_HOST} ^(?:www\.)?nationalathletics\.ca$ [NC]
+RewriteRule ^(.*)$ https://naacanada.org/$1 [R=301,L]
+
+# 2. Redirect www to non-www (https://www.naacanada.org -> https://naacanada.org)
+RewriteCond %{HTTP_HOST} ^www\.naacanada\.org$ [NC]
+RewriteRule ^(.*)$ https://naacanada.org/$1 [R=301,L]
+
+# 2. Enforce HTTPS (compatible with direct cPanel SSL and Cloudflare Flexible/Full SSL)
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# 3. Trailing Slash Normalization (ensures clean URLs like /about/ without duplicate content)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^.]+)$ $1/ [L,R=301]
+RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]+)$
+RewriteRule ^(.*[^/])$ https://%{HTTP_HOST}/$1/ [R=301,L]
 
 # Security headers
 <IfModule mod_headers.c>
@@ -29,12 +40,14 @@ RewriteRule ^([^.]+)$ $1/ [L,R=301]
     </RequireAll>
 </Files>
 
-# Protect private directory
-<IfModule mod_authz_core.c>
-    <Directory "/private">
-        Require all denied
-    </Directory>
-</IfModule>
+# Shared PHP helpers and private config are include-only
+<FilesMatch "^(mail-common|recaptcha-verify|naa_config)\.php$">
+    Require all denied
+</FilesMatch>
+
+# Block web access to private folder if placed inside webroot
+RewriteRule ^private/ - [F,L,NC]
+
 
 # Caching
 <IfModule mod_expires.c>

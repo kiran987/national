@@ -182,7 +182,7 @@ Adults train hard without any requirement to compete or spar. Periodic dedicated
 
 ## PART C — CURRICULUM
 
-### 7. The SHIELD Safety System™
+### 7. The SHIELD Safety System
 
 This is the program's intellectual signature. Teach it as a system, not as "self-defence."
 

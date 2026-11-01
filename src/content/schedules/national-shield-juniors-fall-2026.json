@@ -1,16 +1,16 @@
 {
-  "program": "National Shield Martial Arts",
+  "program": "National Shield - Martial Arts",
   "tier": "National Shield Juniors",
   "season": "Fall 2026",
   "status": "Upcoming",
-  "startDate": "2026-10-16",
-  "endDate": "2027-01-10",
-  "dayOfWeek": "Friday & Saturday",
-  "time": "5:45–6:40 PM",
-  "venue": "Matted Gymnasium Facilities — Regina",
+  "startDate": "2026-10-19",
+  "endDate": "2026-12-16",
+  "dayOfWeek": "Days TBA (Will confirm later)",
+  "time": "Time TBA (Will confirm later)",
+  "venue": "Regina Facility TBA",
   "spotsTotal": 16,
   "spotsRemaining": 16,
   "price": 0,
-  "teamLinktUrl": "https://nationalathleticsacademy.ca/registration/",
-  "notes": "Draft schedule — exact session times and the TeamLinkt registration link are placeholders and need confirming before this cycle opens. No sessions Dec 21, 2026 – Jan 6, 2027 (winter break)."
+  "teamLinktUrl": "https://naacanada.org/registration/",
+  "notes": "Starting soon. Days and timings are currently being finalized. Registration open via interest form."
 }

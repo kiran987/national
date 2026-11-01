@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // programs.ts  —  Source-of-truth data for NAA programs
 //
-// ACTIVE programs are now: Basketball, Volleyball, National Shield,
-// Camps & Clinics, Tournaments (5 core programs).
+// ACTIVE programs are now: Basketball, Volleyball, Badminton,
+// National Shield - Martial Arts (4 active programs).
 //
-// Athletics, Soccer Little Kids, Badminton, and new sports are Coming Soon.
+// Athletics, Soccer Little Kids, and new sports are Coming Soon.
 //
 // NOTE: Content Collections are the canonical source for program detail pages.
 // This file provides lightweight references used on the homepage, programs
@@ -64,11 +64,14 @@ export interface DetailedProgram {
     description: string;
     logo?: string;
   };
+  status?: 'active' | 'starting-soon';
   highlights: string[];
   skillsFocus: string[];
   tiers: ProgramTierDetail[];
   whatsIncluded: string[];
   faqs: ProgramFAQ[];
+  image?: string;
+  gallery?: string[];
 }
 
 export interface UpcomingSport {
@@ -84,39 +87,48 @@ export interface UpcomingSport {
   detailBadge?: string;
 }
 
-// ─── 3 Core Active Programs (Live Now) ─────────────────────────────────────────
-export const activePrograms: DetailedProgram[] = [
+// ─── 4 Core Academies (2 Active In-Session · 2 Starting Soon) ───────────────────
+const activeProgramsRaw: DetailedProgram[] = [
   {
     id: 'basketball',
     slug: 'basketball',
-    order: 1,
-    name: 'Basketball Academy',
+    order: 3,
+    status: 'starting-soon',
+    name: 'National Hoops - Basketball',
     navTitle: 'Basketball',
-    shortName: 'Basketball',
-    badge: 'Youth & Junior Development',
+    shortName: 'National Hoops',
+    badge: 'Starting Soon · Youth & Junior Development',
     subtitle: 'Technical Skill, Spacing & Game IQ',
     tagline: 'Building confident, high-IQ ball handlers and decisive team players.',
-    emoji: '🏀',
-    icon: '🏀',
+    emoji: '',
+    icon: 'basketball',
     color: '#021F47',
     accentColor: '#DDAA40',
     bgColor: 'rgba(2,31,71,0.08)',
+    image: '/images/programs/basketball-action-1.webp',
+    gallery: [
+      '/images/programs/basketball-action-1.webp',
+      '/images/programs/basketball-portrait-1.webp',
+      '/images/programs/basketball-portrait-2.webp',
+    ],
     description:
-      'Structured basketball skill development focusing on dribbling mechanics, shooting form, triple-threat decision making, footwork, and small-sided 3v3 and 4v4 game play under certified Basketball Canada coaches.',
+      'Structured basketball skill development focusing on dribbling mechanics, shooting form, triple-threat decision making, footwork, and small-sided 3v3 and 4v4 game play under screened, Safe Sport–trained coaches.',
     longDescription:
-      'The National Athletics Academy Basketball program provides a progressive developmental pathway for players aged 5 to 16. Rather than relying solely on unstructured scrimmages, our curriculum breaks down critical motor patterns — footwork, balance, shooting mechanics, passing lanes, and court awareness — before applying them in fast-paced, decision-rich game scenarios.',
-    ages: 'Ages 5–16 (Discover, Develop, Advance)',
+      'The National Athletics Academy Basketball program provides a progressive developmental pathway for players aged 6 to 15. Rather than relying solely on unstructured scrimmages, our curriculum breaks down critical motor patterns — footwork, balance, shooting mechanics, passing lanes, and court awareness — before applying them in fast-paced, decision-rich game scenarios.',
+    ages: 'Ages 6–15 (Junior Hoops: 6–10, Youth Hoops: 11–15)',
     ratio: '1:10 to 1:14 Coach-to-Athlete Ratio',
-    venue: 'Regina Public & Catholic School Gymnasiums',
-    seasonDuration: '10-Week Seasonal Block (Fall, Winter, Spring)',
-    sessionsPerWeek: '1–2× / week · 60–90 min',
-    blockWeeks: 10,
-    blockPrice: 195,
-    hourlyRate: 19.5,
+    venue: 'Fellowship Hall Gym, Knox-Metropolitan United Church, 2340 Victoria Ave, Regina, SK S4P 0S6',
+    seasonDuration: 'Registration Starts Soon',
+    sessionsPerWeek: 'Schedule announced when registration opens',
+    blockWeeks: 8,
+    blockPrice: 205,
+    hourlyRate: 0,
     paymentPlan: true,
+    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79159',
     highlights: [
-      'Structured 10-week seasonal blocks with progressive weekly curricula',
-      'Basketball Canada certified coaching staff with competitive experience',
+      'Junior Hoops (Ages 6–10): $205 CAD (16 Classes · $102.50/mo)',
+      'Youth Hoops (Ages 11–15): $225 CAD (16 Classes · $112.50/mo)',
+      'Pay in 2 convenient monthly installments ($102.50/mo or $112.50/mo)',
       'High-touch 1:10 to 1:14 maximum athlete-to-coach ratios',
       'Small-sided 3v3 and 4v4 games to maximize touches and live decision-making',
       'Official NAA Athlete Progress Report card with benchmark skill rubric',
@@ -131,57 +143,44 @@ export const activePrograms: DetailedProgram[] = [
     ],
     tiers: [
       {
-        name: 'Discover Hoops',
-        badge: 'FUNdamentals',
-        ages: 'Ages 5–7',
-        format: '8–10 Weeks · 60 min · 1×/week',
+        name: 'Junior Hoops',
+        badge: 'Ages 6–10 · 16 Classes · $205 CAD ($102.50/mo)',
+        ages: 'Ages 6–10',
+        format: '16 Classes · $205 CAD ($102.50/mo in 2 installments)',
         focus:
-          'Joyful exploration, eye-hand coordination, modified basket heights (8.5ft), introductory dribbling games, and active motor skills.',
-        ratio: '1:10 Coach Ratio',
+          'Fundamental ball handling, eye-hand coordination, modified basket heights (8.5–9ft), shooting form, and introductory 3v3 small-court games.',
+        ratio: '1:10 to 1:12 Coach Ratio',
         curriculum: [
-          'Stationary ball control and finger pad dribbling',
+          'Stationary ball control and finger-pad dribbling mechanics',
           'Jump stops, pivots, and basic triple-threat position',
-          'Target shooting form with size 5 lightweight basketballs',
-          'Fun obstacle courses and mini 2v2 small-court games',
+          'Target shooting form with size 5/6 lightweight basketballs',
+          'Fun obstacle courses and mini 3v3 small-court games',
         ],
       },
       {
-        name: 'Develop Hoops',
-        badge: 'Core Skills',
-        ages: 'Ages 8–11',
-        format: '10 Weeks · 75 min · 1×/week',
+        name: 'Youth Hoops',
+        badge: 'Ages 11–15 · 16 Classes · $225 CAD ($112.50/mo)',
+        ages: 'Ages 11–15',
+        format: '16 Classes · $225 CAD ($112.50/mo in 2 installments)',
         focus:
-          'Technical fundamentals, crossover & change-of-direction moves, layups from both sides, defensive sliding, and 3v3 structured play.',
-        ratio: '1:12 Coach Ratio',
+          'Advanced ball handling, crossover & separation moves, pick-and-roll execution, lockdown man-to-man defense, fast-break decision making, and 4v4/5v5 scrimmages.',
+        ratio: '1:12 to 1:14 Coach Ratio',
         curriculum: [
-          'Speed dribbling, protective dribble, and retreat footwork',
-          'Layup footwork (right/left stride cadence) and rim finishing',
-          'Catch-and-shoot mechanics and free-throw routines',
-          '3v3 half-court tactical spacing and screen-away cuts',
-        ],
-      },
-      {
-        name: 'Advance Hoops',
-        badge: 'Competitive IQ',
-        ages: 'Ages 12–16',
-        format: '10 Weeks · 90 min · 2×/week',
-        focus:
-          'High-school prep, tactical awareness, pick-and-roll execution, lockdown man-to-man defense, fast-break decision making, and 4v4/5v5 scrimmages.',
-        ratio: '1:14 Coach Ratio',
-        curriculum: [
-          'Advanced separation moves (step-backs, hesitation, euro-steps)',
-          'Reading defensive closeouts and secondary help defenders',
+          'Advanced separation moves (crossovers, hesitation, step-backs)',
+          'Layup footwork cadence and catch-and-shoot mechanics',
           'Pick-and-roll, pick-and-pop, and motion offense concepts',
           'Full-court defensive rotations and competitive matchplay',
         ],
       },
     ],
     whatsIncluded: [
-      'Official NAA Basketball Academy Training Jersey',
-      '10 weeks of certified coach-led training (60–90 min sessions)',
+      'Junior Hoops (Ages 6–10): $205 CAD (16 Classes · $102.50/mo in 2 installments)',
+      'Youth Hoops (Ages 11–15): $225 CAD (16 Classes · $112.50/mo in 2 installments)',
+      'Official NAA National Hoops Training Jersey',
+      'Screened, Safe Sport–trained coach-led training sessions with progressive weekly curriculum',
       'Mid-season benchmark check and end-of-block NAA Progress Report',
-      'Dedicated team portal & live communications',
-      'Eligible for 10% multi-child and multi-sport family discounts',
+      'Dedicated team communications & schedule updates via the TeamLinkt app',
+      'Eligible for 10% multi-child family discounts',
     ],
     faqs: [
       {
@@ -192,12 +191,17 @@ export const activePrograms: DetailedProgram[] = [
       {
         question: 'What size basketball and hoop heights are used?',
         answer:
-          'We use age-appropriate equipment: Size 5 balls and lowered rims (8.5–9 ft) for Discover (ages 5–7); Size 6 balls and standard 10 ft rims for Develop (ages 8–11); and official Size 6/7 balls for Advance (ages 12–16).',
+          'We use age-appropriate equipment: Size 5/6 balls and lowered rims (8.5–9 ft) for Junior Hoops (ages 6–10); official Size 6/7 balls and standard 10 ft rims for Youth Hoops (ages 11–15).',
       },
       {
         question: 'Can beginners join the Basketball Academy?',
         answer:
-          'Absolutely! Our Discover and Develop tiers are specifically designed for beginners and multi-sport athletes. Coaches differentiate drills so every player develops confidence at their current skill level.',
+          'Absolutely! Our Junior Hoops tier (Ages 6–10) welcomes complete beginners and multi-sport athletes. Coaches differentiate drills so every player develops confidence at their current skill level.',
+      },
+      {
+        question: 'When are final schedules and training groups confirmed?',
+        answer:
+          'Final schedules and training group assignments will be confirmed in the TeamLinkt app once registrations and facility allocations are complete.',
       },
     ],
   },
@@ -205,33 +209,47 @@ export const activePrograms: DetailedProgram[] = [
     id: 'volleyball',
     slug: 'volleyball',
     order: 2,
-    name: 'Volleyball Academy',
+    status: 'active',
+    name: 'National Spike - Volleyball',
     navTitle: 'Volleyball',
-    shortName: 'Volleyball',
-    badge: 'Indoor Skill & Team Progression',
+    shortName: 'National Spike',
+    badge: 'Registration Open · Active Academy',
     subtitle: 'Passing Precision, Setting & Attack Mechanics',
     tagline: 'Developing dynamic movement, court agility, and crisp volleyball fundamentals.',
-    emoji: '🏐',
-    icon: '🏐',
+    emoji: '',
+    icon: 'volleyball',
     color: '#83161B',
     accentColor: '#DDAA40',
     bgColor: 'rgba(131,22,27,0.08)',
+    image: '/images/programs/volleyball-action-1.webp',
+    gallery: [
+      '/images/programs/volleyball-action-1.webp',
+      '/images/programs/volleyball-portrait-1.webp',
+      '/images/programs/volleyball-portrait-2.webp',
+      '/images/programs/volleyball-portrait-3.webp',
+    ],
     description:
-      'Comprehensive indoor volleyball instruction covering forearm platform passing, overhead setting precision, overhand serve consistency, spike approach footwork, and team defensive rotation with age-adjusted net heights.',
+      'Comprehensive indoor volleyball instruction covering forearm platform passing, overhead setting precision, overhand serve consistency, spike approach footwork, and team defensive rotation with age-adjusted net heights at Knox-Met Fellowship Hall Gym.',
     longDescription:
-      'Volleyball demands explosive agility, exceptional hand-eye coordination, and split-second teamwork. The NAA Volleyball Academy provides Regina youth with a technical foundation that standard school physical education cannot match. Led by Volleyball Canada certified coaches, players master ball control mechanics in structured drills and small-sided modified games.',
-    ages: 'Ages 8–16 (Develop & Advance)',
-    ratio: '1:10 to 1:14 Coach-to-Athlete Ratio',
-    venue: 'Regina Public & Catholic School Gymnasiums',
-    seasonDuration: '10-Week Seasonal Block (Fall, Winter, Spring)',
-    sessionsPerWeek: '1× / week · 75–90 min',
-    blockWeeks: 10,
-    blockPrice: 185,
-    hourlyRate: 14.8,
+      'Volleyball demands explosive agility, exceptional hand-eye coordination, and split-second teamwork. The NAA Volleyball Academy provides Regina youth with a technical foundation that standard school physical education cannot match. Led by screened, Safe Sport–trained coaches (including NCCP Volleyball Canada trained leadership), players master ball control mechanics in structured drills and small-sided modified games at Knox-Met Fellowship Hall Gym (Downtown Regina).',
+    ages: 'Ages 8–16 (Spike Foundations: 8–12, Spike Elite: 13–16)',
+    venue: 'Knox-Met Fellowship Hall Gym, 2340 Victoria Ave, Regina, SK',
+    seasonDuration: 'Fall 2026: Oct 22 – Dec 10, 2026 (8 Weeks · 16 Classes)',
+    sessionsPerWeek: 'Thu & Fri (Phase 1) · Tue & Thu (Phase 2) · 7:00–8:00 PM (60 mins)',
+    blockWeeks: 8,
+    blockPrice: 205,
+    hourlyRate: 0,
     paymentPlan: true,
+    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=79253',
     highlights: [
+      'Fall 2026: Currently in session at Knox-Met Fellowship Hall Gym (2340 Victoria Ave)',
+      'Venue: Knox-Met Fellowship Hall Gym (Downtown Regina)',
+      'Total 16 Sessions: 7:00 PM – 8:00 PM (60 mins)',
+      'Phase 1 (Oct 22 – Nov 13): Thursdays & Fridays (8 sessions)',
+      'Phase 2 (Nov 17 – Dec 10): Tuesdays & Thursdays (8 sessions)',
+      'Spike Foundations (Ages 8–12): $205 CAD · Spike Elite (Ages 13–16): $225 CAD',
       'Age-adjusted net heights and lightweight Mikasa trainer balls for optimal learning',
-      'Volleyball Canada certified coaches emphasizing injury-safe landing mechanics',
+      'Screened, Safe Sport–trained coaches emphasizing injury-safe landing mechanics',
       'Dedicated focus on the 3-contact rally principle (Pass, Set, Attack)',
       'Overhand serving progression from underhand basics to power float serves',
       'End-of-block NAA Athlete Progress Report card and skill evaluations',
@@ -246,10 +264,10 @@ export const activePrograms: DetailedProgram[] = [
     ],
     tiers: [
       {
-        name: 'Develop Volleyball',
-        badge: 'Foundations',
+        name: 'Spike Foundations',
+        badge: 'Ages 8–12 · 60 min · $205 CAD',
         ages: 'Ages 8–12',
-        format: '10 Weeks · 75 min · 1×/week',
+        format: '60 min · Thu/Fri then Tue/Thu (7:00–8:00 PM) · $205 CAD',
         focus:
           'Movement to the ball, solid forearm platform passing, overhead setting touch, underhand & intro overhand serving, and modified Tripleball gameplay.',
         ratio: '1:10 to 1:12 Coach Ratio',
@@ -261,10 +279,10 @@ export const activePrograms: DetailedProgram[] = [
         ],
       },
       {
-        name: 'Advance Volleyball',
-        badge: 'Tactical & Matchplay',
+        name: 'Spike Elite',
+        badge: 'Ages 13–16 · 60 min · $225 CAD',
         ages: 'Ages 13–16',
-        format: '10 Weeks · 90 min · 1–2×/week',
+        format: '60 min · Thu/Fri then Tue/Thu (7:00–8:00 PM) · $225 CAD',
         focus:
           'Overhand float serving, spike approach timing, block positioning, defensive digging, offensive transition, and full 6v6 competitive play.',
         ratio: '1:12 to 1:14 Coach Ratio',
@@ -277,11 +295,13 @@ export const activePrograms: DetailedProgram[] = [
       },
     ],
     whatsIncluded: [
-      'Official NAA Volleyball Academy Training Shirt',
-      '10 weeks of certified coach instruction and scrimmages',
-      'Access to regulation gym facilities and adjusted net systems',
+      'Spike Foundations (Ages 8–12): $205 CAD · 16 Sessions (60 mins)',
+      'Spike Elite (Ages 13–16): $225 CAD · 16 Sessions (60 mins)',
+      '16 Training Sessions (Oct 22 – Dec 10, 2026) · 7:00 PM – 8:00 PM',
+      'Official NAA National Spike Training Shirt',
+      'Screened, Safe Sport–trained coach instruction, scrimmages & regulation adjusted net facilities',
       'End-of-block NAA Volleyball Progress Report',
-      'Dedicated team communications and notifications',
+      'Dedicated team communications & schedule updates via the TeamLinkt app',
     ],
     faqs: [
       {
@@ -292,50 +312,239 @@ export const activePrograms: DetailedProgram[] = [
       {
         question: 'My child has never played volleyball before. Can they join?',
         answer:
-          'Yes! Our Develop Volleyball tier (Ages 8–12) welcomes complete beginners. We use low-impact training balls so athletes learn proper technique without discomfort.',
+          'Yes! Our Spike Foundations tier (Ages 8–12) welcomes complete beginners. We use low-impact training balls so athletes learn proper technique without discomfort.',
+      },
+      {
+        question: 'How does the Family & Multi-Child Discount work?',
+        answer:
+          'We offer a 10% discount starting on your second registered participant (and each additional child). Complete registration for Child 1, then click "+ Register Another Participant" before paying. Your 10% multi-child discount is applied automatically by the TeamLinkt registration system at checkout when the registration is eligible.',
+      },
+      {
+        question: 'When are final schedules and training groups confirmed?',
+        answer:
+          'Final schedules and training group assignments will be confirmed in the TeamLinkt app once registrations and facility allocations are complete.',
+      },
+    ],
+  },
+  {
+    id: 'badminton',
+    slug: 'badminton',
+    order: 1,
+    status: 'active',
+    name: 'National Smash - Badminton',
+    navTitle: 'Badminton',
+    shortName: 'National Smash',
+    badge: 'Winter 2027 · Registration Opens Nov 1',
+    subtitle: 'Grip Precision, Footwork Ladders & Fast-Twitch Agility',
+    tagline: 'High-speed reflexes, deceptive racket angles, and master court footwork.',
+    emoji: '',
+    icon: 'badminton',
+    color: '#021F47',
+    accentColor: '#DDAA40',
+    bgColor: 'rgba(2,31,71,0.08)',
+    image: '/images/programs/badminton-action-1.webp',
+    gallery: [
+      '/images/programs/badminton-action-1.webp',
+      '/images/programs/badminton-action-2.webp',
+      '/images/programs/badminton-portrait-1.webp',
+      '/images/programs/badminton-portrait-2.webp',
+    ],
+    description:
+      'Specialized badminton coaching covering forehand and backhand grip mechanics, 6-corner court footwork, clear, drop, smash, and net-kill shot execution, with tactical singles and doubles matchplay at the University of Regina Green Gym.',
+    longDescription:
+      'Badminton is the world\'s fastest racket sport, demanding exceptional cardiovascular endurance, hand-eye reactivity, and explosive multi-directional footwork. The NAA Badminton Academy provides structured technical instruction for Regina youth at the University of Regina Green Gym, transforming recreational backyard play into crisp, competitive court mastery under screened, Safe Sport–trained coaches across our progressive 10-session Winter 2027 curriculum.',
+    ages: 'Ages 6–16 (Smash Juniors: 6–10, Smash Elite: 11–16, Smash Pro: 11–16)',
+    ratio: '1:8 to 1:15 Coach-to-Athlete Ratio',
+    venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2',
+    seasonDuration: 'Winter 2027: Jan 26 – Mar 11, 2027 (10 Sessions · Tuesdays & Thursdays)',
+    sessionsPerWeek: '2× / week · Batch 1: 6:00–6:45 PM or Batch 2: 6:45–7:30 PM (40–45 min on-court coaching) · Smash Pro: 6:00–7:30 PM (90 min)',
+    blockWeeks: 7,
+    blockPrice: 150,
+    hourlyRate: 0,
+    paymentPlan: true,
+    highlights: [
+      'Winter 2027 registration opens November 1, 2026 on TeamLinkt',
+      '10 sessions · Tuesdays & Thursdays · Jan 26 – Mar 11, 2027 (no sessions Feb 9–18)',
+      'Two batches: Batch 1 · 6:00–6:45 PM or Batch 2 · 6:45–7:30 PM (45-min slots, 40–45 min of on-court coaching)',
+      'Venue: Green Gym, Centre for Kinesiology and Health Studies, University of Regina',
+      'Smash Juniors (Ages 6–10): $150 CAD · Smash Elite (Ages 11–16): $175 CAD · Smash Pro (Intensive): $295 CAD',
+      'Mandatory Training Kit Fee: $30 CAD per athlete, in addition to program tuition',
+      'Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)',
+      'Smash Juniors and Smash Elite are open, mixed-level classes: beginners and advanced players train together',
+      'Smash Pro: 6:00–7:30 PM (90-min sessions) for intensive tactical training & matchplay',
+      '10% Sibling Discount for 2nd registered child, applied through the TeamLinkt system at checkout',
+      'Strict 1:8 to 1:15 athlete-to-coach ratios ensuring individualized racket technique',
+      'High-grade Yonex practice nylon shuttles (Mavis 300/350) provided; athletes bring their own racket',
+      'End-of-block NAA Athlete Progress Report card and individual skill evaluations',
+    ],
+    skillsFocus: [
+      'Shake-Hands "V-Grip", Backhand Thumb-Press & Instant Grip Switching',
+      'Split-Step Timing, Agility Footwork Ladders & 6-Corner Court Cadence',
+      'Underhand High Serves, Low Backhand Flick Serves & 3rd-Shot Patterns',
+      'High Overhead Clears, Scissor-Kick Transitions & Rear-Court Depth',
+      'Gentle Drops, Slow/Fast Slices, Tight Tumbling Net Spins & Brush Net Kills',
+      'Flat-Trajectory Mid-Court Drives, Jump Smash Power & Reflexive Defense Blocks',
+      'Doubles Rotational Systems (Attack Front/Back vs. Defend Side-by-Side) & Tournament Matchplay',
+    ],
+    tiers: [
+      {
+        name: 'Smash Juniors',
+        badge: 'Ages 6–10 · 45-min batches · $150 CAD',
+        ages: 'Ages 6–10',
+        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $175 CAD',
+        focus:
+          'Open, mixed-level class for beginners through advanced players. Physical literacy, hand-eye coordination, neutral grip habits, underhand serving accuracy, court boundary games, gentle net drops, swat attacks, and Jamboree mini-meet competition.',
+        ratio: '1:8 to 1:10 Coach Ratio',
+        curriculum: [
+          'Shake-hands V-grip, pancake grip elimination, birdie balance relay',
+          'Rocket Launch high underhand serves, Battleship hoop target scoring',
+          'Agility ladder footwork, bunny hops, Hungry Hippos birdie collection',
+          'Scissor-throw mechanics, 12 o\'clock contact, Sky Ball high rallies',
+          'Gentle tape drops, soft hands drills, Drop the Bomb basket targets',
+          'Short-distance wall volleys, mid-court slap drills, Dodge-Rally game',
+          'Monster Swat downward attacks, Shield Protectors coach lob defense',
+          'Partner rally patterns, court boundary games, serve-and-return challenges',
+          'Skills circuit review (grip, serve, drop, swat) and personal-best challenges',
+          'Jamboree Mini-Meet, rotating partner matches, achievement certificates',
+        ],
+      },
+      {
+        name: 'Smash Elite',
+        badge: 'Ages 11–16 · 45-min batches · $175 CAD',
+        ages: 'Ages 11–16',
+        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $175 CAD',
+        focus:
+          'Open, mixed-level class for beginners through advanced players. Tactical footwork, split-step timing, forehand/backhand grip switching, low backhand flick serves, baseline attacking clears, spinning net tumbles, flat drives, jump smashes, doubles rotations, and sudden-death tournament matchplay.',
+        ratio: '1:12 to 1:15 Coach Ratio',
+        curriculum: [
+          'Forehand vs. backhand bevel grips, split-step timing, rapid-fire feed reactions',
+          'Low backhand flick serves, deceptive service variations, 3-shot rally battles',
+          '6-corner timed shadow ghosting, heel-to-toe lunges, push-off recoveries',
+          'Attacking clears vs. defensive high clears, scissor kicks, deep line targets',
+          'Slow/fast disguised slice drops, hair-pin net tumbles, Cat-and-Mouse net battles',
+          '2v2 flat drive battles down the tramlines, thumb-press punch drives, Speed Trap rallies',
+          'Jump smash mechanics & steep angles, defense blocks, Attack vs. Defense Gauntlet',
+          'Doubles rotation systems (front/back vs. side-by-side), communication and court cover',
+          'Match tactics: serve and 3rd-shot patterns under pressure, ladder matchplay',
+          'Sudden-Death Grudge Cup (to 11 pts), refereed games, individual skill evaluations',
+        ],
+      },
+      {
+        name: 'Smash Pro',
+        badge: 'Intensive · 90-min sessions · $295 CAD',
+        ages: 'Ages 11–16',
+        format: '10 sessions · Tue & Thu · 6:00–7:30 PM · $295 CAD',
+        focus:
+          'Intensive tactical training and matchplay in 90-minute sessions. Pattern building for singles and doubles, pressure situations, and structured match days for players ready to compete.',
+        ratio: '1:8 to 1:12 Coach Ratio',
+        curriculum: [
+          'Performance baseline: stroke and footwork audit, fitness check, diagnostic matchplay',
+          'Attacking clears, rear-court depth, and deception from the baseline',
+          'Net game: spinning tumbles, hair-pins, net kills, and net-battle tactics',
+          'Serve and receive tactics: low flick, drive serves, and 3rd/4th-shot patterns',
+          'Smash power: jump smash, steep angles, follow-up shots, and defense blocks',
+          'Singles tactics: tempo control, patterns of play, and opponent scouting',
+          'Doubles systems: attack/defend rotations, lead communication, and mixed pairs',
+          'Pressure play: points from deficit, tie-break situations, and match-point routines',
+          'Match day: round-robin matchplay with video-free coach analysis and debriefs',
+          'Smash Pro Invitational: tournament format, refereed games, and individual evaluations',
+        ],
+      },
+    ],
+    whatsIncluded: [
+      'Smash Juniors (Ages 6–10): $150 CAD · 10 sessions · open, mixed-level class',
+      'Smash Elite (Ages 11–16): $175 CAD · 10 sessions · open, mixed-level class',
+      'Smash Pro (Intensive tactical training & matchplay): $295 CAD · 10 sessions · 6:00–7:30 PM (90 min)',
+      'Mandatory Training Kit Fee: $30 CAD per athlete (in addition to tuition)',
+      'Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)',
+      '10 Training Sessions (45-min batches) at the University of Regina Green Gym',
+      'Tuesdays & Thursdays, Jan 26 – Mar 11, 2027 (Batch 1: 6:00–6:45 PM · Batch 2: 6:45–7:30 PM)',
+            '10% Sibling Discount for 2nd registered child, applied through the TeamLinkt system at checkout',
+      'High-grade Yonex practice nylon shuttles provided for all drills',
+      'End-of-block NAA Badminton Progress Report card & skill evaluation',
+      'Dedicated team communications & schedule updates via the TeamLinkt app',
+    ],
+    faqs: [
+      {
+        question: 'Do athletes need to bring their own badminton racket?',
+        answer:
+          'Yes. Athletes must bring their own standard badminton racket. NAA does not provide rackets, but Yonex practice shuttles are provided for all drills.',
+      },
+      {
+        question: 'What footwear and equipment are required?',
+        answer:
+          'Clean, non-marking indoor court shoes with good lateral support are mandatory to protect gymnasium hardwood and player ankles. Comfortable athletic shorts/t-shirt and a water bottle are required. Shuttles and training gear are fully provided by NAA.',
+      },
+      {
+        question: 'Is badminton suitable for beginners?',
+        answer:
+          'Yes! Badminton is one of the most accessible sports for developing foundational hand-eye reactivity and footwork. Smash Juniors (Ages 6–10) and Smash Elite (Ages 11–16) are open, mixed-level classes where beginners and advanced players train together, with drills adjusted to each athlete. Smash Pro is the intensive batch for players who want high-level tactical training and matchplay.',
+      },
+      {
+        question: 'How long are the sessions and when does the program run?',
+        answer:
+          'Winter 2027 runs 10 sessions on Tuesdays and Thursdays from Jan 26 to Mar 11 (no sessions Feb 9–18): Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9 and 11. Choose Batch 1 (6:00–6:45 PM) or Batch 2 (6:45–7:30 PM). Each slot is 45 minutes, with 40–45 minutes of on-court coaching. Coaches follow a strict 90-second maximum instruction/demonstration pacing rule so kids spend their time active and hitting shuttles, not listening to long lectures.',
+      },
+      {
+        question: 'What does Winter 2027 cost, and can I pay in installments?',
+        answer:
+          'Smash Juniors is $150 CAD, Smash Elite is $175 CAD, and Smash Pro (intensive tactical training & matchplay, 6:00–7:30 PM) is $295 CAD. Every athlete also pays a mandatory $30 CAD Training Kit fee. Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments).',
+      },
+      {
+        question: 'How does the Family & Multi-Child Discount work?',
+        answer:
+          'We offer a 10% discount starting on your second registered participant (and each additional child). Complete registration for Child 1, then click "+ Register Another Participant" before paying. Your 10% multi-child discount is applied automatically by the TeamLinkt registration system at checkout when the registration is eligible.',
+      },
+      {
+        question: 'When are final schedules and training groups confirmed?',
+        answer:
+          'Final schedules and training group assignments will be confirmed in the TeamLinkt app once registrations and facility allocations are complete.',
       },
     ],
   },
   {
     id: 'national-shield',
     slug: 'national-shield',
-    order: 3,
-    name: 'National Shield Martial Arts',
-    navTitle: 'National Shield',
-    shortName: 'National Shield',
-    badge: 'Power · Protect · Perform',
+    order: 4,
+    status: 'starting-soon',
+    name: 'National Shield - Martial Arts',
+    navTitle: 'National Shield - Martial Arts',
+    shortName: 'National Shield - Martial Arts',
+    badge: 'Starting Soon · Ages 5–17 & Adults',
     subtitle: 'Fitness-First Martial Arts & Personal Development',
     tagline: 'Strong Body. Confident Mind. Safe Choices.',
-    emoji: '🛡️',
-    icon: '🛡️',
+    emoji: '',
+    icon: 'shield',
     color: '#1a1a2e',
     accentColor: '#DDAA40',
     bgColor: 'rgba(26,26,46,0.08)',
+    image: '/images/programs/martialarts-action-1.webp',
+    teamLinktUrl: 'https://app.teamlinkt.com/register/go/nationalathleticsacademy/201750',
     description:
-      'Fitness-focused personal development through martial arts for ages 5 to 18+ and super-seniors. The SHIELD Safety System™, BRAVE Anti-Bullying Program, and a 5-level achievement system — delivered by VSC-screened, Respect in Sport certified coaches following the Rule of Two.',
+      'Fitness-focused personal development through martial arts for ages 5 to 18+ and super-seniors. The SHIELD Safety System, BRAVE Anti-Bullying Program, and a 5-level achievement system — delivered by VSC-screened, Respect in Sport certified coaches following the Rule of Two.',
     longDescription:
-      'National Shield Martial Arts is a fitness-first, safety-focused personal development program built on five pillars: Power, Protect, Confidence, Respect, and Skill. Participants build genuine fitness, learn martial arts fundamentals, and develop real personal safety awareness through the SHIELD Safety System™ and BRAVE Anti-Bullying curriculum. We do not teach children to look for fights — we teach them to avoid conflict, respond confidently, stay safe, and get help.',
+      'National Shield - Martial Arts is a fitness-first, safety-focused personal development program built on five pillars: Power, Protect, Confidence, Respect, and Skill. Participants build genuine fitness, learn martial arts fundamentals, and develop real personal safety awareness through the SHIELD Safety System and BRAVE Anti-Bullying curriculum. We do not teach children to look for fights — we teach them to avoid conflict, respond confidently, stay safe, and get help.',
     ages: 'Ages 5–12, 13–17, 18+ & Super-Seniors (3 streams)',
     ratio: '1:8 to 1:12 Coach-to-Athlete Ratio',
-    venue: 'Matted Gymnasium Facilities — Regina',
-    seasonDuration: '12-Week Foundation Cycle',
-    sessionsPerWeek: '1× or 2× / week · Friday & Saturday evenings · 60 min',
-    blockWeeks: 12,
-    blockPrice: 0, // TBD — Contact Us
+    venue: 'Regina Facility TBA',
+    seasonDuration: 'Registration Starts Soon',
+    sessionsPerWeek: '$100 CAD total · Schedule announced when registration opens',
+    blockWeeks: 4,
+    blockPrice: 100,
     hourlyRate: 0,
     paymentPlan: true,
     highlights: [
-      'SHIELD Safety System™ — a 6-step structured personal safety framework taught every cycle',
+      'SHIELD Safety System — a 6-step structured personal safety framework taught every cycle',
       'BRAVE Anti-Bullying Program — scenario role-play, not lecture',
       '5-level National Shield Achievement System — Foundation through Leader',
       'Every coach holds VSC, Respect in Sport, First Aid/CPR-C, and concussion certification',
-      'Rule of Two enforced — no adult ever alone with a child, ever',
+      'NAA follows the Rule of Two: interactions between coaches and participants always take place in open, observable settings with two screened adults present, never one-on-one behind closed doors.',
       'Monthly Shield Challenge Day with effort & character-based recognition',
     ],
     skillsFocus: [
       'Fitness — Strength, Endurance, Agility & Explosive Conditioning',
       'Martial Arts Fundamentals — Stance, Footwork, Pad Work & Controlled Technique',
-      'SHIELD Safety System™ — 6 Personal Safety Principles',
+      'SHIELD Safety System — 6 Personal Safety Principles',
       'BRAVE Anti-Bullying — 5-Step Assertive Response Framework',
       'Confidence & Assertive Communication Under Pressure',
       'Discipline, Leadership & Respect in Sport Values',
@@ -343,9 +552,10 @@ export const activePrograms: DetailedProgram[] = [
     tiers: [
       {
         name: 'National Shield Juniors',
-        badge: 'Ages 5–12',
+        badge: 'Ages 5–12 · $100 CAD total',
         ages: 'Ages 5–12',
-        format: '12 Weeks · 60 min · 1–2×/week',
+        teamLinktUrl: 'https://app.teamlinkt.com/register/go/nationalathleticsacademy/201750',
+        format: '$100 CAD total · Registration starts soon',
         focus:
           '40% fitness, agility & coordination, 25% martial arts fundamentals (boxing stance, footwork, controlled strikes), 20% personal safety & anti-bullying (STOP → MOVE AWAY → GET HELP), 15% focus, discipline & teamwork. Strict zero child-to-child contact — all strike training is performed exclusively on coach-held focus mitts and kick shields. Coaches split the floor into two development tracks: Ages 5–8 for motor skills and games, and Ages 9–12 for multi-strike combinations and safety roleplay.',
         ratio: '1:8 Coach Ratio (min. 2 adults)',
@@ -359,16 +569,17 @@ export const activePrograms: DetailedProgram[] = [
       },
       {
         name: 'National Shield Youth',
-        badge: 'Ages 13–17',
+        badge: 'Ages 13–17 · $100 CAD total',
         ages: 'Ages 13–17',
-        format: '12 Weeks · 60 min · 1–2×/week',
+        teamLinktUrl: 'https://app.teamlinkt.com/register/go/nationalathleticsacademy/201751',
+        format: '$100 CAD total · Registration starts soon',
         focus:
           '40% strength & athletic conditioning, 30% multi-discipline martial arts depth (boxing, kickboxing, wrestling movement, grappling fundamentals), 15% practical self-defence scenarios & situational awareness, 15% leadership, mindset & resilience. Controlled partner technical drills with matched size/maturity; light technical sparring at Level 3+ requires protective equipment and parental consent.',
         ratio: '1:10 Coach Ratio (min. 2 adults)',
         curriculum: [
           'Structured functional strength progression (bodyweight → resistance bands → light external loads)',
           'Practical defensive positioning and tactical escape mechanics',
-          'Full SHIELD Safety System™ — awareness, boundary setting, and threat de-escalation',
+          'Full SHIELD Safety System — awareness, boundary setting, and threat de-escalation',
           'Junior Leader pathway — senior youth mentor and assist Junior classes under coach supervision',
           '12-Week BUILD → PROTECT → PERFORM cycle with benchmark assessments',
         ],
@@ -377,7 +588,7 @@ export const activePrograms: DetailedProgram[] = [
         name: 'National Shield Pro',
         badge: 'Ages 18+ & Super-Seniors',
         ages: 'Ages 18+ & Super-Seniors',
-        format: '12 Weeks · 60 min · 1–3×/week',
+        format: 'Coming Soon',
         focus:
           '35% functional mobility, joint health & cardiovascular conditioning, 35% applied striking & grappling mechanics (boxing, Muay Thai, clinch work, ground survival), 20% real-world self-defence tactics (situational de-escalation, escape angles, everyday awareness), 10% breathwork, active recovery & stress modulation. Scalable by track: Fitness & Technique (pad work, heavy bag drills, zero-impact technical repetitions) or Advanced Applied (controlled, low-impact tactical drilling with full protective gear).',
         ratio: '1:12 Coach Ratio (min. 1 lead coach + 1 assistant)',
@@ -391,8 +602,8 @@ export const activePrograms: DetailedProgram[] = [
       },
     ],
     whatsIncluded: [
-      '12 weeks of certified coach-led sessions (Friday and/or Saturday evenings)',
-      'SHIELD Safety System™ and BRAVE Anti-Bullying curriculum every cycle',
+      'National Shield Pro (Ages 18+): Coming Soon',
+      'SHIELD Safety System and BRAVE Anti-Bullying curriculum every cycle',
       'Monthly Shield Challenge Day — fitness, skill, mindset & character assessment',
       'National Shield Achievement Levels 1–5 with certificates & patches',
       'All training pads and equipment provided — no personal gear required for beginners',
@@ -406,16 +617,19 @@ export const activePrograms: DetailedProgram[] = [
       {
         question: 'What certifications do National Shield coaches hold?',
         answer:
-          'Every National Shield coach holds a Criminal Record Check plus Vulnerable Sector Check, Respect in Sport (Activity Leader), NCCP Safe Sport Training, Standard First Aid + CPR-C (AED), and concussion recognition certification. The Rule of Two is mandatory.',
+          'Every National Shield coach holds a Criminal Record Check plus Vulnerable Sector Check, Respect in Sport (Activity Leader), NCCP Safe Sport Training, Standard First Aid + CPR-C (AED), and concussion recognition certification. NAA follows the Rule of Two: interactions between coaches and participants always take place in open, observable settings with two screened adults present, never one-on-one behind closed doors.',
       },
       {
-        question: 'Is there a trial class?',
+        question: 'What should my athlete wear or bring?',
         answer:
-          'Yes — we offer a trial class for new participants. Contact us to arrange your child\'s first session before committing to a full 12-week cycle.',
+          'Athletes should wear clean, comfortable athletic apparel (t-shirt and gym shorts/sweatpants) and indoor gym runners. All kick pads, strike shields, and safety gear are provided on site by NAA.',
       },
     ],
   },
 ];
+
+// Display order: Badminton, Volleyball, Basketball, National Shield
+export const activePrograms: DetailedProgram[] = [...activeProgramsRaw].sort((a, b) => a.order - b.order);
 
 // ─── Coming Soon Programs (Full Detail Pages Available) ──────────────────────
 // These programs have complete detail pages but are not yet running.
@@ -431,8 +645,8 @@ export const comingSoonPrograms: DetailedProgram[] = [
     badge: 'School Breaks, PD Days & Summer',
     subtitle: 'Multi-Sport Day Camps, Clinics & School Programming',
     tagline: 'Sport learning beyond the regular season — all ages, all breaks, all sports.',
-    emoji: '🏕️',
-    icon: '🏕️',
+    emoji: '',
+    icon: 'camps',
     color: '#14532d',
     accentColor: '#DDAA40',
     bgColor: 'rgba(20,83,45,0.08)',
@@ -561,18 +775,18 @@ export const comingSoonPrograms: DetailedProgram[] = [
     badge: 'Competitive Fixtures & Showcases',
     subtitle: 'Seasonal Invitationals, Showcases & Multi-Sport Jamborees',
     tagline: 'High-energy, well-organized competition celebrating sportsmanship and athletic excellence in Regina.',
-    emoji: '🏆',
-    icon: '🏆',
+    emoji: '',
+    icon: 'trophy',
     color: '#83161B',
     accentColor: '#DDAA40',
     bgColor: 'rgba(131,22,27,0.08)',
     description:
-      'Turnkey competitive tournaments, seasonal invitationals, 3v3 basketball showdowns, volleyball invitationals, and multi-sport showcases with official refereeing, live TeamLinkt digital scoring, awards, and medals.',
+      'Organized seasonal invitationals, 3v3 basketball fixtures, volleyball invitationals, and youth showcases with certified officials, live TeamLinkt scoring, awards, and medals.',
     longDescription:
       'Competition is where training meets character. National Athletics Academy organizes premium, family-friendly tournament series across Regina sporting venues. With certified officials, transparent division seeding, real-time live digital brackets on TeamLinkt, and an uncompromising commitment to Respect in Sport, NAA tournaments set a new standard for youth athletics events in Saskatchewan.',
     ages: 'All Ages (Youth, Juniors & Community Divisions)',
     ratio: 'Official Staffing & Certified Referees',
-    venue: 'Regina Athletic Fieldhouses, School Gymnasiums & Turf Facilities',
+    venue: 'KHS Gymnasium, University of Regina (3925 Goldenrod Loop / 3737 Wascana Pkwy, Regina, SK S4S 0A2) & Partner Fieldhouses',
     seasonDuration: 'Year-Round Weekend Tournament Series',
     sessionsPerWeek: 'Weekend Events (Single-Day & Two-Day Showcases)',
     blockWeeks: 1,
@@ -669,109 +883,90 @@ export const comingSoonPrograms: DetailedProgram[] = [
   },
 ];
 
-// ─── Coming Soon / Starting Next Season ──────────────────────────────────────
+// ─── Starting Soon / Starting Next Season ──────────────────────────────────────
 export const upcomingSports: UpcomingSport[] = [
   {
     name: 'Camps & Clinics',
-    emoji: '🏕️',
+    emoji: '',
     tag: 'Summer Day Camps, School Breaks, PD Days & In-School',
     description:
       'Full-week summer day camps, school-break programs, PD day camps, birthday parties and corporate sports days — multi-sport, certified coaches, all ages.',
     targetAges: 'Ages 4–17 & Adults',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
     detailPageUrl: '/programs/camps/',
     detailBadge: 'Full Program Details Available',
   },
   {
     name: 'Tournaments & Showcases',
-    emoji: '🏆',
+    emoji: '',
     tag: 'Seasonal Invitationals, 3v3 Showdowns & Multi-Sport Jamborees',
     description:
-      'Turnkey competitive tournaments with live TeamLinkt brackets, certified referees, medals, MVP awards, and family-friendly showcase events across Regina.',
+      'Organized competitive tournaments with live TeamLinkt brackets, certified referees, medals, MVP awards, and family-friendly showcase events across Regina.',
     targetAges: 'All Ages',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
     detailPageUrl: '/programs/tournaments/',
     detailBadge: 'Full Program Details Available',
   },
   {
     name: 'Athletics (Track & Field)',
-    emoji: '🏃',
+    emoji: '',
     tag: 'Sprint, Jump & Field Foundations',
     description:
-      'Scientifically sequenced track & field foundations covering sprint mechanics, hurdle rhythm, long jump, throwing form, and relay handoffs for ages 6–16.',
+      'Track & field foundations covering sprint mechanics, hurdle rhythm, long jump, throwing form, and relay handoffs for ages 6–16.',
     targetAges: 'Ages 6–16',
-    status: 'Coming Soon',
-  },
-  {
-    name: 'Soccer — Little Kids (U2–U5)',
-    emoji: '⚽',
-    tag: 'In Association with Wascana FC',
-    description:
-      'Early-childhood soccer and physical literacy for ages 2–5 featuring imaginative games, foot-eye coordination, and joyful small-sided play with Canada Soccer certified coaches.',
-    targetAges: 'Ages 2–5',
-    status: 'Coming Soon',
-  },
-  {
-    name: 'Badminton Academy',
-    emoji: '🏸',
-    tag: 'Racket Mechanics & Court Agility',
-    description:
-      'Grip mechanics, 6-corner court footwork, clear/drop/smash execution, and tactical singles & doubles matchplay under certified coaches.',
-    targetAges: 'Ages 7–16',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
   },
   {
     name: 'Flag Football & Ball Hockey',
-    emoji: '🏈',
+    emoji: '',
     tag: 'Multi-Sport Seasonal Leagues',
     description:
       'Non-contact team sports building route-running, stick handling, teamwork, and high-energy community game play.',
     targetAges: 'Ages 6–15',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
   },
   {
     name: 'Pickleball & Family Recreation',
-    emoji: '🥒',
+    emoji: '',
     tag: 'Community Net Sport',
     description:
       'Dinking mechanics, third-shot drops, court positioning, and fun multi-generational doubles leagues on indoor hardwood.',
     targetAges: 'Ages 10+ & Adult / Senior',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
   },
   {
     name: 'Table Tennis & Racket Sports',
-    emoji: '🏓',
+    emoji: '',
     tag: 'High-Speed Reflexes & Spin Control',
     description:
-      'Fast-twitch hand-eye coordination, paddle spin mechanics, footwork agility, and structured singles/doubles ladder leagues.',
+      'Hand-eye coordination, paddle spin mechanics, footwork agility, and structured singles/doubles ladder leagues.',
     targetAges: 'Ages 7–16 & Adult',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
   },
   {
     name: 'Mind Sports & Chess Academy',
-    emoji: '♟️',
+    emoji: '',
     tag: 'Cognitive Strategy & CFC Pathway',
     description:
       'Structured tactical calculation, opening repertoires, endgame mastery, and monthly CFC-rated tournaments for youth and adults.',
     targetAges: 'Ages 5–17 & Adult',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
   },
   {
     name: 'Strength & Conditioning / Physical Literacy',
-    emoji: '💪',
-    tag: 'Athletic Foundation & Speed Lab',
+    emoji: '',
+    tag: 'Athletic Foundation & Movement Skills',
     description:
-      'Scientifically sequenced LTAD youth strength, injury prevention, rotational power, and speed kinematics for all sports.',
+      'Sequenced LTAD youth strength, injury prevention, core stability, and agility mechanics for multi-sport athletes.',
     targetAges: 'Ages 8–17 & Adult',
-    status: 'Coming Soon',
+    status: 'Starting Soon',
   },
 ];
 
 // ─── Discount Policies ────────────────────────────────────────────────────────
 export const discountPolicies = {
-  multiChild: '10% discount applied to second and subsequent siblings enrolled in the same seasonal block',
-  multiSport: '10% discount on secondary sport registrations within the same family account',
-  paymentPlans: 'Split payments into 2 or 3 interest-free installments for seasonal blocks over $150',
+  multiChild: '10% discount for second and subsequent siblings, applied automatically through the TeamLinkt registration system at checkout',
+  paymentPlans: 'Tuition can be split into 3 installments',
   financialAid: 'Flexible payment plans, multi-child discounts, and subsidized community spaces available — no child is turned away for cost alone.',
 };
 
@@ -779,31 +974,31 @@ export const discountPolicies = {
 export const athleteProgressReportDetails = {
   title: 'The NAA Athlete Progress Report',
   subtitle: 'Objective Skill & Character Milestone Tracking',
-  tagline: 'Why NAA Stands Apart From Standard Rec Leagues',
+  tagline: 'Structured Developmental Feedback For Every Athlete',
   description:
     'Most recreational leagues in Regina offer participation without structured developmental feedback. At NAA, every athlete receives an official end-of-block Progress Report created by certified coaches, tracking specific technical, tactical, physical, and character benchmarks.',
   milestones: [
     {
       category: 'Technical Competency',
-      icon: '🎯',
+      icon: 'technical',
       description:
         'Sport-specific motor skills graded on an objective developmental rubric.',
     },
     {
       category: 'Physical Literacy & Athletic Base',
-      icon: '⚡',
+      icon: 'movement',
       description:
-        'Agility, balance, sprint kinematics, rotational power, and spatial awareness evaluated against age-appropriate LTAD standards.',
+        'Agility, balance, sprint mechanics, and spatial awareness evaluated against age-appropriate LTAD standards.',
     },
     {
       category: 'Tactical & Decision-Making IQ',
-      icon: '🧠',
+      icon: 'tactics',
       description:
         'Court/field vision, defensive positioning, small-sided game decision speed, and strategic understanding.',
     },
     {
       category: 'Character, Effort & Leadership',
-      icon: '🤝',
+      icon: 'character',
       description:
         'Coachability, sportsmanship, peer encouragement, resilience after errors, and adherence to Respect in Sport values.',
     },
@@ -812,10 +1007,10 @@ export const athleteProgressReportDetails = {
 
 // ─── LTAD Pathway Stages ──────────────────────────────────────────────────────
 export const pathwayStages = [
-  { stage: 'Active Start', ages: '2–5', programs: 'Little Kids Soccer (Coming Soon)', objective: 'Joyful movement exploration, balance, listening skills, and early motor confidence' },
-  { stage: 'FUNdamentals', ages: '5–8', programs: 'National Shield Juniors, Discover Basketball', objective: 'Fundamental movement skills across core sports; multi-sport sampling priority' },
-  { stage: 'Learn to Train', ages: '8–12', programs: 'Develop Basketball, Develop Volleyball, National Shield Juniors', objective: 'Technical skill acquisition, small-sided game IQ, sport sampling maintained' },
-  { stage: 'Train to Train', ages: '12–16', programs: 'Advance Basketball, Advance Volleyball, National Shield Youth', objective: 'Sport-specific tactical development combined with progressive athletic strength base' },
+  { stage: 'Active Start', ages: '2–5', programs: 'Active Movement & Agility (Starting Soon)', objective: 'Joyful movement exploration, balance, listening skills, and early motor confidence' },
+  { stage: 'FUNdamentals', ages: '5–8', programs: 'National Shield Juniors, Discover Basketball, Badminton Kids', objective: 'Fundamental movement skills across core sports; multi-sport sampling priority' },
+  { stage: 'Learn to Train', ages: '8–12', programs: 'Develop Basketball, Develop Volleyball, National Shield Juniors, Badminton Kids', objective: 'Technical skill acquisition, small-sided game IQ, sport sampling maintained' },
+  { stage: 'Train to Train', ages: '12–16', programs: 'Advance Basketball, Advance Volleyball, National Shield Youth, Badminton Youth & Teens', objective: 'Sport-specific tactical development combined with progressive athletic strength base' },
   { stage: 'Train to Compete', ages: '14–18', programs: 'NAA Tournament Series, Competitive Invitationals, High School Prep', objective: 'High school / provincial competitive excellence, showcase tournaments, and leadership' },
   { stage: 'Active for Life', ages: 'All Ages', programs: 'National Shield Pro, Community Tournaments, Camps & Clinics', objective: 'Lifelong fitness, camaraderie, competitive recreation, and community belonging' },
 ];
@@ -826,12 +1021,12 @@ export const campsAndClinicsSection = {
   title: 'Camps, Clinics & School Programs',
   subtitle: 'Sport learning beyond the regular season — summer camps, school-break programming, PD days, and in-school delivery.',
   items: [
-    { id: 'summer-day-camps', name: 'Summer Day Camps', emoji: '🌞', ages: 'AGES 5–15', description: 'Full-week multi-sport day camps through July and August. Morning drop-off, end-of-week mini tournament.' },
-    { id: 'school-break-camps', name: 'School-Break Camps', emoji: '❄️', ages: 'AGES 5–15', description: 'February break, spring break, and December break intensive programs. Multi-sport options.' },
-    { id: 'pd-day-camps', name: 'PD-Day Camps', emoji: '📑', ages: 'AGES 5–15', description: 'Single-day programs aligned with Regina school PD days. Book individual days or full packages.' },
-    { id: 'in-school-delivery', name: 'In-School Delivery', emoji: '🏫', ages: 'AGES K–12', description: 'NAA coaches deliver programming inside partner schools during the school day.' },
-    { id: 'birthday-parties', name: 'Birthday Party Packages', emoji: '🎂', ages: 'AGES 4–12', description: 'Hosted sport birthday parties with NAA staff, equipment, and a customized activity lineup.' },
-    { id: 'corporate-sports-days', name: 'Corporate Sports Days', emoji: '🏢', ages: 'ADULTS', description: 'Team-building events, leagues, and corporate tournaments with full NAA staff and equipment.' },
+    { id: 'summer-day-camps', name: 'Summer Day Camps', emoji: '', ages: 'AGES 5–15', description: 'Full-week multi-sport day camps through July and August. Morning drop-off, end-of-week mini tournament.' },
+    { id: 'school-break-camps', name: 'School-Break Camps', emoji: '', ages: 'AGES 5–15', description: 'February break, spring break, and December break intensive programs. Multi-sport options.' },
+    { id: 'pd-day-camps', name: 'PD-Day Camps', emoji: '', ages: 'AGES 5–15', description: 'Single-day programs aligned with Regina school PD days. Book individual days or full packages.' },
+    { id: 'in-school-delivery', name: 'In-School Delivery', emoji: '', ages: 'AGES K–12', description: 'NAA coaches deliver programming inside partner schools during the school day.' },
+    { id: 'birthday-parties', name: 'Birthday Party Packages', emoji: '', ages: 'AGES 4–12', description: 'Hosted sport birthday parties with NAA staff, equipment, and a customized activity lineup.' },
+    { id: 'corporate-sports-days', name: 'Corporate Sports Days', emoji: '', ages: 'ADULTS', description: 'Team-building events, leagues, and corporate tournaments with full NAA staff and equipment.' },
   ],
 };
 

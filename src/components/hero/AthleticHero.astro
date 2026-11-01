@@ -1,0 +1,391 @@
+---
+// src/components/hero/AthleticHero.astro
+// Pure Astro senior athletic hero with authentic WebP action photography and zero hydration overhead.
+
+const sports = [
+  {
+    key: 'badminton',
+    sport: 'Badminton',
+    title: 'National Smash Badminton',
+    image: '/images/programs/badminton-action-1.webp',
+    status: 'Registration Opens Nov 1',
+    badge: 'Winter 2027 · Registration Opens Nov 1',
+    schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
+    venue: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
+    highlights: '10 sessions · Juniors & Elite 45-min batches · Smash Pro 90 min · tuition in 3 installments',
+    price: '$150 – $295 CAD',
+    link: '/programs/badminton/',
+    iconSvg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17.5a3 3 0 0 0 6 0v-2H9v2z" fill="currentColor" fill-opacity="0.25"></path><path d="M9 15.5L4.5 4.5h15l-4.5 11"></path><path d="M8 4.5l2 11"></path><path d="M12 4.5v11"></path><path d="M16 4.5l-2 11"></path><path d="M6 8h12"></path><path d="M7.5 12h9"></path></svg>`
+  },
+  {
+    key: 'volleyball',
+    sport: 'Volleyball',
+    title: 'National Spike Volleyball',
+    image: '/images/programs/volleyball-action-1.webp',
+    status: 'Registration Open',
+    badge: 'Registration Open · Active Academy',
+    schedule: 'Oct 22 – Dec 10, 2026: 16 Classes (7:00–8:00 PM) · Thu & Fri then Tue & Thu',
+    venue: 'Knox-Met Fellowship Hall Gym (2340 Victoria Ave)',
+    highlights: 'Mikasa trainer balls & adjusted net heights · Total 16 classes',
+    price: '$205 – $225 CAD',
+    link: '/programs/volleyball/',
+    iconSvg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 12a10 10 0 0 0 8.66-5"></path><path d="M12 12a10 10 0 0 0-8.66-5"></path><path d="M12 12a10 10 0 0 0 0 10"></path><path d="M6.5 3.5a10 10 0 0 0 11 0"></path><path d="M2.5 14a10 10 0 0 0 5.5 8"></path><path d="M21.5 14a10 10 0 0 1-5.5 8"></path></svg>`
+  },
+  {
+    key: 'basketball',
+    sport: 'Basketball',
+    title: 'National Hoops Basketball',
+    image: '/images/programs/basketball-action-1.webp',
+    status: 'Starting Soon',
+    badge: 'Starting Soon · Junior & Youth Hoops',
+    schedule: 'Season schedule announced ahead of launch · Pre-registration open',
+    venue: 'Balfour Collegiate & Knox-Met Hardwood Gyms',
+    highlights: 'Official jersey included · 3v3 small-sided decision making',
+    price: '$205 – $225 CAD',
+    link: '/programs/basketball/',
+    iconSvg: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2.1 10.5a14 14 0 0 1 19.8 0"></path><path d="M2.1 13.5a14 14 0 0 0 19.8 0"></path><line x1="12" y1="2" x2="12" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>`
+  },
+  {
+    key: 'national-shield',
+    sport: 'Martial Arts',
+    title: 'National Shield Fitness & Self-Defence',
+    image: '/images/programs/martialarts-action-1.webp',
+    status: 'Starting Soon',
+    badge: 'Starting Soon · Ages 5–17 & Adults',
+    schedule: 'Season schedule announced ahead of launch · Pre-registration open',
+    venue: 'Regina Facility TBA',
+    highlights: 'Coach-held pad drills · SHIELD Safety & Anti-Bullying System',
+    price: '$75 – $100 CAD',
+    link: '/programs/national-shield/',
+    iconSvg: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 6v12"></path><path d="M8 10h8"></path></svg>`
+  }
+];
+
+const partners = [
+  { name: 'Respect in Sport SK', label: 'Certified Staff' },
+  { name: 'Sask Sport Inc.', label: 'Safe Sport Aligned' },
+  { name: 'Regina Police Service', label: 'CRC-VSS Screened' },
+  { name: 'Coaching Assoc. of Canada', label: 'NCCP Aligned' },
+  { name: 'CAC Rule of Two', label: 'Safe Environment' }
+];
+
+const initial = sports[0];
+---
+
+<section aria-labelledby="hero-title" class="relative bg-[#0B192C] text-white overflow-hidden pt-36 pb-16 sm:pt-40 lg:pt-44 lg:pb-20">
+  {/* Background Subtle Athletic Texture */}
+  <div class="absolute inset-0 opacity-15 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-0 right-0 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-amber-400/20 to-transparent blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-[#83161B]/30 to-transparent blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+      
+      {/* Left 7 Columns: Athletic Value Prop & Logistics */}
+      <div class="lg:col-span-7 space-y-6">
+        
+        {/* Top National Academy Crest Badge */}
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-400 text-xs font-bold tracking-wide uppercase">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <span>National Athletics Academy &bull; Canada</span>
+          </div>
+        </div>
+
+        {/* Editorial Heading */}
+        <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
+          Youth Sports in Regina That Put Skill and Fun First.
+        </h1>
+
+        {/* Refined Body Copy */}
+        <p class="text-slate-200 text-base sm:text-lg max-w-2xl leading-relaxed">
+          Coached by certified local instructors at the U of R and Knox-Met gyms. We focus on real skill progression, friendly group environments, and manageable schedules for Regina families.
+        </p>
+
+        {/* Primary Action Buttons */}
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <a
+            href="/registration/"
+            id="hero-register-btn"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-extrabold text-sm bg-amber-400 text-slate-950 hover:bg-amber-300 transition-all shadow-lg hover:shadow-amber-400/25 focus-visible:ring-2 focus-visible:ring-amber-500"
+          >
+            <span>Register for Fall Session</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+
+          <a
+            href="#gym-schedules"
+            id="hero-schedules-btn"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-slate-800/90 text-white hover:bg-slate-700 transition-all border border-slate-700 shadow-xs focus-visible:ring-2 focus-visible:ring-slate-400"
+          >
+            <span>View Gym Schedules &amp; Times</span>
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+        </div>
+
+        {/* Micro Trust Bar Below CTAs */}
+        <div class="pt-1 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold text-slate-300">
+          <span class="inline-flex items-center gap-1.5 text-slate-200">
+            <span class="text-amber-400 font-extrabold text-sm">✓</span>
+            <span>RPS CRC-VSS Screened</span>
+          </span>
+          <span class="text-slate-600 hidden sm:inline">&bull;</span>
+          <span class="inline-flex items-center gap-1.5 text-slate-200">
+            <span class="text-amber-400 font-extrabold text-sm">✓</span>
+            <span>Safe Sport Certified</span>
+          </span>
+          <span class="text-slate-600 hidden sm:inline">&bull;</span>
+          <span class="inline-flex items-center gap-1.5 text-slate-200">
+            <span class="text-amber-400 font-extrabold text-sm">✓</span>
+            <span>Flexible Installments &amp; Sibling Discounts</span>
+          </span>
+        </div>
+
+        {/* Interactive Sport Selector Tabs (Desktop: lg and up) */}
+        <div class="hidden lg:block pt-2">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
+            <span>Select a Sport to Preview Action &amp; Gym Logistics:</span>
+            <span class="inline-flex items-center gap-1.5 text-amber-400/90 text-[10px] font-bold tracking-wider uppercase font-mono">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+              Preview Program Details &rarr;
+            </span>
+          </div>
+          <div class="grid grid-cols-4 gap-2" role="tablist" aria-label="Select active sport">
+            {sports.map((item, idx) => (
+              <button
+                type="button"
+                data-hero-sport-btn={item.key}
+                role="tab"
+                aria-selected={idx === 0 ? "true" : "false"}
+                class={`hero-sport-btn flex items-center gap-2.5 p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                  idx === 0
+                    ? 'active-sport-btn bg-amber-400/15 border-amber-400 text-white shadow-md ring-1 ring-amber-400'
+                    : 'inactive-sport-btn bg-slate-800/60 border-slate-700/80 text-slate-300 hover:border-slate-600 hover:bg-slate-800'
+                }`}
+              >
+                <div class={`hero-sport-icon w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                  idx === 0 ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-slate-700/60 text-slate-300'
+                }`}>
+                  <Fragment set:html={item.iconSvg} />
+                </div>
+                <div class="truncate">
+                  <div class={`hero-sport-name text-xs font-bold leading-tight truncate ${idx === 0 ? 'text-amber-300' : 'text-white'}`}>
+                    {item.sport}
+                  </div>
+                  <div class={`text-[10px] font-medium truncate ${item.status === 'Starting Soon' ? 'text-amber-400' : 'text-emerald-400'}`}>
+                    {item.status}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Right 5 Columns: Dynamic Authentic Action Photography Card & Official Emblem */}
+      <div class="lg:col-span-5 relative flex flex-col items-center">
+        
+        {/* Animated National Athletics Academy Big Round Crest Emblem */}
+        <div class="hero-animated-logo-wrap relative z-20 mb-5 sm:mb-6 flex items-center justify-center">
+          {/* Subtle gold / red ambient glow */}
+          <div class="hero-animated-logo-ring absolute -inset-4 rounded-full bg-gradient-to-r from-amber-400/50 via-amber-200/40 to-[#83161B]/40 blur-xl pointer-events-none"></div>
+          
+          <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-2 bg-[#021F47] border-[4px] border-[#DDAA40] shadow-[0_16px_50px_rgba(0,0,0,0.8)] flex items-center justify-center">
+            <img
+              src="/images/naa-logo-md.webp"
+              alt="National Athletics Academy Official Crest"
+              width="150"
+              height="150"
+              class="w-full h-full rounded-full object-contain ring-1 ring-white/30"
+              loading="eager"
+            />
+          </div>
+        </div>
+
+        {/* Real Athlete Photography Container */}
+        <div class="w-full relative rounded-3xl overflow-hidden border-2 border-slate-700/80 shadow-2xl bg-slate-900 group">
+          <img
+            id="hero-action-photo"
+            src={initial.image}
+            alt="National Smash Badminton athletes training on court in Regina"
+            width="700"
+            height="525"
+            class="w-full aspect-[4/3] object-cover object-center transition-all duration-500 group-hover:scale-105"
+            loading="eager"
+            fetchpriority="high"
+          />
+
+          {/* Gradient Scrim for Readability */}
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent pointer-events-none"></div>
+
+          {/* Floating Top Header */}
+          <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#0B192C]/90 text-white backdrop-blur-md border border-slate-700 flex items-center gap-1.5 shadow-md">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span id="hero-badge-text">{initial.badge}</span>
+            </span>
+            <span id="hero-price-text" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950 shadow-md">
+              {initial.price}
+            </span>
+          </div>
+
+          {/* Bottom Card Content with Logistics */}
+          <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80">
+            <div class="flex items-center justify-between text-xs font-bold text-amber-400 mb-1">
+              <span id="hero-sport-title">{initial.title.toUpperCase()}</span>
+              <span class="text-slate-300 font-mono text-[11px]">HARDWOOD GYM</span>
+            </div>
+            <div id="hero-venue-text" class="text-sm font-extrabold text-white leading-snug">
+              {initial.venue}
+            </div>
+            <p id="hero-highlights-text" class="text-xs text-slate-300 mt-1 leading-relaxed">
+              {initial.highlights}
+            </p>
+            <div class="mt-2.5 pt-2 border-t border-slate-700/80 flex items-center justify-between text-xs">
+              <span id="hero-schedule-text" class="text-slate-400">{initial.schedule}</span>
+              <a id="hero-details-link" href={initial.link} class="text-amber-400 hover:underline font-bold inline-flex items-center gap-1">
+                <span>Full Details</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Sport Selector Pills (rendered under the photo card on < lg) */}
+        <div class="block lg:hidden mt-4">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
+            <span>Tap Sport to Preview Logistics:</span>
+            <span class="inline-flex items-center gap-1 text-amber-400 text-[10px] font-bold uppercase font-mono">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+              Preview Details
+            </span>
+          </div>
+          <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-none" role="tablist" aria-label="Select active sport (mobile)">
+            {sports.map((item, idx) => (
+              <button
+                type="button"
+                data-hero-sport-btn={item.key}
+                role="tab"
+                aria-selected={idx === 0 ? "true" : "false"}
+                class={`hero-sport-btn shrink-0 flex items-center gap-2 p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                  idx === 0
+                    ? 'active-sport-btn bg-amber-400/15 border-amber-400 text-white shadow-md ring-1 ring-amber-400'
+                    : 'inactive-sport-btn bg-slate-800/80 border-slate-700/80 text-slate-300 hover:border-slate-600 hover:bg-slate-800'
+                }`}
+              >
+                <div class={`hero-sport-icon w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                  idx === 0 ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-slate-700/60 text-slate-300'
+                }`}>
+                  <Fragment set:html={item.iconSvg} />
+                </div>
+                <div>
+                  <div class={`hero-sport-name text-xs font-bold leading-tight whitespace-nowrap ${idx === 0 ? 'text-amber-300' : 'text-white'}`}>
+                    {item.sport}
+                  </div>
+                  <div class={`text-[10px] font-medium whitespace-nowrap ${item.status === 'Starting Soon' ? 'text-amber-400' : 'text-emerald-400'}`}>
+                    {item.status}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* Trusted Saskatchewan Partners Ribbon */}
+    <div class="mt-14 pt-8 border-t border-slate-800">
+      <p class="text-center text-xs font-bold uppercase tracking-wider text-slate-400 mb-5">
+        Trusted Saskatchewan Safe Sport &amp; Community Standards
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {partners.map((p) => (
+          <div class="flex flex-col items-center justify-center p-3 rounded-xl bg-slate-800/40 border border-slate-800 hover:border-slate-700 transition-colors text-center">
+            <span class="text-xs font-extrabold text-white leading-tight">{p.name}</span>
+            <span class="text-[11px] text-amber-400/90 font-medium mt-0.5">{p.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline define:vars={{ sportsData: sports }}>
+  (function() {
+    const sportsMap = {};
+    sportsData.forEach(function(s) { sportsMap[s.key] = s; });
+
+    const buttons = document.querySelectorAll('[data-hero-sport-btn]');
+    const photo = document.getElementById('hero-action-photo');
+    const badgeText = document.getElementById('hero-badge-text');
+    const priceText = document.getElementById('hero-price-text');
+    const sportTitle = document.getElementById('hero-sport-title');
+    const venueText = document.getElementById('hero-venue-text');
+    const highlightsText = document.getElementById('hero-highlights-text');
+    const scheduleText = document.getElementById('hero-schedule-text');
+    const detailsLink = document.getElementById('hero-details-link');
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const key = btn.getAttribute('data-hero-sport-btn');
+        const s = sportsMap[key];
+        if (!s) return;
+
+        // Update photo and card elements
+        if (photo) {
+          photo.src = s.image;
+          photo.alt = s.title + ' athletes training on court in Regina';
+        }
+        if (badgeText) badgeText.textContent = s.badge;
+        if (priceText) priceText.textContent = s.price;
+        if (sportTitle) sportTitle.textContent = s.title.toUpperCase();
+        if (venueText) venueText.textContent = s.venue;
+        if (highlightsText) highlightsText.textContent = s.highlights;
+        if (scheduleText) scheduleText.textContent = s.schedule;
+        if (detailsLink) detailsLink.href = s.link;
+
+        // Update button visual styles
+        // Update button visual styles across both desktop & mobile buttons
+        buttons.forEach(function(b) {
+          const isCurrent = (b.getAttribute('data-hero-sport-btn') === key);
+          b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+          const iconDiv = b.querySelector('.hero-sport-icon');
+          const nameDiv = b.querySelector('.hero-sport-name');
+
+          if (isCurrent) {
+            b.classList.remove('inactive-sport-btn', 'bg-slate-800/60', 'bg-slate-800/80', 'border-slate-700/80', 'text-slate-300');
+            b.classList.add('active-sport-btn', 'bg-amber-400/15', 'border-amber-400', 'text-white', 'shadow-md', 'ring-1', 'ring-amber-400');
+            if (iconDiv) {
+              iconDiv.classList.remove('bg-slate-700/60', 'text-slate-300');
+              iconDiv.classList.add('bg-amber-400', 'text-slate-950', 'font-bold');
+            }
+            if (nameDiv) {
+              nameDiv.classList.remove('text-white');
+              nameDiv.classList.add('text-amber-300');
+            }
+          } else {
+            b.classList.remove('active-sport-btn', 'bg-amber-400/15', 'border-amber-400', 'ring-1', 'ring-amber-400');
+            b.classList.add('inactive-sport-btn', 'bg-slate-800/60', 'border-slate-700/80', 'text-slate-300');
+            if (iconDiv) {
+              iconDiv.classList.remove('bg-amber-400', 'text-slate-950', 'font-bold');
+              iconDiv.classList.add('bg-slate-700/60', 'text-slate-300');
+            }
+            if (nameDiv) {
+              nameDiv.classList.remove('text-amber-300');
+              nameDiv.classList.add('text-white');
+            }
+          }
+        });
+      });
+    });
+  })();
+</script>

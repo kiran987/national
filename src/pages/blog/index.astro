@@ -1,0 +1,724 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import { activePrograms } from '../../data/programs';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const featuredPosts = posts.filter(p => p.data.featured);
+const latestPost = posts[0];
+const remainingPosts = posts.slice(1);
+
+// Collect unique categories
+const categories = [...new Set(posts.map(p => p.data.category))];
+
+// Format date helper
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function shortDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('en-CA', { month: 'short', day: 'numeric' });
+}
+
+// Category colours
+const catColors: Record<string, {bg: string, text: string, dot: string}> = {
+  'Community': { bg: 'rgba(22,163,74,0.08)', text: '#15803d', dot: '#22c55e' },
+  'Parent Resources': { bg: 'rgba(37,99,235,0.08)', text: '#1d4ed8', dot: '#3b82f6' },
+  'Programs': { bg: 'rgba(131,22,27,0.08)', text: '#83161B', dot: '#dc2626' },
+  'Gear & Equipment': { bg: 'rgba(124,58,237,0.08)', text: '#6d28d9', dot: '#8b5cf6' },
+  'Training Tips': { bg: 'rgba(217,119,6,0.08)', text: '#b45309', dot: '#f59e0b' },
+  'Announcements': { bg: 'rgba(2,31,71,0.08)', text: '#021F47', dot: '#3b82f6' },
+  'Youth Development': { bg: 'rgba(13,148,136,0.08)', text: '#0d9488', dot: '#14b8a6' },
+};
+
+function getCatStyle(cat: string) {
+  return catColors[cat] || { bg: 'rgba(0,0,0,0.05)', text: '#555', dot: '#999' };
+}
+
+// Word count for reading time
+function getReadTime(body: string | undefined): number {
+  if (!body) return 3;
+  return Math.max(1, Math.ceil(body.split(/\s+/).length / 220));
+}
+---
+
+<Layout
+  title="Blog — News, Tips & Community Updates"
+  description="Read the latest news, coaching tips, parent resources, and community updates from National Athletics Academy in Regina, Saskatchewan."
+>
+  <Header />
+
+  <!-- ═══ HERO ═══ -->
+  <section class="blog-hero">
+    <div class="blog-hero__bg"></div>
+    <div class="container-naa blog-hero__inner">
+      <div class="blog-hero__badge">
+        <span class="blog-hero__badge-dot"></span>
+        <span>NAA Blog</span>
+      </div>
+      <h1 class="blog-hero__title">News & Updates</h1>
+      <p class="blog-hero__subtitle">
+        Coaching insights, program announcements, and stories from our community in Regina.
+      </p>
+      <div class="blog-hero__stats">
+        <div class="blog-hero__stat">
+          <span class="blog-hero__stat-num">{posts.length}</span>
+          <span class="blog-hero__stat-label">Articles</span>
+        </div>
+        <div class="blog-hero__stat-divider"></div>
+        <div class="blog-hero__stat">
+          <span class="blog-hero__stat-num">{categories.length}</span>
+          <span class="blog-hero__stat-label">Topics</span>
+        </div>
+        <div class="blog-hero__stat-divider"></div>
+        <div class="blog-hero__stat">
+          <span class="blog-hero__stat-num">4</span>
+          <span class="blog-hero__stat-label">Programs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROGRAMS STARTING SOON — Compact bar ═══ -->
+  <section class="programs-bar">
+    <div class="container-naa">
+      <div class="programs-bar__header">
+        <div class="programs-bar__pulse"></div>
+        <span class="programs-bar__title">Programs Starting Soon — Fall 2026</span>
+      </div>
+      <div class="programs-bar__grid">
+        {activePrograms.map((prog) => (
+          <a href={`/programs/${prog.slug}/`} class="programs-bar__card">
+            <span class="programs-bar__emoji">{prog.emoji}</span>
+            <div class="programs-bar__info">
+              <div class="programs-bar__name">{prog.name}</div>
+              <div class="programs-bar__meta">{prog.ages.split('(')[0].trim()}</div>
+            </div>
+            <svg class="programs-bar__arrow" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED / LATEST POST — Large hero card ═══ -->
+  <section class="blog-featured-section">
+    <div class="container-naa">
+      <div class="featured-card">
+        <div class="featured-card__accent"></div>
+        <div class="featured-card__top">
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+            <span class="featured-card__spotlight-badge">⭐ Featured Article</span>
+            <span class="featured-card__badge" style={`background:${getCatStyle(latestPost.data.category).bg};color:${getCatStyle(latestPost.data.category).text};`}>
+              <span class="featured-card__badge-dot" style={`background:${getCatStyle(latestPost.data.category).dot};`}></span>
+              {latestPost.data.category}
+            </span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span class="featured-card__date">{formatDate(latestPost.data.date)}</span>
+            <span class="featured-card__read">{getReadTime(latestPost.body)} min read</span>
+          </div>
+        </div>
+
+        <a href={`/blog/${latestPost.data.slug}/`} style="text-decoration:none;">
+          <h2 class="featured-card__title">{latestPost.data.title}</h2>
+          <p class="featured-card__excerpt">{latestPost.data.excerpt}</p>
+        </a>
+
+        <div class="featured-card__footer">
+          <div class="featured-card__tags">
+            {latestPost.data.tags.map((tag: string) => (
+              <a href={`/blog/?tag=${encodeURIComponent(tag)}`} class="featured-card__tag">#{tag}</a>
+            ))}
+          </div>
+          <a href={`/blog/${latestPost.data.slug}/`} class="btn btn-navy btn-sm">
+            Read Full Article →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ALL ARTICLES — Grid ═══ -->
+  <section class="blog-grid-section">
+    <div class="container-naa">
+      <!-- Section header with category pills -->
+      <div class="blog-grid-header">
+        <div>
+          <h2 class="blog-grid-header__title">All Articles</h2>
+          <p class="blog-grid-header__subtitle">Browse by topic or scroll through our latest posts</p>
+        </div>
+        <div class="blog-grid-header__cats">
+          <a href="/blog/" class="cat-pill cat-pill--all" id="btn-cat-all">All Topics</a>
+          {categories.map((cat) => (
+            <a href={`/blog/?category=${encodeURIComponent(cat)}`} class="cat-pill" data-cat={cat} style={`background:${getCatStyle(cat).bg};color:${getCatStyle(cat).text};`}>
+              <span class="cat-pill__dot" style={`background:${getCatStyle(cat).dot};`}></span>
+              {cat}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Active Filter Notice -->
+      <div id="active-filter-bar" class="active-filter-bar" style="display:none;">
+        <span class="active-filter-bar__text">
+          Showing articles for: <strong id="active-filter-name"></strong>
+        </span>
+        <a href="/blog/" class="active-filter-bar__clear">Clear Filter ✕</a>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="blog-posts-grid">
+        {remainingPosts.map((post, i) => (
+          <a href={`/blog/${post.data.slug}/`} class={`blog-card ${post.data.featured ? 'blog-card--featured' : ''}`} data-category={post.data.category} data-tags={post.data.tags.join(',')}>
+            <div class="blog-card__top">
+              <span class="blog-card__cat" style={`background:${getCatStyle(post.data.category).bg};color:${getCatStyle(post.data.category).text};`}>
+                {post.data.category}
+              </span>
+              <span class="blog-card__date">{shortDate(post.data.date)}</span>
+            </div>
+            <h3 class="blog-card__title">{post.data.title}</h3>
+            <p class="blog-card__excerpt">{post.data.excerpt}</p>
+            <div class="blog-card__footer">
+              <div class="blog-card__tags">
+                {post.data.tags.slice(0, 2).map((tag: string) => (
+                  <span class="blog-card__tag" onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='/blog/?tag=${encodeURIComponent(tag)}';`}>#{tag}</span>
+                ))}
+              </div>
+              <span class="blog-card__readmore">
+                Read
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+            {post.data.featured && <div class="blog-card__featured-flag">⭐ Featured</div>}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEWSLETTER-STYLE CTA ═══ -->
+  <section class="blog-cta">
+    <div class="container-naa">
+      <div class="blog-cta__inner">
+        <div class="blog-cta__content">
+          <h2 class="blog-cta__title">Ready to get your athlete on the court?</h2>
+          <p class="blog-cta__text">
+            Fall 2026 registration is open for Basketball, Volleyball, Badminton, and National Shield. Flexible payment plans available.
+          </p>
+        </div>
+        <div class="blog-cta__actions">
+          <a href="/registration/" class="btn btn-primary">Register Now →</a>
+          <a href="/programs/" class="btn btn-outline">View Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const activeTag = params.get('tag');
+      const activeCategory = params.get('category');
+
+      const filterBar = document.getElementById('active-filter-bar');
+      const filterName = document.getElementById('active-filter-name');
+      const cards = document.querySelectorAll('.blog-card');
+
+      if (activeTag) {
+        const featuredSec = document.querySelector('.blog-featured-section') as HTMLElement;
+        if (featuredSec) featuredSec.style.display = 'none';
+
+        if (filterBar && filterName) {
+          filterBar.style.display = 'flex';
+          filterName.textContent = '#' + activeTag;
+        }
+        cards.forEach((el) => {
+          const card = el as HTMLElement;
+          const tags = (card.getAttribute('data-tags') || '').split(',');
+          const match = tags.some(t => t.trim().toLowerCase() === activeTag.trim().toLowerCase());
+          card.style.display = match ? 'flex' : 'none';
+        });
+      } else if (activeCategory) {
+        const featuredSec = document.querySelector('.blog-featured-section') as HTMLElement;
+        if (featuredSec) featuredSec.style.display = 'none';
+
+        if (filterBar && filterName) {
+          filterBar.style.display = 'flex';
+          filterName.textContent = activeCategory;
+        }
+        cards.forEach((el) => {
+          const card = el as HTMLElement;
+          const cat = card.getAttribute('data-category') || '';
+          card.style.display = cat.toLowerCase() === activeCategory.toLowerCase() ? 'flex' : 'none';
+        });
+        document.querySelectorAll('.cat-pill').forEach((el) => {
+          const pill = el as HTMLElement;
+          if (pill.getAttribute('data-cat') === activeCategory) {
+            pill.style.outline = '2px solid var(--color-naa-gold)';
+            pill.style.outlineOffset = '2px';
+          }
+        });
+      }
+    });
+  </script>
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .blog-hero {
+    position: relative;
+    padding: 9.75rem 0 3.5rem;
+    overflow: hidden;
+  }
+  .blog-hero__bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #010f24 0%, #021F47 55%, #4a0e11 100%);
+  }
+  .blog-hero__bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(221,170,64,0.06) 0%, transparent 70%);
+  }
+  .blog-hero__inner {
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+  .blog-hero__badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(221,170,64,0.1);
+    border: 1px solid rgba(221,170,64,0.25);
+    border-radius: 999px;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-outfit); font-weight: 700; font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-naa-gold);
+  }
+  .blog-hero__badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--color-naa-gold);
+    animation: hero-pulse 2s infinite;
+  }
+  .blog-hero__title {
+    font-family: var(--font-outfit); font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    color: white; line-height: 1.05; margin-bottom: 0.85rem;
+    letter-spacing: -0.02em;
+  }
+  .blog-hero__subtitle {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.05rem; max-width: 520px;
+    margin: 0 auto 2rem; line-height: 1.65;
+  }
+  .blog-hero__stats {
+    display: inline-flex; align-items: center; gap: 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 0.85rem 2rem;
+  }
+  .blog-hero__stat {
+    display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+  }
+  .blog-hero__stat-num {
+    font-family: var(--font-outfit); font-weight: 800; font-size: 1.35rem; color: white;
+  }
+  .blog-hero__stat-label {
+    font-size: 0.68rem; color: rgba(255,255,255,0.4);
+    font-family: var(--font-outfit); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .blog-hero__stat-divider {
+    width: 1px; height: 28px; background: rgba(255,255,255,0.1);
+  }
+
+  /* ── Programs Starting Soon Bar ── */
+  .programs-bar {
+    background: #0a1a33;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .programs-bar__header {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .programs-bar__pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e;
+    animation: hero-pulse 2s infinite;
+  }
+  .programs-bar__title {
+    font-family: var(--font-outfit); font-weight: 800;
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+  }
+  .programs-bar__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  .programs-bar__card {
+    display: flex; align-items: center; gap: 0.85rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .programs-bar__card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(221,170,64,0.3);
+    transform: translateY(-1px);
+  }
+  .programs-bar__emoji { font-size: 1.4rem; flex-shrink: 0; }
+  .programs-bar__info { flex: 1; min-width: 0; }
+  .programs-bar__name {
+    font-family: var(--font-outfit); font-weight: 700;
+    font-size: 0.85rem; color: white;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .programs-bar__meta {
+    font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.1rem;
+  }
+  .programs-bar__arrow {
+    color: rgba(255,255,255,0.2); flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .programs-bar__card:hover .programs-bar__arrow {
+    color: var(--color-naa-gold);
+  }
+
+  /* ── Featured Card ── */
+  .blog-featured-section {
+    padding: 3rem 0 1rem;
+    background: var(--color-naa-offwhite);
+  }
+  .featured-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.25rem 2.5rem 2.25rem 3rem;
+    position: relative;
+    border: 1px solid rgba(2,31,71,0.06);
+    box-shadow: 0 4px 24px rgba(2,31,71,0.06);
+    transition: all 0.3s ease;
+  }
+  .featured-card:hover {
+    box-shadow: 0 10px 40px rgba(2,31,71,0.1);
+    transform: translateY(-2px);
+  }
+  .featured-card__accent {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    background: linear-gradient(180deg, var(--color-naa-gold) 0%, var(--color-naa-maroon) 100%);
+    border-radius: 20px 0 0 20px;
+  }
+  .featured-card__top {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .featured-card__spotlight-badge {
+    font-family: var(--font-outfit); font-weight: 800;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-naa-navy);
+    background: rgba(221,170,64,0.18);
+    border: 1px solid rgba(221,170,64,0.35);
+    padding: 0.3rem 0.85rem; border-radius: 999px;
+  }
+  .featured-card__badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.72rem; font-weight: 700;
+    font-family: var(--font-outfit);
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .featured-card__badge-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+  }
+  .featured-card__date,
+  .featured-card__read {
+    font-size: 0.8rem; color: rgba(2,31,71,0.45);
+    font-family: var(--font-outfit); font-weight: 600;
+  }
+  .featured-card__title {
+    font-family: var(--font-outfit); font-weight: 800;
+    font-size: clamp(1.4rem, 3vw, 1.85rem); line-height: 1.25;
+    color: var(--color-naa-navy);
+    margin-bottom: 0.85rem;
+    transition: color 0.2s;
+  }
+  .featured-card:hover .featured-card__title {
+    color: var(--color-naa-maroon);
+  }
+  .featured-card__excerpt {
+    font-size: 0.98rem; line-height: 1.7;
+    color: rgba(2,31,71,0.65);
+    margin-bottom: 1.75rem;
+    max-width: 900px;
+  }
+  .featured-card__footer {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(2,31,71,0.06);
+  }
+  .featured-card__tags {
+    display: flex; flex-wrap: wrap; gap: 0.45rem;
+  }
+  .featured-card__tag {
+    font-size: 0.72rem; color: var(--color-naa-navy);
+    background: rgba(2,31,71,0.06);
+    padding: 0.2rem 0.65rem; border-radius: 999px;
+    font-family: var(--font-outfit); font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .featured-card__tag:hover {
+    background: var(--color-naa-maroon);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  /* ── Blog Grid Section ── */
+  .blog-grid-section {
+    padding: 3.5rem 0 5rem;
+    background: var(--color-naa-offwhite);
+  }
+  .blog-grid-header {
+    display: flex; flex-wrap: wrap;
+    align-items: flex-end; justify-content: space-between;
+    gap: 1rem; margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(2,31,71,0.06);
+  }
+  .blog-grid-header__title {
+    font-family: var(--font-outfit); font-weight: 800;
+    font-size: 1.5rem; color: var(--color-naa-navy);
+    margin-bottom: 0.2rem;
+  }
+  .blog-grid-header__subtitle {
+    font-size: 0.85rem; color: rgba(2,31,71,0.45);
+  }
+  .blog-grid-header__cats {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .cat-pill {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.7rem; font-weight: 700;
+    font-family: var(--font-outfit);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .cat-pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2,31,71,0.1);
+  }
+  .cat-pill--all {
+    background: var(--color-naa-navy);
+    color: white;
+  }
+  .cat-pill__dot {
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+
+  /* ── Active Filter Bar ── */
+  .active-filter-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, var(--color-naa-navy) 0%, #0a3a7a 100%);
+    color: white;
+    padding: 0.85rem 1.35rem;
+    border-radius: 12px;
+    margin-bottom: 1.75rem;
+    font-family: var(--font-outfit); font-size: 0.9rem;
+    box-shadow: 0 4px 14px rgba(2,31,71,0.12);
+  }
+  .active-filter-bar__text strong {
+    color: var(--color-naa-gold);
+    font-size: 0.95rem;
+  }
+  .active-filter-bar__clear {
+    color: white;
+    background: rgba(255,255,255,0.15);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    text-decoration: none; font-weight: 700;
+    font-size: 0.78rem;
+    transition: background 0.2s;
+  }
+  .active-filter-bar__clear:hover { background: var(--color-naa-maroon); }
+
+  .blog-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* ── Blog Card ── */
+  .blog-card {
+    display: flex; flex-direction: column;
+    background: white;
+    border-radius: 16px;
+    padding: 1.75rem;
+    text-decoration: none;
+    border: 1px solid rgba(2,31,71,0.04);
+    box-shadow: 0 2px 12px rgba(2,31,71,0.04);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent 0%, rgba(221,170,64,0.3) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .blog-card:hover {
+    box-shadow: 0 8px 32px rgba(2,31,71,0.1);
+    transform: translateY(-4px);
+    border-color: rgba(2,31,71,0.08);
+  }
+  .blog-card:hover::before {
+    opacity: 1;
+  }
+  .blog-card--featured {
+    border-color: rgba(221,170,64,0.15);
+  }
+  .blog-card__top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.85rem;
+  }
+  .blog-card__cat {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.65rem; font-weight: 700;
+    font-family: var(--font-outfit);
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .blog-card__date {
+    font-size: 0.72rem; color: rgba(2,31,71,0.35);
+    font-family: var(--font-outfit); font-weight: 500;
+  }
+  .blog-card__title {
+    font-family: var(--font-outfit); font-weight: 700;
+    font-size: 1.05rem; line-height: 1.3;
+    color: var(--color-naa-navy);
+    margin-bottom: 0.65rem;
+  }
+  .blog-card__excerpt {
+    font-size: 0.84rem; line-height: 1.6;
+    color: rgba(2,31,71,0.55);
+    flex: 1;
+  }
+  .blog-card__footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1.25rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(2,31,71,0.05);
+  }
+  .blog-card__tags {
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+  }
+  .blog-card__tag {
+    font-size: 0.68rem;
+    color: var(--color-naa-navy);
+    background: rgba(2,31,71,0.06);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-family: var(--font-outfit); font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  .blog-card__tag:hover {
+    background: var(--color-naa-maroon);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(131,22,27,0.2);
+  }
+  .blog-card__readmore {
+    display: inline-flex; align-items: center; gap: 0.25rem;
+    font-family: var(--font-outfit); font-weight: 700;
+    font-size: 0.78rem; color: var(--color-naa-maroon);
+    transition: gap 0.2s;
+  }
+  .blog-card:hover .blog-card__readmore {
+    gap: 0.5rem;
+  }
+  .blog-card__featured-flag {
+    position: absolute; top: 12px; right: 12px;
+    font-size: 0.62rem; font-weight: 700;
+    font-family: var(--font-outfit);
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    background: rgba(221,170,64,0.12);
+    color: #b8860b;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CTA ── */
+  .blog-cta {
+    background: linear-gradient(135deg, var(--color-naa-navy) 0%, #0a3a7a 100%);
+    padding: 4rem 0;
+  }
+  .blog-cta__inner {
+    display: flex; flex-wrap: wrap;
+    align-items: center; justify-content: space-between;
+    gap: 2rem;
+  }
+  .blog-cta__title {
+    font-family: var(--font-outfit); font-weight: 800;
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
+    color: white; margin-bottom: 0.5rem;
+  }
+  .blog-cta__text {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.92rem; line-height: 1.65;
+    max-width: 520px;
+  }
+  .blog-cta__actions {
+    display: flex; gap: 0.85rem;
+  }
+
+  /* ── Animations ── */
+  @keyframes hero-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .programs-bar__grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-posts-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-card__side { display: none; }
+    .featured-card__content { padding: 1.75rem; }
+    .featured-card__title { font-size: 1.3rem; }
+    .programs-bar__grid { grid-template-columns: 1fr; }
+    .blog-posts-grid { grid-template-columns: 1fr; }
+    .blog-cta__inner { flex-direction: column; text-align: center; }
+    .blog-cta__actions { justify-content: center; }
+    .blog-hero__stats { padding: 0.65rem 1.25rem; gap: 1rem; }
+  }
+  @media (max-width: 480px) {
+    .blog-grid-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>

@@ -123,6 +123,22 @@ const campSessions = defineCollection({
   }),
 });
 
+// ─── Blog Posts ───────────────────────────────────────────────────────────────
+
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    date: z.string(),
+    author: z.string(),
+    excerpt: z.string(),
+    category: z.string(),
+    tags: z.array(z.string()),
+    featured: z.boolean().optional().default(false),
+  }),
+});
+
 // ─── Export ───────────────────────────────────────────────────────────────────
 
-export const collections = { programs, coaches, schedules, campSessions };
+export const collections = { programs, coaches, schedules, campSessions, blog };
