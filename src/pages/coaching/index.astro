@@ -2,12 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import RecaptchaNotice from '../../components/RecaptchaNotice.astro';
 
 const sports = [
-  { emoji: '🏀', name: 'Basketball Academy',           role: 'Coach',          status: 'Active — Recruiting Coaches' },
-  { emoji: '🏐', name: 'Volleyball Academy',           role: 'Coach',          status: 'Active — Recruiting Coaches' },
-  { emoji: '🏸', name: 'Badminton Academy',             role: 'Coach',          status: 'Active — Recruiting Coaches' },
+  { emoji: '🏀', name: 'National Hoops - Basketball',           role: 'Coach',          status: 'Active — Recruiting Coaches' },
+  { emoji: '🏐', name: 'National Spike - Volleyball',           role: 'Coach',          status: 'Active — Recruiting Coaches' },
+  { emoji: '🏸', name: 'National Smash - Badminton',             role: 'Coach',          status: 'Active — Recruiting Coaches' },
   { emoji: '🛡️', name: 'National Shield - Martial Arts', role: 'Trainer / Coach', status: 'Active — Recruiting Trainers / Coaches' },
   { emoji: '🏃', name: 'Athletics (Track & Field)',     role: 'Coach',          status: 'Starting Soon' },
   { emoji: '🏕️', name: 'Camps & Clinics',                role: 'Instructor',     status: 'Starting Soon' },
@@ -148,106 +147,12 @@ const perks = [
           <h2 id="apply-heading" class="gold-accent" style="font-size:clamp(1.6rem,3vw,2.25rem);margin-bottom:0.75rem;">
             Apply to Coach at NAA
           </h2>
-          <p style="color:#4b5563;font-size:0.95rem;line-height:1.7;margin-bottom:2rem;">
-            Fill out the form below and our coaching coordinator will be in touch within 3 business days.
+          <p style="color:#4b5563;font-size:0.95rem;line-height:1.7;margin-bottom:1.75rem;">
+            Coach applications are handled through our TeamLinkt volunteer coach registration. Complete it online and our coaching coordinator will be in touch.
           </p>
-
-          <div id="coach-success" class="form-success" role="alert">
-            ✅ Application received! We'll be in touch within 3 business days.
-          </div>
-
-          <form id="coach-form" method="POST" action="/coach-apply.php" novalidate style="display:flex;flex-direction:column;gap:1.25rem;">
-            <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-token" value="" />
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="coach-first" class="form-label">First Name <span style="color:var(--color-naa-maroon);">*</span></label>
-                <input type="text" id="coach-first" name="first_name" class="form-input" required autocomplete="given-name" placeholder="First name" />
-                <span class="form-error" id="err-coach-first" aria-live="polite"></span>
-              </div>
-              <div class="form-group">
-                <label for="coach-last" class="form-label">Last Name <span style="color:var(--color-naa-maroon);">*</span></label>
-                <input type="text" id="coach-last" name="last_name" class="form-input" required autocomplete="family-name" placeholder="Last name" />
-                <span class="form-error" id="err-coach-last" aria-live="polite"></span>
-              </div>
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="coach-email" class="form-label">Email <span style="color:var(--color-naa-maroon);">*</span></label>
-                <input type="email" id="coach-email" name="email" class="form-input" required autocomplete="email" placeholder="you@example.com" />
-                <span class="form-error" id="err-coach-email" aria-live="polite"></span>
-              </div>
-              <div class="form-group">
-                <label for="coach-phone" class="form-label">Phone</label>
-                <input type="tel" id="coach-phone" name="phone" class="form-input" autocomplete="tel" placeholder="(306) 555-0100" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Sport(s) You'd Like to Coach <span style="color:var(--color-naa-maroon);">*</span></label>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.5rem;">
-                {sports.map((sport) => (
-                  <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.875rem;color:#374151;cursor:pointer;">
-                    <input type="checkbox" name="sports[]" value={sport.name} style="accent-color:var(--color-naa-navy);width:16px;height:16px;" />
-                  <span>{sport.emoji} {sport.name} <span style="font-size:0.75em;color:#6b7280;font-weight:400;">({sport.role})</span></span>
-                  </label>
-                ))}
-              </div>
-              <span class="form-error" id="err-coach-sports" aria-live="polite"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="coach-type" class="form-label">Position Type <span style="color:var(--color-naa-maroon);">*</span></label>
-              <select id="coach-type" name="coach_type" class="form-input form-select" required>
-                <option value="">Select…</option>
-                <option>Volunteer Coach</option>
-                <option>Volunteer Trainer / Coach (Martial Arts)</option>
-                <option>Paid Coach (Part-Time)</option>
-                <option>Paid Trainer / Coach — Part-Time (Martial Arts)</option>
-                <option>Open to Either</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="coach-certs" class="form-label">Certifications Held</label>
-              <input type="text" id="coach-certs" name="certifications" class="form-input" placeholder="e.g. Basketball Canada NCCP, First Aid, Respect in Sport…" />
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="coach-exp" class="form-label">Years of Experience</label>
-                <select id="coach-exp" name="experience" class="form-input form-select">
-                  <option value="">Select…</option>
-                  <option>New to coaching</option>
-                  <option>1–2 years</option>
-                  <option>3–5 years</option>
-                  <option>6–10 years</option>
-                  <option>10+ years</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="coach-avail" class="form-label">Availability</label>
-                <select id="coach-avail" name="availability" class="form-input form-select">
-                  <option value="">Select…</option>
-                  <option>Weekday evenings</option>
-                  <option>Saturday mornings</option>
-                  <option>Saturday afternoons</option>
-                  <option>Sunday</option>
-                  <option>Flexible / Multiple</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="coach-message" class="form-label">Tell Us About Yourself</label>
-              <textarea id="coach-message" name="message" class="form-input form-textarea" rows="4" placeholder="Brief background — sport experience, why you want to coach with NAA, any relevant skills…"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-lg" id="coach-submit-btn" style="width:100%;">
-              Submit Application →
-            </button>
-            <RecaptchaNotice action="coach_apply" />
-          </form>
+          <a href="https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81607" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+            Register as a Volunteer Coach →
+          </a>
         </div>
 
         <!-- Sidebar -->
@@ -288,67 +193,6 @@ const perks = [
 
   <Footer />
 </Layout>
-
-<script>
-  import { executeRecaptcha } from '../../utils/recaptcha';
-
-  const form = document.getElementById('coach-form') as HTMLFormElement;
-  const success = document.getElementById('coach-success') as HTMLElement;
-
-  function setErr(id: string, msg: string) {
-    const el = document.getElementById(id) as HTMLElement;
-    if (el) el.textContent = msg;
-  }
-  function clearErrs() {
-    document.querySelectorAll('.form-error').forEach((el) => (el.textContent = ''));
-  }
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    clearErrs();
-
-    const first  = (document.getElementById('coach-first') as HTMLInputElement).value.trim();
-    const last   = (document.getElementById('coach-last') as HTMLInputElement).value.trim();
-    const email  = (document.getElementById('coach-email') as HTMLInputElement).value.trim();
-    const sports = document.querySelectorAll('input[name="sports[]"]:checked');
-
-    let valid = true;
-    if (!first) { setErr('err-coach-first', 'First name is required.'); valid = false; }
-    if (!last)  { setErr('err-coach-last',  'Last name is required.');  valid = false; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setErr('err-coach-email', 'Valid email required.'); valid = false; }
-    if (sports.length === 0) { setErr('err-coach-sports', 'Please select at least one sport.'); valid = false; }
-    if (!valid) return;
-
-    const btn = document.getElementById('coach-submit-btn') as HTMLButtonElement;
-    btn.textContent = 'Submitting…';
-    btn.disabled = true;
-
-    try {
-      const recaptchaToken = await executeRecaptcha('coach_apply');
-      const tokenInput = form.querySelector<HTMLInputElement>('.g-recaptcha-token, input[name="g-recaptcha-response"]');
-      if (tokenInput && recaptchaToken) {
-        tokenInput.value = recaptchaToken;
-      }
-      const data = new FormData(form);
-      if (recaptchaToken) {
-        data.set('g-recaptcha-response', recaptchaToken);
-      }
-      const resp = await fetch('/coach-apply.php', { method: 'POST', body: data });
-      const result = await resp.json().catch(() => ({}));
-      if (resp.ok && result.success !== false) {
-        form.style.display = 'none';
-        success.classList.add('show');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        btn.textContent = 'Submit Application →';
-        btn.disabled = false;
-        alert(result.error || result.message || 'Something went wrong. Please email info@naacanada.org directly.');
-      }
-    } catch {
-      form.submit();
-    }
-  });
-</script>
 
 <style>
   @media (max-width: 860px) {

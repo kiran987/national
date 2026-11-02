@@ -924,7 +924,7 @@ export const upcomingSports: UpcomingSport[] = [
     detailBadge: 'Full Program Details Available',
   },
   {
-    name: 'Basketball Academy',
+    name: 'National Hoops - Basketball',
     emoji: '',
     tag: 'Skills, Spacing & Game IQ',
     description:
