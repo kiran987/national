@@ -82,7 +82,7 @@ const PROGRAMS_DATA: ProgramItem[] = [
   // 3. Martial Arts / National Shield
   {
     id: 'chess',
-    name: 'National Art of Chess',
+    name: 'National Strike Chess',
     sport: 'Chess',
     shortName: 'Chess',
     category: 'starting-soon',
