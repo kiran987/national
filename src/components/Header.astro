@@ -297,7 +297,7 @@ const currentPath = Astro.url.pathname;
         <span>Sport Academies</span>
         <span class="text-white/50 text-[10px] font-normal normal-case">Active &amp; Starting Soon</span>
       </div>
-      <div class="flex flex-col gap-1.5 pl-1">
+      <div class="mm-programs flex flex-col gap-1.5 pl-1">
         {activePrograms.map((prog) => {
           const isComingSoon = prog.status === 'coming-soon';
             const isStartingSoon = isComingSoon || prog.id === 'basketball' || prog.id === 'national-shield';
@@ -342,10 +342,11 @@ const currentPath = Astro.url.pathname;
             </a>
           );
         })}
-        <a href="/programs/archive/" class="font-display font-semibold text-[0.85rem] text-white/60 py-1.5">Past Programs (Archive) &rarr;</a>
+        <a href="/programs/archive/" class="mm-archive font-display font-semibold text-[0.85rem] text-white/60 py-1.5">Past Programs (Archive) &rarr;</a>
       </div>
     </div>
 
+    <div class="mm-groups">
     <!-- Tournaments group -->
     <div class="py-3 border-b border-white/10">
       <div class="font-display font-extrabold text-[0.78rem] text-[#DDAA40] tracking-wider uppercase mb-2.5">Tournaments</div>
@@ -377,13 +378,15 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
 
-    <a href="/blog/" class="font-display font-bold text-[1.05rem] text-white/90 py-2.5 border-b border-white/10">
-      Blog &amp; Parent Resources
-    </a>
-
-    <a href="/contact/" class="font-display font-bold text-[1.05rem] text-white/90 py-2.5 border-b border-white/10">
-      Contact
-    </a>
+    <!-- More group -->
+    <div class="py-3 border-b border-white/10">
+      <div class="font-display font-extrabold text-[0.78rem] text-[#DDAA40] tracking-wider uppercase mb-2.5">More</div>
+      <div class="flex flex-col gap-1.5 pl-1">
+        <a href="/blog/" class="font-display font-semibold text-[0.95rem] text-white py-1.5">Blog &amp; Resources</a>
+        <a href="/contact/" class="font-display font-semibold text-[0.95rem] text-white py-1.5">Contact</a>
+      </div>
+    </div>
+    </div>
 
     <div class="mt-5">
       <a href="/registration/" class="btn btn-primary w-full text-center justify-center">
@@ -406,6 +409,44 @@ const currentPath = Astro.url.pathname;
     #site-header {
       min-height: 100px;
     }
+  }
+  /* Mobile menu: two columns */
+  #mobile-nav .mm-programs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+  #mobile-nav .mm-programs > a:not(.mm-archive) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.7rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+  #mobile-nav .mm-programs > a:not(.mm-archive) > div {
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    line-height: 1.25;
+  }
+  #mobile-nav .mm-programs > a:not(.mm-archive) > span {
+    margin-left: 0;
+  }
+  #mobile-nav .mm-programs > .mm-archive {
+    grid-column: 1 / -1;
+  }
+  #mobile-nav .mm-groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.25rem;
+  }
+  #mobile-nav .mm-groups a {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
   }
   .nav-link {
     font-size: 0.98rem;
