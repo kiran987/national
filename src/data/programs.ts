@@ -239,7 +239,7 @@ const activeProgramsRaw: DetailedProgram[] = [
     seasonDuration: 'Winter 2027: Jan 26 – Mar 11, 2027 (10 Sessions · Tuesdays & Thursdays)',
     sessionsPerWeek: '2× / week · Spike Juniors 6:00–7:15 PM (75 min) · Spike Elite 6:00–7:30 PM (90 min)',
     blockWeeks: 7,
-    blockPrice: 230,
+    blockPrice: 195,
     hourlyRate: 0,
     paymentPlan: true,
     highlights: [
@@ -247,7 +247,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       '10 sessions · Tuesdays & Thursdays · Jan 26 – Mar 11, 2027 (no sessions Feb 9–18)',
       'Spike Juniors: Tue & Thu 6:00–7:15 PM (75 min) · Spike Elite: Tue & Thu 6:00–7:30 PM (90 min)',
       'Venue: Green Gym, Centre for Kinesiology and Health Studies, University of Regina',
-      'Spike Juniors (Ages 8–12): $230 CAD · Spike Elite (Ages 13–16): $260 CAD',
+      'Spike Juniors (Ages 8–12): $195 CAD · Spike Elite (Ages 13–16): $245 CAD',
       'Mandatory Training Kit Fee: $30 CAD per athlete, in addition to program tuition',
       'Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)',
       'Age-adjusted net heights and lightweight Mikasa trainer balls for optimal learning',
@@ -267,9 +267,9 @@ const activeProgramsRaw: DetailedProgram[] = [
     tiers: [
       {
         name: 'Spike Juniors',
-        badge: 'Ages 8–12 · 75-min sessions · $230 CAD',
+        badge: 'Ages 8–12 · 75-min sessions · $195 CAD',
         ages: 'Ages 8–12',
-        format: '10 sessions · Tue & Thu · 6:00–7:15 PM · $230 CAD',
+        format: '10 sessions · Tue & Thu · 6:00–7:15 PM · $195 CAD',
         focus:
           'Movement to the ball, solid forearm platform passing, overhead setting touch, underhand & intro overhand serving, and modified Tripleball gameplay.',
         ratio: '1:10 to 1:12 Coach Ratio',
@@ -282,9 +282,9 @@ const activeProgramsRaw: DetailedProgram[] = [
       },
       {
         name: 'Spike Elite',
-        badge: 'Ages 13–16 · 90-min sessions · $260 CAD',
+        badge: 'Ages 13–16 · 90-min sessions · $245 CAD',
         ages: 'Ages 13–16',
-        format: '10 sessions · Tue & Thu · 6:00–7:30 PM · $260 CAD',
+        format: '10 sessions · Tue & Thu · 6:00–7:30 PM · $245 CAD',
         focus:
           'Overhand float serving, spike approach timing, block positioning, defensive digging, offensive transition, and full 6v6 competitive play.',
         ratio: '1:12 to 1:14 Coach Ratio',
@@ -297,8 +297,8 @@ const activeProgramsRaw: DetailedProgram[] = [
       },
     ],
     whatsIncluded: [
-      'Spike Juniors (Ages 8–12): $230 CAD · 10 sessions',
-      'Spike Elite (Ages 13–16): $260 CAD · 10 sessions',
+      'Spike Juniors (Ages 8–12): $195 CAD · 10 sessions',
+      'Spike Elite (Ages 13–16): $245 CAD · 10 sessions',
       '10 Training Sessions at the University of Regina Green Gym',
       'Tuesdays & Thursdays, Jan 26 – Mar 11, 2027 (Spike Juniors 6:00–7:15 PM · Spike Elite 6:00–7:30 PM)',
       'Mandatory Training Kit Fee: $30 CAD per athlete (in addition to tuition)',
@@ -311,7 +311,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       {
         question: 'What does Winter 2027 cost, and can I pay in installments?',
         answer:
-          'Spike Juniors is $230 CAD and Spike Elite is $260 CAD for 10 sessions. Every athlete also pays a mandatory $30 CAD Training Kit fee. Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments).',
+          'Spike Juniors is $195 CAD and Spike Elite is $245 CAD for 10 sessions. Every athlete also pays a mandatory $30 CAD Training Kit fee. Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments).',
       },
       {
         question: 'When and where does Winter 2027 volleyball run?',

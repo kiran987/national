@@ -28,7 +28,7 @@ export const AthleticHero: React.FC = () => {
       schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
       venue: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
       highlights: '10 sessions · Two 45-min batches (6:00–6:45 or 6:45–7:30 PM) · tuition in 3 installments',
-      price: '$230 – $260 CAD',
+      price: '$195 – $245 CAD',
       link: '/programs/volleyball/'
     },
     basketball: {

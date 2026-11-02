@@ -67,7 +67,7 @@ const PROGRAMS_DATA: ProgramItem[] = [
     coachRatio: '1:10 to 1:14 Coach Ratio',
     statusBadge: 'Registration Opens Nov 1',
     statusType: 'soon',
-    price: '$230 – $260 / block',
+    price: '$195 – $245 / block',
     accentColor: '#83161B',
     image: '/images/programs/volleyball-action-1.webp',
     description: 'Technical indoor volleyball: Forearm platform angles, overhead finger setting, overhand float serving, and 3-step spike approach footwork at the University of Regina Green Gym.',

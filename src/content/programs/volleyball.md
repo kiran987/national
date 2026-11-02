@@ -19,7 +19,7 @@ venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regi
 seasonDuration: 'Jan 26 – Mar 11, 2027 (10 Sessions) · Tuesdays & Thursdays'
 sessionsPerWeek: '2× / week · Spike Juniors 6:00–7:15 PM (75 min) · Spike Elite 6:00–7:30 PM (90 min)'
 blockWeeks: 7
-blockPrice: 205
+blockPrice: 195
 hourlyRate: 0
 paymentPlan: true
 highlights:
@@ -41,9 +41,9 @@ skillsFocus:
   - Rotational Rules, Free-Ball Transition & Rally Management
 tiers:
   - name: Spike Juniors
-    badge: 'Ages 8–12 · 55 min · $205 CAD'
+    badge: 'Ages 8–12 · 75 min · $195 CAD'
     ages: Ages 8–12
-    format: '55 min · $205 CAD'
+    format: '75 min · $195 CAD'
     focus: Movement to the ball, solid forearm platform passing, overhead setting touch, underhand & intro overhand serving, and modified Tripleball gameplay.
     ratio: '1:10 to 1:12 Coach Ratio'
     curriculum:
@@ -52,9 +52,9 @@ tiers:
       - Consistent underhand and introductory overhand serving form
       - Tripleball format to maximize multi-contact rallies and touches
   - name: Spike Elite
-    badge: 'Ages 13–16 · 55 min · $225 CAD'
+    badge: 'Ages 13–16 · 90 min · $245 CAD'
     ages: Ages 13–16
-    format: '55 min · $225 CAD'
+    format: '90 min · $245 CAD'
     focus: Overhand float serving, spike approach timing, block positioning, defensive digging, offensive transition, and full 6v6 competitive play.
     ratio: '1:12 to 1:14 Coach Ratio'
     curriculum:
@@ -63,8 +63,8 @@ tiers:
       - Perimeter and rotational defensive schemes with vocal calling
       - Full matchplay, referee etiquette, and game tactical management
 whatsIncluded:
-  - 'Spike Juniors (Ages 8–12): $205 CAD · 55 min sessions'
-  - 'Spike Elite (Ages 13–16): $225 CAD · 55 min sessions'
+  - 'Spike Juniors (Ages 8–12): $195 CAD · 10 sessions (75 min)'
+  - 'Spike Elite (Ages 13–16): $245 CAD · 10 sessions (90 min)'
   - Official NAA National Spike Training Shirt
   - Screened, Safe Sport–trained coach instruction, scrimmages & regulation adjusted net facilities
   - End-of-block NAA Volleyball Progress Report

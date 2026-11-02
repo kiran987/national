@@ -78,7 +78,7 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:10 Ratio',
     status: 'Starting Soon',
-    price: '$230 CAD',
+    price: '$195 CAD',
     notes: 'Registration starts Nov 1, 2026. Low-impact Mikasa trainer balls & adjusted net heights. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
@@ -94,7 +94,7 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:12 Ratio',
     status: 'Starting Soon',
-    price: '$260 CAD',
+    price: '$245 CAD',
     notes: 'Registration starts Nov 1, 2026. Float serves, spike approach footwork & 6v6 play. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
 
