@@ -7,6 +7,12 @@ import { activePrograms } from '../../../data/programs';
 const program = activePrograms.find((p) => p.slug === 'badminton')!;
 const otherPrograms = activePrograms.filter((p) => p.slug !== 'badminton');
 
+const priceOf = (t: any) => {
+  const m = /\$(\d+)/.exec(`${t.badge ?? ''} ${t.format ?? ''}`);
+  return m ? '$' + m[1] : '';
+};
+const withoutPrice = (s: string) => (s || '').replace(/\s*[·•]\s*\$\d+\s*CAD/gi, '');
+
 const curriculumMatrix = [
   {
     week: 1,
@@ -438,19 +444,30 @@ const sportsEventSchema = {
             <div style="padding:2rem;">
               <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
                 <span class="badge" style={`background:${i === 0 ? 'rgba(2,31,71,0.08)' : 'rgba(131,22,27,0.08)'};color:${i === 0 ? 'var(--color-naa-navy)' : 'var(--color-naa-maroon)'};font-size:0.75rem;font-weight:700;`}>
-                  {tier.badge}
+                  {withoutPrice(tier.badge)}
                 </span>
                 <span style="font-size:0.85rem;font-weight:700;color:var(--color-naa-navy);font-family:var(--font-outfit);">
                   {tier.ages}
                 </span>
               </div>
 
-              <h3 style="font-size:1.35rem;color:var(--color-naa-navy);margin-bottom:0.5rem;">
+              <h3 style="font-size:1.35rem;color:var(--color-naa-navy);margin-bottom:0.75rem;">
                 {tier.name}
               </h3>
 
+              {priceOf(tier) && (
+                <div style="background:linear-gradient(135deg,rgba(221,170,64,0.22) 0%,rgba(221,170,64,0.08) 100%);border:1px solid rgba(221,170,64,0.55);border-left:5px solid var(--color-naa-gold);border-radius:12px;padding:0.85rem 1.1rem;margin-bottom:1rem;">
+                  <div style="display:flex;align-items:baseline;gap:0.5rem;flex-wrap:wrap;">
+                    <span style="font-family:var(--font-outfit);font-weight:900;font-size:2.2rem;line-height:1;color:var(--color-naa-navy);letter-spacing:-0.02em;">{priceOf(tier)}</span>
+                    <span style="font-family:var(--font-outfit);font-weight:800;font-size:0.9rem;color:#926508;">CAD</span>
+                    <span style="font-size:0.85rem;font-weight:700;color:#475569;">&middot; 10-session block</span>
+                  </div>
+                  <div style="font-size:0.78rem;color:#5b4310;margin-top:0.4rem;line-height:1.45;">+ $30 mandatory Training Kit fee &middot; tuition in 3 installments</div>
+                </div>
+              )}
+
               <p style="font-size:0.85rem;color:#64748b;font-weight:600;font-family:var(--font-outfit);margin-bottom:1rem;">
-                {tier.format} &bull; {tier.ratio}
+                {withoutPrice(tier.format)} &bull; {tier.ratio}
               </p>
 
               <p style="font-size:0.92rem;color:#334155;line-height:1.65;margin-bottom:1.5rem;">
