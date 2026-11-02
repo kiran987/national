@@ -270,14 +270,14 @@ const initial = sports[0];
               Preview Details
             </span>
           </div>
-          <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-none" role="tablist" aria-label="Select active sport (mobile)">
+          <div class="grid grid-cols-2 gap-2" role="tablist" aria-label="Select active sport (mobile)">
             {sports.map((item, idx) => (
               <button
                 type="button"
                 data-hero-sport-btn={item.key}
                 role="tab"
                 aria-selected={idx === 0 ? "true" : "false"}
-                class={`hero-sport-btn shrink-0 flex items-center gap-2 p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                class={`hero-sport-btn min-w-0 flex items-center gap-2 p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                   idx === 0
                     ? 'active-sport-btn bg-amber-400/15 border-amber-400 text-white shadow-md ring-1 ring-amber-400'
                     : 'inactive-sport-btn bg-slate-800/80 border-slate-700/80 text-slate-300 hover:border-slate-600 hover:bg-slate-800'
