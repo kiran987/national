@@ -62,7 +62,7 @@ export const newSportPages: Record<string, NewSportPage> = {
     heroImage: '/images/programs/chess-hero.webp',
     heroPosition: 'center 40%',
     intro:
-      'National Strike Chess is a small-cohort academy that turns curious beginners into confident, composed thinkers. Over eight focused weeks, young players learn how to plan ahead, weigh risk against reward and own every decision they make, one move at a time.',
+      'National Smart Chess is a small-cohort academy that turns curious beginners into confident, composed thinkers. Over eight focused weeks, young players learn how to plan ahead, weigh risk against reward and own every decision they make, one move at a time.',
     facts: [
       { label: 'Ages', value: '6–17', note: 'Beginner to Intermediate' },
       { label: 'Cohort Size', value: 'Max 10', note: 'Strictly capped per batch' },
@@ -110,15 +110,15 @@ export const newSportPages: Record<string, NewSportPage> = {
       { src: '/images/programs/chess-4.webp', alt: 'Overhead view of a chessboard', caption: 'Board vision' },
     ],
     faqs: [
-      { question: 'What ages and levels is National Strike Chess for?', answer: 'Players aged 6 to 17, from complete beginners to intermediate players. Coaches adapt the pace and positions to each player in the cohort.' },
+      { question: 'What ages and levels is National Smart Chess for?', answer: 'Players aged 6 to 17, from complete beginners to intermediate players. Coaches adapt the pace and positions to each player in the cohort.' },
       { question: 'How big are the groups?', answer: 'Each cohort is strictly capped at 10 students so every player gets real coaching attention and playing time.' },
       { question: 'How long is the program?', answer: 'Eight weeks, one 75-minute session per week, finishing with the NAA Rapid Chess Showcase mini-tournament.' },
       { question: 'When does registration open and what does it cost?', answer: 'Registration has not opened yet. Dates, venue and pricing will be announced soon. Use the notify button and we will email you the moment seats are released.' },
       { question: 'Does my child need to know how to play already?', answer: 'No. Week 1 starts with the board, the pieces and notation, so complete beginners are welcome.' },
     ],
-    metaTitle: 'National Strike Chess | Youth Chess Academy in Regina, SK | NAA',
+    metaTitle: 'National Smart Chess | Youth Chess Academy in Regina, SK | NAA',
     metaDescription:
-      'National Strike Chess: an 8-week youth chess academy for ages 6–17 in Regina, SK. Cohorts capped at 10 students. Starting soon.',
+      'National Smart Chess: an 8-week youth chess academy for ages 6–17 in Regina, SK. Cohorts capped at 10 students. Starting soon.',
   },
 
   'table-tennis': {
@@ -249,7 +249,7 @@ export const newSportPrograms: DetailedProgram[] = [
     slug: 'chess',
     order: 3,
     status: 'coming-soon',
-    name: 'National Strike Chess',
+    name: 'National Smart Chess',
     navTitle: 'Chess',
     shortName: 'Chess',
     badge: 'Coming Soon · Ages 6–17',
