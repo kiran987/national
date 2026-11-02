@@ -23,7 +23,7 @@ blockPrice: 195
 hourlyRate: 0
 paymentPlan: true
 highlights:
-  - 'Registration opens November 1, 2026 on TeamLinkt'
+  - 'Registration opens now open on TeamLinkt'
   - 'Jan 26 – Mar 11, 2027 · Selected Tuesdays & Thursdays'
   - 'Spike Juniors: Tue & Thu 6:00–7:15 PM (75 min) · Spike Elite: Tue & Thu 6:00–7:30 PM (90 min)'
   - 'Venue: Green Gym, Centre for Kinesiology and Health Studies (University of Regina)'
@@ -79,7 +79,7 @@ faqs:
   - question: Where are National Spike sessions held?
     answer: 'Sessions are held at Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2.'
   - question: What is the weekly schedule for National Spike?
-    answer: 'Winter 2027 sessions run Tuesdays & Thursdays from January 26 to March 11, 2027 with Spike Juniors at 6:00–7:15 PM and Spike Elite at 6:00–7:30 PM. Registration opens November 1, 2026.'
+    answer: 'Winter 2027 sessions run Tuesdays & Thursdays from January 26 to March 11, 2027 with Spike Juniors at 6:00–7:15 PM and Spike Elite at 6:00–7:30 PM. Registration is now open on TeamLinkt.'
   - question: How are schedules and updates communicated to families?
     answer: 'Families are required to use the TeamLinkt app for all schedules, location details, roster updates, and program announcements.'
 ---

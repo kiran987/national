@@ -38,17 +38,18 @@ const PROGRAMS_DATA: ProgramItem[] = [
     location: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
     schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
     coachRatio: '1:8 to 1:12 Coach Ratio',
-    statusBadge: 'Registration Opens Nov 1',
-    statusType: 'soon',
+    statusBadge: 'Registration Open',
+    statusType: 'open',
     price: '$150 – $295 / block',
     accentColor: '#F59E0B',
     image: '/images/programs/badminton-action-1.webp',
     description: 'Racket mechanics, 6-corner court footwork, attacking clears, jump smashes, and singles/doubles game play at the University of Regina Green Gym.',
     logistics: [
-      'Winter 2027: registration starts soon',
+      'Winter 2027: registration is open on TeamLinkt',
       'Jan 26 – Mar 11, 2027: 10 sessions · Tuesdays & Thursdays (Smash Pro 6:00–7:30 PM)',
       'Yonex shuttles provided; athletes bring their own racket'
     ],
+    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569',
     isFeatured: true
   },
 
@@ -65,17 +66,18 @@ const PROGRAMS_DATA: ProgramItem[] = [
     location: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
     schedule: 'Jan 26 – Mar 11 · Tue & Thu · Juniors 6:00–7:15 PM · Elite 6:00–7:30 PM',
     coachRatio: '1:10 to 1:14 Coach Ratio',
-    statusBadge: 'Registration Opens Nov 1',
-    statusType: 'soon',
+    statusBadge: 'Registration Open',
+    statusType: 'open',
     price: '$195 – $245 / block',
     accentColor: '#83161B',
     image: '/images/programs/volleyball-action-1.webp',
     description: 'Technical indoor volleyball: Forearm platform angles, overhead finger setting, overhand float serving, and 3-step spike approach footwork at the University of Regina Green Gym.',
     logistics: [
-      'Winter 2027: registration starts soon',
+      'Winter 2027: registration is open on TeamLinkt',
       'Jan 26 – Mar 11, 2027: 10 sessions · Tuesdays & Thursdays',
       'Spike Juniors 6:00–7:15 PM (75 min) · Spike Elite 6:00–7:30 PM (90 min)'
     ],
+    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81602',
     isFeatured: true
   },
 

@@ -215,7 +215,7 @@ const activeProgramsRaw: DetailedProgram[] = [
     name: 'National Spike - Volleyball',
     navTitle: 'Volleyball',
     shortName: 'National Spike',
-    badge: 'Winter 2027 · Registration Opens Nov 1',
+    badge: 'Winter 2027 · Registration Open',
     subtitle: 'Passing Precision, Setting & Attack Mechanics',
     tagline: 'Developing dynamic movement, court agility, and crisp volleyball fundamentals.',
     emoji: '',
@@ -242,8 +242,9 @@ const activeProgramsRaw: DetailedProgram[] = [
     blockPrice: 195,
     hourlyRate: 0,
     paymentPlan: true,
+    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81602',
     highlights: [
-      'Winter 2027 registration opens November 1, 2026',
+      'Winter 2027 registration is now open on TeamLinkt',
       '10 sessions · Tuesdays & Thursdays · Jan 26 – Mar 11, 2027 (no sessions Feb 9–18)',
       'Spike Juniors: Tue & Thu 6:00–7:15 PM (75 min) · Spike Elite: Tue & Thu 6:00–7:30 PM (90 min)',
       'Venue: Green Gym, Centre for Kinesiology and Health Studies, University of Regina',
@@ -316,7 +317,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       {
         question: 'When and where does Winter 2027 volleyball run?',
         answer:
-          'Tuesdays and Thursdays from Jan 26 to Mar 11 (no sessions Feb 9–18) at the University of Regina Green Gym. Spike Juniors runs 6:00–7:15 PM (75 minutes) and Spike Elite runs 6:00–7:30 PM (90 minutes). Registration opens November 1, 2026.',
+          'Tuesdays and Thursdays from Jan 26 to Mar 11 (no sessions Feb 9–18) at the University of Regina Green Gym. Spike Juniors runs 6:00–7:15 PM (75 minutes) and Spike Elite runs 6:00–7:30 PM (90 minutes). Registration is now open on TeamLinkt.',
       },
       {
         question: 'Are knee pads required for volleyball?',
@@ -348,7 +349,7 @@ const activeProgramsRaw: DetailedProgram[] = [
     name: 'National Smash - Badminton',
     navTitle: 'Badminton',
     shortName: 'National Smash',
-    badge: 'Winter 2027 · Registration Opens Nov 1',
+    badge: 'Winter 2027 · Registration Open',
     subtitle: 'Grip Precision, Footwork Ladders & Fast-Twitch Agility',
     tagline: 'High-speed reflexes, deceptive racket angles, and master court footwork.',
     emoji: '',
@@ -376,8 +377,9 @@ const activeProgramsRaw: DetailedProgram[] = [
     blockPrice: 150,
     hourlyRate: 0,
     paymentPlan: true,
+    teamLinktUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569',
     highlights: [
-      'Winter 2027 registration opens November 1, 2026 on TeamLinkt',
+      'Winter 2027 registration is now open on TeamLinkt',
       '10 sessions · Tuesdays & Thursdays · Jan 26 – Mar 11, 2027 (no sessions Feb 9–18)',
       'Two batches: Batch 1 · 6:00–6:45 PM or Batch 2 · 6:45–7:30 PM (45-min slots, 40–45 min of on-court coaching)',
       'Venue: Green Gym, Centre for Kinesiology and Health Studies, University of Regina',

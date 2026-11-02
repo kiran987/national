@@ -27,7 +27,7 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
 
 
   // ══════════════════════════════════════════════════════════════
-  // 2. WINTER 2027 (Registration Opens Nov 1, 2026 · NO LINKS NOW)
+  // 2. WINTER 2027 (Registration Registration open)
   // Location: Green Gym, CKHS, University of Regina
   // Dates: Jan 26 – Mar 11, 2027 (10 Sessions on Tue & Thu)
   // ══════════════════════════════════════════════════════════════
@@ -45,9 +45,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     timeSlot: '6:00 PM – 6:45 PM (45 mins)',
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:8 to 1:10 Ratio',
-    status: 'Starting Soon',
+    status: 'Open',
     price: '$150 CAD',
-    notes: 'Registration starts Nov 1, 2026. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Yonex nylon shuttles provided; athletes bring their own racket. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
+    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569',
+    notes: 'Registration is open. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Yonex nylon shuttles provided; athletes bring their own racket. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
     id: 'badminton-2027-elite-slot1',
@@ -61,9 +62,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     timeSlot: '6:00 PM – 6:45 PM (45 mins)',
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:12 to 1:14 Ratio',
-    status: 'Starting Soon',
+    status: 'Open',
     price: '$175 CAD',
-    notes: 'Registration starts Nov 1, 2026. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Footwork ladders, clears & smash tactics. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
+    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569',
+    notes: 'Registration is open. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Footwork ladders, clears & smash tactics. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
     id: 'volleyball-2027-juniors',
@@ -77,9 +79,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     timeSlot: '6:00 PM – 7:15 PM (75 mins)',
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:10 Ratio',
-    status: 'Starting Soon',
+    status: 'Open',
     price: '$195 CAD',
-    notes: 'Registration starts Nov 1, 2026. Low-impact Mikasa trainer balls & adjusted net heights. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
+    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81602',
+    notes: 'Registration is open. Low-impact Mikasa trainer balls & adjusted net heights. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
     id: 'volleyball-2027-elite',
@@ -93,9 +96,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     timeSlot: '6:00 PM – 7:30 PM (90 mins)',
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:12 Ratio',
-    status: 'Starting Soon',
+    status: 'Open',
     price: '$245 CAD',
-    notes: 'Registration starts Nov 1, 2026. Float serves, spike approach footwork & 6v6 play. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
+    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81602',
+    notes: 'Registration is open. Float serves, spike approach footwork & 6v6 play. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
 
   // ── Winter 2027 · Smash Pro (6:00 PM – 7:30 PM · Tue & Thu) ──
@@ -111,9 +115,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     timeSlot: '6:00 PM – 7:30 PM (90 mins)',
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:8 to 1:12 Ratio',
-    status: 'Starting Soon',
+    status: 'Open',
     price: '$295 CAD',
-    notes: 'Registration starts Nov 1, 2026. Intensive tactical training & matchplay. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
+    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569',
+    notes: 'Registration is open. Intensive tactical training & matchplay. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   // ── Winter 2027 · Slot 2 (6:45 PM – 7:30 PM · Tue & Thu) ──
   {
@@ -128,9 +133,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     timeSlot: '6:45 PM – 7:30 PM (45 mins)',
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:8 to 1:10 Ratio',
-    status: 'Starting Soon',
+    status: 'Open',
     price: '$150 CAD',
-    notes: 'Registration starts Nov 1, 2026. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Yonex nylon shuttles provided; athletes bring their own racket. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
+    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569',
+    notes: 'Registration is open. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Yonex nylon shuttles provided; athletes bring their own racket. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
   {
     id: 'badminton-2027-elite-slot2',
@@ -144,9 +150,10 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     timeSlot: '6:45 PM – 7:30 PM (45 mins)',
     dates: 'Jan 26 – Mar 11, 2027 (10 Sessions · no sessions Feb 9–18)',
     coachRatio: '1:12 to 1:14 Ratio',
-    status: 'Starting Soon',
+    status: 'Open',
     price: '$175 CAD',
-    notes: 'Registration starts Nov 1, 2026. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Footwork ladders, clears & smash tactics. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
+    registerUrl: 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569',
+    notes: 'Registration is open. 40–45 min of on-court coaching per session. Dates: Jan 26, 28, Feb 2, 4, 23, 25, Mar 2, 4, 9, 11. Footwork ladders, clears & smash tactics. Open, mixed-level class. Mandatory $30 Training Kit fee, paid in full (no installments). Tuition can be split into 3 installments.'
   },
 ];
 

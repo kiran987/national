@@ -45,7 +45,7 @@ export const GymScheduleTable: React.FC = () => {
               Gym Locations &amp; Session Times
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
-              Winter 2027 programs at the University of Regina Green Gym. Registration opens November 1, 2026.
+              Winter 2027 programs at the University of Regina Green Gym. Registration is open now.
             </p>
           </div>
 
@@ -266,7 +266,7 @@ export const GymScheduleTable: React.FC = () => {
 
                         {/* Register Button */}
                         <td className="py-4 px-4 sm:px-6 text-right whitespace-nowrap">
-                          {item.season === 'Winter 2027' || !item.registerUrl ? (
+                          {!item.registerUrl ? (
                             <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">
                               Opens Nov 1
                             </span>
@@ -277,7 +277,7 @@ export const GymScheduleTable: React.FC = () => {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0B192C] text-white hover:bg-amber-500 hover:text-slate-950 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-amber-500"
                             >
-                              <span>Register (Fall)</span>
+                              <span>Register</span>
                               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                               </svg>

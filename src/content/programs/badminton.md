@@ -23,7 +23,7 @@ blockPrice: 125
 hourlyRate: 0
 paymentPlan: true
 highlights:
-  - "Registration opens November 1, 2026 on TeamLinkt"
+  - "Registration is now open on TeamLinkt"
   - "Jan 26 – Mar 11, 2027 · Selected Tuesdays & Thursdays"
   - "Slot 1: 6:00–6:45 PM or Slot 2: 6:45–7:30 PM (45 mins)"
   - "Venue: Green Gym, Centre for Kinesiology and Health Studies (University of Regina)"

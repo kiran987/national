@@ -11,7 +11,7 @@ export const AthleticHero: React.FC = () => {
       slug: 'badminton',
       image: '/images/programs/badminton-action-1.webp',
       subImage: '/images/programs/badminton-action-2.webp',
-      badge: 'Winter 2027 · Registration Opens Nov 1',
+      badge: 'Winter 2027 · Registration Open',
       schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
       venue: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
       highlights: '10 sessions · Juniors & Elite 45-min batches · Smash Pro 90 min · tuition in 3 installments',
@@ -24,7 +24,7 @@ export const AthleticHero: React.FC = () => {
       slug: 'volleyball',
       image: '/images/programs/volleyball-action-1.webp',
       subImage: '/images/programs/volleyball-portrait-1.webp',
-      badge: 'Winter 2027 · Registration Opens Nov 1',
+      badge: 'Winter 2027 · Registration Open',
       schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
       venue: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
       highlights: '10 sessions · Two 45-min batches (6:00–6:45 or 6:45–7:30 PM) · tuition in 3 installments',
@@ -108,7 +108,7 @@ export const AthleticHero: React.FC = () => {
                 id="hero-register-btn"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-extrabold text-sm bg-amber-400 text-slate-950 hover:bg-amber-300 transition-all shadow-lg hover:shadow-amber-400/25 focus-visible:ring-2 focus-visible:ring-amber-500"
               >
-                <span>Register for Fall Session</span>
+                <span>Register for Winter 2027</span>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
