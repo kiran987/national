@@ -237,7 +237,7 @@ const activeProgramsRaw: DetailedProgram[] = [
     ages: 'Ages 8–16 (Spike Juniors: 8–12, Spike Elite: 13–16)',
     venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2',
     seasonDuration: 'Winter 2027: Jan 26 – Mar 11, 2027 (10 Sessions · Tuesdays & Thursdays)',
-    sessionsPerWeek: '2× / week · Batch 1: 6:00–6:45 PM or Batch 2: 6:45–7:30 PM (40–45 min on-court coaching)',
+    sessionsPerWeek: '2× / week · Spike Juniors 6:00–7:15 PM (75 min) · Spike Elite 6:00–7:30 PM (90 min)',
     blockWeeks: 7,
     blockPrice: 230,
     hourlyRate: 0,
@@ -245,7 +245,7 @@ const activeProgramsRaw: DetailedProgram[] = [
     highlights: [
       'Winter 2027 registration opens November 1, 2026',
       '10 sessions · Tuesdays & Thursdays · Jan 26 – Mar 11, 2027 (no sessions Feb 9–18)',
-      'Two batches: Batch 1 · 6:00–6:45 PM or Batch 2 · 6:45–7:30 PM (45-min slots, 40–45 min of on-court coaching)',
+      'Spike Juniors: Tue & Thu 6:00–7:15 PM (75 min) · Spike Elite: Tue & Thu 6:00–7:30 PM (90 min)',
       'Venue: Green Gym, Centre for Kinesiology and Health Studies, University of Regina',
       'Spike Juniors (Ages 8–12): $230 CAD · Spike Elite (Ages 13–16): $260 CAD',
       'Mandatory Training Kit Fee: $30 CAD per athlete, in addition to program tuition',
@@ -267,9 +267,9 @@ const activeProgramsRaw: DetailedProgram[] = [
     tiers: [
       {
         name: 'Spike Juniors',
-        badge: 'Ages 8–12 · 45-min batches · $230 CAD',
+        badge: 'Ages 8–12 · 75-min sessions · $230 CAD',
         ages: 'Ages 8–12',
-        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $230 CAD',
+        format: '10 sessions · Tue & Thu · 6:00–7:15 PM · $230 CAD',
         focus:
           'Movement to the ball, solid forearm platform passing, overhead setting touch, underhand & intro overhand serving, and modified Tripleball gameplay.',
         ratio: '1:10 to 1:12 Coach Ratio',
@@ -282,9 +282,9 @@ const activeProgramsRaw: DetailedProgram[] = [
       },
       {
         name: 'Spike Elite',
-        badge: 'Ages 13–16 · 45-min batches · $260 CAD',
+        badge: 'Ages 13–16 · 90-min sessions · $260 CAD',
         ages: 'Ages 13–16',
-        format: '10 sessions · Tue & Thu · 6:00–6:45 or 6:45–7:30 PM · $260 CAD',
+        format: '10 sessions · Tue & Thu · 6:00–7:30 PM · $260 CAD',
         focus:
           'Overhand float serving, spike approach timing, block positioning, defensive digging, offensive transition, and full 6v6 competitive play.',
         ratio: '1:12 to 1:14 Coach Ratio',
@@ -299,8 +299,8 @@ const activeProgramsRaw: DetailedProgram[] = [
     whatsIncluded: [
       'Spike Juniors (Ages 8–12): $230 CAD · 10 sessions',
       'Spike Elite (Ages 13–16): $260 CAD · 10 sessions',
-      '10 Training Sessions (45-min batches) at the University of Regina Green Gym',
-      'Tuesdays & Thursdays, Jan 26 – Mar 11, 2027 (Batch 1: 6:00–6:45 PM · Batch 2: 6:45–7:30 PM)',
+      '10 Training Sessions at the University of Regina Green Gym',
+      'Tuesdays & Thursdays, Jan 26 – Mar 11, 2027 (Spike Juniors 6:00–7:15 PM · Spike Elite 6:00–7:30 PM)',
       'Mandatory Training Kit Fee: $30 CAD per athlete (in addition to tuition)',
       'Tuition can be split into 3 installments (the Training Kit fee is paid in full, no installments)',
       'Screened, Safe Sport–trained coach instruction, scrimmages & regulation adjusted net facilities',
@@ -316,7 +316,7 @@ const activeProgramsRaw: DetailedProgram[] = [
       {
         question: 'When and where does Winter 2027 volleyball run?',
         answer:
-          'Tuesdays and Thursdays from Jan 26 to Mar 11 (no sessions Feb 9–18) at the University of Regina Green Gym. Choose Batch 1 (6:00–6:45 PM) or Batch 2 (6:45–7:30 PM). Registration opens November 1, 2026.',
+          'Tuesdays and Thursdays from Jan 26 to Mar 11 (no sessions Feb 9–18) at the University of Regina Green Gym. Spike Juniors runs 6:00–7:15 PM (75 minutes) and Spike Elite runs 6:00–7:30 PM (90 minutes). Registration opens November 1, 2026.',
       },
       {
         question: 'Are knee pads required for volleyball?',

@@ -63,7 +63,7 @@ const PROGRAMS_DATA: ProgramItem[] = [
     ageBracket: ['U12', 'U16'],
     ageDisplay: 'Ages 8–16 (Juniors & Elite)',
     location: 'Green Gym, University of Regina (3737 Wascana Pkwy)',
-    schedule: 'Jan 26 – Mar 11 · Tue & Thu · 6:00–7:30 PM',
+    schedule: 'Jan 26 – Mar 11 · Tue & Thu · Juniors 6:00–7:15 PM · Elite 6:00–7:30 PM',
     coachRatio: '1:10 to 1:14 Coach Ratio',
     statusBadge: 'Registration Opens Nov 1',
     statusType: 'soon',
@@ -74,7 +74,7 @@ const PROGRAMS_DATA: ProgramItem[] = [
     logistics: [
       'Winter 2027: registration starts soon',
       'Jan 26 – Mar 11, 2027: 10 sessions · Tuesdays & Thursdays',
-      'Two 45-min batches: 6:00–6:45 PM or 6:45–7:30 PM'
+      'Spike Juniors 6:00–7:15 PM (75 min) · Spike Elite 6:00–7:30 PM (90 min)'
     ],
     isFeatured: true
   },

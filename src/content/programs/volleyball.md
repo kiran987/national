@@ -17,7 +17,7 @@ ages: 'Ages 8–16 (Spike Juniors: 8–12, Spike Elite: 13–16)'
 ratio: '1:10 to 1:14 Coach-to-Athlete Ratio'
 venue: 'Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2'
 seasonDuration: 'Jan 26 – Mar 11, 2027 (10 Sessions) · Tuesdays & Thursdays'
-sessionsPerWeek: '2× / week · 45 min / session · Slot 1: 6:00–6:45 PM or Slot 2: 6:45–7:30 PM'
+sessionsPerWeek: '2× / week · Spike Juniors 6:00–7:15 PM (75 min) · Spike Elite 6:00–7:30 PM (90 min)'
 blockWeeks: 7
 blockPrice: 205
 hourlyRate: 0
@@ -25,7 +25,7 @@ paymentPlan: true
 highlights:
   - 'Registration opens November 1, 2026 on TeamLinkt'
   - 'Jan 26 – Mar 11, 2027 · Selected Tuesdays & Thursdays'
-  - 'Slot 1: 6:00–6:45 PM or Slot 2: 6:45–7:30 PM (45 mins)'
+  - 'Spike Juniors: Tue & Thu 6:00–7:15 PM (75 min) · Spike Elite: Tue & Thu 6:00–7:30 PM (90 min)'
   - 'Venue: Green Gym, Centre for Kinesiology and Health Studies (University of Regina)'
   - Age-adjusted net heights and lightweight Mikasa trainer balls for optimal learning
   - Screened, Safe Sport–trained coaches emphasizing injury-safe landing mechanics
@@ -79,7 +79,7 @@ faqs:
   - question: Where are National Spike sessions held?
     answer: 'Sessions are held at Green Gym, Centre for Kinesiology and Health Studies, University of Regina, 3737 Wascana Parkway, Regina, SK S4S 0A2.'
   - question: What is the weekly schedule for National Spike?
-    answer: 'Winter 2027 sessions run Tuesdays & Thursdays from January 26 to March 11, 2027 with two 45-minute evening slots (6:00–6:45 PM and 6:45–7:30 PM). Registration opens November 1, 2026.'
+    answer: 'Winter 2027 sessions run Tuesdays & Thursdays from January 26 to March 11, 2027 with Spike Juniors at 6:00–7:15 PM and Spike Elite at 6:00–7:30 PM. Registration opens November 1, 2026.'
   - question: How are schedules and updates communicated to families?
     answer: 'Families are required to use the TeamLinkt app for all schedules, location details, roster updates, and program announcements.'
 ---
