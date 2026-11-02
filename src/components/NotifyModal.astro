@@ -232,27 +232,18 @@ const ageRanges = [
       if (directCheckbox) {
         directCheckbox.checked = true;
       } else {
-        // 2. Fuzzy match across name variants
-        checkboxes.forEach((cb) => {
+        // 2. Fuzzy match: pick the single best checkbox, never several
+        const keywords = ['camp', 'tournament', 'soccer', 'badminton', 'smash', 'volleyball', 'spike', 'basketball', 'hoops', 'athletics', 'track', 'flag', 'pickleball', 'chess', 'table tennis', 'snowboard', 'shield', 'martial', 'strength'];
+        const list = Array.from(checkboxes);
+        const score = (cb: HTMLInputElement) => {
           const val = cb.value.toLowerCase();
-          if (
-            val === cleanTarget ||
-            val.includes(cleanTarget) ||
-            cleanTarget.includes(val) ||
-            (cleanTarget.includes('camp') && val.includes('camp')) ||
-            (cleanTarget.includes('tournament') && val.includes('tournament')) ||
-            (cleanTarget.includes('soccer') && val.includes('soccer')) ||
-            (cleanTarget.includes('badminton') && val.includes('badminton')) ||
-            (cleanTarget.includes('athletics') && val.includes('athletics')) ||
-            (cleanTarget.includes('track') && val.includes('athletics')) ||
-            (cleanTarget.includes('flag') && val.includes('flag')) ||
-            (cleanTarget.includes('pickleball') && val.includes('pickleball')) ||
-            (cleanTarget.includes('chess') && val.includes('chess')) ||
-            (cleanTarget.includes('strength') && val.includes('strength'))
-          ) {
-            cb.checked = true;
-          }
-        });
+          if (val === cleanTarget) return 1;
+          if (val.includes(cleanTarget) || cleanTarget.includes(val)) return 2;
+          if (keywords.some((k) => cleanTarget.includes(k) && val.includes(k))) return 3;
+          return 99;
+        };
+        const best = list.reduce((acc, cb) => (score(cb) < score(acc) ? cb : acc), list[0]);
+        if (best && score(best) < 99) best.checked = true;
       }
 
       if (badge) {
