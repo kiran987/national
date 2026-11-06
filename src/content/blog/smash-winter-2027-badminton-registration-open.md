@@ -89,6 +89,6 @@ Groups are kept small by coach-to-athlete ratios, so register early to secure th
 
 ## Coming Up Next: National Smash Open 2027
 
-If your player loves match day, mark **February 27, 2027** for the [National Smash Open 2027](/programs/tournaments/badminton/national-smash-open-2027/), a one-day tournament on eight courts at the University of Regina. Registration for the tournament opens on **November 15, 2026**.
+If your player loves match day, mark **February 27, 2027** for the [National Smash Open 2027](/programs/tournaments/badminton/national-smash-open-2027/), a one-day tournament on eight courts at the University of Regina. Registration for the tournament opens **soon**.
 
 You can read the full program details any time on the [National Smash program page](/programs/badminton/). Questions? [Contact us](/contact/) and we will help you choose the right tier.

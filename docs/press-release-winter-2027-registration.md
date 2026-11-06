@@ -40,7 +40,7 @@ Tuition can be paid in three installments. A mandatory Training Kit fee of $30 p
 
 ## Coming Up: National Smash Open 2027
 
-NAA will also host the National Smash Open 2027, a one-day badminton tournament on eight courts at the University of Regina on February 27, 2027. Tournament registration opens November 15, 2026.
+NAA will also host the National Smash Open 2027, a one-day badminton tournament on eight courts at the University of Regina on February 27, 2027. Tournament registration opens soon.
 
 ## About National Athletics Academy
 
