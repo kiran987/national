@@ -1,0 +1,1 @@
+async function e(e=`submit`){if(typeof window>`u`)return``;let t=window;return t.grecaptcha?new Promise(n=>{try{t.grecaptcha.ready(async()=>{try{n(await t.grecaptcha.execute(`6Lcny8YtAAAAANOstsrqDZP14p55u8k17LpeS4aX`,{action:e})||``)}catch{n(``)}})}catch{n(``)}}):``}export{e as t};
