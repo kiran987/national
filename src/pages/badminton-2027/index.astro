@@ -88,7 +88,7 @@ const faqSchema = {
         <ul class="b27-facts">
           <li><strong>Jan 26 &ndash; Mar 11</strong><span>10 sessions</span></li>
           <li><strong>Tue &amp; Thu</strong><span>Evenings</span></li>
-          <li><strong>From $150</strong><span>3 installments</span></li>
+          <li class="is-hl"><strong>From $150</strong><span>Split in 3 installments</span></li>
         </ul>
 
         <a href={registerUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg b27-cta">Register on TeamLinkt &rarr;</a>
@@ -119,7 +119,11 @@ const faqSchema = {
             </article>
           ))}
         </div>
-        <p class="b27-note">Mandatory Training Kit fee: $30 CAD per athlete, paid in full. Tuition can be split into three installments.</p>
+        <div class="b27-installments" role="note">
+          <span class="b27-inst-badge">Pay Your Way</span>
+          <strong>Split tuition into 3 installments</strong>
+          <p>Available on every tier. The mandatory $30 CAD Training Kit fee is paid in full.</p>
+        </div>
       </div>
     </section>
 
@@ -217,6 +221,8 @@ const faqSchema = {
   .b27-lead { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.88); max-width: 34rem; margin: 0 0 1.4rem; }
   .b27-facts { list-style: none; padding: 0; margin: 0 0 1.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; max-width: 34rem; }
   .b27-facts li { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 0.7rem 0.6rem; display: flex; flex-direction: column; gap: 0.15rem; }
+  .b27-facts li.is-hl { background: rgba(221,170,64,0.18); border-color: rgba(221,170,64,0.65); }
+  .b27-facts li.is-hl span { color: var(--color-naa-gold); font-weight: 700; }
   .b27-facts strong { font: 800 0.95rem var(--font-outfit); color: #fff; line-height: 1.2; }
   .b27-facts span { font-size: 0.72rem; color: rgba(255,255,255,0.65); }
   .b27-cta { width: 100%; justify-content: center; max-width: 34rem; }
@@ -247,6 +253,11 @@ const faqSchema = {
   .b27-times { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
   .b27-times li { padding: 0.5rem 0.75rem; border-radius: 10px; background: #f1f5f9; color: #0f172a; font-size: 0.88rem; font-weight: 600; }
   .b27-tier-btn { width: 100%; justify-content: center; margin-top: 0.25rem; }
+
+  .b27-installments { margin-top: 1.25rem; padding: 1.1rem 1.25rem; border-radius: 16px; background: linear-gradient(135deg, #fff8e6 0%, #fdeec2 100%); border: 2px solid var(--color-naa-gold); display: flex; flex-direction: column; gap: 0.3rem; }
+  .b27-inst-badge { align-self: flex-start; padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--color-naa-navy); color: var(--color-naa-gold); font: 800 0.68rem var(--font-outfit); letter-spacing: 0.08em; text-transform: uppercase; }
+  .b27-installments strong { font: 800 1.2rem var(--font-outfit); color: var(--color-naa-navy); line-height: 1.25; }
+  .b27-installments p { margin: 0; color: #5b4a1a; font-size: 0.9rem; line-height: 1.55; }
 
   /* Steps */
   .b27-steps { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 1rem; }
