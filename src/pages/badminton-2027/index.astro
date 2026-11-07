@@ -1,7 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import SeasonLandingPage from '../../components/SeasonLandingPage.astro';
 
 const registerUrl = 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81569';
 
@@ -12,7 +10,6 @@ const tiers = [
     price: 150,
     times: ['Batch 1 · 6:00–6:45 PM', 'Batch 2 · 6:45–7:30 PM'],
     blurb: 'Open, mixed-level class. Games-based skills: grip, serving, court movement and net play.',
-    featured: false,
   },
   {
     name: 'Smash Elite',
@@ -20,7 +17,6 @@ const tiers = [
     price: 175,
     times: ['Batch 1 · 6:00–6:45 PM', 'Batch 2 · 6:45–7:30 PM'],
     blurb: 'Open, mixed-level class. Footwork, clears, drops, smashes and doubles rotation.',
-    featured: false,
   },
   {
     name: 'Smash Pro',
@@ -30,12 +26,6 @@ const tiers = [
     blurb: 'Intensive tactical training and matchplay for players who want to compete.',
     featured: true,
   },
-];
-
-const dates = [
-  { month: 'January', days: '26, 28' },
-  { month: 'February', days: '2, 4, 23, 25' },
-  { month: 'March', days: '2, 4, 9, 11' },
 ];
 
 const faqs = [
@@ -56,270 +46,48 @@ const faqs = [
     a: 'Choose Batch 1 (6:00–6:45 PM) or Batch 2 (6:45–7:30 PM) for Juniors and Elite. Final schedules and group assignments are confirmed in the TeamLinkt app.',
   },
 ];
-
-const faqSchema = {
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
-};
 ---
 
-<Layout
-  title="Badminton 2027 in Regina | National Smash Winter Registration"
-  description="National Smash Winter 2027 badminton for ages 6–16 at the University of Regina Green Gym. Tuesdays and Thursdays, Jan 26 – Mar 11. From $150. Registration is open."
-  ogImage="/images/programs/badminton-action-1.webp"
-  schemaGraph={[faqSchema]}
->
-  <Header />
-
-  <main class="b27">
-    <!-- Hero -->
-    <section class="page-hero b27-hero">
-      <img class="b27-hero-img" src="/images/programs/badminton-action-1.webp" alt="" aria-hidden="true" fetchpriority="high" />
-      <div class="b27-hero-shade"></div>
-      <div class="container-naa b27-hero-inner">
-        <span class="b27-pill">Winter 2027 &bull; Registration Open</span>
-        <h1>National Smash<br /><span>Badminton 2027</span></h1>
-        <p class="b27-lead">Coached badminton for ages 6&ndash;16, twice a week at the University of Regina Green Gym.</p>
-
-        <ul class="b27-facts">
-          <li><strong>Jan 26 &ndash; Mar 11</strong><span>10 sessions</span></li>
-          <li><strong>Tue &amp; Thu</strong><span>Evenings</span></li>
-          <li class="is-hl"><strong>From $150</strong><span>Split in 3 installments</span></li>
-        </ul>
-
-        <a href={registerUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg b27-cta">Register on TeamLinkt &rarr;</a>
-        <a href="#tiers" class="b27-link">See tiers &amp; times &darr;</a>
-      </div>
-    </section>
-
-    <!-- Tiers -->
-    <section id="tiers" class="b27-section b27-light" aria-labelledby="tiers-h">
-      <div class="container-naa">
-        <h2 id="tiers-h">Pick Your Tier</h2>
-        <p class="b27-sub">Three levels, all Tuesdays &amp; Thursdays.</p>
-        <div class="b27-tiers">
-          {tiers.map((t) => (
-            <article class={`b27-tier${t.featured ? ' is-pro' : ''}`}>
-              <div class="b27-tier-top">
-                <div>
-                  <h3>{t.name}</h3>
-                  <span class="b27-ages">{t.ages}</span>
-                </div>
-                <div class="b27-price">${t.price}<small>CAD</small></div>
-              </div>
-              <p>{t.blurb}</p>
-              <ul class="b27-times">
-                {t.times.map((x) => <li>{x}</li>)}
-              </ul>
-              <a href={registerUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary b27-tier-btn">Register {t.name} &rarr;</a>
-            </article>
-          ))}
-        </div>
-        <div class="b27-installments" role="note">
-          <span class="b27-inst-badge">Pay Your Way</span>
-          <strong>Split tuition into 3 installments</strong>
-          <p>Available on every tier. The mandatory $30 CAD Training Kit fee is paid in full.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="b27-section" aria-labelledby="how-h">
-      <div class="container-naa">
-        <h2 id="how-h">How to Join</h2>
-        <ol class="b27-steps">
-          <li><span>1</span><div><strong>Choose a tier and batch</strong><p>Juniors and Elite pick Batch 1 or Batch 2. Pro runs 6:00&ndash;7:30 PM.</p></div></li>
-          <li><span>2</span><div><strong>Register on TeamLinkt</strong><p>Tap the button, add your athlete, and pay in full or in three installments.</p></div></li>
-          <li><span>3</span><div><strong>Get the TeamLinkt app</strong><p>Final schedules, group assignments and any cancellations are posted there.</p></div></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Dates -->
-    <section class="b27-section b27-dark" aria-labelledby="dates-h">
-      <div class="container-naa">
-        <h2 id="dates-h">Session Dates</h2>
-        <p class="b27-sub">Ten sessions at the U of R Green Gym, 3737 Wascana Parkway.</p>
-        <div class="b27-dates">
-          {dates.map((d) => (
-            <div class="b27-date"><span>{d.month}</span><strong>{d.days}</strong></div>
-          ))}
-        </div>
-        <p class="b27-note b27-note-dark">No sessions February 9&ndash;18.</p>
-      </div>
-    </section>
-
-    <!-- Photos -->
-    <section class="b27-photos" aria-label="Badminton training photos">
-      <img src="/images/programs/badminton-coaching-1.webp" alt="NAA coach with young badminton players seated in a circle on the court" loading="lazy" />
-      <img src="/images/programs/badminton-warmup-1.webp" alt="Players and coaches raising rackets overhead during a badminton warm-up" loading="lazy" />
-    </section>
-
-    <!-- Bring -->
-    <section class="b27-section b27-light" aria-labelledby="bring-h">
-      <div class="container-naa">
-        <h2 id="bring-h">What to Bring</h2>
-        <ul class="b27-bring">
-          <li><strong>Your own racket</strong><span>NAA does not provide rackets.</span></li>
-          <li><strong>Court shoes</strong><span>Clean, non-marking indoor shoes.</span></li>
-          <li><strong>Water &amp; athletic wear</strong><span>Yonex shuttles are provided.</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="b27-section" aria-labelledby="faq-h">
-      <div class="container-naa">
-        <h2 id="faq-h">Quick Answers</h2>
-        <div class="b27-faq">
-          {faqs.map((f) => (
-            <details>
-              <summary>{f.q}</summary>
-              <p>{f.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="b27-final">
-      <div class="container-naa">
-        <h2>Ready to Play?</h2>
-        <p>Winter 2027 registration is open on TeamLinkt.</p>
-        <a href={registerUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg b27-cta">Register for Winter 2027 &rarr;</a>
-        <a href="/programs/badminton/" class="b27-link b27-link-light">Full program details &rarr;</a>
-        <p class="b27-contact">Questions? <a href="/contact/">Contact us</a> or call <a href="tel:+13063309559">(306) 330-9559</a>.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Sticky mobile register bar -->
-  <div class="b27-bar" role="complementary" aria-label="Register">
-    <div><strong>Badminton 2027</strong><span>From $150 &middot; Tue &amp; Thu</span></div>
-    <a href={registerUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">Register &rarr;</a>
-  </div>
-
-  <Footer />
-</Layout>
-
-<style>
-  .b27 h1, .b27 h2, .b27 h3 { font-family: var(--font-outfit); }
-
-  /* Hero */
-  .b27-hero { position: relative; overflow: clip; padding: 7.5rem 0 3rem; background: #010f24; color: #fff; }
-  .b27-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; opacity: 0.35; }
-  .b27-hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1,15,36,0.55) 0%, #010f24 92%); }
-  .b27-hero-inner { position: relative; z-index: 2; }
-  .b27-pill { display: inline-block; padding: 0.4rem 0.95rem; border-radius: 999px; background: rgba(221,170,64,0.16); border: 1px solid rgba(221,170,64,0.4); color: var(--color-naa-gold); font: 700 0.72rem var(--font-outfit); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1rem; }
-  .b27-hero h1 { font-size: clamp(2.2rem, 9vw, 3.6rem); line-height: 1.05; font-weight: 900; color: #fff; margin: 0 0 0.9rem; letter-spacing: -0.01em; }
-  .b27-hero h1 span { color: var(--color-naa-gold); }
-  .b27-lead { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.88); max-width: 34rem; margin: 0 0 1.4rem; }
-  .b27-facts { list-style: none; padding: 0; margin: 0 0 1.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; max-width: 34rem; }
-  .b27-facts li { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 0.7rem 0.6rem; display: flex; flex-direction: column; gap: 0.15rem; }
-  .b27-facts li.is-hl { background: rgba(221,170,64,0.18); border-color: rgba(221,170,64,0.65); }
-  .b27-facts li.is-hl span { color: var(--color-naa-gold); font-weight: 700; }
-  .b27-facts strong { font: 800 0.95rem var(--font-outfit); color: #fff; line-height: 1.2; }
-  .b27-facts span { font-size: 0.72rem; color: rgba(255,255,255,0.65); }
-  .b27-cta { width: 100%; justify-content: center; max-width: 34rem; }
-  .b27-link { display: block; margin-top: 0.9rem; color: var(--color-naa-gold); font-weight: 700; font-size: 0.92rem; text-decoration: none; }
-  .b27-link-light { color: #fff; opacity: 0.9; }
-
-  /* Sections */
-  .b27-section { padding: 3rem 0; background: #fff; scroll-margin-top: 5rem; }
-  .b27-light { background: #f8fafc; }
-  .b27-dark { background: #0B192C; color: #fff; }
-  .b27 h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 800; color: var(--color-naa-navy); margin: 0 0 0.4rem; }
-  .b27-dark h2 { color: #fff; }
-  .b27-sub { color: #64748b; margin: 0 0 1.5rem; font-size: 0.95rem; }
-  .b27-dark .b27-sub { color: rgba(255,255,255,0.7); }
-  .b27-note { margin: 1.25rem 0 0; font-size: 0.85rem; color: #64748b; line-height: 1.6; }
-  .b27-note-dark { color: rgba(255,255,255,0.85); font-weight: 600; }
-
-  /* Tiers */
-  .b27-tiers { display: grid; gap: 1rem; }
-  .b27-tier { background: #fff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 1.25rem; box-shadow: 0 6px 18px rgba(2,31,71,0.06); display: flex; flex-direction: column; gap: 0.75rem; }
-  .b27-tier.is-pro { border-color: rgba(221,170,64,0.7); box-shadow: 0 8px 24px rgba(221,170,64,0.18); }
-  .b27-tier-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
-  .b27-tier h3 { font-size: 1.3rem; font-weight: 800; color: var(--color-naa-navy); margin: 0; }
-  .b27-ages { display: inline-block; margin-top: 0.3rem; padding: 0.2rem 0.6rem; border-radius: 999px; background: #eef3fb; color: var(--color-naa-navy); font-size: 0.78rem; font-weight: 700; }
-  .b27-price { font: 900 2rem var(--font-outfit); color: var(--color-naa-maroon); line-height: 1; }
-  .b27-price small { font-size: 0.7rem; font-weight: 700; margin-left: 0.2rem; color: #64748b; }
-  .b27-tier p { margin: 0; color: #475569; font-size: 0.93rem; line-height: 1.6; }
-  .b27-times { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
-  .b27-times li { padding: 0.5rem 0.75rem; border-radius: 10px; background: #f1f5f9; color: #0f172a; font-size: 0.88rem; font-weight: 600; }
-  .b27-tier-btn { width: 100%; justify-content: center; margin-top: 0.25rem; }
-
-  .b27-installments { margin-top: 1.25rem; padding: 1.1rem 1.25rem; border-radius: 16px; background: linear-gradient(135deg, #fff8e6 0%, #fdeec2 100%); border: 2px solid var(--color-naa-gold); display: flex; flex-direction: column; gap: 0.3rem; }
-  .b27-inst-badge { align-self: flex-start; padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--color-naa-navy); color: var(--color-naa-gold); font: 800 0.68rem var(--font-outfit); letter-spacing: 0.08em; text-transform: uppercase; }
-  .b27-installments strong { font: 800 1.2rem var(--font-outfit); color: var(--color-naa-navy); line-height: 1.25; }
-  .b27-installments p { margin: 0; color: #5b4a1a; font-size: 0.9rem; line-height: 1.55; }
-
-  /* Steps */
-  .b27-steps { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 1rem; }
-  .b27-steps li { display: flex; gap: 0.9rem; align-items: flex-start; }
-  .b27-steps li > span { flex: 0 0 auto; width: 2.2rem; height: 2.2rem; border-radius: 999px; background: var(--color-naa-navy); color: var(--color-naa-gold); display: grid; place-items: center; font: 800 1rem var(--font-outfit); }
-  .b27-steps strong { display: block; color: #0f172a; font-size: 1rem; }
-  .b27-steps p { margin: 0.2rem 0 0; color: #64748b; font-size: 0.9rem; line-height: 1.55; }
-
-  /* Dates */
-  .b27-dates { display: grid; gap: 0.6rem; }
-  .b27-date { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 0.85rem 1rem; }
-  .b27-date span { color: var(--color-naa-gold); font: 700 0.85rem var(--font-outfit); text-transform: uppercase; letter-spacing: 0.06em; }
-  .b27-date strong { font-size: 1.05rem; color: #fff; }
-
-  /* Photos */
-  .b27-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-  .b27-photos img { width: 100%; height: 11rem; object-fit: cover; display: block; }
-
-  /* Bring */
-  .b27-bring { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 0.6rem; }
-  .b27-bring li { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 0.15rem; }
-  .b27-bring strong { color: var(--color-naa-navy); }
-  .b27-bring span { color: #64748b; font-size: 0.88rem; }
-
-  /* FAQ */
-  .b27-faq { display: grid; gap: 0.6rem; margin-top: 1.25rem; }
-  .b27-faq details { border: 1px solid #e2e8f0; border-radius: 12px; padding: 0 1rem; background: #fff; }
-  .b27-faq summary { cursor: pointer; padding: 0.95rem 0; font-weight: 700; color: #0f172a; font-size: 0.97rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
-  .b27-faq summary::-webkit-details-marker { display: none; }
-  .b27-faq summary::after { content: '+'; color: var(--color-naa-maroon); font-weight: 800; }
-  .b27-faq details[open] summary::after { content: '\2212'; }
-  .b27-faq p { margin: 0 0 1rem; color: #475569; font-size: 0.92rem; line-height: 1.65; }
-
-  /* Final CTA */
-  .b27-final { background: var(--color-naa-maroon); color: #fff; text-align: center; padding: 3rem 0 4.5rem; }
-  .b27-final h2 { color: #fff; }
-  .b27-final > .container-naa > p { margin: 0 auto 1.5rem; color: rgba(255,255,255,0.88); max-width: 28rem; }
-  .b27-final .b27-cta { margin: 0 auto; }
-  .b27-final .b27-link { margin-top: 1rem; }
-  .b27-contact { margin: 1.5rem 0 0 !important; font-size: 0.88rem; }
-  .b27-contact a { color: #fff; font-weight: 700; }
-
-  /* Sticky bar (phones only) */
-  .b27-bar { display: none; }
-  @media (max-width: 767px) {
-    .b27-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom)); background: rgba(2,31,71,0.97); border-top: 2px solid var(--color-naa-gold); }
-    :global(footer) { padding-bottom: 4.5rem; }
-    .b27-bar div { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
-    .b27-bar strong { color: #fff; font: 800 0.95rem var(--font-outfit); }
-    .b27-bar span { color: rgba(255,255,255,0.7); font-size: 0.75rem; }
-  }
-
-  /* Tablet and up */
-  @media (min-width: 768px) {
-    .b27-hero { padding: 10rem 0 5rem; }
-    .b27-section { padding: 4.5rem 0; }
-    .b27-tiers { grid-template-columns: repeat(3, 1fr); }
-    .b27-steps { grid-template-columns: repeat(3, 1fr); }
-    .b27-dates { grid-template-columns: repeat(3, 1fr); }
-    .b27-date { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
-    .b27-bring { grid-template-columns: repeat(3, 1fr); }
-    .b27-photos img { height: 20rem; }
-    .b27-final { padding-bottom: 4.5rem; }
-  }
-</style>
+<SeasonLandingPage
+  seoTitle="Badminton 2027 in Regina | National Smash Winter Registration"
+  seoDescription="National Smash Winter 2027 badminton for ages 6–16 at the University of Regina Green Gym. Tuesdays and Thursdays, Jan 26 – Mar 11. From $150. Registration is open."
+  heroImage="/images/programs/badminton-action-1.webp"
+  pill="Winter 2027 • Registration Open"
+  titleTop="National Smash"
+  titleAccent="Badminton 2027"
+  lead="Coached badminton for ages 6–16, twice a week at the University of Regina Green Gym."
+  facts={[
+    { strong: 'Jan 26 – Mar 11', span: '10 sessions' },
+    { strong: 'Tue & Thu', span: 'Evenings' },
+    { strong: 'From $150', span: 'Split in 3 installments', highlight: true },
+  ]}
+  registerUrl={registerUrl}
+  tiersSub="Three levels, all Tuesdays & Thursdays."
+  tiers={tiers}
+  steps={[
+    { title: 'Choose a tier and batch', text: 'Juniors and Elite pick Batch 1 or Batch 2. Pro runs 6:00–7:30 PM.' },
+    { title: 'Register on TeamLinkt', text: 'Tap the button, add your athlete, and pay in full or in three installments.' },
+    { title: 'Get the TeamLinkt app', text: 'Final schedules, group assignments and any cancellations are posted there.' },
+  ]}
+  dates={[
+    { month: 'January', days: '26, 28' },
+    { month: 'February', days: '2, 4, 23, 25' },
+    { month: 'March', days: '2, 4, 9, 11' },
+  ]}
+  datesSub="Ten sessions at the U of R Green Gym, 3737 Wascana Parkway."
+  datesNote="No sessions February 9–18."
+  photos={[
+    { src: '/images/programs/badminton-coaching-1.webp', alt: 'NAA coach with young badminton players seated in a circle on the court' },
+    { src: '/images/programs/badminton-warmup-1.webp', alt: 'Players and coaches raising rackets overhead during a badminton warm-up' },
+  ]}
+  bring={[
+    { title: 'Your own racket', text: 'NAA does not provide rackets.' },
+    { title: 'Court shoes', text: 'Clean, non-marking indoor shoes.' },
+    { title: 'Water & athletic wear', text: 'Yonex shuttles are provided.' },
+  ]}
+  faqs={faqs}
+  programUrl="/programs/badminton/"
+  barTitle="Badminton 2027"
+  barSub="From $150 · Tue & Thu"
+  finalText="Winter 2027 registration is open on TeamLinkt."
+/>

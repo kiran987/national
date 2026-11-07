@@ -1,0 +1,93 @@
+---
+import SeasonLandingPage from '../../components/SeasonLandingPage.astro';
+
+const registerUrl = 'https://app.teamlinkt.com/register/find/nationalathleticsacademy?cid=81602';
+
+const tiers = [
+  {
+    name: 'Spike Juniors',
+    ages: 'Ages 8–12',
+    price: 195,
+    times: ['Tue & Thu · 6:00–7:15 PM', '75-minute sessions'],
+    blurb: 'Beginners welcome. Passing, setting, underhand serving and small-sided games, with lightweight trainer balls and age-adjusted nets.',
+  },
+  {
+    name: 'Spike Elite',
+    ages: 'Ages 13–16',
+    price: 245,
+    times: ['Tue & Thu · 6:00–7:30 PM', '90-minute sessions'],
+    blurb: 'For players ready to compete. Float serves, spike approach, blocking, defense and full 6v6 play.',
+    featured: true,
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is my child ready if they have never played?',
+    a: 'Yes. Spike Juniors (ages 8–12) is built for players who are new to volleyball or still learning the fundamentals. Spike Elite (ages 13–16) is for players ready to compete.',
+  },
+  {
+    q: 'What should my child wear and bring?',
+    a: 'Clean, non-marking indoor court shoes, comfortable athletic clothing and a water bottle. Knee pads are strongly recommended for comfort and safety. Mikasa trainer balls and age-adjusted nets are set up for every practice.',
+  },
+  {
+    q: 'How much does it cost, and can I pay in installments?',
+    a: 'Tuition is $195 (Juniors) or $245 (Elite). Every athlete also pays a mandatory $30 Training Kit fee, paid in full. Tuition can be split into three installments. Eligible sibling discounts are applied automatically through the TeamLinkt system at checkout.',
+  },
+  {
+    q: 'When and where does it run?',
+    a: 'Tuesdays and Thursdays at the University of Regina Green Gym, 3737 Wascana Parkway, January 26 to March 11, 2027, with no sessions February 9–18. Final schedules and groups are confirmed in the TeamLinkt app.',
+  },
+];
+---
+
+<SeasonLandingPage
+  seoTitle="Volleyball 2027 in Regina | National Spike Winter Registration"
+  seoDescription="National Spike Winter 2027 volleyball for ages 8–16 at the University of Regina Green Gym. Tuesdays and Thursdays, Jan 26 – Mar 11. From $195. Registration is open."
+  heroImage="/images/programs/volleyball-action-1.webp"
+  pill="Winter 2027 • Registration Open"
+  titleTop="National Spike"
+  titleAccent="Volleyball 2027"
+  lead="Coached volleyball for ages 8–16, twice a week at the University of Regina Green Gym."
+  facts={[
+    { strong: 'Jan 26 – Mar 11', span: '10 sessions' },
+    { strong: 'Tue & Thu', span: 'Evenings' },
+    { strong: 'From $195', span: 'Split in 3 installments', highlight: true },
+  ]}
+  registerUrl={registerUrl}
+  tiersSub="Two levels, both Tuesdays & Thursdays."
+  tiers={tiers}
+  steps={[
+    { title: 'Choose your tier', text: 'Spike Juniors runs 6:00–7:15 PM. Spike Elite runs 6:00–7:30 PM.' },
+    { title: 'Register on TeamLinkt', text: 'Tap the button, add your athlete, and pay in full or in three installments.' },
+    { title: 'Get the TeamLinkt app', text: 'Final schedules, group assignments and any cancellations are posted there.' },
+  ]}
+  dates={[
+    { month: 'January', days: '26, 28' },
+    { month: 'February', days: '2, 4, 23, 25' },
+    { month: 'March', days: '2, 4, 9, 11' },
+  ]}
+  datesSub="Ten sessions at the U of R Green Gym, 3737 Wascana Parkway."
+  datesNote="No sessions February 9–18."
+  photos={[
+    { src: '/images/programs/volleyball-action-1.webp', alt: 'Youth volleyball players at the net during a rally' },
+    { src: '/images/programs/volleyball-portrait-1.webp', alt: 'Volleyball player preparing to pass' },
+    { src: '/images/programs/volleyball-portrait-2.webp', alt: 'Volleyball player at the net' },
+  ]}
+  bring={[
+    { title: 'Court shoes', text: 'Clean, non-marking indoor shoes.' },
+    { title: 'Knee pads', text: 'Strongly recommended.' },
+    { title: 'Water & athletic wear', text: 'Balls and nets are provided.' },
+  ]}
+  coach={{
+    name: 'Kyran J. Zimmerman',
+    role: 'Head Coach – Basketball & Volleyball',
+    photo: '/images/team/kyran-zimmerman-portrait.webp',
+    bio: 'Kyran played club volleyball with RVC (2021–2023) and Golden Ticket (2023–2024). He works as a Sport Instructor with the City of Regina at the Sportsplex, coaching athletes of every age and skill level.',
+  }}
+  faqs={faqs}
+  programUrl="/programs/volleyball/"
+  barTitle="Volleyball 2027"
+  barSub="From $195 · Tue & Thu"
+  finalText="Winter 2027 registration is open on TeamLinkt."
+/>
