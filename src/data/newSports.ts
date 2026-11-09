@@ -41,9 +41,11 @@ export interface NewSportPage {
   groups?: NewSportGroup[];
   includedTitle?: string;
   included?: { name: string; items: string[] }[];
+  statusText?: string;
   planTitle: string;
   planSubtitle: string;
   plan: NewSportStep[];
+  community?: { kicker: string; title: string; text: string; formatsTitle: string; formats: { name: string; text: string }[]; closing: string };
   flowTitle?: string;
   flow?: NewSportStep[];
   gallery: { src: string; alt: string; caption: string }[];
@@ -62,34 +64,46 @@ export const newSportPages: Record<string, NewSportPage> = {
     heroImage: '/images/programs/chess-hero.webp',
     heroPosition: 'center 40%',
     intro:
-      'National Smart Chess is a small-cohort academy that turns curious beginners into confident, composed thinkers. Over eight focused weeks, young players learn how to plan ahead, weigh risk against reward and own every decision they make, one move at a time.',
+      'National Smart Chess is a small-cohort academy that turns curious beginners into confident, composed thinkers. Over eight focused weeks, children build critical thinking, comprehension, analytical skills, problem-solving, strategic thinking and decision-making while learning essential chess strategies and techniques, one move at a time. It is also a place to socialize, build confidence, make friends and enjoy healthy competition in a fun, supportive learning environment.',
+    statusText: 'Dates and venue will be announced soon. The fee is $32 per student per session. Join the notify list and you will hear first.',
     facts: [
-      { label: 'Ages', value: '6–17', note: 'Beginner to Intermediate' },
+      { label: 'Ages', value: '6–16', note: 'Beginner to Intermediate' },
       { label: 'Cohort Size', value: 'Max 10', note: 'Strictly capped per batch' },
       { label: 'Program Length', value: '8 Weeks', note: '1 session per week' },
       { label: 'Session', value: '75 min', note: 'Instruction + guided play' },
+      { label: 'Fee', value: '$32', note: 'Per student, per session' },
     ],
     benefitsTitle: 'What Chess Builds Beyond the Board',
     benefits: [
       {
-        icon: 'grid',
-        title: 'Spatial Reasoning & Math Aptitude',
-        text: 'Players calculate sequential branching paths and visualize board states several moves ahead.',
+        icon: 'brain',
+        title: 'Critical Thinking & Analysis',
+        text: 'Children learn to read a position, weigh the options and analyze why a move works or fails.',
       },
       {
-        icon: 'focus',
-        title: 'Sustained Attention Span',
-        text: 'Deep, screen-free immersion that trains patience and quiet, focused discipline.',
+        icon: 'target',
+        title: 'Problem-Solving & Strategy',
+        text: 'Every position is a puzzle. Players build strategic thinking by planning ahead and adapting to what the opponent does.',
       },
       {
         icon: 'scale',
-        title: 'Calculated Decision-Making',
+        title: 'Decision-Making',
         text: 'Young thinkers learn to assess risk versus reward, manage the clock and take responsibility for every choice.',
       },
       {
-        icon: 'heart',
-        title: 'Emotional Composure',
-        text: 'Resilience through gracious victory, objective loss analysis and constructive post-game review.',
+        icon: 'grid',
+        title: 'Comprehension & Spatial Reasoning',
+        text: 'Players follow instructions, understand ideas in context and visualize board states several moves ahead.',
+      },
+      {
+        icon: 'focus',
+        title: 'Focus & Emotional Composure',
+        text: 'Screen-free concentration, gracious winning, objective loss analysis and constructive post-game review.',
+      },
+      {
+        icon: 'users',
+        title: 'Friendships, Confidence & Healthy Competition',
+        text: 'Chess is social. Students meet new friends, grow in confidence and enjoy friendly competition in a supportive environment.',
       },
     ],
     planTitle: '8-Week Curriculum Blueprint',
@@ -104,21 +118,35 @@ export const newSportPages: Record<string, NewSportPage> = {
       { label: 'Week 7', title: 'Clock Management & Match Protocol', text: 'Touch-move rule, handling time scrambles and psychological composure.' },
       { label: 'Week 8', title: 'NAA Rapid Chess Showcase', text: 'Internal round-robin mini-tournament, individual performance analysis and certificates.' },
     ],
+    community: {
+      kicker: 'After the Course',
+      title: 'A Chess Community That Keeps Growing',
+      text: 'Our goal is a welcoming and engaging chess community where students keep improving their skills, competing, socializing and enjoying chess long after the course ends. Graduates will have the opportunity to take part in our future chess events and tournaments.',
+      formatsTitle: 'Planned event formats',
+      formats: [
+        { name: 'Traditional Chess', text: 'Classic, full-length games' },
+        { name: 'Speed Chess', text: 'Faster games that reward quick, clear thinking' },
+        { name: '3-Minute Blitz', text: 'Three minutes on the clock' },
+        { name: '1-Minute Bullet', text: 'One minute on the clock' },
+      ],
+      closing: 'Event dates and details will be announced as they are confirmed.',
+    },
     gallery: [
       { src: '/images/programs/chess-2.webp', alt: 'Wooden chess pieces on a board', caption: 'Strategy, one move at a time' },
       { src: '/images/programs/chess-3.webp', alt: 'Close-up of chess pieces', caption: 'Piece activity & tactics' },
       { src: '/images/programs/chess-4.webp', alt: 'Overhead view of a chessboard', caption: 'Board vision' },
     ],
     faqs: [
-      { question: 'What ages and levels is National Smart Chess for?', answer: 'Players aged 6 to 17, from complete beginners to intermediate players. Coaches adapt the pace and positions to each player in the cohort.' },
+      { question: 'What ages and levels is National Smart Chess for?', answer: 'Players aged 6 to 16, from complete beginners to intermediate players. Coaches adapt the pace and positions to each player in the cohort.' },
       { question: 'How big are the groups?', answer: 'Each cohort is strictly capped at 10 students so every player gets real coaching attention and playing time.' },
       { question: 'How long is the program?', answer: 'Eight weeks, one 75-minute session per week, finishing with the NAA Rapid Chess Showcase mini-tournament.' },
-      { question: 'When does registration open and what does it cost?', answer: 'Registration has not opened yet. Dates, venue and pricing will be announced soon. Use the notify button and we will email you the moment seats are released.' },
+      { question: 'When does registration open and what does it cost?', answer: 'Each 75-minute session is $32 per student. Registration has not opened yet, and dates and venue will be announced soon. Use the notify button and we will email you the moment seats are released.' },
       { question: 'Does my child need to know how to play already?', answer: 'No. Week 1 starts with the board, the pieces and notation, so complete beginners are welcome.' },
+      { question: 'What happens after the course?', answer: 'Graduates will have the opportunity to take part in our future chess events and tournaments, including traditional chess, speed chess, 3-minute blitz and 1-minute bullet. Dates will be announced as they are confirmed.' },
     ],
     metaTitle: 'National Smart Chess | Youth Chess Academy in Regina, SK | NAA',
     metaDescription:
-      'National Smart Chess: an 8-week youth chess academy for ages 6–17 in Regina, SK. Cohorts capped at 10 students. Starting soon.',
+      'National Smart Chess: an 8-week youth chess academy for ages 6–16 in Regina, SK. Cohorts capped at 10 students. Starting soon.',
   },
 
   'table-tennis': {
@@ -130,12 +158,14 @@ export const newSportPages: Record<string, NewSportPage> = {
     heroImage: '/images/programs/tabletennis-hero.webp',
     heroPosition: 'center 55%',
     intro:
-      'National Spin Table Tennis is built around speed, spin and smart footwork. Small stations, a 1:6 coach ratio and a ten-week progression take players from clean flat drives to serve-plus-third-ball attacks and real match play.',
+      'National Spin Table Tennis is built around speed, spin and smart footwork. Four to five foldable tables, two players per table and an eight-week progression take players from clean flat drives to serve-plus-third-ball attacks and real match play. Graduates join our Table Tennis Club for tournaments, social events and after-hours play.',
+    statusText: 'Dates and venue will be announced soon. The fee is $32 per student per 75-minute session ($256 for the full 8 weeks). Join the notify list and you will hear first.',
     facts: [
       { label: 'Launch', value: 'Jan 2027', note: 'Winter season' },
-      { label: 'Program Length', value: '10 Weeks', note: '1 session per week' },
-      { label: 'Session', value: '90 min', note: 'Drills, footwork, match play' },
-      { label: 'Station Size', value: 'Max 6', note: 'Coach ratio 1:6 per table' },
+      { label: 'Program Length', value: '8 Weeks', note: '1 session per week' },
+      { label: 'Session', value: '75 min', note: 'Drills, footwork, match play' },
+      { label: 'Group Size', value: '8–10', note: '4–5 tables · 2 players per table' },
+      { label: 'Fee', value: '$32', note: 'Per student, per session · $256 for 8 weeks' },
     ],
     benefitsTitle: 'Why Table Tennis',
     benefits: [
@@ -146,30 +176,46 @@ export const newSportPages: Record<string, NewSportPage> = {
     ],
     groupsTitle: 'Recommended Cohort Split',
     groups: [
-      { name: 'Youth Division', ages: 'Ages 7–15', size: 'Max 6 per table station', text: 'Movement fundamentals, hand-eye coordination and consistent rallies.' },
-      { name: 'Open / Adult Division', ages: 'Ages 16+', size: 'Max 6 per table station', text: 'Match tactics, aggressive spin generation and footwork conditioning.' },
+      { name: 'Youth Division', ages: 'Ages 7–15', size: '8–10 players · 2 per table', text: 'Movement fundamentals, hand-eye coordination and consistent rallies.' },
+      { name: 'Open / Adult Division', ages: 'Ages 16+', size: '8–10 players · 2 per table', text: 'Match tactics, aggressive spin generation and footwork conditioning.' },
     ],
-    planTitle: '10-Week Training Structure',
-    planSubtitle: 'Five two-week blocks that build from stance to a tournament.',
+    planTitle: '8-Week Training Structure',
+    planSubtitle: 'Five blocks that build from stance to a tournament.',
     plan: [
       { label: 'Weeks 1–2', title: 'Stance & Ball Mechanics', text: 'Neutral athletic ready position, shakehand and penhold grip adjustment, ball-bounce tracking, forehand and backhand flat drives.' },
       { label: 'Weeks 3–4', title: 'Spin Dynamics & Active Footwork', text: 'Introduction to topspin and brush contact, side-to-side shuffle steps and transition footwork between forehand and backhand zones.' },
-      { label: 'Weeks 5–6', title: 'Underspin & Push Rallies', text: 'Short pushes, backspin control, reading incoming spin off opponent paddles and table placement discipline.' },
-      { label: 'Weeks 7–8', title: 'The Serve & Third-Ball Attack', text: 'Legal serve mechanics, spin variation serves (backspin, sidespin, ghost serve) and immediate third-ball offensive counters.' },
-      { label: 'Weeks 9–10', title: 'Match Play & Tactical Tournament', text: 'In-game strategy, serve-receive positioning, point construction and the National Spin Winter Cup intra-academy tournament.' },
+      { label: 'Week 5', title: 'Underspin & Push Rallies', text: 'Short pushes, backspin control, reading incoming spin off opponent paddles and table placement discipline.' },
+      { label: 'Weeks 6–7', title: 'The Serve & Third-Ball Attack', text: 'Legal serve mechanics, spin variation serves (backspin, sidespin, ghost serve) and immediate third-ball offensive counters.' },
+      { label: 'Week 8', title: 'Match Play & Tactical Tournament', text: 'In-game strategy, serve-receive positioning, point construction and the National Spin Winter Cup intra-academy tournament.' },
     ],
+    community: {
+      kicker: 'After the Program',
+      title: 'Join Our Table Tennis Club',
+      text: 'When you complete the program, you become a member of our Table Tennis Club, where you can keep playing, competing and making friends together.',
+      formatsTitle: 'What club members can enjoy',
+      formats: [
+        { name: 'Group Tournaments', text: 'Future group tournaments for club members' },
+        { name: 'Friendly Competitions', text: 'Relaxed matches against club friends' },
+        { name: 'Social Events', text: 'Get together off the table too' },
+        { name: 'After-Hours Recreational Play', text: 'Play together for fun after hours' },
+      ],
+      closing: 'Club event dates and details will be announced as they are confirmed.',
+    },
     gallery: [
       { src: '/images/programs/tabletennis-2.webp', alt: 'Table tennis paddles and a ball', caption: 'Spin, speed & control' },
     ],
     faqs: [
       { question: 'When does National Spin Table Tennis start?', answer: 'The program launches in the Winter season, January 2027. Exact dates and venue will be announced before registration opens.' },
-      { question: 'What are the age divisions?', answer: 'A Youth Division for ages 7–15 and an Open / Adult Division for ages 16+, each with a maximum of 6 players per table station.' },
-      { question: 'How long is each session?', answer: 'Ten weekly sessions of 90 minutes, ending with the National Spin Winter Cup.' },
-      { question: 'How do I register?', answer: 'Registration has not opened yet. Use the notify button and we will email you as soon as it does. Pricing will be shared at launch.' },
+      { question: 'What are the age divisions?', answer: 'A Youth Division for ages 7–15 and an Open / Adult Division for ages 16+, with 8–10 players per session and two players per table.' },
+      { question: 'How long is each session?', answer: 'Eight weekly sessions of 75 minutes, ending with the National Spin Winter Cup.' },
+      { question: 'How much does it cost?', answer: 'The fee is $32 per student per 75-minute session, which comes to $256 for the full 8-week program.' },
+      { question: 'How many players are in each session?', answer: 'We plan 4–5 foldable tables with two players per table, so 8–10 participants per session. The setup may be adjusted to the space and equipment available.' },
+      { question: 'What happens after the program?', answer: 'Participants who complete the program become members of our Table Tennis Club, with future group tournaments, friendly competitions, social events and after-hours recreational play.' },
+      { question: 'How do I register?', answer: 'Registration has not opened yet. Use the notify button and we will email you as soon as it does.' },
     ],
     metaTitle: 'National Spin Table Tennis | Youth & Adult Table Tennis in Regina, SK | NAA',
     metaDescription:
-      'National Spin Table Tennis: a 10-week program for youth (7–15) and adults (16+) in Regina, SK. 1:6 coach ratio. Launching January 2027.',
+      'National Spin Table Tennis: an 8-week program for youth (7–15) and adults (16+) in Regina, SK. 8–10 players per session, two per table. Launching January 2027.',
   },
 
   snowboarding: {
@@ -252,7 +298,7 @@ export const newSportPrograms: DetailedProgram[] = [
     name: 'National Smart Chess',
     navTitle: 'Chess',
     shortName: 'Chess',
-    badge: 'Coming Soon · Ages 6–17',
+    badge: 'Coming Soon · Ages 6–16',
     subtitle: 'Strategic Foresight, Unshakable Focus, Masterful Play',
     tagline: 'Strategic Foresight, Unshakable Focus, Masterful Play',
     icon: 'chess',
@@ -260,9 +306,9 @@ export const newSportPrograms: DetailedProgram[] = [
     bgColor: 'rgba(11,26,51,0.08)',
     image: '/images/programs/chess-hero.webp',
     description:
-      'An 8-week small-cohort chess academy for ages 6–17, from beginner to intermediate. Cohorts are strictly capped at 10 students.',
+      'An 8-week small-cohort chess academy for ages 6–16, from beginner to intermediate. Cohorts are strictly capped at 10 students.',
     longDescription: newSportPages.chess.intro,
-    ages: 'Ages 6–17 (Beginner to Intermediate)',
+    ages: 'Ages 6–16 (Beginner to Intermediate)',
     ratio: 'Max 10 students per cohort',
     venue: 'Venue to be announced',
     seasonDuration: '8 Weeks · 1 session per week',
@@ -270,8 +316,9 @@ export const newSportPrograms: DetailedProgram[] = [
     blockWeeks: 8,
     highlights: [
       'Strictly capped at 10 students per cohort',
-      '8 weeks · one 75-minute session per week',
+      '8 weeks · one 75-minute session per week · $32 per student per session',
       'Finishes with the NAA Rapid Chess Showcase mini-tournament',
+      'Graduates can join future NAA chess events: traditional, speed, 3-minute blitz and 1-minute bullet',
     ],
     skillsFocus: ['Openings & tactics', 'Middle-game strategy', 'Endgames', 'Clock management'],
     whatsIncluded: [],
@@ -294,17 +341,19 @@ export const newSportPrograms: DetailedProgram[] = [
     bgColor: 'rgba(127,29,29,0.08)',
     image: '/images/programs/tabletennis-hero.webp',
     description:
-      'A 10-week table tennis program launching January 2027 for youth (7–15) and open / adult (16+) divisions, with a 1:6 coach ratio.',
+      'An 8-week table tennis program launching January 2027 for youth (7–15) and open / adult (16+) divisions, with 8–10 players per session and two per table.',
     longDescription: newSportPages['table-tennis'].intro,
     ages: 'Youth 7–15 · Open / Adult 16+',
-    ratio: '1:6 Coach Ratio · max 6 per table',
+    ratio: '8–10 players per session · 4–5 tables, 2 per table',
     venue: 'Venue to be announced',
-    seasonDuration: '10 Weeks · 1 session per week',
-    sessionsPerWeek: '1× / week · 90 min',
-    blockWeeks: 10,
+    seasonDuration: '8 Weeks · 1 session per week',
+    sessionsPerWeek: '1× / week · 75 min',
+    blockWeeks: 8,
     highlights: [
       'Launching Winter, January 2027',
-      'Max 6 players per table station',
+      '8–10 players per session · 4–5 tables, two players per table',
+      '$32 per student per 75-minute session ($256 for 8 weeks)',
+      'Graduates join our Table Tennis Club: tournaments, social events, after-hours play',
       'Ends with the National Spin Winter Cup',
     ],
     skillsFocus: ['Grip & stance', 'Topspin & underspin', 'Serve & third-ball attack', 'Match tactics'],

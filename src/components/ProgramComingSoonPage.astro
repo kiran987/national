@@ -97,7 +97,7 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
             </div>
             <div>
               <strong>Registration has not opened yet</strong>
-              <p>Dates, venue and pricing will be announced soon. Join the notify list and you will hear first.</p>
+              <p>{page.statusText ?? 'Dates, venue and pricing will be announced soon. Join the notify list and you will hear first.'}</p>
             </div>
           </div>
         </div>
@@ -203,6 +203,29 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
         </ol>
       </div>
     </section>
+
+    <!-- COMMUNITY / AFTER THE COURSE -->
+    {page.community && (
+      <section class="nsp-section nsp-tint" aria-labelledby="nsp-community">
+        <div class="container-naa">
+          <div class="nsp-head reveal">
+            <span class="nsp-kicker">{page.community.kicker}</span>
+            <h2 id="nsp-community">{page.community.title}</h2>
+            <p>{page.community.text}</p>
+          </div>
+          <h3 class="nsp-formats-title reveal">{page.community.formatsTitle}</h3>
+          <div class="nsp-formats">
+            {page.community.formats.map((f) => (
+              <article class="nsp-format reveal">
+                <h3>{f.name}</h3>
+                <p>{f.text}</p>
+              </article>
+            ))}
+          </div>
+          <p class="nsp-formats-note reveal">{page.community.closing}</p>
+        </div>
+      </section>
+    )}
 
     <!-- SESSION FLOW -->
     {page.flow && (
@@ -856,6 +879,50 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
     color: var(--muted);
     font-size: 0.94rem;
     line-height: 1.6;
+  }
+
+  /* COMMUNITY */
+  .nsp-formats-title {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.25rem;
+  }
+  .nsp-formats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .nsp-format {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--accent);
+    border-radius: 18px;
+    padding: 1.4rem 1.4rem 1.3rem;
+    box-shadow: 0 14px 34px rgba(2, 31, 71, 0.07);
+  }
+  .nsp-format h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: var(--deep);
+  }
+  .nsp-format p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .nsp-formats-note {
+    text-align: center;
+    margin: 1.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
   }
 
   /* GALLERY */
