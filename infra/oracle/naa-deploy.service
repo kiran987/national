@@ -1,0 +1,9 @@
+[Unit]
+Description=NAA site deploy (pull deploy branch from GitHub)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=naa
+Group=naa
+ExecStart=/var/www/naa/bin/deploy.sh
