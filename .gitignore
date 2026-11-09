@@ -40,3 +40,4 @@ reference/*.jpg
 reference/*.jpeg
 reference/*.png
 .claude/
+.NAA-None/
