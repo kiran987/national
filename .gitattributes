@@ -1,0 +1,2 @@
+# Server files must keep LF line endings (bash/systemd/nginx break on CRLF)
+infra/** text eol=lf
