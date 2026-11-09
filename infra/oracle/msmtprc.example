@@ -1,0 +1,18 @@
+# msmtp config for NAA form emails, installed as /var/www/naa/private/msmtprc (owner naa, mode 600) by setup.sh.
+# Google Workspace SMTP relay authenticated by the server's IP address (Admin console > Apps > Google Workspace >
+# Gmail > Routing > SMTP relay service). No password is stored here. If the relay is changed to require
+# SMTP authentication, add "auth on", "user ..." and "password ..." lines here (never commit them).
+defaults
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile /var/www/naa/logs/msmtp.log
+
+account naa
+host smtp-relay.gmail.com
+domain naacanada.org
+port 587
+auth off
+from noreply@naacanada.org
+
+account default : naa

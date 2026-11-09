@@ -15,6 +15,22 @@ chown -R naa:naa /var/www/naa
 chmod 755 /var/www/naa
 chmod 750 /var/www/naa/private /var/www/naa/sessions
 
+echo "== msmtp (mail client only; not the system sendmail)"
+export DEBIAN_FRONTEND=noninteractive
+echo "msmtp msmtp/apparmor boolean false" | debconf-set-selections
+dpkg -s msmtp >/dev/null 2>&1 || apt-get install -y msmtp
+if [ ! -f /var/www/naa/private/msmtprc ]; then
+  install -o naa -g naa -m 600 "$HERE/msmtprc.example" /var/www/naa/private/msmtprc
+fi
+
+echo "== self-signed origin certificate (Cloudflare Full mode)"
+if [ ! -f /etc/ssl/naa/naa.crt ]; then
+  mkdir -p /etc/ssl/naa
+  openssl req -x509 -nodes -newkey rsa:2048 -days 3650 -keyout /etc/ssl/naa/naa.key -out /etc/ssl/naa/naa.crt \
+    -subj "/CN=naacanada.org" -addext "subjectAltName=DNS:naacanada.org,DNS:www.naacanada.org"
+  chmod 600 /etc/ssl/naa/naa.key
+fi
+
 echo "== clone deploy branch"
 if [ ! -d /var/www/naa/site/.git ]; then
   sudo -u naa git clone --depth 1 --branch deploy "$REPO" /var/www/naa/site
