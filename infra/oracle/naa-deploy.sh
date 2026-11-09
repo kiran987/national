@@ -2,6 +2,7 @@
 # Pull the latest built site from the public GitHub `deploy` branch into /var/www/naa/site.
 # Runs as user `naa` every minute (systemd timer). Safe to run by hand: sudo -u naa /var/www/naa/bin/deploy.sh
 set -u
+export TZ=America/Regina   # Regina time in the deploy log
 SITE=/var/www/naa/site
 LOG=/var/www/naa/logs/deploy.log
 exec 9>/var/www/naa/logs/deploy.lock
