@@ -146,9 +146,9 @@ export const AthleticHero: React.FC = () => {
 
             {/* Interactive Sport Selector Tabs (Desktop: lg and up) */}
             <div className="hidden lg:block pt-2">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
                 <span>Select a Sport to Preview Action &amp; Gym Logistics:</span>
-                <span className="inline-flex items-center gap-1.5 text-amber-400/90 text-[10px] font-bold tracking-wider uppercase font-mono">
+                <span className="inline-flex items-center gap-1.5 text-amber-400/90 text-xs font-bold tracking-wider uppercase font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
                   Preview Program Details &rarr;
                 </span>
@@ -179,7 +179,7 @@ export const AthleticHero: React.FC = () => {
                         <div className={`text-xs font-bold leading-tight truncate ${isSelected ? 'text-amber-300' : 'text-white'}`}>
                           {item.sport}
                         </div>
-                        <div className="text-[10px] text-slate-400 truncate">
+                        <div className="text-xs text-slate-400 truncate">
                           {item.price}
                         </div>
                       </div>
@@ -201,7 +201,7 @@ export const AthleticHero: React.FC = () => {
               
               <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-2 bg-[#021F47] border-[4px] border-[#DDAA40] shadow-[0_16px_50px_rgba(0,0,0,0.8)] flex items-center justify-center">
                 <img
-                  src="/images/naa-logo-md.webp"
+                  src="/images/naa-logo-300.webp"
                   alt="National Athletics Academy Official Crest"
                   width={150}
                   height={150}
@@ -240,7 +240,7 @@ export const AthleticHero: React.FC = () => {
               <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80">
                 <div className="flex items-center justify-between text-xs font-bold text-amber-400 mb-1">
                   <span>{current.title.toUpperCase()}</span>
-                  <span className="text-slate-300 font-mono text-[11px]">HARDWOOD GYM</span>
+                  <span className="text-slate-300 font-mono text-xs">HARDWOOD GYM</span>
                 </div>
                 <div className="text-sm font-extrabold text-white leading-snug">
                   {current.venue}
@@ -260,9 +260,9 @@ export const AthleticHero: React.FC = () => {
 
             {/* Mobile Sport Selector Pills (rendered under the photo card on < lg) */}
             <div className="block lg:hidden mt-4">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
                 <span>Tap Sport to Preview Logistics:</span>
-                <span className="inline-flex items-center gap-1 text-amber-400 text-[10px] font-bold uppercase font-mono">
+                <span className="inline-flex items-center gap-1 text-amber-400 text-xs font-bold uppercase font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
                   Preview Details
                 </span>
@@ -293,7 +293,7 @@ export const AthleticHero: React.FC = () => {
                         <div className={`text-xs font-bold leading-tight whitespace-nowrap ${isSelected ? 'text-amber-300' : 'text-white'}`}>
                           {item.sport}
                         </div>
-                        <div className="text-[10px] text-slate-400 whitespace-nowrap">
+                        <div className="text-xs text-slate-400 whitespace-nowrap">
                           {item.price}
                         </div>
                       </div>
@@ -319,7 +319,7 @@ export const AthleticHero: React.FC = () => {
                 className="flex flex-col items-center justify-center p-3 rounded-xl bg-slate-800/40 border border-slate-800 hover:border-slate-700 transition-colors text-center"
               >
                 <span className="text-xs font-extrabold text-white leading-tight">{p.name}</span>
-                <span className="text-[11px] text-amber-400/90 font-medium mt-0.5">{p.label}</span>
+                <span className="text-xs text-amber-400/90 font-medium mt-0.5">{p.label}</span>
               </div>
             ))}
           </div>

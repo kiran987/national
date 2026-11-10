@@ -94,7 +94,7 @@ export const CoachVerificationBadge: React.FC<TrustBadgeProps> = ({ variant = 'g
                 <div className="w-10 h-10 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center">
                   {item.icon}
                 </div>
-                <span className="text-[11px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-slate-700/80 text-amber-300">
+                <span className="text-xs font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-slate-700/80 text-amber-300">
                   {item.badge}
                 </span>
               </div>

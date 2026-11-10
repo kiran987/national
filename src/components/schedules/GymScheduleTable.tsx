@@ -53,7 +53,7 @@ export const GymScheduleTable: React.FC = () => {
             <span className="text-xs text-slate-500 font-medium">Need schedule assistance?</span>
             <a
               href="tel:3063309559"
-              className="text-xs font-bold text-amber-600 hover:text-amber-700 underline underline-offset-4"
+              className="text-xs font-bold text-amber-700 hover:text-amber-800 underline underline-offset-4"
             >
               Call Coach Desk (306) 330-9559 &rarr;
             </a>
@@ -90,7 +90,7 @@ export const GymScheduleTable: React.FC = () => {
             
             {/* Sport Filter Tabs */}
             <div className="flex flex-wrap items-center gap-1.5" role="tablist" aria-label="Filter schedule by sport">
-              <span className="text-xs font-bold uppercase text-slate-400 mr-2 tracking-wider hidden sm:inline">Sport:</span>
+              <span className="text-xs font-bold uppercase text-slate-500 mr-2 tracking-wider hidden sm:inline">Sport:</span>
               {sports.map((sp) => {
                 const isActive = sportFilter === sp;
                 return (
@@ -116,7 +116,7 @@ export const GymScheduleTable: React.FC = () => {
             {/* Day Filter & Search */}
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center gap-1">
-                <span className="text-xs font-bold uppercase text-slate-400 mr-1 tracking-wider">Day:</span>
+                <span className="text-xs font-bold uppercase text-slate-500 mr-1 tracking-wider">Day:</span>
                 <select
                   value={dayFilter}
                   onChange={(e) => setDayFilter(e.target.value)}
@@ -160,7 +160,7 @@ export const GymScheduleTable: React.FC = () => {
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-slate-200 text-left text-xs sm:text-sm">
-              <thead className="bg-[#0B192C] text-white font-bold uppercase tracking-wider text-[11px]">
+              <thead className="bg-[#0B192C] text-white font-bold uppercase tracking-wider text-xs">
                 <tr>
                   <th scope="col" className="py-3.5 px-4 sm:px-6">Season &amp; Program</th>
                   <th scope="col" className="py-3.5 px-3">Age Bracket</th>
@@ -174,7 +174,7 @@ export const GymScheduleTable: React.FC = () => {
               <tbody className="divide-y divide-slate-100 bg-white font-medium text-slate-700">
                 {filteredItems.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="text-center py-12 text-slate-400 font-medium">
+                    <td colSpan={7} className="text-center py-12 text-slate-500 font-medium">
                       No sessions match your filter criteria. Try selecting "All Sports".
                     </td>
                   </tr>
@@ -193,7 +193,7 @@ export const GymScheduleTable: React.FC = () => {
                             <div>
                               <div className="flex items-center gap-1.5 mb-0.5">
                                 <span
-                                  className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                                  className={`px-1.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider ${
                                     item.season === 'Winter 2027'
                                       ? 'bg-blue-100 text-blue-800 border border-blue-200'
                                       : 'bg-amber-100 text-amber-900 border border-amber-300'
@@ -204,7 +204,7 @@ export const GymScheduleTable: React.FC = () => {
                               </div>
                               <div className="font-bold text-slate-900 leading-snug">{item.tier}</div>
                               {item.notes && (
-                                <div className="text-[11px] text-amber-700 mt-0.5">{item.notes}</div>
+                                <div className="text-xs text-amber-700 mt-0.5">{item.notes}</div>
                               )}
                             </div>
                           </div>
@@ -233,19 +233,19 @@ export const GymScheduleTable: React.FC = () => {
                         <td className="py-4 px-3">
                           <div className="font-bold text-slate-900">{item.day}</div>
                           <div className="text-xs text-slate-600 font-mono mt-0.5">{item.timeSlot}</div>
-                          <div className="text-[11px] text-slate-400 mt-0.5">{item.dates}</div>
+                          <div className="text-xs text-slate-500 mt-0.5">{item.dates}</div>
                         </td>
 
                         {/* Cost & Ratio */}
                         <td className="py-4 px-3 whitespace-nowrap">
                           <div className="font-extrabold text-[#0B192C]">{item.price}</div>
-                          <div className="text-[11px] text-slate-500">{item.coachRatio}</div>
+                          <div className="text-xs text-slate-500">{item.coachRatio}</div>
                         </td>
 
                         {/* Status Badge */}
                         <td className="py-4 px-3 whitespace-nowrap">
                           <span
-                            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide uppercase ${
+                            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold tracking-wide uppercase ${
                               item.status === 'Few Spots Left'
                                 ? 'bg-rose-50 text-rose-700 border border-rose-200'
                                 : item.status === 'Filling Fast'

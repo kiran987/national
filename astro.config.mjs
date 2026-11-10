@@ -14,6 +14,10 @@ export default defineConfig({
         !page.includes('/programs/archive/'),
     }),
   ],
+  build: {
+    // Inline the (small) stylesheet so it is not a render-blocking request
+    inlineStylesheets: 'always',
+  },
   vite: {
     plugins: [tailwindcss()],
   },

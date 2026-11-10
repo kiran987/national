@@ -155,7 +155,7 @@ export const AthletePathwayRail: React.FC = () => {
                         ? 'bg-amber-400 text-slate-950 shadow-xs'
                         : isPast
                         ? 'bg-slate-200 text-slate-700'
-                        : 'bg-slate-100 text-slate-400'
+                        : 'bg-slate-100 text-slate-600'
                     }`}
                   >
                     0{s.number}
@@ -163,7 +163,7 @@ export const AthletePathwayRail: React.FC = () => {
                   <div className={`font-bold text-xs sm:text-sm leading-tight ${isSelected ? 'text-white' : 'text-slate-800'}`}>
                     {s.stage}
                   </div>
-                  <div className={`text-[11px] font-mono mt-0.5 ${isSelected ? 'text-amber-300' : 'text-slate-500'}`}>
+                  <div className={`text-xs font-mono mt-0.5 ${isSelected ? 'text-amber-300' : 'text-slate-500'}`}>
                     {s.ages}
                   </div>
                 </button>
@@ -213,7 +213,7 @@ export const AthletePathwayRail: React.FC = () => {
 
             {/* Right 5 Columns: Matching NAA Academy Programs */}
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 shadow-xs space-y-5">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Recommended NAA Academy Streams:
               </h4>
 
@@ -223,7 +223,7 @@ export const AthletePathwayRail: React.FC = () => {
                     <span>{p}</span>
                     <a
                       href="/programs/"
-                      className="text-amber-600 hover:text-amber-700 font-bold underline underline-offset-2 shrink-0 ml-2"
+                      className="text-amber-700 hover:text-amber-800 font-bold underline underline-offset-2 shrink-0 ml-2"
                     >
                       View &rarr;
                     </a>

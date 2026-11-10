@@ -152,9 +152,9 @@ const initial = sports[0];
 
         {/* Interactive Sport Selector Tabs (Desktop: lg and up) */}
         <div class="hidden lg:block pt-2">
-          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
             <span>Select a Sport to Preview Action &amp; Gym Logistics:</span>
-            <span class="inline-flex items-center gap-1.5 text-amber-400/90 text-[10px] font-bold tracking-wider uppercase font-mono">
+            <span class="inline-flex items-center gap-1.5 text-amber-400/90 text-xs font-bold tracking-wider uppercase font-mono">
               <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
               Preview Program Details &rarr;
             </span>
@@ -181,7 +181,7 @@ const initial = sports[0];
                   <div class={`hero-sport-name text-xs font-bold leading-tight truncate ${idx === 0 ? 'text-amber-300' : 'text-white'}`}>
                     {item.sport}
                   </div>
-                  <div class={`text-[10px] font-medium truncate ${item.status === 'Starting Soon' ? 'text-amber-400' : 'text-emerald-400'}`}>
+                  <div class={`text-xs font-medium truncate ${item.status === 'Starting Soon' ? 'text-amber-400' : 'text-emerald-400'}`}>
                     {item.status}
                   </div>
                 </div>
@@ -202,7 +202,7 @@ const initial = sports[0];
           
           <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-2 bg-[#021F47] border-[4px] border-[#DDAA40] shadow-[0_16px_50px_rgba(0,0,0,0.8)] flex items-center justify-center">
             <img
-              src="/images/naa-logo-md.webp"
+              src="/images/naa-logo-300.webp"
               alt="National Athletics Academy Official Crest"
               width="150"
               height="150"
@@ -243,7 +243,7 @@ const initial = sports[0];
           <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80">
             <div class="flex items-center justify-between text-xs font-bold text-amber-400 mb-1">
               <span id="hero-sport-title">{initial.title.toUpperCase()}</span>
-              <span id="hero-venue-tag" class="text-slate-300 font-mono text-[11px]">{initial.tag}</span>
+              <span id="hero-venue-tag" class="text-slate-300 font-mono text-xs">{initial.tag}</span>
             </div>
             <div id="hero-venue-text" class="text-sm font-extrabold text-white leading-snug">
               {initial.venue}
@@ -263,9 +263,9 @@ const initial = sports[0];
 
         {/* Mobile Sport Selector Pills (rendered under the photo card on < lg) */}
         <div class="block lg:hidden mt-4">
-          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
             <span>Tap Sport to Preview Logistics:</span>
-            <span class="inline-flex items-center gap-1 text-amber-400 text-[10px] font-bold uppercase font-mono">
+            <span class="inline-flex items-center gap-1 text-amber-400 text-xs font-bold uppercase font-mono">
               <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
               Preview Details
             </span>
@@ -292,7 +292,7 @@ const initial = sports[0];
                   <div class={`hero-sport-name text-xs font-bold leading-tight whitespace-nowrap ${idx === 0 ? 'text-amber-300' : 'text-white'}`}>
                     {item.sport}
                   </div>
-                  <div class={`text-[10px] font-medium whitespace-nowrap ${item.status === 'Starting Soon' ? 'text-amber-400' : 'text-emerald-400'}`}>
+                  <div class={`text-xs font-medium whitespace-nowrap ${item.status === 'Starting Soon' ? 'text-amber-400' : 'text-emerald-400'}`}>
                     {item.status}
                   </div>
                 </div>
@@ -314,7 +314,7 @@ const initial = sports[0];
         {partners.map((p) => (
           <div class="flex flex-col items-center justify-center p-3 rounded-xl bg-slate-800/40 border border-slate-800 hover:border-slate-700 transition-colors text-center">
             <span class="text-xs font-extrabold text-white leading-tight">{p.name}</span>
-            <span class="text-[11px] text-amber-400/90 font-medium mt-0.5">{p.label}</span>
+            <span class="text-xs text-amber-400/90 font-medium mt-0.5">{p.label}</span>
           </div>
         ))}
       </div>

@@ -152,7 +152,7 @@ const milestoneIcons: Record<string, string> = {
                       loading="lazy"
                     />
                     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(11,25,44,0.7) 0%, transparent 60%);"></div>
-                    <span class="badge" style="position:absolute;bottom:0.75rem;left:1rem;background:rgba(245,158,11,0.9);color:#0f172a;font-weight:800;font-size:0.7rem;text-transform:uppercase;">
+                    <span class="badge" style="position:absolute;bottom:0.75rem;left:1rem;background:rgba(245,158,11,0.9);color:#0f172a;font-weight:800;font-size:0.75rem;text-transform:uppercase;">
                       {prog.id === 'national-shield' ? 'In Training' : prog.status === 'coming-soon' ? 'Coming Soon' : 'On Court'}
                     </span>
                   </div>
@@ -233,7 +233,7 @@ const milestoneIcons: Record<string, string> = {
               <div style={`height:4px;background:var(--color-naa-gold);`}></div>
               <div style="padding:1.75rem 1.75rem 1.25rem;flex:1;">
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.75rem;">
-                  <span style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(221,170,64,0.18);border:1px solid rgba(221,170,64,0.3);border-radius:9999px;padding:0.25rem 0.75rem;font-size:0.7rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);letter-spacing:0.04em;text-transform:uppercase;">
+                  <span style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(221,170,64,0.18);border:1px solid rgba(221,170,64,0.3);border-radius:9999px;padding:0.25rem 0.75rem;font-size:0.75rem;font-family:var(--font-outfit);font-weight:700;color:var(--color-naa-gold);letter-spacing:0.04em;text-transform:uppercase;">
                     Starting Soon
                   </span>
                   <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);">{prog.ages.split('(')[0].trim()}</span>
@@ -287,7 +287,7 @@ const milestoneIcons: Record<string, string> = {
             onmouseout="this.style.background='rgba(255,255,255,0.05)';"
           >
             <div style="display:flex;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.5rem;">
-              <span class="badge" style="background:rgba(221,170,64,0.18);color:var(--color-naa-gold);font-size:0.7rem;font-weight:700;">Starting Soon</span>
+              <span class="badge" style="background:rgba(221,170,64,0.18);color:var(--color-naa-gold);font-size:0.75rem;font-weight:700;">Starting Soon</span>
               <span style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-outfit);">{sport.targetAges}</span>
             </div>
             <h3 style="font-size:1.05rem;color:white;margin-bottom:0.3rem;font-family:var(--font-outfit);font-weight:700;line-height:1.3;">{sport.name}</h3>
@@ -381,9 +381,9 @@ const milestoneIcons: Record<string, string> = {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-naa-navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={milestoneIcons[m.icon]}></svg>
                 </div>
                 <div>
-                  <h4 style="font-size:0.98rem;color:var(--color-naa-navy);margin-bottom:0.25rem;font-family:var(--font-outfit);">
+                  <h3 style="font-size:0.98rem;color:var(--color-naa-navy);margin-bottom:0.25rem;font-family:var(--font-outfit);">
                     {m.category}
-                  </h4>
+                  </h3>
                   <p style="font-size:0.86rem;color:#64748b;line-height:1.55;">
                     {m.description}
                   </p>

@@ -8,7 +8,15 @@ export async function executeRecaptcha(action: string = 'submit'): Promise<strin
   if (typeof window === 'undefined') return '';
   const win = window as any;
 
-  if (!win.grecaptcha || !RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY === 'YOUR_RECAPTCHA_SITE_KEY') {
+  if (!RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY === 'YOUR_RECAPTCHA_SITE_KEY') {
+    return '';
+  }
+
+  // reCAPTCHA is loaded lazily (see Layout.astro); make sure it is there before executing.
+  if (!win.grecaptcha && typeof win.__loadRecaptcha === 'function') {
+    await win.__loadRecaptcha();
+  }
+  if (!win.grecaptcha) {
     return '';
   }
 

@@ -76,7 +76,7 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
             <div class="nsp-fact">
               <dt>{f.label}</dt>
               <dd>{f.value}</dd>
-              {f.note && <span>{f.note}</span>}
+              {f.note && <dd class="nsp-fact-note">{f.note}</dd>}
             </div>
           ))}
         </dl>
@@ -498,7 +498,7 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
   }
   .nsp-fact dt {
     font-family: var(--font-outfit);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -512,7 +512,10 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
     color: var(--deep);
     line-height: 1.15;
   }
-  .nsp-fact span {
+  .nsp-fact .nsp-fact-note {
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.4;
     font-size: 0.82rem;
     color: var(--muted);
   }
@@ -773,7 +776,7 @@ const stat = (i: number) => String(i + 1).padStart(2, '0');
   .nsp-step-label {
     font-family: var(--font-outfit);
     font-weight: 700;
-    font-size: 0.74rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);

@@ -327,11 +327,11 @@ export const ProgramMatrix: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span
-                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide backdrop-blur-md shadow-xs ${
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wide backdrop-blur-md shadow-xs ${
                           prog.statusType === 'urgent'
                             ? 'bg-amber-400 text-slate-950'
                             : prog.statusType === 'open'
-                            ? 'bg-emerald-500 text-white'
+                            ? 'bg-emerald-700 text-white'
                             : 'bg-slate-900/90 text-amber-300'
                         }`}
                       >
@@ -340,7 +340,7 @@ export const ProgramMatrix: React.FC = () => {
                         )}
                         <span>{prog.statusBadge}</span>
                       </span>
-                      <span className="text-[11px] font-bold text-white bg-slate-950/70 px-2 py-0.5 rounded backdrop-blur-sm font-mono">
+                      <span className="text-xs font-bold text-white bg-slate-950/70 px-2 py-0.5 rounded backdrop-blur-sm font-mono">
                         {prog.ageDisplay}
                       </span>
                     </div>
@@ -352,7 +352,7 @@ export const ProgramMatrix: React.FC = () => {
                   {!prog.image && (
                     <div className="flex items-center justify-between gap-2 mb-3">
                       <span
-                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide ${
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wide ${
                           prog.statusType === 'urgent'
                             ? 'bg-amber-50 text-amber-800 border border-amber-200'
                             : prog.statusType === 'open'
@@ -380,7 +380,7 @@ export const ProgramMatrix: React.FC = () => {
                       <h3 className="text-lg font-bold text-slate-900 leading-snug">
                         {prog.name}
                       </h3>
-                      <div className="text-xs font-semibold text-amber-600 mt-0.5">
+                      <div className="text-xs font-semibold text-amber-700 mt-0.5">
                         {prog.price}
                       </div>
                     </div>
