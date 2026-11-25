@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAA Court Booking | National Athletics Academy</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+    body { background: #f8fafc; color: #1e293b; margin: 0; padding: 16px; }
+    .card { max-width: 620px; margin: 0 auto; background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
+    h2 { margin-top: 0; color: #0f172a; font-size: 1.35rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .subtitle { font-size: 0.85rem; color: #64748b; margin-top: -6px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; color: #334155; }
+    input, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; background-color: #fff; }
+    input:focus, select:focus { outline: none; border-color: #0284c7; ring: 2px solid rgba(2,132,199,0.2); }
+    .badge { display: inline-block; padding: 6px 10px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; margin-top: 6px; }
+    .badge-avail { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-full { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .waiver-box { background: #f8fafc; padding: 12px; border-radius: 6px; font-size: 0.82rem; line-height: 1.45; height: 110px; overflow-y: scroll; border: 1px solid #e2e8f0; margin-bottom: 10px; color: #475569; }
+    .checkbox-label { display: flex; align-items: flex-start; gap: 8px; font-weight: normal; font-size: 0.85rem; cursor: pointer; color: #1e293b; }
+    .checkbox-label input { width: auto; margin-top: 3px; cursor: pointer; }
+    .btn-submit { width: 100%; padding: 13px; background: #0284c7; color: #fff; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.2s; margin-top: 8px; }
+    .btn-submit:hover:not(:disabled) { background: #0369a1; }
+    .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; }
+    .notice { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px; font-size: 0.85rem; margin-top: 16px; line-height: 1.5; border-radius: 0 6px 6px 0; }
+    #confirmation { display: none; text-align: center; padding: 30px 16px; }
+    .ref-code { font-size: 1.6rem; font-weight: 800; color: #0284c7; letter-spacing: 1.5px; margin: 12px 0; padding: 8px; background: #f0f9ff; border-radius: 6px; display: inline-block; }
+    .error-banner { display: none; background: #fee2e2; color: #991b1b; padding: 10px 12px; border-radius: 6px; margin-bottom: 14px; font-size: 0.88rem; border: 1px solid #fecaca; }
+    .rules-tag { font-size: 0.78rem; color: #64748b; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<div class="card" id="bookingCard">
+  <h2>🏸 NAA Badminton Court Booking</h2>
+  <div class="subtitle">$5.00 CAD per player / 1-hour session · Regina, SK</div>
+
+  <div id="errorBanner" class="error-banner"></div>
+
+  <form id="bookingForm">
+    <!-- Schedule Selection -->
+    <div class="form-group">
+      <label for="sessionDate">Select Session Date &amp; Phase:</label>
+      <select id="sessionDate" required>
+        <option value="">-- Choose a Date --</option>
+        <optgroup label="Phase 1 (Oct 22 – Nov 13, 2026)">
+          <option value="2026-10-22">Thu, Oct 22, 2026</option>
+          <option value="2026-10-23">Fri, Oct 23, 2026</option>
+          <option value="2026-10-29">Thu, Oct 29, 2026</option>
+          <option value="2026-10-30">Fri, Oct 30, 2026</option>
+          <option value="2026-11-05">Thu, Nov 05, 2026</option>
+          <option value="2026-11-06">Fri, Nov 06, 2026</option>
+          <option value="2026-11-12">Thu, Nov 12, 2026</option>
+          <option value="2026-11-13">Fri, Nov 13, 2026</option>
+        </optgroup>
+        <optgroup label="Phase 2 (Nov 17 – Dec 10, 2026)">
+          <option value="2026-11-17">Tue, Nov 17, 2026</option>
+          <option value="2026-11-19">Thu, Nov 19, 2026</option>
+          <option value="2026-11-24">Tue, Nov 24, 2026</option>
+          <option value="2026-11-26">Thu, Nov 26, 2026</option>
+          <option value="2026-12-01">Tue, Dec 01, 2026</option>
+          <option value="2026-12-03">Thu, Dec 03, 2026</option>
+          <option value="2026-12-08">Tue, Dec 08, 2026</option>
+          <option value="2026-12-10">Thu, Dec 10, 2026</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Time Slot -->
+    <div class="form-group">
+      <label for="sessionTime">Select 1-Hour Time Slot:</label>
+      <select id="sessionTime" required disabled>
+        <option value="">-- Select Date First --</option>
+      </select>
+    </div>
+
+    <!-- Court Format -->
+    <div class="form-group">
+      <label for="format">Court Format:</label>
+      <select id="format" required>
+        <option value="Doubles">Doubles Court (Max 6 players / hr)</option>
+        <option value="Singles">Singles Court (Max 3 players / hr)</option>
+      </select>
+      <div id="capacityInfo" class="badge badge-avail">Checking live slot availability...</div>
+      <div class="rules-tag">Strict gym cap: 9 players total across both courts.</div>
+    </div>
+
+    <!-- Player Details -->
+    <div class="form-group">
+      <label for="playerName">Player Full Name:</label>
+      <input type="text" id="playerName" required placeholder="e.g. Ramesh Shrestha">
+    </div>
+
+    <div class="form-group">
+      <label for="division">Age Category / Division:</label>
+      <select id="division" required>
+        <option value="Adult">Adult (18–54)</option>
+        <option value="Junior">Junior (Under 18)</option>
+        <option value="Family">Family / Senior (55+)</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="guardianGroup" style="display:none;">
+      <label for="guardianName">Parent / Guardian Full Name (Required for Juniors):</label>
+      <input type="text" id="guardianName" placeholder="Parent or legal guardian name">
+    </div>
+
+    <div class="form-group">
+      <label for="playerEmail">Contact Email:</label>
+      <input type="email" id="playerEmail" required placeholder="name@example.com">
+    </div>
+
+    <div class="form-group">
+      <label for="playerPhone">Contact Phone Number:</label>
+      <input type="tel" id="playerPhone" required placeholder="(306) 555-0199">
+    </div>
+
+    <!-- Legal & Waiver Compliance -->
+    <div class="form-group">
+      <label>Legal &amp; Facility Waiver:</label>
+      <div class="waiver-box">
+        <strong>1. Assumption of Risk &amp; Liability:</strong> By registering, the participant (or parent/guardian) acknowledges sports risks and releases National Athletics Academy Inc. (NAA Canada) from liability for injuries.<br>
+        <strong>2. Minor Consent:</strong> If player is under 18, parent/guardian acknowledges and authorizes participation.<br>
+        <strong>3. Mandatory Clean Indoor Shoes:</strong> Only clean, non-marking indoor court shoes are permitted inside the gymnasium. Outdoor shoes are strictly prohibited.<br>
+        <strong>4. Arrival &amp; Punctuality:</strong> Please arrive 10 minutes prior to your scheduled hour. Bookings are strictly valid for the reserved 1-hour window only.
+      </div>
+      <label class="checkbox-label">
+        <input type="checkbox" id="waiverAgree" required>
+        <span>I have read, understood, and agree to the waiver terms, shoe policy, and gym rules.</span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="digitalSignature">Digital Signature (Type Full Legal Name):</label>
+      <input type="text" id="digitalSignature" required placeholder="Your full legal name as digital signature">
+    </div>
+
+    <!-- Payment Choice -->
+    <div class="form-group">
+      <label for="paymentMethod">Payment Method ($5.00 / player):</label>
+      <select id="paymentMethod" required>
+        <option value="eTransfer_Cash">Interac e-Transfer or Exact Cash at Arrival</option>
+        <option value="Online_Card">Credit / Debit Card Online ($5.00)</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn-submit" id="submitBtn">Confirm Reservation ($5.00)</button>
+  </form>
+</div>
+
+<!-- Confirmation Screen -->
+<div class="card" id="confirmation">
+  <h2 style="color:#16a34a; border:none; justify-content:center;">🎉 Reservation Confirmed!</h2>
+  <p style="margin: 4px 0 16px; color:#475569;">Your court slot has been secured with NAA Canada.</p>
+  <div><span class="ref-code" id="resBookingId">NAA-XXXXXX</span></div>
+  <div class="notice" id="paymentInstructions"></div>
+  <p style="font-size: 0.85rem; color:#64748b; margin-top:20px; line-height: 1.5;">
+    A confirmation receipt has been sent to your email. Please remember to bring clean non-marking indoor shoes!
+  </p>
+  <button class="btn-submit" onclick="location.reload()" style="max-width:220px; margin:16px auto 0; display:block;">Book Another Slot</button>
+</div>
+
+<script>
+  const API_URL = 'booking-api.php';
+  let liveCounts = {};
+
+  const errorBanner = document.getElementById('errorBanner');
+  function showError(msg) {
+    if (!msg) {
+      errorBanner.style.display = 'none';
+      errorBanner.textContent = '';
+    } else {
+      errorBanner.textContent = msg;
+      errorBanner.style.display = 'block';
+    }
+  }
+
+  // Auto-toggle Guardian input for juniors
+  document.getElementById('division').addEventListener('change', function() {
+    const isJunior = (this.value === 'Junior');
+    const group = document.getElementById('guardianGroup');
+    const guardianInput = document.getElementById('guardianName');
+    group.style.display = isJunior ? 'block' : 'none';
+    guardianInput.required = isJunior;
+  });
+
+  // Dynamic slot times based on Phase 1 & 2 days
+  const dateInput = document.getElementById('sessionDate');
+  const timeInput = document.getElementById('sessionTime');
+
+  dateInput.addEventListener('change', function() {
+    timeInput.innerHTML = '';
+    showError('');
+    if (!this.value) {
+      timeInput.disabled = true;
+      timeInput.innerHTML = '<option value="">-- Select Date First --</option>';
+      updateCapacityDisplay();
+      return;
+    }
+    const [y, m, d] = this.value.split('-').map(Number);
+    const dayOfWeek = new Date(y, m - 1, d).getDay(); // 2=Tue, 4=Thu, 5=Fri
+
+    let options = [];
+    if (dayOfWeek === 4) { // Thursday: 8:00 PM - 9:00 PM only
+      options.push('<option value="8:00 PM – 9:00 PM">8:00 PM – 9:00 PM</option>');
+    } else if (dayOfWeek === 5 || dayOfWeek === 2) { // Friday or Tuesday: 6:00 PM - 7:00 PM & 8:00 PM - 9:00 PM
+      options.push('<option value="6:00 PM – 7:00 PM">6:00 PM – 7:00 PM</option>');
+      options.push('<option value="8:00 PM – 9:00 PM">8:00 PM – 9:00 PM</option>');
+    } else {
+      options.push('<option value="8:00 PM – 9:00 PM">8:00 PM – 9:00 PM</option>');
+    }
+
+    timeInput.innerHTML = options.join('');
+    timeInput.disabled = false;
+    updateCapacityDisplay();
+  });
+
+  // Fetch counts from backend
+  async function refreshCounts() {
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      if (data && data.counts) liveCounts = data.counts;
+      updateCapacityDisplay();
+    } catch(e) {
+      console.warn('Could not fetch slot counts:', e);
+    }
+  }
+
+  function updateCapacityDisplay() {
+    const d = dateInput.value;
+    const t = timeInput.value;
+    const format = document.getElementById('format').value;
+    const capInfo = document.getElementById('capacityInfo');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (!d || !t) {
+      capInfo.className = 'badge badge-avail';
+      capInfo.textContent = 'Please choose date & time to view live availability';
+      submitBtn.disabled = false;
+      return;
+    }
+
+    const key = d + '_' + t;
+    const current = liveCounts[key] || { doubles: 0, singles: 0, total: 0 };
+
+    const doublesLeft = Math.max(0, 6 - (current.doubles || 0));
+    const singlesLeft = Math.max(0, 3 - (current.singles || 0));
+    const sessionLeft = Math.max(0, 9 - (current.total || 0));
+
+    const targetLeft = (format === 'Doubles') ? Math.min(doublesLeft, sessionLeft) : Math.min(singlesLeft, sessionLeft);
+
+    if (sessionLeft === 0) {
+      capInfo.className = 'badge badge-full';
+      capInfo.textContent = 'Session FULL (9/9 players booked)';
+      submitBtn.disabled = true;
+    } else if (targetLeft === 0) {
+      capInfo.className = 'badge badge-full';
+      capInfo.textContent = `${format} Court FULL for this slot (${format === 'Doubles' ? '6/6' : '3/3'} spots taken)`;
+      submitBtn.disabled = true;
+    } else {
+      capInfo.className = 'badge badge-avail';
+      capInfo.textContent = `Available: ${targetLeft} spot(s) left in ${format} (${sessionLeft}/9 spots total remaining)`;
+      submitBtn.disabled = false;
+    }
+  }
+
+  document.getElementById('sessionTime').addEventListener('change', updateCapacityDisplay);
+  document.getElementById('format').addEventListener('change', updateCapacityDisplay);
+
+  // Form Submission
+  document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    showError('');
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Reserving slot...';
+
+    const payload = {
+      date: dateInput.value,
+      time: timeInput.value,
+      format: document.getElementById('format').value,
+      name: document.getElementById('playerName').value,
+      division: document.getElementById('division').value,
+      guardian: document.getElementById('guardianName').value,
+      email: document.getElementById('playerEmail').value,
+      phone: document.getElementById('playerPhone').value,
+      waiverAccepted: document.getElementById('waiverAgree').checked,
+      signature: document.getElementById('digitalSignature').value,
+      paymentMethod: document.getElementById('paymentMethod').value
+    };
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.message || 'Booking failed');
+      }
+
+      // Show confirmation
+      document.getElementById('bookingCard').style.display = 'none';
+      document.getElementById('confirmation').style.display = 'block';
+      document.getElementById('resBookingId').textContent = result.bookingId;
+
+      const pType = payload.paymentMethod;
+      let instruct = '';
+      if (pType === 'eTransfer_Cash') {
+        instruct = `<strong>Payment Instructions ($5.00 CAD):</strong><br>
+                    Please send an Interac e-Transfer of <strong>$5.00</strong> to <code>payments@naacanada.org</code> with reference note: <strong>${result.bookingId}</strong>.<br>
+                    Alternatively, you may bring exact $5 cash to the court monitor upon arrival.`;
+      } else {
+        instruct = `<strong>Online Card Payment ($5.00 CAD):</strong><br>
+                    Click the link below to pay by credit or debit card:<br>
+                    <a href="https://buy.stripe.com/your_stripe_link?client_reference_id=${result.bookingId}" target="_blank" style="display:inline-block; margin-top:8px; padding:10px 18px; background:#6366f1; color:#fff; border-radius:6px; text-decoration:none; font-weight:bold;">Pay $5.00 via Stripe</a>`;
+      }
+      document.getElementById('paymentInstructions').innerHTML = instruct;
+
+    } catch(err) {
+      showError(err.message || 'An unexpected error occurred. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      refreshCounts();
+    }
+  });
+
+  refreshCounts();
+</script>
+</body>
+</html>
