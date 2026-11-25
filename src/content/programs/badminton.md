@@ -50,7 +50,7 @@ tiers:
     ages: "Ages 6–10"
     format: "10 sessions · 45 min · $150 CAD"
     focus: "Physical literacy, hand-eye coordination, neutral grip habits, underhand serving accuracy, court boundary games, gentle net drops, swat attacks, and Jamboree mini-meet competition."
-    ratio: "1:8 to 1:10 Coach Ratio"
+    ratio: "1:8 to 1:12 Coach Ratio"
     curriculum:
       - "Shake-hands V-grip, pancake grip elimination, birdie balance relay"
       - "Rocket Launch high underhand serves, Battleship hoop target scoring"
