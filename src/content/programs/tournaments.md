@@ -27,7 +27,7 @@ highlights:
   - Certified referees and official scorekeepers for fair, high-standard play
   - Medals, championship trophies, MVP awards, and sportsmanship banners
   - Certified First Aid / CPR safety personnel on-site for all fixtures
-  - Turnkey team registration and individual free-agent player placement
+  - Turnkey team registration and individual entries (singles and doubles)
 skillsFocus:
   - High-Pressure Decision Making & Clutch Game Execution
   - Sportsmanship, Respect in Sport Etiquette & Team Camaraderie
@@ -73,7 +73,7 @@ whatsIncluded:
   - On-site certified First Aid staff and event photography
 faqs:
   - question: Can individual players sign up if they do not have a full team?
-    answer: Yes! We welcome free-agent individual registrations for our tournaments. Our tournament director will place free agents onto a balanced NAA house team coached by certified staff.
+    answer: Yes! No team is needed. Individual players can enter on their own and take part in singles or doubles in the different categories offered at each tournament.
   - question: How do team managers and coaches register?
     answer: Team managers can register their full roster through our online registration portal or via our TeamLinkt tournament link. Sibling and multi-team discounts apply.
   - question: Where can parents follow live scores and tournament brackets?

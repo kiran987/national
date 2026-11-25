@@ -814,7 +814,7 @@ export const comingSoonPrograms: DetailedProgram[] = [
       'Certified referees and official scorekeepers for fair, high-standard play',
       'Medals, championship trophies, MVP awards, and sportsmanship banners',
       'Certified First Aid / CPR safety personnel on-site for all fixtures',
-      'Turnkey team registration and individual free-agent player placement',
+      'Turnkey team registration and individual entries (singles and doubles)',
     ],
     skillsFocus: [
       'High-Pressure Decision Making & Clutch Game Execution',
@@ -888,7 +888,7 @@ export const comingSoonPrograms: DetailedProgram[] = [
       {
         question: 'Can individual players sign up if they do not have a full team?',
         answer:
-          'Yes! We welcome free-agent individual registrations. Our tournament director will place free agents onto a balanced NAA house team coached by certified staff.',
+          'Yes! No team is needed. Individual players can enter on their own and take part in singles or doubles in the different categories offered at each tournament.',
       },
       {
         question: 'Where can parents follow live scores and tournament brackets?',
